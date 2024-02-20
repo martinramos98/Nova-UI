@@ -1,5 +1,6 @@
 <script>
 	import Avatar from '$lib/app/Components/Avatar/Avatar.svelte';
+	import AvatarGroup from '$lib/app/Components/AvatarGroup/AvatarGroup.svelte';
 	import Button from '$lib/app/Components/Button/Button.svelte';
 	import ButtonGroup from '$lib/app/Components/ButtonGroup/ButtonGroup.svelte';
 	import '../lib/app/styles/main.css';
@@ -102,11 +103,48 @@
 			avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'}
 		></Avatar>
 		<Avatar
-			rounded={'lg'}
 			avatarBordered
 			colors={'tertiary'}
 			avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-porter.7e18061d.png'}
 		></Avatar>
+		<Avatar
+			avatarBordered
+			colors={'tertiary'}
+			className={'rounded-xl '}
+			avatarSrc={'https://play.nintendo.com/images/profile-kirby-kirby.7bf2a8f2.png'}
+		></Avatar>
+		<Avatar
+			avatarBordered
+			colors={'info'}
+			disabled
+			className={'rounded-md '}
+			avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
+		></Avatar>
+	</div>
+	<div>
+		<AvatarGroup>
+			<Avatar
+				avatarBordered
+				colors={'success'}
+				avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'}
+			></Avatar>
+			<Avatar
+				avatarBordered
+				colors={'warning'}
+				avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-porter.7e18061d.png'}
+			></Avatar>
+			<Avatar
+				avatarBordered
+				colors={'warning'}
+				avatarSrc={'https://play.nintendo.com/images/profile-kirby-kirby.7bf2a8f2.png'}
+			></Avatar>
+			<Avatar
+				avatarBordered
+				colors={'info'}
+				disabled
+				avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
+			></Avatar>
+		</AvatarGroup>
 	</div>
 </section>
 

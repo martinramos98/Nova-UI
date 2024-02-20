@@ -477,13 +477,20 @@
 		}
 	}
 	.ui-avatar {
+		display: inline-block;
 		width: theme(size.16);
 		height: theme(size.16);
 		border-radius: theme(borderRadius.full);
 		overflow: hidden;
 		& img {
 			padding: 2.5px;
+			background-color: rgb(var(--color-surface-hight));
 			border-radius: inherit;
+		}
+	}
+	.ui-avatar-group {
+		& > *:hover {
+			translate: -20px 0;
 		}
 	}
 }
