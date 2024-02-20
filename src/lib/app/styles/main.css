@@ -174,14 +174,20 @@
 			--info-50: var(--blue-800);
 			--on-info-20: var(--blue-A50);
 			--on-info-10: var(--blue-A100);
-
+			--color-surface-lowest: black;
+			--color-surface-low: var(--night-900);
+			--color-surface: var(--night-800);
+			--color-on-surface: --white;
+			--color-surface-hight: var(--night-700);
+			--color-surface-highest: var(--night-600);
 			/* NOTE: Color scheme Variables Default */
-			--color-container: var(--night-600);
-			--color-subcontainer: var(--night-800);
+			--color-container: var(--night-500);
+			--color-subcontainer: var(--night-400);
 			--color-text: var(--seasalt);
-			--color-border: var(--night-night-900);
-			--color-shadow: 2px 2px 5px rgb(--night-800);
-			background-color: rgb(var(--night-800));
+			--color-border: var(--night-night-400);
+			--shadow: 2px 2px 5px rgb(--night-800);
+
+			background-color: rgb(var(--color-surface));
 			color: rgb(var(--white));
 		}
 		.primary {
@@ -360,6 +366,15 @@
 		}
 	}
 	.faded {
+		border: solid 2px rgb(var(--color-surface-highest));
+		background-color: rgb(var(--color-surface-hight));
+		color: rgb(var(--color-container));
+		border-radius: 8px;
+		&.ui-button {
+			& > .click-effect-element {
+				--color-text: var(--color-container);
+			}
+		}
 	}
 	.bordered {
 		border: 2px solid rgb(var(--color-border));
@@ -449,7 +464,26 @@
 				rgb(var(--color-text), 0.3) 40%
 			);
 		}
-		&light {
+	}
+	.ui-button-group {
+		& > .ui-button {
+			border-radius: 0;
+		}
+		& > .ui-button:first-child {
+			border-radius: 10px 0 0 10px;
+		}
+		& > .ui-button:last-child {
+			border-radius: 0px 10px 10px 0px;
+		}
+	}
+	.ui-avatar {
+		width: theme(size.16);
+		height: theme(size.16);
+		border-radius: theme(borderRadius.full);
+		overflow: hidden;
+		& img {
+			padding: 2.5px;
+			border-radius: inherit;
 		}
 	}
 }

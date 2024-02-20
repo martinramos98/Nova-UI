@@ -6,8 +6,11 @@
 	export let variant: string = 'solid';
 	export let colors: string = '';
 	export let disabled: boolean = false;
+	export let isLoading: boolean = false;
+	export let spinnerPosition: 'left' | 'right' = 'left';
 	export let withClickEffect: boolean = true;
 	export let buttonProps: ButtonElementProps | undefined = {};
+	// TODO: Poner default slot para los spinner un default spinner
 </script>
 
 <button
@@ -16,7 +19,13 @@
 	style={css}
 	{disabled}
 >
+	{#if spinnerPosition === 'left' && isLoading}
+		<slot name="spinner" />
+	{/if}
 	<slot />
+	{#if spinnerPosition === 'right' && isLoading}
+		<slot name="spinner" />
+	{/if}
 </button>
 
 <style>
