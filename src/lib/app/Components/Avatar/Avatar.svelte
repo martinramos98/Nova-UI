@@ -29,6 +29,18 @@
 <style>
 	.ui-avatar {
 		transition: translate 0.3s ease 0.1s;
+		& > span {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			background-color: rgb(var(--color-subcontainer));
+			border: 2px solid transparent;
+
+			width: 100%;
+			height: 100%;
+			border-radius: inherit;
+		}
 	}
 	span {
 		text-transform: capitalize;

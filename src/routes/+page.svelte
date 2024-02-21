@@ -141,7 +141,6 @@
 			<Avatar
 				avatarBordered
 				colors={'info'}
-				disabled
 				avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
 			></Avatar>
 		</AvatarGroup>
