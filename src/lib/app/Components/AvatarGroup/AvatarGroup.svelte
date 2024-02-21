@@ -13,11 +13,25 @@
 		actionArgs
 	) => {
 		let idx = 0;
+		debugger;
 		const hiddenGroupEl = node.querySelector('.ui-avatars-hidden-container') as Element;
 		const showGroupEl = node.querySelector('.ui-avatars-group-container') as Element;
-		debugger;
-		const firsChild = node;
-
+		const firsChild = node.firstElementChild;
+		recursiveInsertionOfAvatars(firsChild, 0);
+		function recursiveInsertionOfAvatars(child: Element | null, idx: number) {
+			if (!child || child === hiddenGroupEl || child === showGroupEl) {
+				return;
+			}
+			if (idx < maxAvatarsToShow) {
+				const nextEl = child.nextElementSibling;
+				showGroupEl.append(child as Element);
+				recursiveInsertionOfAvatars(nextEl as Element, idx + 1);
+			} else {
+				const nextEl = child.nextElementSibling;
+				hiddenGroupEl.append(child);
+				recursiveInsertionOfAvatars(nextEl as Element, idx + 1);
+			}
+		}
 		node.style.cssText = '';
 	};
 
