@@ -3,6 +3,9 @@
 	import AvatarGroup from '$lib/app/Components/AvatarGroup/AvatarGroup.svelte';
 	import Button from '$lib/app/Components/Button/Button.svelte';
 	import ButtonGroup from '$lib/app/Components/ButtonGroup/ButtonGroup.svelte';
+	import Card from '$lib/app/Components/Card/Card.svelte';
+	import Title from '$lib/app/Components/Title/Title.svelte';
+	import Divider from '$lib/app/Divider/Divider.svelte';
 	import '../lib/app/styles/main.css';
 </script>
 
@@ -146,6 +149,16 @@
 		</AvatarGroup>
 	</div>
 </section>
+<Title level={1} className="ml-4">Cards</Title>
+<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
+<Card className="m-4 tertiary">
+	<svelte:fragment slot="header">
+		<p>This is a Header</p>
+	</svelte:fragment>
+	<svelte:fragment slot="body">
+		<p class="inline-block">This is a Card</p>
+	</svelte:fragment>
+</Card>
 
 <style>
 	p {
@@ -158,6 +171,7 @@
 	}
 	.avatar-group {
 		margin-bottom: 3rem;
+		margin-left: 2rem;
 	}
 	section {
 		display: flex;
