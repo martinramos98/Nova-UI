@@ -6,9 +6,10 @@
 	export let collapseOnClick = true;
 	export let collapse = false;
 	// export let isCompressed = true;
-	let hiddenGroupRef;
+	let hiddenGroupRef: Element;
 	let outOfRangeAvatars = 0;
 	let defaultWidthHidden = '';
+	// IDEA: En la configuracion de la lib, se puede modificar las opciones de los componentes, variants, colors, etc. Ademas tambien se tendra diferentes animaciones presseteadas y el usuario podra crear las propias tanto con css como
 	const action: Action<HTMLElement, { maxAvatarsToShow: number; collapse: boolean }> = (
 		node,
 		actionArgs
@@ -116,7 +117,7 @@
 		& > .ui-avatars-hidden-container {
 			display: flex;
 			z-index: 10;
-			transition: max-width 0.3s ease;
+			transition: max-width 0.4s ease;
 			&[data-collapse='false'] {
 				transition: max-width 0.3s ease 0.3s;
 			}
@@ -137,8 +138,8 @@
 				translate: -20px 20px;
 				scale: 0.5;
 				transition:
-					translate 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.4s,
-					scale 0.3s ease 0.4s;
+					translate 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.32s,
+					scale 0.3s ease 0.32s;
 			}
 			&[data-collapse='false'] {
 				transition:
