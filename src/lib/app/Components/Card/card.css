@@ -1,9 +1,9 @@
 .ui-card {
 	display: flex;
 	flex-direction: column;
-	padding: 0.5rem;
 	border-radius: theme(borderRadius.xl);
 	background-color: rgb(var(--color-container));
 	width: fit-content;
-	border: 1px solid rgb(var(--color-border));
+	overflow: hidden;
+	transition: filter 0.2s ease;
 }
