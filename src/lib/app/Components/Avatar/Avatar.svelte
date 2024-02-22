@@ -28,7 +28,9 @@
 
 <style>
 	.ui-avatar {
-		transition: translate 0.3s ease 0.1s;
+		transition:
+			translate 0.3s ease 0.1s,
+			margin-inline-start 0.1s ease;
 		& > span {
 			display: flex;
 			align-items: center;

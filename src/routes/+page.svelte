@@ -121,7 +121,7 @@
 			avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
 		></Avatar>
 	</div>
-	<div>
+	<div class="avatar-group">
 		<AvatarGroup>
 			<Avatar
 				avatarBordered
@@ -155,6 +155,9 @@
 		margin: 0 10px;
 		display: flex;
 		gap: 1rem;
+	}
+	.avatar-group {
+		margin-bottom: 3rem;
 	}
 	section {
 		display: flex;
