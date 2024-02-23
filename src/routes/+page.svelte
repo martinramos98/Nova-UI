@@ -229,6 +229,14 @@
 </div>
 <Title className={'ml-4'} level={2}>Card Variants</Title>
 <Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
+<div>
+	<Button className="p-0 rounded-xl">
+		<Card className={'p-4 primary flat'}>This is a Card inside of a button</Card>
+	</Button>
+</div>
+<div></div>
+<Title className="ml-4" level={3}>Card Backface</Title>
+<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
 
 <style>
 	p {
