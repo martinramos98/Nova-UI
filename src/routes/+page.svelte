@@ -208,6 +208,24 @@
 		</svelte:fragment>
 		<svelte:fragment slot="footer"></svelte:fragment>
 	</Card>
+	<Card
+		className=" h-56 relative"
+		footerProps={{
+			className:
+				'absolute bottom-4 right-2 p-2 rounded-xl blured flex row items-center gap-2 border-none'
+		}}
+	>
+		<svelte:fragment slot="body">
+			<img
+				src="https://img.nh-hotels.net/vJEy/1ZZdy/original/F_NH_gran-hotel-provincial_018.jpg?output-quality=80&resize=1600:*&background-color=white"
+				class="w-96"
+			/>
+		</svelte:fragment>
+		<svelte:fragment slot="footer">
+			<p class="h-auto text-lg">NH Hotels</p>
+			<Button className="blured font-semibold">Ver Mas</Button>
+		</svelte:fragment>
+	</Card>
 </div>
 <Title className={'ml-4'} level={2}>Card Variants</Title>
 <Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>

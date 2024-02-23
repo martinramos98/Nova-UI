@@ -6,4 +6,5 @@
 	width: fit-content;
 	overflow: hidden;
 	transition: filter 0.2s ease;
+	height: fit-content;
 }

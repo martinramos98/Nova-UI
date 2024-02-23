@@ -3,7 +3,7 @@
 	export let css: string = '';
 	export let className: string = '';
 	// TODO: Definir los tipos existentes y que se haga extensible
-	export let variant: string = 'solid';
+	export let variant: string = '';
 	export let colors: string = '';
 	export let disabled: boolean = false;
 	export let isLoading: boolean = false;

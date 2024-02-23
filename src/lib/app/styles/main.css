@@ -184,7 +184,7 @@
 			--color-container: var(--night-500);
 			--color-subcontainer: var(--night-400);
 			--color-text: var(--seasalt);
-			--color-border: var(--night-night-400);
+			--color-border: var(--night-400);
 			--shadow: 2px 2px 5px rgb(--night-800);
 
 			background-color: rgb(var(--color-surface));
@@ -377,7 +377,6 @@
 		}
 	}
 	.bordered {
-		border: 2px solid rgb(var(--color-border));
 		border-radius: 5px;
 		color: rgb(var(--color-container));
 		background-color: transparent;
@@ -454,7 +453,14 @@
 			}
 		}
 	}
+	.blured {
+		background-color: rgb(var(--color-container), 0.2);
+		backdrop-filter: blur(theme(blur.sm));
+		border: 1px solid rgb(var(--color-border));
+		border-radius: theme(borderRadius.lg);
+	}
 	.ui-button {
+		/* background-color: var(--color-container); */
 		& > .click-effect-element {
 			position: absolute;
 			border-radius: 100%;
@@ -468,6 +474,7 @@
 	.ui-button-group {
 		& > .ui-button {
 			border-radius: 0;
+			background-color: rgb(var(--color-container));
 		}
 		& > .ui-button:first-child {
 			border-radius: 10px 0 0 10px;
@@ -537,5 +544,5 @@
 * {
 	margin: 0;
 	padding: 0;
-	box-sizing: content-box;
+	box-sizing: border-box;
 }
