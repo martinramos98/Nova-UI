@@ -6,6 +6,7 @@
 	import Card from '$lib/app/Components/Card/Card.svelte';
 	import Title from '$lib/app/Components/Title/Title.svelte';
 	import Divider from '$lib/app/Divider/Divider.svelte';
+	import Badge from '$lib/app/Components/Badge/Badge.svelte';
 	import '../lib/app/styles/main.css';
 </script>
 
@@ -153,7 +154,7 @@
 <Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
 <div>
 	<Card
-		className="m-4 tertiary rounded-2xl tertiary border-none overflow-hidden flat h-64"
+		className="m-4 tertiary rounded-2xl tertiary border-none overflow-hidden flat"
 		headerProps={{ className: '' }}
 	>
 		<!-- <svelte:fragment slot="header">
@@ -178,7 +179,7 @@
 		</svelte:fragment>
 	</Card>
 	<Card
-		className="m-4 tertiary rounded-2xl tertiary flat border-none h-64"
+		className="m-4 tertiary rounded-2xl tertiary flat border-none"
 		headerProps={{ className: '' }}
 	>
 		<svelte:fragment slot="body">
@@ -209,7 +210,7 @@
 		<svelte:fragment slot="footer"></svelte:fragment>
 	</Card>
 	<Card
-		className=" h-56 relative"
+		className=" relative"
 		footerProps={{
 			className:
 				'absolute bottom-4 right-2 p-2 rounded-xl blured flex row items-center gap-2 border-none'
@@ -238,9 +239,18 @@
 <Title className="ml-4" level={3}>Card Backface</Title>
 <Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
 
+<Title className="ml-4" level={3}>Badge</Title>
+<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
+<div>
+	<Badge positionBadge={'bottomleft'} className="info faded rounded-full size-5 text-xs">
+		<Button className="my-2 rounded-md">Holi</Button>
+		<svelte:fragment slot="contentBadge">
+			<span>2</span>
+		</svelte:fragment>
+	</Badge>
+</div>
+
 <style>
-	p {
-	}
 	div {
 		margin: 0 10px;
 		display: flex;
