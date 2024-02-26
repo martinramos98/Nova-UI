@@ -242,11 +242,12 @@
 <Title className="ml-4" level={3}>Badge</Title>
 <Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
 <div>
-	<Badge positionBadge={'bottomleft'} className="info faded rounded-full size-5 text-xs">
+	<Badge positionBadge={'bottomleft'} size={'xs'} contentBadge="12" colors="info" variant="flat">
 		<Button className="my-2 rounded-md">Holi</Button>
-		<svelte:fragment slot="contentBadge">
-			<span>2</span>
-		</svelte:fragment>
+	</Badge>
+	<Badge contentBadge="12" size="xs" className="bg-red-500">
+		<Avatar avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
+		></Avatar>
 	</Badge>
 </div>
 
