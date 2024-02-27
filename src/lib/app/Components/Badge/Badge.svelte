@@ -59,6 +59,14 @@
 			position: absolute;
 		}
 	}
+	.px-1 {
+		padding-left: theme(padding.1);
+		padding-right: theme(padding.1);
+	}
+	.px-2 {
+		padding-left: theme(padding.2);
+		padding-right: theme(padding.2);
+	}
 	:global(.ui-badge) {
 		text-align: center;
 		line-height: theme(lineHeight.5);

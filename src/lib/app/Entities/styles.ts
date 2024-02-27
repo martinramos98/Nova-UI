@@ -8,4 +8,12 @@ export type Colors =
 	| 'info'
 	| 'success'
 	| 'warning';
-export type Variants = 'solid' | 'flat' | 'faded' | 'light' | 'bordered' | 'shadows' | 'neon';
+export type Variants =
+	| 'solid'
+	| 'flat'
+	| 'faded'
+	| 'light'
+	| 'bordered'
+	| 'shadows'
+	| 'neon'
+	| 'ghost';

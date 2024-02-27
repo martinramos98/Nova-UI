@@ -8,6 +8,7 @@
 	import Divider from '$lib/app/Divider/Divider.svelte';
 	import Badge from '$lib/app/Components/Badge/Badge.svelte';
 	import '../lib/app/styles/main.css';
+	import Chip from '$lib/app/Components/Chip/Chip.svelte';
 </script>
 
 <h1>Welcome to your library project</h1>
@@ -245,15 +246,45 @@
 	<Badge positionBadge={'bottomleft'} size={'xs'} contentBadge="12" colors="info" variant="flat">
 		<Button className="my-2 rounded-md">Holi</Button>
 	</Badge>
-	<Badge contentBadge="12" size="xs" className="bg-red-500">
+	<Badge contentBadge="12" size="xs" colors="error" variant="neon">
 		<Avatar avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
 		></Avatar>
 	</Badge>
 </div>
+<Title className="ml-4" level={3}>Chip</Title>
+<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
+<div>
+	<Chip variant="faded" colors="primary">Faded Primary</Chip>
+	<Chip variant="faded" size="md" colors="secondary">Mid Sizes</Chip>
+	<Chip variant="faded" size="lg" colors="secondary">Big Sizes</Chip>
+</div>
+<Title className="ml-4" level={4}>Chip Variants</Title>
+<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
+<div>
+	<Chip colors="primary" variant="solid">Solid</Chip>
+	<Chip colors="primary" variant="bordered">Bordered</Chip>
+	<Chip colors="primary" variant="faded">Faded</Chip>
+	<Chip colors="primary" variant="flat">Flat</Chip>
+	<Chip colors="primary" variant="neon">Neon</Chip>
+	<Chip colors="primary" variant="shadows">Shadows</Chip>
+	<Chip colors="primary" variant="ghost">Ghost</Chip>
+	<Chip colors="primary" variant="light">Light</Chip>
+</div>
+<Title className="ml-4" level={4}>Chip Colors</Title>
+<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
+<div>
+	<Chip colors="primary" variant="solid">Solid</Chip>
+	<Chip colors="secondary" variant="solid">Solid</Chip>
+	<Chip colors="tertiary" variant="solid">Solid</Chip>
+	<Chip colors="error" variant="solid">Solid</Chip>
+	<Chip colors="success" variant="solid">Solid</Chip>
+	<Chip colors="warning" variant="solid">Solid</Chip>
+	<Chip colors="info" variant="solid">Solid</Chip>
+</div>
 
 <style>
 	div {
-		margin: 0 10px;
+		margin: 20px 10px;
 		display: flex;
 		gap: 1rem;
 	}
