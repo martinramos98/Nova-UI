@@ -1,0 +1,103 @@
+.solid {
+	color: rgb(var(--color-text));
+	background-color: rgb(var(--color-container));
+	border-radius: 5px;
+	border: none;
+	/* transition: filter 0.25s ease; */
+	border: 2px solid rgb(--color-border);
+}
+.faded {
+	border: solid 2px rgb(var(--color-surface-highest));
+	background-color: rgb(var(--color-surface-hight));
+	color: rgb(var(--color-container));
+	border-radius: 8px;
+	&.ui-button {
+		& > .click-effect-element {
+			--color-text: var(--color-container);
+		}
+	}
+}
+.bordered {
+	border-radius: 5px;
+	color: rgb(var(--color-container));
+	background-color: transparent;
+	transition: filter 0.25s ease;
+	border: 2px solid rgb(var(--color-container));
+	&:hover {
+		filter: brightness(0.95);
+	}
+	&.ui-button {
+		& > .click-effect-element {
+			--color-text: var(--color-container);
+		}
+	}
+}
+.ghost {
+	border: 2px solid rgb(var(--color-border));
+	color: rgb(var(--color-container));
+	background-color: transparent;
+	border-radius: 7px;
+	transition:
+		background-color 0.25s ease,
+		border-color 0.25s ease,
+		color 0.25s ease,
+		scale 0.25s ease;
+	&:hover {
+		background-color: rgb(var(--color-container));
+		/* border-color: transparent; */
+		color: rgb(var(--color-text));
+	}
+}
+.neon {
+	color: rgb(var(--color-text));
+	border-radius: 5px;
+	background-color: rgb(var(--color-container));
+	transition: filter 0.25s ease;
+	filter: brightness(0.9);
+	box-shadow: 0px 1px 20px rgb(var(--color-container, 0.1));
+}
+.shadows {
+	color: rgb(var(--color-text));
+	border-radius: 5px;
+	background-color: rgb(var(--color-container));
+	transition: filter 0.25s ease;
+	filter: brightness(0.9);
+	box-shadow:
+		0 2px 12px -3px #000,
+		0 0px 12px -3px #000,
+		0px 10px 12px -3px rgb(var(--color-container, 0)),
+		0px 4px 6px -4px rgb(var(--color-container, 0));
+}
+
+.flat {
+	color: rgb(var(--color-container));
+	border-radius: 5px;
+	background-color: rgb(var(--color-container), 0.1);
+	&:hover {
+		filter: brightness(90%);
+	}
+	&.ui-button {
+		& > .click-effect-element {
+			--color-text: var(--color-container);
+		}
+	}
+}
+.light {
+	background-color: transparent;
+	color: rgb(var(--color-container));
+	border-radius: 5px;
+	&:hover {
+		background-color: rgb(var(--color-container), 0.1);
+	}
+	&.ui-button {
+		& > .click-effect-element {
+			--color-text: var(--color-container);
+		}
+	}
+}
+.blured {
+	background-color: rgb(var(--color-container), 0.2);
+	backdrop-filter: blur(theme(blur.sm));
+	border: 1px solid rgb(var(--color-border));
+	border-radius: theme(borderRadius.lg);
+}

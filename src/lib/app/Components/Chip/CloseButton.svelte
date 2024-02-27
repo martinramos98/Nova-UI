@@ -7,6 +7,6 @@
 	export let onClose: (ev: MouseEvent) => void;
 </script>
 
-<Button {variant} {colors} {className} withClickEffect={false}>
+<Button {variant} {colors} {className} onClick={onClose} withClickEffect={false}>
 	<slot>close</slot>
 </Button>

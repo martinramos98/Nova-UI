@@ -7,8 +7,8 @@
 	import Title from '$lib/app/Components/Title/Title.svelte';
 	import Divider from '$lib/app/Divider/Divider.svelte';
 	import Badge from '$lib/app/Components/Badge/Badge.svelte';
-	import '../lib/app/styles/main.css';
 	import Chip from '$lib/app/Components/Chip/Chip.svelte';
+	import Image from '$lib/app/Components/Image/Image.svelte';
 </script>
 
 <h1>Welcome to your library project</h1>
@@ -273,13 +273,69 @@
 <Title className="ml-4" level={4}>Chip Colors</Title>
 <Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
 <div>
-	<Chip colors="primary" variant="solid">Solid</Chip>
-	<Chip colors="secondary" variant="solid">Solid</Chip>
-	<Chip colors="tertiary" variant="solid">Solid</Chip>
-	<Chip colors="error" variant="solid">Solid</Chip>
-	<Chip colors="success" variant="solid">Solid</Chip>
-	<Chip colors="warning" variant="solid">Solid</Chip>
-	<Chip colors="info" variant="solid">Solid</Chip>
+	<Chip colors="primary" variant="solid">Primary</Chip>
+	<Chip colors="secondary" variant="solid">Secondary</Chip>
+	<Chip colors="tertiary" variant="solid">Tertiary</Chip>
+	<Chip colors="error" variant="solid">Error</Chip>
+	<Chip colors="success" variant="solid">Success</Chip>
+	<Chip colors="warning" variant="solid">Warning</Chip>
+	<Chip colors="info" variant="solid">Info</Chip>
+</div>
+<Title className="ml-4" level={2}>Images</Title>
+<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
+<div class="flex-row flex-wrap">
+	<Image
+		height={'16rem'}
+		width={'32rem'}
+		alt={'Salta'}
+		radius={'lg'}
+		src={'https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__1880bp/public/live_banner/Salta.jpg'}
+	/>
+	<Image
+		height={'16rem'}
+		width={'32rem'}
+		alt={'Salta'}
+		radius={'lg'}
+		src={'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Cataratas.jpg/1200px-Cataratas.jpg'}
+	/>
+	<Image
+		height={'16rem'}
+		width={'32rem'}
+		alt={'Salta'}
+		radius={'lg'}
+		classNameContainer="primary neon"
+		src={'https://a.travel-assets.com/findyours-php/viewfinder/images/res40/80000/80287-Salta.jpg'}
+	/>
+	<Image
+		height={'16rem'}
+		width={'32rem'}
+		alt={'Salta'}
+		radius={'lg'}
+		classNameCaption="primary solid rounded-none py-0.5 italic"
+		src={'https://www.tangol.com/blog/Fotos/Notas/historia-de-las-ruinas-jesuiticas-de-san-ignacio_443_202107221201440.PNG'}
+	>
+		<svelte:fragment slot="caption-content"
+			>Figure 2: Ruinas de San Ignacio, Misiones</svelte:fragment
+		>
+	</Image>
+	<Image
+		height={'16rem'}
+		width={'32rem'}
+		alt={'Salta'}
+		radius={'lg'}
+		classNameCaption="bg-black/70 text-white py-0.5"
+		captionInside
+		src={'https://blogskystorage.s3.amazonaws.com/2021/12/que-hacer-en-mendoza.jpeg'}
+	>
+		<svelte:fragment slot="caption-content">Figure 1: Mendoza</svelte:fragment>
+	</Image>
+	<Image
+		height={'16rem'}
+		width={'32rem'}
+		alt={'Salta'}
+		radius={'lg'}
+		src={'https://www.argentina.gob.ar/sites/default/files/2020/06/provincia-mendoza-jumbotron.jpg'}
+	/>
 </div>
 
 <style>

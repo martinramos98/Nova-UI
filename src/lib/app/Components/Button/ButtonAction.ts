@@ -2,6 +2,7 @@ import type { Action } from 'svelte/action';
 export interface ActionButtonArgs {
 	buttonElementProps: ButtonElementProps | undefined;
 	withClickEffect: boolean;
+	onClick: ((ev: MouseEvent) => void) | undefined;
 }
 export interface ButtonElementProps {
 	events?: Record<keyof HTMLElementEventMap, EventListenerOrEventListenerObject>;
@@ -9,7 +10,7 @@ export interface ButtonElementProps {
 	props?: Record<string, any>;
 }
 const buttonAction: Action<HTMLElement, ActionButtonArgs | undefined> = (node, actionArgs) => {
-	const { withClickEffect, buttonElementProps } = actionArgs as ActionButtonArgs;
+	const { withClickEffect, buttonElementProps, onClick } = actionArgs as ActionButtonArgs;
 	function clickEffect(ev: MouseEvent) {
 		const el = document.createElement('span');
 		const bounds = node.getBoundingClientRect();
@@ -50,6 +51,9 @@ const buttonAction: Action<HTMLElement, ActionButtonArgs | undefined> = (node, a
 	}
 	if (withClickEffect) {
 		node.addEventListener('mouseup', clickEffect);
+	}
+	if (onClick) {
+		node.addEventListener('click', onClick);
 	}
 	return {
 		destroy() {

@@ -10,11 +10,12 @@
 	export let spinnerPosition: 'left' | 'right' = 'left';
 	export let withClickEffect: boolean = true;
 	export let buttonProps: ButtonElementProps | undefined = {};
+	export let onClick: ((ev: MouseEvent) => void) | undefined = undefined;
 	// TODO: Poner default slot para los spinner un default spinner
 </script>
 
 <button
-	use:buttonAction={{ buttonElementProps: buttonProps, withClickEffect }}
+	use:buttonAction={{ buttonElementProps: buttonProps, withClickEffect, onClick }}
 	class="{className} ui-button {colors} {variant} "
 	style={css}
 	{disabled}
@@ -27,28 +28,3 @@
 		<slot name="spinner" />
 	{/if}
 </button>
-
-<style>
-	:global(.ui-button) {
-		appearance: none;
-		border: none;
-		transition: all 0.25s ease;
-		overflow: hidden;
-		padding: 0.25rem 1.25rem;
-		position: relative;
-		cursor: pointer;
-		&:active {
-			scale: 98%;
-		}
-		&:disabled {
-			filter: opacity(0.7);
-			cursor: not-allowed;
-			&:hover {
-				filter: opacity(0.7);
-			}
-			&:active {
-				scale: 1;
-			}
-		}
-	}
-</style>

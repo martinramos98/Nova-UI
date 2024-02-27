@@ -1,0 +1,45 @@
+.ui-button {
+	/* background-color: var(--color-container); */
+	appearance: none;
+	border: none;
+	transition: all 0.25s ease;
+	overflow: hidden;
+	padding: 0.25rem 1.25rem;
+	position: relative;
+	cursor: pointer;
+	&:active {
+		scale: 98%;
+	}
+	&:disabled {
+		filter: opacity(0.7);
+		cursor: not-allowed;
+		&:hover {
+			filter: opacity(0.7);
+		}
+		&:active {
+			scale: 1;
+		}
+	}
+	& > .click-effect-element {
+		position: absolute;
+		border-radius: 100%;
+		background: radial-gradient(ellipse at center, transparent 0%, rgb(var(--color-text), 0.3) 40%);
+	}
+	&.solid {
+		&:hover {
+			filter: brightness(0.95);
+		}
+	}
+}
+.ui-button-group {
+	& > .ui-button {
+		border-radius: 0;
+		background-color: rgb(var(--color-container));
+	}
+	& > .ui-button:first-child {
+		border-radius: 10px 0 0 10px;
+	}
+	& > .ui-button:last-child {
+		border-radius: 0px 10px 10px 0px;
+	}
+}

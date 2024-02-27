@@ -1,0 +1,10 @@
+.ui-card {
+	display: flex;
+	flex-direction: column;
+	border-radius: theme(borderRadius.xl);
+	background-color: rgb(var(--color-container));
+	width: fit-content;
+	overflow: hidden;
+	transition: filter 0.2s ease;
+	height: fit-content;
+}

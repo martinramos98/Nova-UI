@@ -20,13 +20,13 @@
 		let value;
 		if (node.innerText) {
 			if (node.innerText?.length <= 2) {
-				value = 1;
+				value = 'px-1';
 			} else if (node.innerText?.length >= 3) {
-				value = 2;
+				value = 'px-2';
 			}
 		}
 		if (value) {
-			node.classList.add('px-' + value);
+			node.classList.add(value);
 			// node.classList.add('min-w-' + sizes[size]);
 			// node.classList.add('min-h-' + sizes[size]);
 		}
@@ -57,28 +57,6 @@
 		& > div {
 			background-color: rgb(var(--color-surface));
 			position: absolute;
-		}
-	}
-	.px-1 {
-		padding-left: theme(padding.1);
-		padding-right: theme(padding.1);
-	}
-	.px-2 {
-		padding-left: theme(padding.2);
-		padding-right: theme(padding.2);
-	}
-	:global(.ui-badge) {
-		text-align: center;
-		line-height: theme(lineHeight.5);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		z-index: 99;
-		/* min-width: fit-content; */
-		place-content: center;
-		user-select: none;
-		:hover {
-			filter: none;
 		}
 	}
 
