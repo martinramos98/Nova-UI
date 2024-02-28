@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { Radius } from '$lib/app/Entities/styles.js';
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
+	import { rounded } from '$lib/app/Entities/styles.js';
 	export let aspect: '1:1' | '16:9' | '3:4' | 'auto' = 'auto';
 	export let width: string | undefined = undefined;
 	export let height: string | undefined = undefined;
@@ -17,6 +19,7 @@
 	function onError(ev: any) {
 		errorOnLoad = true;
 		loading = false;
+		ref.style.opacity = '0';
 	}
 	function onLoad(ev: any) {
 		loading = false;
@@ -26,36 +29,40 @@
 		if (ref.complete) {
 			loading = false;
 			ref.style.opacity = '1';
+			if (!src || src === '') {
+				errorOnLoad = true;
+				ref.style.opacity = '0';
+			}
 		} else {
 			loading = true;
 			ref.style.opacity = '0';
 		}
 	});
-	const rounded = {
-		xs: 'rounded-xs',
-		sm: 'rounded-sm',
-		md: 'rounded-md',
-		lg: 'rounded-lg',
-		xl: 'rounded-xl',
-		'2xl': 'rounded-2xl',
-		'3xl': 'rounded-3xl',
-		full: 'rounded-full'
-	};
 </script>
 
 <figure
 	style="{height ? `height:${height};` : ''}{width ? `width:${width};` : ''}"
-	class="ui-image-container overflow-hidden {classNameContainer} {rounded[radius]}"
+	class="ui-image-container overflow-hidden relative {classNameContainer} {rounded[radius]}"
 >
 	{#if loading}
-		<div>
-			<slot name="custom-loader">Loading</slot>
-		</div>
+		<slot name="custom-loader">
+			<div
+				transition:fade
+				class="w-full h-full absolute flex place-content-center place-items-center info faded z-50"
+			>
+				Loading
+			</div>
+		</slot>
 	{/if}
 	{#if errorOnLoad}
-		<div>
-			<slot name="custom-error">Error On load</slot>
-		</div>
+		<slot name="custom-error">
+			<div
+				transition:fade
+				class="w-full h-full absolute flex place-content-center place-items-center error flat z-50"
+			>
+				Error On Load
+			</div>
+		</slot>
 	{/if}
 	<img
 		bind:this={ref}
@@ -66,7 +73,7 @@
 		{alt}
 		{src}
 	/>
-	{#if $$slots['caption-content'] && !loading}
+	{#if $$slots['caption-content'] && !loading && !errorOnLoad}
 		<caption class:captionInside class={classNameCaption}>
 			<slot name="caption-content" />
 		</caption>

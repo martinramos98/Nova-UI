@@ -9,6 +9,9 @@
 	import Badge from '$lib/app/Components/Badge/Badge.svelte';
 	import Chip from '$lib/app/Components/Chip/Chip.svelte';
 	import Image from '$lib/app/Components/Image/Image.svelte';
+	import Portal from '$lib/app/Components/Portal/Portal.svelte';
+	import Modal from '$lib/app/Components/Modal/Modal.svelte';
+	let testOpen = false;
 </script>
 
 <h1>Welcome to your library project</h1>
@@ -303,7 +306,6 @@
 		width={'32rem'}
 		alt={'Salta'}
 		radius={'lg'}
-		classNameContainer="primary neon"
 		src={'https://a.travel-assets.com/findyours-php/viewfinder/images/res40/80000/80287-Salta.jpg'}
 	/>
 	<Image
@@ -337,6 +339,22 @@
 		src={'https://www.argentina.gob.ar/sites/default/files/2020/06/provincia-mendoza-jumbotron.jpg'}
 	/>
 </div>
+
+<Button
+	variant="solid"
+	colors="info"
+	onClick={() => {
+		testOpen = !testOpen;
+	}}>Open Modal</Button
+>
+<Modal
+	open={testOpen}
+	onClose={() => {
+		testOpen = false;
+	}}
+>
+	<p>Holi from Modal!</p>
+</Modal>
 
 <style>
 	div {

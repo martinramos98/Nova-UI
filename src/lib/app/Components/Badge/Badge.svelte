@@ -9,13 +9,6 @@
 	export let radius: Radius = 'full';
 	export let variant: Variants | '' = '';
 	export let colors: Colors | '' = '';
-	// const sizes = {
-	// 	xs: '4',
-	// 	sm: '5',
-	// 	md: '6',
-	// 	lg: '7',
-	// 	xl: '8'
-	// };
 	function actionPaddingHandler(node: HTMLElement) {
 		let value;
 		if (node.innerText) {
