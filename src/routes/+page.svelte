@@ -9,7 +9,6 @@
 	import Badge from '$lib/app/Components/Badge/Badge.svelte';
 	import Chip from '$lib/app/Components/Chip/Chip.svelte';
 	import Image from '$lib/app/Components/Image/Image.svelte';
-	import Portal from '$lib/app/Components/Portal/Portal.svelte';
 	import Modal from '$lib/app/Components/Modal/Modal.svelte';
 	let testOpen = false;
 </script>
@@ -339,22 +338,6 @@
 		src={'https://www.argentina.gob.ar/sites/default/files/2020/06/provincia-mendoza-jumbotron.jpg'}
 	/>
 </div>
-
-<Button
-	variant="solid"
-	colors="info"
-	onClick={() => {
-		testOpen = !testOpen;
-	}}>Open Modal</Button
->
-<Modal
-	open={testOpen}
-	onClose={() => {
-		testOpen = false;
-	}}
->
-	<p>Holi from Modal!</p>
-</Modal>
 
 <style>
 	div {
