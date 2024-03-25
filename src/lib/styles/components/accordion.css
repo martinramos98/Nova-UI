@@ -1,0 +1,93 @@
+@layer nova {
+	.ui-accordion {
+		height: fit-content;
+		& .ui-accordion-section {
+			&[data-open='false'] .default-icon > svg {
+				rotate: 90deg;
+			}
+			&[data-open='true'] .default-icon > svg {
+				rotate: 0deg;
+			}
+		}
+		&.ui-variant-default-accordion {
+			& > .ui-accordion-section {
+				&:first-child {
+					border-top: solid 1px var(--color-border);
+				}
+				&[data-open='true'] + .ui-accordion-section > .ui-accordion-header {
+					border-top-color: var(--color-border);
+				}
+			}
+			& .ui-accordion-header {
+				padding: 10px 0;
+				padding-left: 15px;
+				border-top: solid 1px transparent;
+				border-bottom: solid 1px var(--color-border);
+				&:last-child {
+					border-bottom: solid 1px var(--color-border);
+				}
+			}
+			& .ui-accordion-content {
+				padding: 10px 0;
+				padding-left: 15px;
+			}
+		}
+		&.ui-variant-splitted-content {
+			/* & .ui-accordion-section[data-open='false'] .ui-accordion-header ~ div {
+			margin-bottom: 0px;
+		} */
+			& .ui-accordion-section {
+				margin-bottom: 5px;
+				&[data-open='true'] .ui-accordion-header {
+					margin-bottom: 5px;
+				}
+			}
+			& .ui-accordion-header {
+				padding: 10px 0;
+				padding-left: 15px;
+				background-color: var(--color-container);
+				border-radius: var(--radius-xl);
+				transition: margin-bottom 0.1s ease 0.1s;
+
+				/* margin-bottom: 5px; */
+				& ~ div {
+					margin-bottom: 5px;
+					transition: 0.3s margin-bottom ease;
+				}
+			}
+			& .ui-accordion-content {
+				padding: 15px 10px;
+				background-color: var(--color-container);
+				border-radius: var(--radius-xl);
+			}
+		}
+		&.ui-variant-splitted {
+			& .ui-accordion-section {
+				background-color: var(--color-container);
+				border-radius: var(--radius-xl);
+				margin-bottom: 5px;
+				& .ui-accordion-header {
+					padding: 10px 0;
+					padding-left: 15px;
+				}
+				& .ui-accordion-content {
+					padding: 15px 10px;
+				}
+			}
+		}
+		&.ui-variant-bordered-items {
+			& .ui-accordion-section {
+				border-radius: var(--radius-xl);
+				border: 2px solid var(--color-border);
+				margin-bottom: 10px;
+				& .ui-accordion-header {
+					padding: 10px 0;
+					padding-left: 15px;
+				}
+				& .ui-accordion-content {
+					padding: 15px 10px;
+				}
+			}
+		}
+	}
+}
