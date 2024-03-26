@@ -1,9 +1,6 @@
 <script lang="ts">
-	import { crossfade, fade, scale, slide, type TransitionConfig } from 'svelte/transition';
-	import { cubicIn, cubicInOut, quadInOut } from 'svelte/easing';
 	import { SequencedAnimation } from '$lib/Animations/SequencedAnimation.js';
 	import type { ElementAnimationParams } from '$lib/Animations/Animation.js';
-	import { afterUpdate } from 'svelte';
 	export let open = false;
 	export let size: any = 'md';
 	export let radius: any = 'md';
@@ -19,16 +16,14 @@
 	export let modalContent = {
 		className: ''
 	};
-	let modalElement: HTMLElement, backdropElement: HTMLElement;
-	// let backdrop;
 	const animationConfig: ElementAnimationParams = {
 		animations: {
 			keyframes: [{ opacity: '0' }, { opacity: '1' }],
 			animationOptions: {
 				direction: 'normal',
 				fill: 'both',
-				duration: 500,
-				easing: 'ease',
+				duration: 300,
+				easing: 'ease-in-out',
 				iterations: 1
 			}
 		},
@@ -46,20 +41,18 @@
 	}
 	let animationModal: SequencedAnimation;
 	function openEffect() {
-		console.log({ open }, modalElement, backdropElement);
 		if (open) {
 			render = true;
-		} else {
-			render && modalElement && backdropElement && animationModal.reverse();
-		}
+		} 
 	}
-	function renderEffect() {
-		console.log({ render }, modalElement, backdropElement);
-		if (render) {
-			animationModal = new SequencedAnimation(
+	function animationsOpen(node:HTMLElement){
+		const backdropElement = node.lastElementChild as HTMLElement;
+		const contentElement = node.firstElementChild as HTMLElement;
+
+		animationModal = new SequencedAnimation(
 				[
 					{ element: backdropElement, animationParams: animationConfig },
-					{ element: modalElement, animationParams: animationConfig }
+					{ element: contentElement, animationParams: animationConfig }
 				],
 				{
 					alternate: false,
@@ -72,24 +65,28 @@
 				}
 			);
 			animationModal.playForward();
+	}
+	function animationsClose(node:HTMLElement,open:boolean){
+		return {
+			update:(open:boolean)=>{
+				if(!open){
+					animationModal.reverse()
+				}
+			}
 		}
 	}
-	$: open, openEffect();
-	$: render, renderEffect();
-	afterUpdate(() => {
-		render && backdropElement && modalElement && renderEffect();
-	});
-	afterUpdate(() => {});
+	$: open && openEffect();
 </script>
 
 {#if render}
 	<div
+		use:animationsClose={open}
+		use:animationsOpen
 		use:translateToBody
 		class="ui-modal {render ? 'show-modal' : 'hide-modal'}"
 		aria-modal="true"
 	>
 		<div
-			bind:this={modalElement}
 			class="ui-modal-content rounded-{radius} size-{size} {modalContent.className}"
 		>
 			{#if $$slots.header}
@@ -105,7 +102,6 @@
 			{/if}
 		</div>
 		<div
-			bind:this={backdropElement}
 			aria-roledescription="Backdrop of modal"
 			aria-hidden="true"
 			class="ui-modal-backdrop {backdrop.className} {backdrop.type === 'transparent'

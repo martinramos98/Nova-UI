@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ElementAnimation } from '$lib/Animations/Animation.js';
 	import { fade, fly } from 'svelte/transition';
 	export let open: boolean;
 	export let onClose: () => void;
@@ -14,6 +15,48 @@
 	export let modalContent = {
 		className: ''
 	};
+	const positionTransition = {
+		top: [{ translate:'0 -30%',opacity:'0' },{translate:'0 0',opacity:'1'}],
+		left: [{ translate:'-30% 0%',opacity:'0' },{translate:'0 0',opacity:'1'}],
+		bottom: [{ translate:'0 30%',opacity:'0' },{translate:'0 0',opacity:'1'}],
+		right: [{ translate:'30% 0%',opacity:'0' },{translate:'0 0',opacity:'1'}]
+	};
+
+	let render = false;
+	let animationBackdrop: ElementAnimation, animationContent: ElementAnimation;
+	const backdropAnimationConfig = {
+		animations: {
+				keyframes: [{ opacity: 0 }, { opacity: 1 }],
+				animationOptions: {
+					iterations: 1,
+					duration: 300,
+					easing: 'ease-in-out',
+					fill: 'both'
+				}
+			},
+			iterations: 1,
+			alternate: false,
+			onFinishedAnimation() {
+				if (!open) {
+					render = false;
+				}
+			}
+
+	}
+	const contentAnimationConfig = {
+			animations: {
+				keyframes:positionTransition[position],
+				animationOptions: {
+					iterations: 1,
+					duration: 300,
+					easing: 'ease-in-out',
+					fill: 'both'
+				}
+			},
+			iterations: 1,
+			alternate: false
+		}
+
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
 		node.addEventListener('click', (ev) => {
@@ -24,30 +67,34 @@
 		});
 	}
 	// TODO: Values en funcion del width/height y size del drawer (si es fly)
-	const positionTransition = {
-		top: { x: 0, y: '-30%' },
-		left: { x: '-30%', y: 0 },
-		bottom: { x: 0, y: '30%' },
-		right: { x: '30%', y: 0 }
-	};
+
+	function openEffect() {
+		render = true;
+	}
+	$: open && openEffect();
+	function closeAnimation(node: HTMLElement, open: boolean) {
+		return {
+			update(open: boolean) {
+				if (!open) {
+					animationBackdrop.reverse();
+					animationContent.reverse();
+				}
+			}
+		};
+	}
+	function openAnimation(node: HTMLElement) {
+		const backdropElement = node.lastElementChild as HTMLElement;
+		const contentElement = node.firstElementChild as HTMLElement;
+		animationBackdrop = new ElementAnimation(backdropElement, backdropAnimationConfig);
+		animationContent = new ElementAnimation(contentElement,contentAnimationConfig );
+		animationBackdrop.playForward();
+		animationContent.playForward();
+	}
 </script>
 
-{#if open}
-	<div use:translateToBody class="ui-drawer">
-		<div
-			in:fly={{
-				delay: 320,
-				duration: 400,
-				x: positionTransition[position].x,
-				y: positionTransition[position].y
-			}}
-			out:fly={{
-				duration: 350,
-				x: positionTransition[position].x,
-				y: positionTransition[position].y
-			}}
-			class="ui-drawer-content size-{size} drawer-{position} {modalContent.className}"
-		>
+{#if render}
+	<div use:translateToBody use:openAnimation use:closeAnimation={open} class="ui-drawer">
+		<div class="ui-drawer-content size-{size} drawer-{position} {modalContent.className}">
 			{#if $$slots.header}
 				<div class="ui-drawer-header">
 					<slot name="header" />
@@ -61,8 +108,6 @@
 			{/if}
 		</div>
 		<div
-			in:fade={{ duration: 300 }}
-			out:fade={{ delay: 400, duration: 300 }}
 			aria-roledescription="Backdrop of Drawer"
 			aria-hidden="true"
 			class="ui-drawer-backdrop {backdrop.className} {backdrop.type === 'transparent'

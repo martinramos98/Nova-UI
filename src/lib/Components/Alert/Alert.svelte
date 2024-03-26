@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { afterUpdate, beforeUpdate, onMount } from 'svelte';
-
 	// TODO: Ver el alert type promt
 	import Button from '../Button/Button.svelte';
+	import { ElementAnimation } from '$lib/Animations/Animation.js';
 	export let open = false;
 	export let size: any = 'md';
 	export let radius: any = 'md';
@@ -17,73 +16,72 @@
 		className: '',
 		type: 'normal'
 	};
-	let effectModal: KeyframeEffect;
-	let effectBackdrop: KeyframeEffect;
-	let animationModal: Animation;
-	let animationBackdrop: Animation;
-	const animationKeyframe: Keyframe[] = [{ opacity: 0 }, { opacity: 1 }];
-	const animationOptions: KeyframeEffectOptions = {
-		duration: 200,
-		easing: 'ease',
-		iterations: 1,
-		fill: 'forwards'
-	};
-	let backdropElement: HTMLElement;
-	let modal: HTMLElement;
-	let render = open;
+	let render = false;
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
-		effectModal = new KeyframeEffect(modal, animationKeyframe, animationOptions);
-		effectBackdrop = new KeyframeEffect(backdropElement, animationKeyframe, animationOptions);
-		animationModal = new Animation(effectModal, document.timeline);
-		animationBackdrop = new Animation(effectBackdrop, document.timeline);
-		animationModal.addEventListener('finish', () => {
-			if (!open) {
-				animationModal.pause();
-				animationBackdrop.pause();
-				animationBackdrop.playbackRate = -1;
-				animationBackdrop.play();
-			}
-		});
-		animationBackdrop.addEventListener('finish', () => {
-			if (open) {
-				animationBackdrop.pause();
-				animationModal.pause();
-				animationModal.playbackRate = 1;
-				animationModal.play();
-			} else {
-				render = false;
-			}
-		});
 	}
-	beforeUpdate(async () => {
-		if (open) {
-			render = true;
-		}
-		if (!open && render && animationModal) {
-			animationModal.pause();
-			animationBackdrop.pause();
-			animationModal.reverse();
-		}
-	});
-	afterUpdate(() => {
-		if (open && render && animationBackdrop) {
-			animationBackdrop.pause();
-			animationModal.pause();
-			animationBackdrop.playbackRate = 1;
-			animationBackdrop.play();
-		}
-	});
-	// afterUpdate(() => {
-	// 	if(open){
+	function openEffect() {
+		render = true;
+	}
+	let animationBackdrop: ElementAnimation, animationContent: ElementAnimation;
+	const backdropAnimationConfig = {
+		animations: {
+				keyframes: [{ opacity: 0 }, { opacity: 1 }],
+				animationOptions: {
+					iterations: 1,
+					duration: 300,
+					easing: 'ease-in-out',
+					fill: 'both'
+				}
+			},
+			iterations: 1,
+			alternate: false,
+			onFinishedAnimation() {
+				if (!open) {
+					render = false;
+				}
+			}
 
-	// 	}
-	// })
+	}
+	const contentAnimationConfig = {
+			animations: {
+				keyframes:[{scale:'0'},{opacity:'0'},{scale:'1',opacity:'1'}],
+				animationOptions: {
+					iterations: 1,
+					duration: 300,
+					easing: 'ease-in-out',
+					fill: 'both'
+				}
+			},
+			iterations: 1,
+			alternate: false
+		}
+
+	$: open && openEffect();
+	function closeAnimation(node: HTMLElement, open: boolean) {
+		return {
+			update(open: boolean) {
+				if (!open) {
+					animationBackdrop.reverse();
+					animationContent.reverse();
+				}
+			}
+		};
+	}
+	function openAnimation(node: HTMLElement) {
+		const backdropElement = node.lastElementChild as HTMLElement;
+		const contentElement = node.firstElementChild as HTMLElement;
+		animationBackdrop = new ElementAnimation(backdropElement, backdropAnimationConfig);
+		animationContent = new ElementAnimation(contentElement,contentAnimationConfig );
+		animationBackdrop.playForward();
+		animationContent.playForward();
+	}
+
 </script>
 
 {#if render}
-	<div use:translateToBody class="ui-alert" aria-modal="true">
-		<div bind:this={modal} class="ui-alert-content rounded-{radius} size-{size} {className}">
+	<div use:translateToBody use:openAnimation use:closeAnimation={open} class="ui-alert" aria-modal="true">
+		<div class="ui-alert-content rounded-{radius} size-{size} {className}">
 			{#if $$slots.header}
 				<div class="ui-alert-header">
 					<slot name="header" />
@@ -99,7 +97,6 @@
 			</div>
 		</div>
 		<div
-			bind:this={backdropElement}
 			aria-roledescription="Backdrop of alert"
 			aria-hidden="true"
 			class="ui-alert-backdrop {backdrop.className} {backdrop.type === 'transparent'
