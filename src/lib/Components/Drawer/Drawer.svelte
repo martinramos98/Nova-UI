@@ -16,46 +16,57 @@
 		className: ''
 	};
 	const positionTransition = {
-		top: [{ translate:'0 -30%',opacity:'0' },{translate:'0 0',opacity:'1'}],
-		left: [{ translate:'-30% 0%',opacity:'0' },{translate:'0 0',opacity:'1'}],
-		bottom: [{ translate:'0 30%',opacity:'0' },{translate:'0 0',opacity:'1'}],
-		right: [{ translate:'30% 0%',opacity:'0' },{translate:'0 0',opacity:'1'}]
+		top: [
+			{ translate: '0 -100%', opacity: '0' },
+			{ translate: '0 0', opacity: '1' }
+		],
+		left: [
+			{ translate: '-100% 0%', opacity: '0' },
+			{ translate: '0 0', opacity: '1' }
+		],
+		bottom: [
+			{ translate: '0 100%', opacity: '0' },
+			{ translate: '0 0', opacity: '1' }
+		],
+		right: [
+			{ translate: '100% 0%', opacity: '0' },
+			{ translate: '0 0', opacity: '1' }
+		]
 	};
 
 	let render = false;
 	let animationBackdrop: ElementAnimation, animationContent: ElementAnimation;
 	const backdropAnimationConfig = {
 		animations: {
-				keyframes: [{ opacity: 0 }, { opacity: 1 }],
-				animationOptions: {
-					iterations: 1,
-					duration: 300,
-					easing: 'ease-in-out',
-					fill: 'both'
-				}
-			},
-			iterations: 1,
-			alternate: false,
-			onFinishedAnimation() {
-				if (!open) {
-					render = false;
-				}
+			keyframes: [{ opacity: 0 }, { opacity: backdrop.type === 'transparent' ? 0 : 1 }],
+			animationOptions: {
+				iterations: 1,
+				duration: 400,
+				easing: 'ease-in-out',
+				fill: 'both'
 			}
-
-	}
+		},
+		iterations: 1,
+		alternate: false
+	};
 	const contentAnimationConfig = {
-			animations: {
-				keyframes:positionTransition[position],
-				animationOptions: {
-					iterations: 1,
-					duration: 300,
-					easing: 'ease-in-out',
-					fill: 'both'
-				}
-			},
-			iterations: 1,
-			alternate: false
+		animations: {
+			keyframes: positionTransition[position],
+			animationOptions: {
+				iterations: 1,
+				duration: 400,
+				easing: 'ease-in-out',
+				fill: 'both'
+			}
+		},
+		iterations: 1,
+		alternate: false,
+		onFinishedAnimation() {
+			if (!open) {
+				render = false;
+			}
 		}
+	};
 
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
@@ -86,7 +97,7 @@
 		const backdropElement = node.lastElementChild as HTMLElement;
 		const contentElement = node.firstElementChild as HTMLElement;
 		animationBackdrop = new ElementAnimation(backdropElement, backdropAnimationConfig);
-		animationContent = new ElementAnimation(contentElement,contentAnimationConfig );
+		animationContent = new ElementAnimation(contentElement, contentAnimationConfig);
 		animationBackdrop.playForward();
 		animationContent.playForward();
 	}
@@ -110,9 +121,9 @@
 		<div
 			aria-roledescription="Backdrop of Drawer"
 			aria-hidden="true"
-			class="ui-drawer-backdrop {backdrop.className} {backdrop.type === 'transparent'
-				? 'opacity-0'
-				: ''} {backdrop.type === 'blur' ? 'backdrop-blur-sm' : ''}"
+			class="ui-drawer-backdrop {backdrop.className}  {backdrop.type === 'blur'
+				? 'backdrop-blur-sm'
+				: ''}"
 		></div>
 	</div>
 {/if}

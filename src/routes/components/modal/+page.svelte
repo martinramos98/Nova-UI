@@ -72,7 +72,7 @@
 	<Modal
 		open={openModalXL}
 		radius={'2xl'}
-		size={'3xl'}
+		size={'xl'}
 		onClose={() => {
 			openModalXL = false;
 		}}

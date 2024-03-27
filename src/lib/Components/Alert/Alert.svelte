@@ -26,36 +26,38 @@
 	let animationBackdrop: ElementAnimation, animationContent: ElementAnimation;
 	const backdropAnimationConfig = {
 		animations: {
-				keyframes: [{ opacity: 0 }, { opacity: 1 }],
-				animationOptions: {
-					iterations: 1,
-					duration: 300,
-					easing: 'ease-in-out',
-					fill: 'both'
-				}
-			},
-			iterations: 1,
-			alternate: false,
-			onFinishedAnimation() {
-				if (!open) {
-					render = false;
-				}
+			keyframes: [{ opacity: 0 }, { opacity: 1 }],
+			animationOptions: {
+				iterations: 1,
+				duration: 300,
+				easing: 'ease-in-out',
+				fill: 'both'
 			}
-
-	}
-	const contentAnimationConfig = {
-			animations: {
-				keyframes:[{scale:'0'},{opacity:'0'},{scale:'1',opacity:'1'}],
-				animationOptions: {
-					iterations: 1,
-					duration: 300,
-					easing: 'ease-in-out',
-					fill: 'both'
-				}
-			},
-			iterations: 1,
-			alternate: false
+		},
+		iterations: 1,
+		alternate: false,
+		onFinishedAnimation() {
+			if (!open) {
+				render = false;
+			}
 		}
+	};
+	const contentAnimationConfig = {
+		animations: {
+			keyframes: [
+				{ scale: '1.05', opacity: '0' },
+				{ scale: '1', opacity: '1' }
+			],
+			animationOptions: {
+				iterations: 1,
+				duration: 300,
+				easing: 'ease-in-out',
+				fill: 'both'
+			}
+		},
+		iterations: 1,
+		alternate: false
+	};
 
 	$: open && openEffect();
 	function closeAnimation(node: HTMLElement, open: boolean) {
@@ -72,15 +74,20 @@
 		const backdropElement = node.lastElementChild as HTMLElement;
 		const contentElement = node.firstElementChild as HTMLElement;
 		animationBackdrop = new ElementAnimation(backdropElement, backdropAnimationConfig);
-		animationContent = new ElementAnimation(contentElement,contentAnimationConfig );
+		animationContent = new ElementAnimation(contentElement, contentAnimationConfig);
 		animationBackdrop.playForward();
 		animationContent.playForward();
 	}
-
 </script>
 
 {#if render}
-	<div use:translateToBody use:openAnimation use:closeAnimation={open} class="ui-alert" aria-modal="true">
+	<div
+		use:translateToBody
+		use:openAnimation
+		use:closeAnimation={open}
+		class="ui-alert"
+		aria-modal="true"
+	>
 		<div class="ui-alert-content rounded-{radius} size-{size} {className}">
 			{#if $$slots.header}
 				<div class="ui-alert-header">

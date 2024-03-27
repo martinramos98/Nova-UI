@@ -43,37 +43,37 @@
 	function openEffect() {
 		if (open) {
 			render = true;
-		} 
+		}
 	}
-	function animationsOpen(node:HTMLElement){
+	function animationsOpen(node: HTMLElement) {
 		const backdropElement = node.lastElementChild as HTMLElement;
 		const contentElement = node.firstElementChild as HTMLElement;
 
 		animationModal = new SequencedAnimation(
-				[
-					{ element: backdropElement, animationParams: animationConfig },
-					{ element: contentElement, animationParams: animationConfig }
-				],
-				{
-					alternate: false,
-					iterations: 1,
-					onEndSequence() {
-						if (!open) {
-							render = false;
-						}
+			[
+				{ element: backdropElement, animationParams: animationConfig },
+				{ element: contentElement, animationParams: animationConfig }
+			],
+			{
+				alternate: false,
+				iterations: 1,
+				onEndSequence() {
+					if (!open) {
+						render = false;
 					}
 				}
-			);
-			animationModal.playForward();
+			}
+		);
+		animationModal.playForward();
 	}
-	function animationsClose(node:HTMLElement,open:boolean){
+	function animationsClose(node: HTMLElement, open: boolean) {
 		return {
-			update:(open:boolean)=>{
-				if(!open){
-					animationModal.reverse()
+			update: (open: boolean) => {
+				if (!open) {
+					animationModal.reverse();
 				}
 			}
-		}
+		};
 	}
 	$: open && openEffect();
 </script>
@@ -86,9 +86,7 @@
 		class="ui-modal {render ? 'show-modal' : 'hide-modal'}"
 		aria-modal="true"
 	>
-		<div
-			class="ui-modal-content rounded-{radius} size-{size} {modalContent.className}"
-		>
+		<div class="ui-modal-content rounded-{radius} size-{size} {modalContent.className}">
 			{#if $$slots.header}
 				<div class="ui-modal-header">
 					<slot name="header" />
@@ -149,6 +147,23 @@
 			.ui-modal-footer {
 				margin-top: auto;
 			}
+		}
+		.size-full {
+			border-radius: 0 !important;
+			width: 100%;
+			height: 100%;
+		}
+		.size-md {
+			min-width: 40%;
+			min-height: 30%;
+		}
+		.size-lg {
+			min-width: 50%;
+			min-height: 40%;
+		}
+		.size-xl {
+			min-width: 60%;
+			min-height: 40%;
 		}
 	}
 </style>

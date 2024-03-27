@@ -4,4 +4,4 @@
 	export let className = '';
 </script>
 
-<hr class="ui-divider {className}" style="border-color:{color}; border-width:{size}px; " />
+<hr class="ui-divider {className}" style="border-color:{color}; border-top-width:{size}px; " />

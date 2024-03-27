@@ -162,6 +162,7 @@ export class ElementAnimation implements BasicAnimation {
 					if (this.currentIteration >= this.iterations) {
 						this.currentIteration = 0;
 					}
+					animation.pause();
 					animation.playbackRate = 1;
 					animation.play();
 				});
@@ -171,6 +172,7 @@ export class ElementAnimation implements BasicAnimation {
 				if (this.currentIteration >= this.iterations) {
 					this.currentIteration = 0;
 				}
+				animation.pause();
 				animation.playbackRate = 1;
 				animation.play();
 			});
@@ -194,6 +196,7 @@ export class ElementAnimation implements BasicAnimation {
 		if (this.delay) {
 			setTimeout(() => {
 				this.getAnimations().forEach((animation) => {
+					animation.pause();
 					animation.playbackRate = -1;
 					animation.play();
 				});
