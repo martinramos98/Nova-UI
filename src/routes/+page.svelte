@@ -1,22 +1,22 @@
 <script>
-	import Avatar from '$lib/app/Components/Avatar/Avatar.svelte';
-	import AvatarGroup from '$lib/app/Components/AvatarGroup/AvatarGroup.svelte';
-	import Button from '$lib/app/Components/Button/Button.svelte';
-	import ButtonGroup from '$lib/app/Components/ButtonGroup/ButtonGroup.svelte';
-	import Card from '$lib/app/Components/Card/Card.svelte';
-	import Title from '$lib/app/Components/Title/Title.svelte';
-	import Divider from '$lib/app/Divider/Divider.svelte';
-	import Badge from '$lib/app/Components/Badge/Badge.svelte';
-	import Chip from '$lib/app/Components/Chip/Chip.svelte';
-	import Image from '$lib/app/Components/Image/Image.svelte';
-	import Modal from '$lib/app/Components/Modal/Modal.svelte';
-	let testOpen = false;
+	import Button from '$lib/Components/Button/Button.svelte';
+	import Title from '$lib/Components/Title/Title.svelte';
+	import Divider from '$lib/Components/Divider/Divider.svelte';
+	import ButtonGroup from '$lib/Components/ButtonGroup/ButtonGroup.svelte';
+	import Avatar from '$lib/Components/Avatar/Avatar.svelte';
+	import AvatarGroup from '$lib/Components/AvatarGroup/AvatarGroup.svelte';
+	import Badge from '$lib/Components/Badge/Badge.svelte';
+	import Card from '$lib/Components/Card/Card.svelte';
+	import Image from '$lib/Components/Image/Image.svelte';
+	import Chip from '$lib/Components/Chip/Chip.svelte';
 </script>
 
 <h1>Welcome to your library project</h1>
 <p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <section>
+	<Title level={2} className="pl-8">Buttons</Title>
+	<Divider size={1} color={'var(--color-container)'} />
 	<div>
 		<Button colors={'primary'} variant={'shadows'} className=""><p>Button</p></Button>
 		<Button colors={'secondary'} variant={'shadows'} className=""><p>Button</p></Button>
@@ -89,6 +89,10 @@
 		<Button colors={'warning'} variant={'faded'} className=""><p>Button</p></Button>
 		<Button colors={'info'} variant={'faded'} className="rounded-lg"><p>Button</p></Button>
 	</div>
+</section>
+<section>
+	<Title level={2} className="pl-8">Button Groups</Title>
+	<Divider size={1} color={'var(--color-container)'} />
 	<div>
 		<ButtonGroup>
 			<Button disabled={true}>Button 1</Button>
@@ -103,6 +107,10 @@
 			<Button>Button 3</Button>
 		</ButtonGroup>
 	</div>
+</section>
+<section>
+	<Title level={2} className="pl-8">Avatar</Title>
+	<Divider size={1} color={'var(--color-container)'} />
 	<div>
 		<Avatar
 			avatarBordered
@@ -128,6 +136,10 @@
 			avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
 		></Avatar>
 	</div>
+</section>
+<section>
+	<Title level={2} className="pl-8">Avatar Groups</Title>
+	<Divider size={1} color={'var(--color-container)'} />
 	<div class="avatar-group">
 		<AvatarGroup maxAvatarsToShow={3}>
 			<Avatar
@@ -153,14 +165,28 @@
 		</AvatarGroup>
 	</div>
 </section>
-<Title level={1} className="ml-4">Cards</Title>
-<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
-<div>
-	<Card
-		className="m-4 tertiary rounded-2xl tertiary border-none overflow-hidden flat"
-		headerProps={{ className: '' }}
-	>
-		<!-- <svelte:fragment slot="header">
+<section>
+	<Title level={2} className="pl-8">Badge</Title>
+	<Divider size={1} color={'var(--color-container)'} />
+	<div>
+		<Badge positionBadge={'bottomleft'} size="xs" contentBadge="12" colors="info" variant="flat">
+			<Button className="my-2 rounded-md">Holi</Button>
+		</Badge>
+		<Badge contentBadge="12" colors="error" size="xs" variant="neon">
+			<Avatar avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
+			></Avatar>
+		</Badge>
+	</div>
+</section>
+<section>
+	<Title level={2} className="pl-8">Cards</Title>
+	<Divider size={1} color={'var(--color-container)'} />
+	<div>
+		<Card
+			className="m-4 rounded-2xl ui-variant-flat ui-color-tertiary border-none overflow-hidden"
+			headerProps={{ className: '' }}
+		>
+			<!-- <svelte:fragment slot="header">
 		<div class="flex items-center p-2 gap-2">
 			<Avatar
 				avatarBordered
@@ -170,188 +196,168 @@
 			<p class=" font-bold text-2xl">It's me Mario!</p>
 		</div>
 	</svelte:fragment> -->
-		<svelte:fragment slot="body">
-			<img
-				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO-Yf_1xN7mKgHHii5H0sqCVoHWoIsQ3eKng&usqp=CAU"
-				class="object-cover w-96"
-			/>
-		</svelte:fragment>
-		<svelte:fragment slot="footer">
-			<Divider size={1}></Divider>
-			<p class="pl-4 pb-2 mt-1">By Nintendo</p>
-		</svelte:fragment>
-	</Card>
-	<Card
-		className="m-4 tertiary rounded-2xl tertiary flat border-none"
-		headerProps={{ className: '' }}
-	>
-		<svelte:fragment slot="body">
-			<img
-				src="https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000027619/9989957eae3a6b545194c42fec2071675c34aadacd65e6b33fdfe7b3b6a86c3a"
-				class="object-cover w-96"
-			/>
-		</svelte:fragment>
-		<svelte:fragment slot="footer">
-			<Divider size={1}></Divider>
-			<p class="pl-4 pb-2 mt-1">By Nintendo</p>
-		</svelte:fragment>
-	</Card>
-	<Card
-		className={'flat tertiary rounded-2xl'}
-		headerProps={{ className: 'text-gray-200 p-4 pl-4' }}
-	>
-		<svelte:fragment slot="header">
-			<p class=" text-xl font-bold">Hotel Llao Llao</p>
-			<p class="text-gray-300/80">Bariloche, Argentina</p>
-		</svelte:fragment>
-		<svelte:fragment slot="body">
-			<img
-				src="https://caminoalandar.net/wp-content/uploads/2020/09/img_9917.jpg"
-				class="w-96 rounded-3xl p-4"
-			/>
-		</svelte:fragment>
-		<svelte:fragment slot="footer"></svelte:fragment>
-	</Card>
-	<Card
-		className=" relative"
-		footerProps={{
-			className:
-				'absolute bottom-4 right-2 p-2 rounded-xl blured flex row items-center gap-2 border-none'
-		}}
-	>
-		<svelte:fragment slot="body">
-			<img
-				src="https://img.nh-hotels.net/vJEy/1ZZdy/original/F_NH_gran-hotel-provincial_018.jpg?output-quality=80&resize=1600:*&background-color=white"
-				class="w-96"
-			/>
-		</svelte:fragment>
-		<svelte:fragment slot="footer">
-			<p class="h-auto text-lg">NH Hotels</p>
-			<Button className="blured font-semibold">Ver Mas</Button>
-		</svelte:fragment>
-	</Card>
-</div>
-<Title className={'ml-4'} level={2}>Card Variants</Title>
-<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
-<div>
-	<Button className="p-0 rounded-xl">
-		<Card className={'p-4 primary flat'}>This is a Card inside of a button</Card>
-	</Button>
-</div>
-<div></div>
-<Title className="ml-4" level={3}>Card Backface</Title>
-<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
-
-<Title className="ml-4" level={3}>Badge</Title>
-<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
-<div>
-	<Badge positionBadge={'bottomleft'} size={'xs'} contentBadge="12" colors="info" variant="flat">
-		<Button className="my-2 rounded-md">Holi</Button>
-	</Badge>
-	<Badge contentBadge="12" size="xs" colors="error" variant="neon">
-		<Avatar avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
-		></Avatar>
-	</Badge>
-</div>
-<Title className="ml-4" level={3}>Chip</Title>
-<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
-<div>
-	<Chip variant="faded" colors="primary">Faded Primary</Chip>
-	<Chip variant="faded" size="md" colors="secondary">Mid Sizes</Chip>
-	<Chip variant="faded" size="lg" colors="secondary">Big Sizes</Chip>
-</div>
-<Title className="ml-4" level={4}>Chip Variants</Title>
-<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
-<div>
-	<Chip colors="primary" variant="solid">Solid</Chip>
-	<Chip colors="primary" variant="bordered">Bordered</Chip>
-	<Chip colors="primary" variant="faded">Faded</Chip>
-	<Chip colors="primary" variant="flat">Flat</Chip>
-	<Chip colors="primary" variant="neon">Neon</Chip>
-	<Chip colors="primary" variant="shadows">Shadows</Chip>
-	<Chip colors="primary" variant="ghost">Ghost</Chip>
-	<Chip colors="primary" variant="light">Light</Chip>
-</div>
-<Title className="ml-4" level={4}>Chip Colors</Title>
-<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
-<div>
-	<Chip colors="primary" variant="solid">Primary</Chip>
-	<Chip colors="secondary" variant="solid">Secondary</Chip>
-	<Chip colors="tertiary" variant="solid">Tertiary</Chip>
-	<Chip colors="error" variant="solid">Error</Chip>
-	<Chip colors="success" variant="solid">Success</Chip>
-	<Chip colors="warning" variant="solid">Warning</Chip>
-	<Chip colors="info" variant="solid">Info</Chip>
-</div>
-<Title className="ml-4" level={2}>Images</Title>
-<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
-<div class="flex-row flex-wrap">
-	<Image
-		height={'16rem'}
-		width={'32rem'}
-		alt={'Salta'}
-		radius={'lg'}
-		src={'https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__1880bp/public/live_banner/Salta.jpg'}
-	/>
-	<Image
-		height={'16rem'}
-		width={'32rem'}
-		alt={'Salta'}
-		radius={'lg'}
-		src={'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Cataratas.jpg/1200px-Cataratas.jpg'}
-	/>
-	<Image
-		height={'16rem'}
-		width={'32rem'}
-		alt={'Salta'}
-		radius={'lg'}
-		src={'https://a.travel-assets.com/findyours-php/viewfinder/images/res40/80000/80287-Salta.jpg'}
-	/>
-	<Image
-		height={'16rem'}
-		width={'32rem'}
-		alt={'Salta'}
-		radius={'lg'}
-		classNameCaption="primary solid rounded-none py-0.5 italic"
-		src={'https://www.tangol.com/blog/Fotos/Notas/historia-de-las-ruinas-jesuiticas-de-san-ignacio_443_202107221201440.PNG'}
-	>
-		<svelte:fragment slot="caption-content"
-			>Figure 2: Ruinas de San Ignacio, Misiones</svelte:fragment
+			<svelte:fragment slot="body">
+				<img
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO-Yf_1xN7mKgHHii5H0sqCVoHWoIsQ3eKng&usqp=CAU"
+					class="object-cover w-96"
+				/>
+			</svelte:fragment>
+			<svelte:fragment slot="footer">
+				<Divider size={1}></Divider>
+				<p class="pl-4 pb-2 mt-1">By Nintendo</p>
+			</svelte:fragment>
+		</Card>
+		<Card
+			className="m-4 rounded-2xl ui-variant-flat ui-color-tertiary border-none"
+			headerProps={{ className: '' }}
 		>
-	</Image>
-	<Image
-		height={'16rem'}
-		width={'32rem'}
-		alt={'Salta'}
-		radius={'lg'}
-		classNameCaption="bg-black/70 text-white py-0.5"
-		captionInside
-		src={'https://blogskystorage.s3.amazonaws.com/2021/12/que-hacer-en-mendoza.jpeg'}
-	>
-		<svelte:fragment slot="caption-content">Figure 1: Mendoza</svelte:fragment>
-	</Image>
-	<Image
-		height={'16rem'}
-		width={'32rem'}
-		alt={'Salta'}
-		radius={'lg'}
-		src={'https://www.argentina.gob.ar/sites/default/files/2020/06/provincia-mendoza-jumbotron.jpg'}
-	/>
-</div>
+			<svelte:fragment slot="body">
+				<img
+					src="https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000027619/9989957eae3a6b545194c42fec2071675c34aadacd65e6b33fdfe7b3b6a86c3a"
+					class="object-cover w-96"
+				/>
+			</svelte:fragment>
+			<svelte:fragment slot="footer">
+				<Divider size={1}></Divider>
+				<p class="pl-4 pb-2 mt-1">By Nintendo</p>
+			</svelte:fragment>
+		</Card>
+		<Card
+			className={'ui-variant-flat ui-color-tertiary rounded-2xl'}
+			headerProps={{ className: 'text-gray-200 p-4 pl-4' }}
+		>
+			<svelte:fragment slot="header">
+				<p class=" text-xl font-bold">Hotel Llao Llao</p>
+				<p class="text-gray-300/80">Bariloche, Argentina</p>
+			</svelte:fragment>
+			<svelte:fragment slot="body">
+				<img
+					src="https://caminoalandar.net/wp-content/uploads/2020/09/img_9917.jpg"
+					class="w-96 rounded-3xl p-4"
+				/>
+			</svelte:fragment>
+			<svelte:fragment slot="footer"></svelte:fragment>
+		</Card>
+		<Card
+			className="relative"
+			footerProps={{
+				className:
+					'absolute bottom-4 right-2 p-2 rounded-xl ui-variant-blurred flex row items-center gap-2 border-none'
+			}}
+		>
+			<svelte:fragment slot="body">
+				<img
+					src="https://img.nh-hotels.net/vJEy/1ZZdy/original/F_NH_gran-hotel-provincial_018.jpg?output-quality=80&resize=1600:*&background-color=white"
+					class="w-96"
+				/>
+			</svelte:fragment>
+			<svelte:fragment slot="footer">
+				<p class="h-auto text-lg">NH Hotels</p>
+				<Button className="font-semibold" variant={'blurred'}>Ver Mas</Button>
+			</svelte:fragment>
+		</Card>
+	</div>
+</section>
+
+<section>
+	<Title level={2} className="pl-8">Chip</Title>
+	<Divider size={1} color={'var(--color-container)'} />
+	<div>
+		<Chip colors="primary" variant="solid">Solid</Chip>
+		<Chip colors="primary" variant="bordered">Bordered</Chip>
+		<Chip colors="primary" variant="faded">Faded</Chip>
+		<Chip colors="primary" variant="flat">Flat</Chip>
+		<Chip colors="primary" variant="neon">Neon</Chip>
+		<Chip colors="primary" variant="shadows">Shadows</Chip>
+		<Chip colors="primary" variant="ghost">Ghost</Chip>
+		<Chip colors="primary" variant="light">Light</Chip>
+	</div>
+	<Title className="pl-8" level={4}>Chip Sizes</Title>
+	<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
+	<div>
+		<Chip variant="faded" colors="primary">Faded Primary</Chip>
+		<Chip variant="faded" size="md" colors="secondary">Mid Sizes</Chip>
+		<Chip variant="faded" size="lg" colors="secondary">Big Sizes</Chip>
+	</div>
+	<Title className="pl-8" level={4}>Chip Colors</Title>
+	<Divider className="my-4" size={1} color={'rgb(var(--primary-10))'}></Divider>
+	<div>
+		<Chip colors="primary" variant="solid">Primary</Chip>
+		<Chip colors="secondary" variant="solid">Secondary</Chip>
+		<Chip colors="tertiary" variant="solid">Tertiary</Chip>
+		<Chip colors="error" variant="solid">Error</Chip>
+		<Chip colors="success" variant="solid">Success</Chip>
+		<Chip colors="warning" variant="solid">Warning</Chip>
+		<Chip colors="info" variant="solid">Info</Chip>
+	</div>
+</section>
+
+<section>
+	<Title level={2} className="pl-8">Images</Title>
+	<Divider size={1} color={'var(--color-container)'} />
+	<div class="flex-row flex-wrap">
+		<Image
+			height={'16rem'}
+			width={'32rem'}
+			alt={'Salta'}
+			radius={'lg'}
+			src={'https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__1880bp/public/live_banner/Salta.jpg'}
+		/>
+		<Image
+			height={'16rem'}
+			width={'32rem'}
+			alt={'Salta'}
+			radius={'lg'}
+			src={'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Cataratas.jpg/1200px-Cataratas.jpg'}
+		/>
+		<Image
+			height={'16rem'}
+			width={'32rem'}
+			alt={'Salta'}
+			radius={'lg'}
+			src={'https://a.travel-assets.com/findyours-php/viewfinder/images/res40/80000/80287-Salta.jpg'}
+		/>
+		<Image
+			height={'16rem'}
+			width={'32rem'}
+			alt={'Salta'}
+			radius={'lg'}
+			classNameCaption="ui-color-primary ui-variant-solid rounded-none py-0.5 italic"
+			src={'https://www.tangol.com/blog/Fotos/Notas/historia-de-las-ruinas-jesuiticas-de-san-ignacio_443_202107221201440.PNG'}
+		>
+			<svelte:fragment slot="caption-content"
+				>Figure 2: Ruinas de San Ignacio, Misiones</svelte:fragment
+			>
+		</Image>
+		<Image
+			height={'16rem'}
+			width={'32rem'}
+			alt={'Salta'}
+			radius={'lg'}
+			classNameCaption="bg-black/70 text-white py-0.5"
+			captionInside
+			src={'https://blogskystorage.s3.amazonaws.com/2021/12/que-hacer-en-mendoza.jpeg'}
+		>
+			<svelte:fragment slot="caption-content">Figure 1: Mendoza</svelte:fragment>
+		</Image>
+		<Image
+			height={'16rem'}
+			width={'32rem'}
+			alt={'Salta'}
+			radius={'lg'}
+			src={'https://www.argentina.gob.ar/sites/default/files/2020/06/provincia-mendoza-jumbotron.jpg'}
+		/>
+	</div>
+</section>
 
 <style>
-	div {
-		margin: 20px 10px;
-		display: flex;
-		gap: 1rem;
-	}
-	.avatar-group {
-		margin-bottom: 3rem;
-		margin-left: 2rem;
-	}
 	section {
+		margin: 15px 0;
+	}
+	div {
+		margin: 20px 30px;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		gap: 2rem;
 	}
 </style>

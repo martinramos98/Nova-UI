@@ -1,0 +1,36 @@
+@layer nova {
+	/* DIRECTIONS */
+	.ui-navbar {
+		display: grid;
+		background-color: var(--color-container);
+		color: var(--color-text);
+	}
+	.ui-navbar {
+		&.direction-vertical {
+			padding: 20px 0px;
+			height: 100%;
+			min-width: 20px;
+			justify-content: space-between;
+			grid-auto-flow: row;
+		}
+
+		&.direction-horizontal {
+			padding: 0 20px;
+			width: 100%;
+			min-height: 20px;
+			justify-content: space-between;
+			align-items: center;
+			grid-auto-flow: column;
+		}
+	}
+	.ui-navbar {
+		/* VARIANTS */
+		&.ui-variant-default-navbar {
+		}
+		&.ui-variant-menu-navbar {
+		}
+		&.ui-variant-none-navbar {
+			justify-content: flex-start;
+		}
+	}
+}

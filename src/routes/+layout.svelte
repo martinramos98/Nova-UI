@@ -1,7 +1,7 @@
 <script>
-	import NovaUIProvider from '$lib/app/Components/NovaUIProvider/NovaUIProvider.svelte';
+	import NovaUiProvider from '$lib/providers/NovaUIProvider.svelte';
 </script>
 
-<NovaUIProvider>
+<NovaUiProvider>
 	<slot />
-</NovaUIProvider>
+</NovaUiProvider>
