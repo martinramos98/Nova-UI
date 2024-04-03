@@ -47,7 +47,7 @@
 		const buttonElement = container.firstElementChild;
 		const rects = buttonElement?.getBoundingClientRect();
 		positionContent = { top: (rects?.height as number) + 8, left: 0 };
-		// Object.defineProperty(container,'toggleDropdown',toggleDropdown)
+		// @ts-expect-error Element custom prop
 		container['toggleDropdown'] = toggleDropdown;
 	});
 	const clickOnOpenedDropdown = (ev: MouseEvent) => {
@@ -96,19 +96,6 @@
 </div>
 
 <style>
-	.ui-dropdown {
-		position: relative;
-		display: inline-block;
-	}
-	.ui-dropdown-content {
-		width: 100%;
-		height: auto;
-		/* transition:
-			translate 0.3s var(--ease-elastic-in-out-4),
-			scale 0.4s var(--ease-5) 0.1s,
-			opacity 0.3s var(--ease-4); */
-		position: absolute;
-	}
 	/* :global(.dropdown[open='true'] > .dropdown-content) {
 		transition:
 			translate 0.3s var(--ease-elastic-in-out-4),
@@ -123,8 +110,20 @@
 		opacity: 0;
 	} */
 	@layer nova {
+		.ui-dropdown {
+			position: relative;
+			display: inline-block;
+		}
 		.ui-dropdown-content {
+			width: 100%;
+			height: auto;
 			padding: 10px;
+			z-index: 99;
+			/* transition:
+			translate 0.3s var(--ease-elastic-in-out-4),
+			scale 0.4s var(--ease-5) 0.1s,
+			opacity 0.3s var(--ease-4); */
+			position: absolute;
 		}
 	}
 </style>

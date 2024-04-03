@@ -44,6 +44,21 @@ export const defaultKeyframesAnimations: Record<string, Keyframe[]> = {
 	'fly-left': [{ translate: '-100% 0' }, { translate: 0 }],
 	rotate: [{ rotate: '0deg' }, { rotate: '360deg' }]
 };
+export const elementAnimationsConstructs: Record<string, ElementAnimationParams> = {
+	fade: {
+		animations: {
+			keyframes: defaultKeyframesAnimations['fade-in'],
+			animationOptions: {
+				duration: 300,
+				iterations: 1,
+				fill: 'forwards',
+				easing: 'ease-in-out'
+			}
+		},
+		alternate: false,
+		iterations: 1
+	}
+};
 export type AnimationKeyframeParams = {
 	keyframes: Keyframe[];
 	animationOptions?: KeyframeAnimationOptions;
@@ -61,7 +76,7 @@ export class ElementAnimation implements BasicAnimation {
 	private animations: Animation[] = [];
 	private element: HTMLElement;
 	private alternate: boolean;
-	private delay: number | undefined;
+	delay: number | undefined;
 	private currentIteration = 0;
 	private onEndCallbacks: ((anim: ElementAnimation) => void)[] = [];
 	constructor(element: HTMLElement, animationParams: ElementAnimationParams) {

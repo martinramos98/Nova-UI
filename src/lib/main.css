@@ -398,12 +398,12 @@
 		border-radius: 5px;
 		/* TODO: Ver como hacer alpha backgrounds */
 		background-color: color-mix(in srgb, var(--color-container), transparent 90%);
-		&:hover {
-			filter: brightness(90%);
-		}
 		&.ui-button {
 			& > .click-effect-element {
 				--color-text: var(--color-container);
+			}
+			&:hover {
+				filter: brightness(90%);
 			}
 		}
 	}
@@ -427,6 +427,23 @@
 		color: var(--color-text);
 		/* border: 1px solid var(--color-border); */
 		border-radius: var(--radius-lg);
+	}
+	/* FIXME: Como el style de svelte aplica solo al file no se pueden aplicar los variants. Todos los variants de selection para aca?? me aprece que si   */
+	.ui-selection-variant-flat {
+		& option {
+			background-color: transparent;
+			&:hover {
+				background-color: inherit;
+			}
+		}
+	}
+	.ui-selection-variant-blurred {
+		& option {
+			background-color: transparent;
+			&:hover {
+				background-color: inherit;
+			}
+		}
 	}
 }
 /* TODO: Ver por que no toma el componete a los childs*/

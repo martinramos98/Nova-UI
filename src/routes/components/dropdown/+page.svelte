@@ -3,11 +3,16 @@
 	import DropDownItem from '$lib/Components/Dropdown/DropDownItem/DropDownItem.svelte';
 	import Dropdown from '$lib/Components/Dropdown/Dropdown.svelte';
 	import DropDownGroup from '$lib/Components/Dropdown/DropdownGroup/DropdownGroup.svelte';
+	import Selection from '$lib/Components/Selection/Selection.svelte';
+	import Option from '$lib/Components/Selection/Option.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
+	import Tabs from '$lib/Components/Tabs/Tabs.svelte';
+	import Tab from '$lib/Components/Tabs/Tab/Tab.svelte';
+	import TabButton from '$lib/Components/Tabs/TabButton/TabButton.svelte';
 </script>
 
 <main class="p-2">
-	<Title>Dropdown</Title>
+	<Title level={2}>Dropdown</Title>
 	<Dropdown triggerText="Open Dropdown">
 		<p class="font-bold pl-2 my-2">Section 1</p>
 		<DropDownItem>Item 1</DropDownItem>
@@ -26,4 +31,98 @@
 			</DropDownGroup>
 		</DropDownGroup>
 	</Dropdown>
+	<Title className="my-2" level={2}>Selection</Title>
+	<section>
+		<Selection
+			selectionLabel={'Test Selection'}
+			colors={'info'}
+			variant={'flat'}
+			classNameSelected="rounded-sm"
+		>
+			<Option value={1}>1</Option>
+			<Option value={2}>2</Option>
+			<Option value={3}>3</Option>
+			<Option value={4}>4</Option>
+		</Selection>
+		<Selection multiselection placeholder={'With Multiselection'} selectionLabel={'Test Selection'}>
+			<Option value={1}>1</Option>
+			<Option value={2}>2</Option>
+			<Option value={3}>3</Option>
+			<Option value={4}>4</Option>
+		</Selection>
+	</section>
+	<section>
+		<Selection
+			selectionLabel={'Test Selection'}
+			colors={'info'}
+			classNameInputBox="w-[300px]"
+			variant={'blurred'}
+			classNameSelected="rounded-sm"
+		>
+			<Option value={1}>1</Option>
+			<Option value={2}>2</Option>
+			<Option value={3}>3</Option>
+			<Option value={4}>4</Option>
+		</Selection>
+		<Selection
+			multiselection
+			variant={'faded'}
+			colors={'primary'}
+			placeholder={'With Multiselection'}
+			selectionLabel={'Test Selection'}
+		>
+			<Option value={1}>1</Option>
+			<Option value={2}>2</Option>
+			<Option value={3}>3</Option>
+			<Option value={4}>4</Option>
+		</Selection>
+	</section>
+	<section>
+		<Selection
+			selectionLabel={'Test Selection'}
+			colors={'info'}
+			variant={'underlined'}
+			classNameSelected="rounded-sm"
+		>
+			<Option value={1}>1</Option>
+			<Option value={2}>2</Option>
+			<Option value={3}>3</Option>
+			<Option value={4}>4</Option>
+		</Selection>
+		<Selection
+			multiselection
+			variant={'bordered'}
+			colors={'primary'}
+			placeholder={'With Multiselection'}
+			classNameInputBox="w-[300px]"
+			selectionLabel={'Test Selection'}
+		>
+			<Option value={1}>1</Option>
+			<Option value={2}>2</Option>
+			<Option value={3}>3</Option>
+			<Option value={4}>4</Option>
+		</Selection>
+	</section>
+	<Title level={2}>Tabs</Title>
+	<Divider size={2} />
+	<Tabs>
+		<svelte:fragment slot="tab-selection">
+			<TabButton key={'1'}>Tab 1</TabButton>
+			<TabButton key="2">Tab 2</TabButton>
+		</svelte:fragment>
+		<Tab key={'1'}>
+			<h3>Hi from Tab 1</h3>
+		</Tab>
+		<Tab key={'2'}>
+			<h3>Hi from Tab 2</h3>
+		</Tab>
+	</Tabs>
 </main>
+
+<style>
+	section {
+		display: grid;
+		margin: 20px 0;
+		grid-auto-flow: column;
+	}
+</style>
