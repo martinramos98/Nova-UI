@@ -49,7 +49,7 @@ export const elementAnimationsConstructs: Record<string, ElementAnimationParams>
 		animations: {
 			keyframes: defaultKeyframesAnimations['fade-in'],
 			animationOptions: {
-				duration: 300,
+				duration: 250,
 				iterations: 1,
 				fill: 'forwards',
 				easing: 'ease-in-out'

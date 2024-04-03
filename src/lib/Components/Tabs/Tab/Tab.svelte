@@ -14,7 +14,9 @@
 
 	tabContext.selectedTab.subscribe((value) => {
 		if (key === value) {
-			render = true;
+			setTimeout(() => {
+				render = true;
+			}, 280);
 		} else if (render === true) {
 			// Animate and unmount
 			shouldUnmount = true;
@@ -30,7 +32,6 @@
 				render = false;
 			}
 		};
-		params['delay'] = 400;
 		animation = new ElementAnimation(node, params);
 		animation.playForward();
 	}
@@ -41,3 +42,9 @@
 		<slot />
 	</div>
 {/if}
+
+<style>
+	.ui-selection-tab {
+		opacity: 0;
+	}
+</style>

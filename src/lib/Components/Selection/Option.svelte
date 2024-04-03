@@ -7,7 +7,7 @@
 		if (optionElement.parentElement?.classList.contains('ui-selection-options-container')) {
 			optionElement.addEventListener('click', () => {
 				// @ts-expect-error Custom prop of element
-				optionElement.parentElement.onselecthandler(value);
+				selected = optionElement.parentElement.onselecthandler(value);
 			});
 		} else {
 			throw Error('Selection Option is not inside a Selection Container');
@@ -15,7 +15,12 @@
 	}
 </script>
 
-<option {disabled} use:setSelectHandlerToOptions class="ui-selection-option {className}">
+<option
+	{disabled}
+	use:setSelectHandlerToOptions
+	class="ui-selection-option {className}"
+	data-selected={selected}
+>
 	<slot {selected}>
 		{value}
 	</slot>

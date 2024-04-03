@@ -9,6 +9,7 @@
 	import Tabs from '$lib/Components/Tabs/Tabs.svelte';
 	import Tab from '$lib/Components/Tabs/Tab/Tab.svelte';
 	import TabButton from '$lib/Components/Tabs/TabButton/TabButton.svelte';
+	import Input from '$lib/Components/Input/Input.svelte';
 </script>
 
 <main class="p-2">
@@ -31,6 +32,14 @@
 			</DropDownGroup>
 		</DropDownGroup>
 	</Dropdown>
+
+	<Title className="my-2" level={2}>Input</Title>
+	<section>
+		<Input type="text" />
+		<Input type="number" />
+		<Input type="password" />
+		<Input type="email" />
+	</section>
 	<Title className="my-2" level={2}>Selection</Title>
 	<section>
 		<Selection
@@ -105,18 +114,60 @@
 	</section>
 	<Title level={2}>Tabs</Title>
 	<Divider size={2} />
-	<Tabs>
-		<svelte:fragment slot="tab-selection">
-			<TabButton key={'1'}>Tab 1</TabButton>
-			<TabButton key="2">Tab 2</TabButton>
-		</svelte:fragment>
-		<Tab key={'1'}>
-			<h3>Hi from Tab 1</h3>
-		</Tab>
-		<Tab key={'2'}>
-			<h3>Hi from Tab 2</h3>
-		</Tab>
-	</Tabs>
+	<section>
+		<Tabs>
+			<svelte:fragment slot="tab-selection">
+				<TabButton key={'1'}>Tab 1</TabButton>
+				<TabButton key="2">Tab 2</TabButton>
+				<TabButton key="3">Tab 3</TabButton>
+			</svelte:fragment>
+			<Tab key={'1'}>
+				<h3>Hi from Tab 1</h3>
+			</Tab>
+			<Tab key={'2'}>
+				<h3>Hi from Tab 2</h3>
+			</Tab>
+			<Tab key={'3'}>
+				<h3>Hi from Tab 3</h3>
+			</Tab>
+		</Tabs>
+	</section>
+	<section>
+		<Tabs variant={'bordered'}>
+			<svelte:fragment slot="tab-selection">
+				<TabButton key={'1'}>Tab 1</TabButton>
+				<TabButton key="2">Tab 2</TabButton>
+				<TabButton key="3">Tab 3</TabButton>
+			</svelte:fragment>
+			<Tab key={'1'}>
+				<h3>Hi from Tab 1</h3>
+			</Tab>
+			<Tab key={'2'}>
+				<h3>Hi from Tab 2</h3>
+			</Tab>
+			<Tab key={'3'}>
+				<h3>Hi from Tab 3</h3>
+			</Tab>
+		</Tabs>
+	</section>
+	<section>
+		<Tabs variant={'underlined'}>
+			<svelte:fragment slot="tab-selection">
+				<TabButton key={'1'}>Tab 1</TabButton>
+				<TabButton key="2">Tab 2</TabButton>
+				<TabButton key="3">Tab 3</TabButton>
+			</svelte:fragment>
+			<Tab key={'1'}>
+				<h3>Hi from Tab 1</h3>
+			</Tab>
+			<Tab key={'2'}>
+				<h3>Hi from Tab 2</h3>
+			</Tab>
+			<Tab key={'3'}>
+				<h3>Hi from Tab 3</h3>
+			</Tab>
+		</Tabs>
+	</section>
 </main>
 
 <style>

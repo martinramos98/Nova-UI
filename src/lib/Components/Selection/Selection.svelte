@@ -28,16 +28,19 @@
 	let animationSelection: ElementAnimation;
 	function onselecthandler(value: any) {
 		onSelect && onSelect(value);
+		let isSelected = false;
 		if (multiselection) {
 			let sel = selected;
-			sel.has(value) ? sel.delete(value) : sel.add(value);
+			isSelected = sel.has(value);
+			isSelected ? sel.delete(value) : sel.add(value);
 			selected = sel;
 		} else {
-			selected = selected.has(value) ? new Set() : new Set([value]);
+			isSelected = selected.has(value);
+			selected = isSelected ? new Set() : new Set([value]);
 		}
-		console.log(selected);
 		openSelection = false;
 		animationSelection.reverse();
+		return isSelected;
 	}
 	function setOpenHandlersToOptions(node: HTMLElement) {
 		// @ts-expect-error custom prop error
@@ -208,16 +211,16 @@
 			&.ui-selection-variant-flat {
 				& .ui-selection-input {
 					border-radius: var(--radius-lg);
-					background-color: color-mix(in srgb, var(--color-container), transparent 90%);
+					background-color: color-mix(in srgb, var(--color-container), black 70%);
 					color: var(--color-container);
 					& span {
-						background-color: color-mix(in srgb, var(--color-subcontainer), transparent 90%);
+						background-color: color-mix(in srgb, var(--color-subcontainer), black 70%);
 						color: var(--color-container);
 					}
 				}
 				& .ui-selection-options-container {
 					border-radius: var(--radius-lg);
-					background-color: color-mix(in srgb, var(--color-container), transparent 90%);
+					background-color: color-mix(in srgb, var(--color-container), black 70%);
 					color: var(--color-container);
 					& > .ui-selection-option {
 						background-color: transparent;
