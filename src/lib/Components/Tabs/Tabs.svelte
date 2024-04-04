@@ -28,7 +28,7 @@
 		{ top: 0, left: 0 },
 		{
 			stiffness: 0.1,
-			damping: 0.25
+			damping: 0.4
 		}
 	);
 	const sizeSelector = spring(

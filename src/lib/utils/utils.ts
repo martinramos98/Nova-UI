@@ -1,3 +1,5 @@
+import { spring } from 'svelte/motion';
+
 export function setPosition(
 	node: HTMLElement,
 	{ offset, position }: { offset: number; position: string }
@@ -147,4 +149,18 @@ export function createPositionResolver(availablePositions: Record<string, Positi
 			}
 		}
 	};
+}
+
+export function labelTranslateInput(
+	where: 'inside' | 'outside' | 'leftside',
+	el: element,
+	open: boolean,
+	placeholder: string,
+	hasValue: boolean
+) {
+	const labelEffect = spring();
+	if (where === 'inside') {
+	} else if (where === 'outside') {
+	} else if (where === 'leftside') {
+	}
 }

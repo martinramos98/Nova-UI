@@ -35,7 +35,7 @@
 
 	<Title className="my-2" level={2}>Input</Title>
 	<section>
-		<Input type="text" />
+		<Input type="text" placeholder='Test' />
 		<Input type="number" />
 		<Input type="password" />
 		<Input type="email" />
