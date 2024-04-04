@@ -40,6 +40,14 @@
 		<Input type="password" />
 		<Input type="email" />
 	</section>
+	<Title className="my-2" level={4}>Input</Title>
+	<section>
+		<Input type="text" variant='faded' />
+		<Input type="number" variant='flat' />
+		<Input type="password"variant='blurred' />
+		<Input type="email"variant='underlined' />
+
+	</section>
 	<Title className="my-2" level={2}>Selection</Title>
 	<section>
 		<Selection
