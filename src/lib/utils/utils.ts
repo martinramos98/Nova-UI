@@ -153,14 +153,22 @@ export function createPositionResolver(availablePositions: Record<string, Positi
 
 export function labelTranslateInput(
 	where: 'inside' | 'outside' | 'leftside',
-	el: element,
+	input: HTMLElement,
+	label: HTMLElement,
 	open: boolean,
-	placeholder: string,
-	hasValue: boolean
+	hasPlaceholder: boolean,
+	hasValue: boolean,
+	dynamic: boolean
 ) {
 	const labelEffect = spring();
+	if (!dynamic) {
+	}
 	if (where === 'inside') {
+		const labelHeight = label.offsetHeight;
 	} else if (where === 'outside') {
 	} else if (where === 'leftside') {
+		if (hasPlaceholder) {
+		}
 	}
 }
+function calculatePositionOfLabel(where: 'inside' | 'outside' | 'leftside', label, input) {}

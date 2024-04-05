@@ -35,18 +35,27 @@
 
 	<Title className="my-2" level={2}>Input</Title>
 	<section>
-		<Input type="text" placeholder='Test' />
-		<Input type="number" />
-		<Input type="password" />
-		<Input type="email" />
+		<Input labelText="Nombre" name="nombre" type="text" placeholder="Test" />
+		<Input
+			labelText="Edad"
+			name="edad"
+			labelProps={{ position: 'leftside', dynamic: true }}
+			type="number"
+		/>
+		<Input
+			labelText="Password"
+			name="password"
+			labelProps={{ position: 'outside', dynamic: true, className: '' }}
+			type="password"
+		/>
+		<Input name="email" labelText="Email" type="email" />
 	</section>
-	<Title className="my-2" level={4}>Input</Title>
+	<Title className="my-2" level={4}>Input Variants</Title>
 	<section>
-		<Input type="text" variant='faded' />
-		<Input type="number" variant='flat' />
-		<Input type="password"variant='blurred' />
-		<Input type="email"variant='underlined' />
-
+		<Input type="text" variant="faded" />
+		<Input labelText={'Cantidad'} type="text" colors={'warning'} variant="flat" />
+		<Input type="password" variant="blurred" />
+		<Input type="email" variant="underlined" colors={'info'} />
 	</section>
 	<Title className="my-2" level={2}>Selection</Title>
 	<section>
