@@ -1,14 +1,33 @@
 <script>
-  import Radio from "$lib/Components/RadioGroup/RadioButton/Radio.svelte";
-  import RadioGroup from "$lib/Components/RadioGroup/RadioGroup.svelte";
-  import Title from "$lib/Components/Title/Title.svelte";
-  
+	import Radio from '$lib/Components/RadioGroup/RadioButton/Radio.svelte';
+	import RadioGroup from '$lib/Components/RadioGroup/RadioGroup.svelte';
+	import Title from '$lib/Components/Title/Title.svelte';
 </script>
 
 <Title level={1}>Radio Groups</Title>
-<RadioGroup name='test' type='checkbox'>
-  <Radio id={'item-1'} value={1}></Radio>
-  <Radio id={'item-2'} value={2}></Radio>
-  <Radio id={'item-3'} value={3}></Radio>
-  <Radio id={'item-4'} value={4}></Radio>
-</RadioGroup>
+<main>
+	<RadioGroup className="gap-2 flex flex-col" name="test" type="checkbox">
+		<Radio lineThroughtOnCheck={true} id={'item-1'} value={1} labelText="test1"></Radio>
+		<Radio id={'item-2'} variant="faded" value={2} labelText="test2" />
+		<Radio id={'item-3'} variant="flat" value={3} labelText="test3"></Radio>
+		<Radio id={'item-4'} variant="neon" value={4} labelText="test4"></Radio>
+	</RadioGroup>
+	<RadioGroup className="gap-2 flex flex-col mt-4" name="test" type="radio">
+		<Radio lineThroughtOnCheck={true} id={'item-1'} value={1} labelText="test1"></Radio>
+		<Radio id={'item-2'} variant="faded" value={2} labelText="test2"></Radio>
+		<Radio id={'item-3'} variant="flat" value={3} labelText="test3"></Radio>
+		<Radio id={'item-4'} variant="neon" value={4} labelText="test4"></Radio>
+	</RadioGroup>
+	<RadioGroup withControl className="gap-2 flex mt-3 flex-col" name="test" type="checkbox">
+		<Radio lineThroughtOnCheck={true} id={'item-1'} value={1} labelText="test1"></Radio>
+		<Radio id={'item-2'} variant="faded" value={2} labelText="test2"></Radio>
+		<Radio id={'item-3'} variant="flat" value={3} labelText="test3"></Radio>
+		<Radio id={'item-4'} variant="neon" value={4} labelText="test4"></Radio>
+	</RadioGroup>
+</main>
+
+<style>
+	main {
+		margin: 10px;
+	}
+</style>

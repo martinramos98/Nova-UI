@@ -1,56 +1,79 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
-	import { readonly, writable,get } from 'svelte/store';
+	import { readonly, writable, get } from 'svelte/store';
+	import Radio from './RadioButton/Radio.svelte';
+	import RadioButton from './RadioButton/RadioButton.svelte';
 	export let type: 'checkbox' | 'radio' = 'radio';
 	export let errorMessage = '';
 	export let className = '';
-	export let iconChecked = 'default'
+	export let iconChecked = 'default';
 	export let error = false;
+	export let colors = 'info';
+	export let withControl = false;
 	export let checkedValues = new Set<string>();
-	export let name:string
-	export let onChange: ((checked:Set<string>)=>void) | undefined = undefined
-		export let parent = {
-		name: '',
+	export let name: string;
+	export let onChange: ((checked: Set<string>) => void) | undefined = undefined;
+
+	export let control = {
 		labelText: '',
-		classNameLabel: '',
 		className: '',
+		value: '',
+		colors: colors,
+		variant: 'solid',
+		lineThroughtOnCheck: false,
+		id: '',
 		disabled: false,
 		state: false
 	};
-	const typeStore = writable(type)
-	const checkedValueStore = writable(checkedValues)
-	checkedValueStore.subscribe((set) => { 
-		onChange && onChange(set)
-	 })
-	// function check(value:string,){
-		
-	// 	if(get(checkedValueStore).has(value)){
-	
-	// 	}
-	// }
-
-	setContext('radiogroup-context',{
-		type:readonly(typeStore),
-		checked:checkedValueStore,
-		// check
+	let controlIndeterminate = false;
+	let controlCheck = false;
+	const controlOfItems = new Array<{ check: () => void; uncheck: () => void }>();
+	const typeStore = writable(type);
+	const checkedValueStore = writable(checkedValues);
+	checkedValueStore.subscribe((set) => {
+		onChange && onChange(set);
 	});
-	// export let
+	function subscribeControler(control: { check: () => void; uncheck: () => void }) {
+		controlOfItems.push(control);
+	}
+	setContext('radiogroup-context', {
+		type: readonly(typeStore),
+		checked: checkedValueStore,
+		subscribeControler
+	});
+	// function stateOfItemsChecked(): 'all' | 'some' | 'none' {
+	// 	return 'all';
+	// }
+	function checkAll() {
+		controlOfItems.forEach((control) => {
+			control.check();
+		});
+	}
+	function uncheckAll() {
+		controlOfItems.forEach((control) => {
+			control.uncheck();
+		});
+	}
+	function handleParentCheck() {
+		controlCheck = !controlCheck;
+		if (controlCheck) {
+			checkAll();
+		} else {
+			uncheckAll();
+		}
+	}
+	if (type === 'checkbox') {
+		checkedValueStore.subscribe((set) => {
+			set.size === 0 ? (controlCheck = false) : (controlIndeterminate = true);
+		});
+	}
 </script>
 
-<fieldset {name} class="ui-radio-group">
-	{#if parent && type === 'checkbox'}
-		<div>
-			<input disabled={parent.disabled} {type} name={parent.name} class={parent.className} />
-			<label class={parent.classNameLabel}>
-				<slot name="labelParent">
-					{parent.labelText}
-				</slot>
-			</label>
-			<slot />
-		</div>
-	{:else}
-		<slot />
+<fieldset {name} class="ui-radio-group ui-colors-{colors} {className}">
+	{#if withControl && type === 'checkbox'}
+		<RadioButton value="" type={'checkbox'} onChange={handleParentCheck} checked={controlCheck} />
 	{/if}
+	<slot />
 	{#if error}
 		<span>
 			{errorMessage}

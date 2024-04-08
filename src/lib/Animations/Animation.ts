@@ -74,12 +74,12 @@ export class ElementAnimation implements BasicAnimation {
 	finished: boolean;
 	iterations: number = 1;
 	private animations: Animation[] = [];
-	private element: HTMLElement;
+	private element: HTMLElement | SVGPathElement;
 	private alternate: boolean;
 	delay: number | undefined;
 	private currentIteration = 0;
 	private onEndCallbacks: ((anim: ElementAnimation) => void)[] = [];
-	constructor(element: HTMLElement, animationParams: ElementAnimationParams) {
+	constructor(element: HTMLElement | SVGPathElement, animationParams: ElementAnimationParams) {
 		this.element = element;
 		const { iterations, delay, alternate, animations, onFinishedAnimation } = animationParams;
 		this.alternate = alternate ?? false;

@@ -1,45 +1,83 @@
 <script lang="ts">
-	import { getContext } from "svelte";
-  import type { Readable,Writable } from "svelte/store";
-  export let labelText = ''
-  export let className = ''
-  export let value:any
-  export let id:string
-  let name = ''
-  const radioContext = getContext<{
-    type: Readable<"checkbox" | "radio">;
-    checked: Writable<Set<string>>;
-}>('radiogroup-context')
-  let type = 'checkbox'
-  if(!radioContext){
-    throw Error('Radio Button is not inside of a Radio Group');
-  }
+	import { getContext } from 'svelte';
+	import type { Readable, Writable } from 'svelte/store';
+	import RadioButton from './RadioButton.svelte';
+	export let labelText = '';
+	export let className = '';
+	export let value: any;
+	export let colors = 'info';
+	export let variant = 'solid';
+	export let id: string;
+	export let lineThroughtOnCheck = false;
+	export let disabled = false;
+	export let inderminate = false;
+	let name = '';
+	let checked = false;
+	const radioContext = getContext<{
+		type: Readable<'checkbox' | 'radio'>;
+		checked: Writable<Set<string>>;
+	}>('radiogroup-context');
+	let type: 'checkbox' | 'radio' = 'checkbox';
+	if (!radioContext) {
+		throw Error('Radio Button is not inside of a Radio Group');
+	}
 
-  radioContext.type.subscribe((typeInput) => {
-    type = typeInput
-   })
-    function getName(node:HTMLElement){
-      name = node.parentElement?.getAttribute('name') ?? ''
-    }
-    function onChange(ev:Event){
-      const el = ev.target as HTMLInputElement
-      radioContext.checked.update((set) => { 
-        const newset  = set
-        if(type === 'checkbox'){
-          el.checked ? newset.add(value) : newset.delete(value)
-        } else {
-        return new Set([value])
-        }
-        return newset
-       })
-    }
+	radioContext.type.subscribe((typeInput) => {
+		type = typeInput;
+		if (typeInput === 'radio') {
+			radioContext.checked.subscribe((set) => {
+				if (checked && !set.has(value)) {
+					checked = false;
+				}
+			});
+		} else if (typeInput === 'checkbox') {
+			radioContext.subscribeControler({
+				check: () => {
+					if (!checked) {
+						handleChange();
+					}
+				},
+				uncheck: () => {
+					if (checked) {
+						handleChange();
+					}
+				}
+			});
+		}
+	});
+
+	function onChange() {
+		if (type === 'checkbox') {
+			radioContext.checked.update((set) => {
+				const newset = set;
+				checked ? newset.add(value) : newset.delete(value);
+				return newset;
+			});
+		} else {
+			if (checked) {
+				radioContext.checked.set(new Set([value]));
+			}
+		}
+	}
+	function handleChange() {
+		checked = !checked;
+	}
+	$: checked, onChange();
 </script>
-  <div use:getName  class="ui-radio {className}">
-    <input {id} {type} on:change={onChange} {name}  {value}/>
-    <label for={id}>
-      <slot>
-        {labelText}
-      </slot>
-    </label>
-  </div>  
 
+<RadioButton
+	onChange={handleChange}
+	{id}
+	{className}
+	{value}
+	{variant}
+	{colors}
+	{disabled}
+	{type}
+	{checked}
+	{lineThroughtOnCheck}
+>
+	<slot>
+		{labelText}
+	</slot>
+</RadioButton>
