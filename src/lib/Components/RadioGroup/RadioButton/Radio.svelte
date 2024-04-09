@@ -3,6 +3,7 @@
 	import type { Readable, Writable } from 'svelte/store';
 	import RadioButton from './RadioButton.svelte';
 	export let labelText = '';
+	export let size = 'size-6'
 	export let className = '';
 	export let value: any;
 	export let colors = 'info';
@@ -10,7 +11,6 @@
 	export let id: string;
 	export let lineThroughtOnCheck = false;
 	export let disabled = false;
-	export let inderminate = false;
 	let name = '';
 	let checked = false;
 	const radioContext = getContext<{
@@ -68,6 +68,7 @@
 <RadioButton
 	onChange={handleChange}
 	{id}
+	{size}
 	{className}
 	{value}
 	{variant}

@@ -445,6 +445,22 @@
 			}
 		}
 	}
+	.ui-radio-button {
+		& .ui-icon-indeterminate {
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+			transition: opacity 0.2s linear 0.4s;
+		}
+		&[data-indeterminated='true'] .ui-icon-indeterminate {
+			opacity: 1;
+		}
+		&[data-indeterminated='false'] .ui-icon-indeterminate {
+			opacity: 0;
+			transition-delay: 0s;
+		}
+	}
 }
 /* TODO: Ver por que no toma el componete a los childs*/
 @layer nova {

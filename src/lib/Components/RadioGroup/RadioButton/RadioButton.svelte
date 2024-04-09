@@ -3,33 +3,51 @@
 	export let variant = 'solid';
 	export let colors = 'info';
 	export let value: any;
+	export let inderminate = false;
 	export let className = '';
+	export let classNameContainer = ''
 	export let id: undefined | string = undefined;
 	export let type: 'radio' | 'checkbox' = 'radio';
 	export let disabled = false;
 	export let checked = false;
+	export let size = 'size-8'
 	export let lineThroughtOnCheck = false;
 	export let onChange: undefined | (() => void);
 	let name = '';
 	function getName(node: HTMLElement) {
 		name = node.parentElement?.getAttribute('name') ?? '';
 	}
+	console.log(className)
 </script>
 
-<div use:getName class="ui-radio ui-color-{colors}  ui-radio-variant-{variant} {className}">
+<div use:getName class="ui-radio ui-color-{colors}  ui-radio-variant-{variant} {classNameContainer} ">
 	<button
 		{value}
 		tabindex="0"
 		role={type}
 		{disabled}
 		aria-checked={checked}
+		data-indeterminated={inderminate}
 		data-checked={checked}
 		on:click={onChange}
-		class="ui-radio-button size-8"
+		class="ui-radio-button {size} {className}"
 	>
 		<div aria-hidden="true">
 			<slot name="icon">
 				{#if type === 'checkbox'}
+					<Icon props={{ viewBox: '0 0 20 20','class':'ui-icon-indeterminate'}}>
+						<line
+							x1="4"
+							x2="16"
+							y1="10"
+							y2="10"
+							stroke="white"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+						></line>
+					</Icon>
+
 					<Icon props={{ viewBox: '0 0 17.837 17.837' }}>
 						<polyline
 							fill="none"
@@ -246,21 +264,28 @@
 				content: '';
 				border-radius: var(--radius-lg);
 			}
+
 			&[data-checked='true'] + label[data-linethrought='true'] {
 				filter: brightness(50%);
 				&::after {
 					width: 100%;
 				}
 			}
+
 			&[data-checked='true']::after {
 				scale: 1;
 				transition: all 0.2s ease;
 			}
+			&[data-indeterminated='true']::after {
+				scale: 1;
+				transition: all 0.2s ease;
+			}
+
 			&[data-checked='false']::after {
 				transition: all 0.2s ease 0.4s;
 			}
 			& polyline {
-				transition: stroke-dashoffset 250ms ease-in-out 0.1s;
+				transition: stroke-dashoffset 250ms ease-in-out 0.2s;
 			}
 			&[data-checked='true'] polyline {
 				stroke-dashoffset: 0;
