@@ -4,7 +4,9 @@
 	import Radio from '$lib/Components/RadioGroup/RadioButton/Radio.svelte';
 	import RadioGroup from '$lib/Components/RadioGroup/RadioGroup.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
-	import Toast from '$lib/Components/Toast/Toast.svelte';
+	import Button from '$lib/Components/Button/Button.svelte';
+	import { toast } from '$lib/Components/Toast/toast';
+
 </script>
 
 <Title level={1}>Radio Groups</Title>
@@ -45,7 +47,12 @@
 		<Callout variant="flat" colors="info" type="info">Test for Callout Info</Callout>
 		<Callout variant="flat" colors="success" type="success">Test for Callout Success</Callout>
 	</article>
-	<Toast></Toast>
+	<Button colors='info' variant={'solid'} onClick={()=>{
+		toast('',{
+			type:'info',
+			content:'This is a Test Toast'
+		},)
+	}}>Toast Test</Button>
 </main>
 
 <style>

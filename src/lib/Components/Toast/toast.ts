@@ -1,7 +1,8 @@
 import Toast from './Toast.svelte';
 export interface ToastProps {}
+import { mount } from 'svelte';
 export function toast(where: string, props: ToastProps, delay?: number) {
-	const comp = new Toast({
+	const comp = mount(Toast, {
 		target: document.body,
 		props: {
 			...props,
@@ -11,9 +12,4 @@ export function toast(where: string, props: ToastProps, delay?: number) {
 			}
 		}
 	});
-	if (delay) {
-		setTimeout(() => {
-			comp.$destroy();
-		}, delay + 200);
-	}
 }
