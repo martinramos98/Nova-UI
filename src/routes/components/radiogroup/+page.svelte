@@ -6,7 +6,8 @@
 	import Title from '$lib/Components/Title/Title.svelte';
 	import Button from '$lib/Components/Button/Button.svelte';
 	import { toast } from '$lib/Components/Toast/toast';
-
+	import Loader from '$lib/Components/Loader/Loader.svelte';
+	import Progress from '$lib/Components/Progress/Progress.svelte';
 </script>
 
 <Title level={1}>Radio Groups</Title>
@@ -47,12 +48,102 @@
 		<Callout variant="flat" colors="info" type="info">Test for Callout Info</Callout>
 		<Callout variant="flat" colors="success" type="success">Test for Callout Success</Callout>
 	</article>
-	<Button colors='info' variant={'solid'} onClick={()=>{
-		toast('',{
-			type:'info',
-			content:'This is a Test Toast'
-		},)
-	}}>Toast Test</Button>
+	<Button
+		colors="info"
+		variant={'solid'}
+		onClick={() => {
+			toast(
+				'top-right',
+				{
+					type: 'default',
+					variant: 'blurred',
+					content: 'This is a Test Toast',
+					withCloseButton: true,
+					className: 'rounded-xl'
+				},
+				20000
+			);
+		}}>Toast Test</Button
+	>
+	<Button
+		colors="info"
+		variant={'solid'}
+		onClick={() => {
+			toast(
+				'top-right',
+				{
+					type: 'warning',
+					variant: 'solid',
+					content: 'This is a Test Toast 2',
+					withCloseButton: true,
+					className: 'rounded-xl'
+				},
+				20000
+			);
+		}}>Toast Test 2</Button
+	>
+	<Title level={2}>Loaders</Title>
+	<Title level={3}>Ring</Title>
+	<article class="callout row">
+		<Loader
+			label={'Loading...'}
+			svgLoaderProps={{ class: 'size-12', 'stroke-width': 3 }}
+			colors="info"
+			loaderVariant={'ringResize'}
+		/>
+		<Loader
+			label={'Loading...'}
+			svgLoaderProps={{ class: 'size-12', 'stroke-width': 1 }}
+			colors="error"
+			loaderVariant={'ring90'}
+		/>
+		<Loader
+			label={'Loading...'}
+			svgLoaderProps={{ class: 'size-12' }}
+			colors="warning"
+			loaderVariant={'ring180'}
+		/>
+		<Loader
+			label={'Loading...'}
+			svgLoaderProps={{ class: 'size-12' }}
+			colors="success"
+			loaderVariant={'ring270'}
+		/>
+	</article>
+	<Title className="my-2" level={3}>Dotted</Title>
+	<article class="callout row">
+		<Loader
+			label={'Loading...'}
+			svgLoaderProps={{ class: 'size-12', 'stroke-width': 3 }}
+			colors="primary"
+			type="dots"
+			loaderVariant={'threeDotsBounce'}
+		/>
+		<Loader
+			label={'Loading...'}
+			svgLoaderProps={{ class: 'size-12', 'stroke-width': 1 }}
+			colors="primary"
+			type="dots"
+			loaderVariant={'threeDotsMove'}
+		/>
+		<Loader
+			label={'Loading...'}
+			svgLoaderProps={{ class: 'size-12' }}
+			colors="primary"
+			type="dots"
+			loaderVariant={'revolve'}
+		/>
+	</article>
+	<Title level={2} className="my-2">Progress</Title>
+	<article class="callout">
+		<Progress />
+		<Progress colors="info" indeterminate={true} progressWidth={8} />
+		<Progress colors="error" progressWidth={8} value={0.3} />
+		<Progress barRounded={false} colors="warning" progressWidth={8} value={0.7} />
+		<Progress type="circle" indeterminate={true} colors="warning" progressWidth={2} value={0.7} />
+		<Progress type="circle" colors="info" progressWidth={3} value={0.9} />
+		<Progress type="circle" colors="primary" progressWidth={2} value={0.5} />
+	</article>
 </main>
 
 <style>
@@ -68,5 +159,8 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
+	}
+	.row {
+		flex-direction: row;
 	}
 </style>

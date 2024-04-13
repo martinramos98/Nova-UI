@@ -10,85 +10,134 @@
 	export let withIcon = true;
 	export let delay: number | undefined = undefined;
 	export let withCloseButton = false;
-	export let onClose: ()=>void;
-	let reversed = false
-	let anim:SequencedAnimation 
-	function setToast(node:HTMLElement){
-		const height = node.offsetHeight
+	export let onClose: () => void;
+	let reversed = false;
+	let anim: SequencedAnimation;
+	function setToast(node: HTMLElement) {
+		const height = node.offsetHeight;
+		const paddingTop = node.computedStyleMap().get('padding-top');
+		const paddingBottom = node.computedStyleMap().get('padding-bottom');
+		const marginTop = node.computedStyleMap().get('margin-top');
+		const marginBottom = node.computedStyleMap().get('margin-top');
 		node.style.maxHeight = '0';
-		node.style.visibility = 'visible'
-		console.log(height)		
-		anim = new SequencedAnimation([
+		node.style.visibility = 'visible';
+		// TODO: add padding and margin in the animation
+		console.log(height);
+		anim = new SequencedAnimation(
+			[
+				{
+					element: node,
+					animationParams: {
+						animations: [
+							{
+								keyframes: [
+									{
+										paddingTop: '0',
+										paddingBottom: '0',
+										marginTop: '0',
+										marginBottom: '0',
+										maxHeight: '0'
+									},
+									{
+										paddingTop: paddingTop as string,
+										paddingBottom: paddingBottom as string,
+										marginTop: marginTop as string,
+										marginBottom: marginBottom as string,
+										maxHeight: height + 'px'
+									}
+								],
+								animationOptions: {
+									duration: 200,
+									easing: 'ease-in-out',
+									direction: 'normal',
+									fill: 'both'
+								}
+							}
+						],
+						alternate: false,
+						iterations: 1
+					}
+				},
+				{
+					element: node,
+					animationParams: {
+						animations: [
+							{
+								keyframes: [
+									{ opacity: 0, scale: 0.7 },
+									{ opacity: 1, scale: 1 }
+								],
+								animationOptions: {
+									duration: 200,
+									easing: 'ease',
+									direction: 'normal',
+									fill: 'both'
+								}
+							}
+						],
+						alternate: false,
+						iterations: 1
+					}
+				}
+			],
 			{
-				element:node,animationParams:{animations:[{
-				keyframes:[{
-					maxHeight:'0px'
-				},{maxHeight:height+ 'px'}],
-				animationOptions:{
-					duration:100,
-					easing:'ease',
-					direction:'normal',
-					fill:'both'
-					},
-			},]
-			,alternate:false,iterations:1}},
-			{
-				element:node,animationParams:{animations:[{
-				keyframes:[{ opacity:0 },{ opacity:1 }],
-				animationOptions:{
-					duration:100,
-					easing:'ease',
-					direction:'normal',
-					fill:'both'
-					},
-			},]
-			,alternate:false,iterations:1}}
-
-		],{
-			alternate:false,iterations:1,
-			onEndSequence:()=>{
-				if(reversed)
-					onClose()				
+				alternate: false,
+				iterations: 1,
+				onEndSequence: () => {
+					if (reversed) onClose();
+				}
 			}
-		})
-		anim.playForward()
-		if(delay){
-			setTimeout(() => { 
-				anim.reverse()
-			 },delay)
+		);
+		anim.playForward();
+		if (delay) {
+			setTimeout(() => {
+				console.log('animating reverse');
+				reversed = true;
+				anim.reverse();
+			}, delay + 800);
 		}
 	}
 </script>
 
-<div use:setToast class="ui-toast ui-color-{colors ?? type} ui-variant-{variant} {className}">
+<div
+	use:setToast
+	class="ui-toast ui-color-{colors ?? type === 'alert'
+		? 'error'
+		: type} ui-variant-{variant} {className}"
+>
 	{#if withIcon}
 		<CalloutIcons {type} />
 	{/if}
 	{#if typeof content === 'string'}
 		<span>{content}</span>
 	{:else}
-		<svelte:component this={content.component} {...content.props} />
+		<svelte:component this={content.component} {...content.props} {onClose} />
 	{/if}
 	{#if withCloseButton}
-		<CloseButton onClose={()=>{
-			reversed = true
-			anim.reverse()
-		}} />
+		<CloseButton
+			className={'p-1 rounded-full'}
+			onClose={() => {
+				reversed = true;
+				anim.reverse();
+			}}
+		/>
 	{/if}
 </div>
-<style>
-	@layer nova{
-		.ui-toast {
-		opacity: 0;
-		position:fixed;
-		top:0;
-		border-radius: var(--radius-lg);
-		display: flex;
-		padding: 10px;
-		flex-direction: row;
-		left:0;
-		visibility: hidden;
-	}
 
+<style>
+	@layer nova {
+		.ui-toast {
+			opacity: 0;
+			border-radius: var(--radius-xl);
+			gap: 0.5rem;
+			display: flex;
+			padding: 10px;
+			flex-direction: row;
+			width: fit-content;
+			visibility: hidden;
+			overflow: hidden;
+			flex-wrap: nowrap;
+			margin: 2.5px 0;
+		}
 	}
 </style>

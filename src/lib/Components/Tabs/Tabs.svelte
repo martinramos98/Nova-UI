@@ -21,7 +21,7 @@
 		subscribeKey
 	});
 	function selectTab(key: string) {
-		const pos = getPositionOfElement(key);
+		getPositionOfElement(key);
 		selectedTabStore.set(key);
 	}
 	const coordSelector = spring(
@@ -47,10 +47,10 @@
 		sizeSelector.set({ width: el.offsetWidth, height: el.offsetHeight });
 	}
 	function setSelectOnMount(node: HTMLElement) {
-		keys.forEach((val) => {
-			console.log('test');
-			console.log(val);
-		});
+		for (const key of keys.keys()) {
+			selectTab(key);
+			break;
+		}
 	}
 </script>
 

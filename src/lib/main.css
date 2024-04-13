@@ -461,6 +461,46 @@
 			transition-delay: 0s;
 		}
 	}
+	.ui-toast-container {
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		width: fit-content;
+		height: fit-content;
+		z-index: 70;
+		margin: 5px;
+		&.top {
+			top: 0;
+			left: 50%;
+			align-items: center;
+		}
+
+		&.top-left {
+			top: 0;
+			left: 0;
+			align-items: flex-start;
+		}
+		&.top-right {
+			top: 0;
+			right: 0;
+			align-items: flex-end;
+		}
+		&.bottom {
+			bottom: 0;
+			left: 50%;
+			align-items: center;
+		}
+		&.bottom-left {
+			bottom: 0;
+			left: 0;
+			align-items: flex-start;
+		}
+		&.bottom-right {
+			bottom: 0;
+			right: 0;
+			align-items: flex-end;
+		}
+	}
 }
 /* TODO: Ver por que no toma el componete a los childs*/
 @layer nova {
@@ -487,6 +527,9 @@
 	.ui-navbar-menu-button {
 		display: none;
 	}
+	.indeterminate-rotate {
+		animation: indeterminate-rotate 3s linear infinite normal forwards;
+	}
 	@container navbar (width <= 565px) {
 		.ui-navbar {
 			&:not(.direction-vertical)[data-menu='true'] {
@@ -506,9 +549,18 @@
 				width: 100%;
 				place-content: start;
 				& .ui-navbar-end-container {
-					justify-self: start;
+					justify-content: start;
 				}
 			}
+		}
+	}
+
+	@keyframes indeterminate-rotate {
+		0% {
+			rotate: 0deg;
+		}
+		100% {
+			rotate: 360deg;
 		}
 	}
 }

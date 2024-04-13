@@ -26,6 +26,7 @@
 	let openSelection = false;
 	let render = false;
 	let animationSelection: ElementAnimation;
+	let selectionEL: HTMLElement;
 	function onselecthandler(value: any) {
 		onSelect && onSelect(value);
 		let isSelected = false;
@@ -91,7 +92,10 @@
 		}
 	}
 	function onClickOutsideSelection(ev: MouseEvent) {
-		if (!(ev.target as Element).closest('.ui-selection')) {
+		if (
+			!(ev.target as Element).closest('.ui-selection') ||
+			!selectionEL.contains(ev.target as Node)
+		) {
 			openSelection = false;
 			animationSelection.reverse();
 		}
@@ -136,6 +140,7 @@
 	class="ui-selection ui-color-{colors} ui-selection-variant-{variant}"
 	data-selection-open={render}
 	aria-multiselectable={multiselection}
+	bind:this={selectionEL}
 >
 	<button {disabled} on:click={toggleSelection} class="ui-selection-input {classNameInputBox}">
 		<div>

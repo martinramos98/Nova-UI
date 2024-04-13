@@ -5,22 +5,24 @@
 	export let value: any;
 	export let inderminate = false;
 	export let className = '';
-	export let classNameContainer = ''
+	export let classNameContainer = '';
 	export let id: undefined | string = undefined;
 	export let type: 'radio' | 'checkbox' = 'radio';
 	export let disabled = false;
 	export let checked = false;
-	export let size = 'size-8'
+	export let size = 'size-8';
 	export let lineThroughtOnCheck = false;
 	export let onChange: undefined | (() => void);
 	let name = '';
 	function getName(node: HTMLElement) {
 		name = node.parentElement?.getAttribute('name') ?? '';
 	}
-	console.log(className)
 </script>
 
-<div use:getName class="ui-radio ui-color-{colors}  ui-radio-variant-{variant} {classNameContainer} ">
+<div
+	use:getName
+	class="ui-radio ui-color-{colors}  ui-radio-variant-{variant} {classNameContainer} "
+>
 	<button
 		{value}
 		tabindex="0"
@@ -35,7 +37,7 @@
 		<div aria-hidden="true">
 			<slot name="icon">
 				{#if type === 'checkbox'}
-					<Icon props={{ viewBox: '0 0 20 20','class':'ui-icon-indeterminate'}}>
+					<Icon props={{ viewBox: '0 0 20 20', class: 'ui-icon-indeterminate' }}>
 						<line
 							x1="4"
 							x2="16"

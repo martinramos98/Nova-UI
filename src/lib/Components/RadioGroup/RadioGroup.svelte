@@ -1,4 +1,4 @@
-	<script lang="ts">
+<script lang="ts">
 	import { setContext } from 'svelte';
 	import { readonly, writable, get } from 'svelte/store';
 	import Radio from './RadioButton/Radio.svelte';
@@ -13,7 +13,7 @@
 	export let checkedValues = new Set<string>();
 	export let name: string;
 	export let onChange: ((checked: Set<string>) => void) | undefined = undefined;
-	export let control:any = {};
+	export let control: any = {};
 	const defaultControlOptions = {
 		labelText: '',
 		className: '',
@@ -21,13 +21,12 @@
 		variant: 'solid',
 		lineThroughtOnCheck: false,
 		id: '',
-		disabled: false,
-	}
+		disabled: false
+	};
 	control = {
 		...defaultControlOptions,
 		...control
-	}
-	console.log(control.className)
+	};
 	let controlIndeterminate = false;
 	let controlCheck = false;
 	const controlOfItems = new Array<{ check: () => void; uncheck: () => void }>();
@@ -67,32 +66,34 @@
 	}
 	if (type === 'checkbox') {
 		checkedValueStore.subscribe((set) => {
-			if(set.size === 0){
-				controlCheck = false 
-				controlIndeterminate = false
-			} else if(set.size === controlOfItems.length){
-				controlCheck = true
-				controlIndeterminate = false
+			if (set.size === 0) {
+				controlCheck = false;
+				controlIndeterminate = false;
+			} else if (set.size === controlOfItems.length) {
+				controlCheck = true;
+				controlIndeterminate = false;
 			} else {
-				controlIndeterminate = true
-				controlCheck = false
-				console.log('is indeterminated')
+				controlIndeterminate = true;
+				controlCheck = false;
 			}
-			
 		});
 	}
 </script>
 
 <fieldset {name} class="ui-radio-group ui-colors-{colors} {className}">
 	{#if withControl && type === 'checkbox'}
-	<div class="flex flex-row">
-		<RadioButton inderminate={controlIndeterminate} value="" type={'checkbox'} onChange={handleParentCheck} checked={controlCheck} {...control} />
-		<slot name="label-control">
-
-		</slot>
-
-	</div>
-		{/if}
+		<div class="flex flex-row">
+			<RadioButton
+				inderminate={controlIndeterminate}
+				value=""
+				type={'checkbox'}
+				onChange={handleParentCheck}
+				checked={controlCheck}
+				{...control}
+			/>
+			<slot name="label-control" />
+		</div>
+	{/if}
 	<slot />
 	{#if error}
 		<span>
