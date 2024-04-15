@@ -501,6 +501,32 @@
 			align-items: flex-end;
 		}
 	}
+	.ui-slider {
+		& .ui-thin {
+			height: 5px;
+			& .ui-slider-button-start,
+			.ui-slider-button-end {
+				top: -150%;
+				transform: translate(-10px);
+			}
+		}
+		& .ui-normal {
+			height: 10px;
+			& .ui-slider-button-start,
+			.ui-slider-button-end {
+				top: -50%;
+				transform: translate(-10px);
+			}
+		}
+		& .ui-thick {
+			height: 20px;
+			& .ui-slider-button-start,
+			.ui-slider-button-end {
+				top: 0px;
+				transform: translate(-20px);
+			}
+		}
+	}
 }
 /* TODO: Ver por que no toma el componete a los childs*/
 @layer nova {
