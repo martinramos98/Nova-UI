@@ -1,5 +1,6 @@
 <script>
 	import Slider from '$lib/Components/Slider/Slider.svelte';
+	import Switch from '$lib/Components/Switch/Switch.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
 </script>
 
@@ -8,6 +9,7 @@
 	<Slider className={'mx-4'} minValue={1000} steps={10} maxValue={2000}></Slider>
 	<Slider className={'mx-4'} format="thick" maxValue={1000}></Slider>
 	<Slider className={'mx-4'} format="thin" maxValue={1000}></Slider>
+	<Switch></Switch>
 </main>
 
 <style>
