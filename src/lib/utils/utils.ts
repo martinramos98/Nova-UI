@@ -8,64 +8,68 @@ export function setPosition(
 	console.log(position, offset);
 	const boundingContainer = node.getBoundingClientRect();
 	const boundingTooltip = node.lastElementChild?.getBoundingClientRect();
+	const heightTooltip = (node.lastElementChild as HTMLElement).offsetHeight
+	const widthTooltip = (node.lastElementChild as HTMLElement).offsetWidth
+	const heightContainer =node.offsetHeight 
+	const widthContainer = node.offsetWidth
 	switch (position) {
 		case 'top-start':
 			cssPosition = `
-				top:${-((boundingTooltip?.height ?? 0) + offset)}px;left:0;	
+				top:${-((heightTooltip) + offset)}px;left:0;	
 				`;
 			break;
 		case 'top-end':
 			cssPosition = `
-				top:${-((boundingTooltip?.height ?? 0) + offset)}px;right:0;	
+				top:${-((heightTooltip) + offset)}px;right:0;	
 				`;
 			break;
 		case 'top':
 			cssPosition = `
-				top:${-((boundingTooltip?.height ?? 0) + offset)}px;left:${(boundingContainer?.width ?? 0) / 2 - (boundingTooltip?.width ?? 0) / 2}px;	
+				top:${-((heightTooltip) + offset)}px;left:${(widthContainer / 2) - (widthTooltip) / 2}px;	
 				`;
 			break;
 		case 'bottom-start':
 			cssPosition = `
-				bottom:${-((boundingTooltip?.height ?? 0) + offset)}px;left:0;	
+				bottom:${-((heightTooltip) + offset)}px;left:0;	
 				`;
 			break;
 		case 'bottom-end':
 			cssPosition = `
-				bottom:${-((boundingTooltip?.height ?? 0) + offset)}px;right:0;	
+				bottom:${-((heightTooltip) + offset)}px;right:0;	
 				`;
 			break;
 		case 'bottom':
 			cssPosition = `
-				bottom:${-((boundingTooltip?.height ?? 0) + offset)}px;left:${((boundingContainer?.width ?? 0) - boundingTooltip?.width) / 2}px;	
+				bottom:${-((heightTooltip) + offset)}px;left:${(widthContainer - widthTooltip) / 2}px;	
 				`;
 			break;
 		case 'left-start':
 			cssPosition = `
-				top:0;left:-${(boundingTooltip?.width ?? 0) + offset}px;	
+				top:0;left:-${(widthTooltip) + offset}px;	
 				`;
 			break;
 		case 'left-end':
 			cssPosition = `
-				bottom:0px;left:-${(boundingTooltip?.width ?? 0) + offset}px;	
+				bottom:0px;left:-${(widthTooltip) + offset}px;	
 				`;
 			break;
 		case 'left':
-			cssPosition = `top:${((boundingContainer?.height ?? 0) - boundingTooltip?.height) / 2}px;left:-${(boundingTooltip?.width ?? 0) + offset}px;	
+			cssPosition = `top:${((heightContainer) - heightTooltip) / 2}px;left:-${(widthTooltip) + offset}px;	
 				`;
 			break;
 		case 'right-start':
 			cssPosition = `
-				top:0;right:-${boundingTooltip?.width ?? 0}px;	
+				top:0;right:-${widthTooltip + offset}px;	
 				`;
 			break;
 		case 'right-end':
 			cssPosition = `
-				bottom:0;right:-${boundingTooltip?.width ?? 0}px;	
+				bottom:0;right:-${widthTooltip + offset}px;	
 				`;
 			break;
 		case 'right':
 			cssPosition = `
-				top:${((boundingContainer?.height ?? 0) - boundingTooltip?.height) / 2}px;right:-${boundingTooltip?.width ?? 0}px;	
+				top:${((heightContainer) - heightTooltip) / 2}px;right:-${widthTooltip + offset}px;	
 				`;
 			break;
 		default:
@@ -73,6 +77,90 @@ export function setPosition(
 	}
 	return cssPosition;
 }
+
+// const availablePositionsTooltip: Record<string,PositionResolver> = {
+// 	top:(el,offset)=>{
+
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const widthContainer = el.offsetWidth
+// 		return `top:${-((heightTooltip) + offset)}px;left:${(widthContainer / 2) - (widthTooltip) / 2}px;`
+// 	},
+// 	'top-start':(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	return `top:${-((heightTooltip) + offset)}px;left:0;`
+
+// 	},
+// 	'top-end':(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 		return `top:${-((heightTooltip) + offset)}px;right:0;`
+// 	},
+// 	bottom:(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const widthContainer = el.offsetWidth
+// 	return `bottom:${-((heightTooltip) + offset)}px;left:${(widthContainer - widthTooltip) / 2}px;`
+
+// 	},
+// 	'bottom-start':(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const heightContainer =el.offsetHeight 
+// 	const widthContainer = el.offsetWidth
+
+// 	},
+// 	'bottom-end':(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const heightContainer =el.offsetHeight 
+// 	const widthContainer = el.offsetWidth
+
+// 	},
+// 	right:(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const heightContainer =el.offsetHeight 
+// 	const widthContainer = el.offsetWidth
+
+// 	},
+// 	'right-start':(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const heightContainer =el.offsetHeight 
+// 	const widthContainer = el.offsetWidth
+
+// 	},
+// 	'right-end':(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const heightContainer =el.offsetHeight 
+// 	const widthContainer = el.offsetWidth
+
+// 	},
+// 	left:(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const heightContainer =el.offsetHeight 
+// 	const widthContainer = el.offsetWidth
+
+// 	},
+// 	'left-start':(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const heightContainer =el.offsetHeight 
+// 	const widthContainer = el.offsetWidth
+
+// 	},
+// 	'left-end':(el,offset)=>{
+// 	const heightTooltip = (el.lastElementChild as HTMLElement).offsetHeight
+// 	const widthTooltip = (el.lastElementChild as HTMLElement).offsetWidth
+// 	const heightContainer =el.offsetHeight 
+// 	const widthContainer = el.offsetWidth
+
+// 	},
+	
+
+// }
 const availableDropdownPositions: Record<string, PositionResolver> = {
 	top: (el, offset) => {
 		const bounds = el.getBoundingClientRect();
@@ -151,24 +239,24 @@ export function createPositionResolver(availablePositions: Record<string, Positi
 	};
 }
 
-export function labelTranslateInput(
-	where: 'inside' | 'outside' | 'leftside',
-	input: HTMLElement,
-	label: HTMLElement,
-	open: boolean,
-	hasPlaceholder: boolean,
-	hasValue: boolean,
-	dynamic: boolean
-) {
-	const labelEffect = spring();
-	if (!dynamic) {
-	}
-	if (where === 'inside') {
-		const labelHeight = label.offsetHeight;
-	} else if (where === 'outside') {
-	} else if (where === 'leftside') {
-		if (hasPlaceholder) {
-		}
-	}
-}
-function calculatePositionOfLabel(where: 'inside' | 'outside' | 'leftside', label, input) {}
+// export function labelTranslateInput(
+// 	where: 'inside' | 'outside' | 'leftside',
+// 	input: HTMLElement,
+// 	label: HTMLElement,
+// 	open: boolean,
+// 	hasPlaceholder: boolean,
+// 	hasValue: boolean,
+// 	dynamic: boolean
+// ) {
+// 	const labelEffect = spring();
+// 	if (!dynamic) {
+// 	}
+// 	if (where === 'inside') {
+// 		const labelHeight = label.offsetHeight;
+// 	} else if (where === 'outside') {
+// 	} else if (where === 'leftside') {
+// 		if (hasPlaceholder) {
+// 		}
+// 	}
+// }
+// function calculatePositionOfLabel(where: 'inside' | 'outside' | 'leftside', label, input) {}

@@ -3,6 +3,8 @@
 	import SliderButton from './SliderButton.svelte';
 	import type { Snippet } from 'svelte';
 	// TODO: Implement steps variations for space-around and space-evenly
+	// FIXME: Slider button when it's thick overflows bar parent.
+	//
 	export let variant = '';
 	export let colors = 'info';
 	export let endValue = undefined;
@@ -13,7 +15,6 @@
 	export let className = '';
 	export let radius = 'rounded-full';
 	export let classNameBar = '';
-	// export let rounded = '';
 	export let format: 'thick' | 'thin' | 'normal' = 'normal';
 	export let withStartSlider = false;
 	export let sliderButtonProps = {};
@@ -21,7 +22,6 @@
 	export let customButton: undefined | Snippet = undefined;
 	export let onChange: undefined | ((value: number) => void) = undefined;
 	let containerElement: HTMLElement;
-	// let buttonPositionStart = 0;
 	let buttonPositionEnd = 0;
 	function positionIntersectsInStep(
 		step: number,
@@ -41,22 +41,23 @@
 	}
 	function onDrag(ev: MouseEvent) {
 		const position =
-			((ev.clientX - containerElement.offsetLeft) / containerElement.offsetWidth) * 100;
+			((ev.clientX - 10 - containerElement.offsetLeft) / containerElement.offsetWidth) * 100;
+
 		if (position >= 0 && position <= 100) {
 			if (steps) {
 				let foundStep = false;
 				let countStep = 0;
 				const distanceBetween = 100 / (steps - 1);
-				while (countStep < steps + 1 && !foundStep) {
+				while (countStep < steps && !foundStep) {
 					if (positionIntersectsInStep(countStep, distanceBetween, position, steps)) {
 						let finalValue = countStep * distanceBetween;
-						buttonPositionEnd =
-							finalValue === 100 ? finalValue - 2 : finalValue === 0 ? finalValue + 2 : finalValue;
+						buttonPositionEnd = finalValue;
 						foundStep = true;
 					}
 					countStep++;
 				}
-				remapOfPercentToValue(countStep * distanceBetween);
+
+				remapOfPercentToValue(buttonPositionEnd);
 			} else {
 				buttonPositionEnd = position;
 				remapOfPercentToValue(position);
@@ -71,16 +72,16 @@
 				let foundStep = false;
 				let countStep = 0;
 				const distanceBetween = 100 / (steps - 1);
-				while (countStep < steps + 1 && !foundStep) {
+				while (countStep < steps && !foundStep) {
 					if (positionIntersectsInStep(countStep, distanceBetween, position, steps)) {
 						let finalValue = countStep * distanceBetween;
-						buttonPositionEnd =
-							finalValue === 100 ? finalValue - 2 : finalValue === 0 ? finalValue + 2 : finalValue;
+						buttonPositionEnd = finalValue;
+
 						foundStep = true;
 					}
 					countStep++;
 				}
-				remapOfPercentToValue(countStep * distanceBetween);
+				remapOfPercentToValue(buttonPositionEnd);
 			} else {
 				buttonPositionEnd = position;
 				remapOfPercentToValue(position);
@@ -92,19 +93,17 @@
 		const distance = maxValue - minValue;
 		value = (distance * position) / 100 + minValue;
 	}
-	function buildArrayOfStepsValues(node: HTMLElement) {}
 </script>
 
 <div class="ui-slider ui-color-{colors} ui-variant-{variant} {className}">
 	<div
+		role="button"
+		tabindex="0"
+		on:keydown={() => {}}
 		on:click={onClickBar}
 		bind:this={containerElement}
 		class="ui-slider-bar-container {radius} ui-{format}"
 	>
-		<span
-			class="ui-slider-bar ui-{format} {radius} {classNameBar}"
-			style="width:{buttonPositionEnd.toFixed(0)}%;"
-		/>
 		<SliderButton
 			onPointerMove={onDrag}
 			bind:buttonPosition={buttonPositionEnd}
@@ -112,12 +111,18 @@
 			{customButton}
 			triggerOnChange={onChange}
 		></SliderButton>
+		<span class="ui-slider-total-bar {radius}"></span>
+		<span
+			class="ui-slider-bar ui-{format} {radius} {classNameBar}"
+			style="width:calc({buttonPositionEnd.toFixed(0)}% + 17px);"
+		>
+		</span>
 		<!-- {#if withStartSlider}
 			<SliderButton value={valueStart} {customButton} bind:buttonPosition={buttonPositionStart} />
 		{/if} -->
 
 		{#if steps}
-			<div use:buildArrayOfStepsValues class="ui-slider-steps-container">
+			<div class="ui-slider-steps-container">
 				{#each { length: steps } as _, step}
 					<slot name="step">
 						<span class="ui-slider-step" />
@@ -140,11 +145,20 @@
 				grid-row: 2 / 2;
 				position: relative;
 				width: 100%;
-				background-color: var(--color-surface-highest);
+				& .ui-slider-total-bar {
+					background-color: var(--color-surface-highest);
+					width: calc(100% + 18px);
+					height: inherit;
+					display: block;
+				}
+				/* background-color: var(--color-surface-highest); */
 				& .ui-slider-bar {
+					position: absolute;
 					background-color: var(--color-container);
 					display: block;
 					height: inherit;
+					top: 0;
+					left: 0;
 					z-index: 8;
 				}
 				& .ui-slider-button-start {
@@ -157,13 +171,14 @@
 					user-select: none;
 					position: absolute;
 					z-index: 9;
-					width: 100%;
+					width: calc(99% + 20px);
 					top: 0;
+					left: 0.25%;
 					height: 100%;
 					& .ui-slider-step {
-						width: 10px;
+						width: 5px;
 						height: 10px;
-						border-radius: 100%;
+						border-radius: 0%;
 						background-color: #fffa;
 						user-select: none;
 					}

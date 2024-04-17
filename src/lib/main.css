@@ -507,7 +507,7 @@
 			& .ui-slider-button-start,
 			.ui-slider-button-end {
 				top: -150%;
-				transform: translate(-10px);
+
 			}
 		}
 		& .ui-normal {
@@ -515,7 +515,7 @@
 			& .ui-slider-button-start,
 			.ui-slider-button-end {
 				top: -50%;
-				transform: translate(-10px);
+				/* transform: translate(-10px); */
 			}
 		}
 		& .ui-thick {
@@ -523,7 +523,10 @@
 			& .ui-slider-button-start,
 			.ui-slider-button-end {
 				top: 0px;
-				transform: translate(-20px);
+				/* transform: translate(0px); */
+				&:active {
+					/* transform: translate(-10px); */
+				}
 			}
 		}
 	}

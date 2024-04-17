@@ -1,8 +1,6 @@
 <script lang="ts">
-	// import type { Radius } from '$lib/app/Entities/styles.js';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	// import { rounded } from '$lib/app/Entities/styles.js';
 	export let aspect: '1:1' | '16:9' | '3:4' | 'auto' = 'auto';
 	export let width: string | undefined = undefined;
 	export let height: string | undefined = undefined;

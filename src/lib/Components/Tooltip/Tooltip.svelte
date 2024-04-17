@@ -14,9 +14,9 @@
 	let cssPosition = '';
 	let effect: KeyframeEffect;
 	let animation: Animation;
+	let arrowPosition = '';
 	const animationKeyframe: Keyframe[] = [
-		{ opacity: 0, scale: 0, offset: 0 },
-		{ opacity: 0, offset: 0.5 },
+		{ opacity: 0, scale: 0.9, offset: 0 },
 		{ opacity: 1, scale: 1, offset: 1 }
 	];
 	const animationOptions: KeyframeEffectOptions = {
@@ -26,13 +26,12 @@
 		fill: 'forwards'
 	};
 	onMount(() => {
-		cssPosition = setPosition(container, { offset, position });
+		cssPosition = setPosition(container, { offset: withArrow ? offset + 5 : offset, position });
 		effect = new KeyframeEffect(tooltip, animationKeyframe, animationOptions);
 		animation = new Animation(effect, document.timeline);
-		tooltip.style.visibility = 'hidden';
 		animation.addEventListener('finish', () => {
 			if (open) {
-				tooltip.style.visibility = 'visible';
+				// tooltip.style.visibility = 'visible';
 			} else {
 				tooltip.style.visibility = 'hidden';
 			}
@@ -51,6 +50,17 @@
 		animation.pause();
 		animation.reverse();
 	}
+	function setArrowPosition(node: SVGElement) {
+		if (position === 'top' || position === 'top-start' || position === 'top-end') {
+			node.style.cssText = `bottom:-8px;left:45%;rotate:180deg;`;
+		} else if (position === 'bottom' || position === 'bottom-start' || position === 'bottom-end') {
+			node.style.cssText = `top:-8px;left:45%; `;
+		} else if (position === 'left' || position === 'left-start' || position === 'left-end') {
+			node.style.cssText = `top:25%;right:-8px;rotate:90deg;`;
+		} else if (position === 'right' || position === 'right-start' || position === 'right-end') {
+			node.style.cssText = `top:25%;left:-8px;rotate:270deg`;
+		}
+	}
 </script>
 
 <div
@@ -62,11 +72,16 @@
 	<slot />
 	<div
 		bind:this={tooltip}
-		style={cssPosition}
+		style={`${cssPosition} visibility:hidden`}
 		class="ui-tooltip ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
 			? variant
 			: ''} {className}"
 	>
+		{#if withArrow}
+			<svg use:setArrowPosition class="ui-tooltip-arrow" style={arrowPosition} viewBox="0 0 5 5">
+				<path d="M2.5 0L4.66506 3.75H0.334936L2.5 0Z" />
+			</svg>
+		{/if}
 		<slot name="content">
 			{content}
 		</slot>
@@ -78,6 +93,7 @@
 		.ui-tooltip-container {
 			position: relative;
 			display: inline-block;
+			width: fit-content;
 		}
 		/* .ui-tooltip-container:hover {
 			& > .ui-tooltip {
@@ -89,13 +105,21 @@
 			background-color: var(--color-container);
 			color: var(--color-text);
 			width: max-content;
-			min-width: 100px;
+			min-width: 20px;
 			border-radius: var(--radius-xl);
 			visibility: hidden;
 			padding: 0.35rem;
 			height: auto;
+			min-height: 25px;
 			position: absolute;
 			opacity: 0;
+			z-index: 50;
+		}
+		.ui-tooltip-arrow {
+			position: absolute;
+			fill: var(--color-container);
+			width: 15px;
+			height: 15px;
 		}
 	}
 </style>

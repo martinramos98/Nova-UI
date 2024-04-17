@@ -31,7 +31,7 @@
 	on:mouseup={onMouseUp}
 	bind:offsetWidth={width}
 	bind:this={buttonElement}
-	style="left:{buttonPosition.toFixed(0)}%;"
+	style="left:{buttonPosition.toFixed(2)}%"
 	class="ui-slider-button-end"
 >
 	{#if customButton}
@@ -45,7 +45,9 @@
 	.ui-slider-button-end {
 		position: absolute;
 		cursor: grab;
-		transition: scale 0.2s ease;
+		transition:
+			scale 0.2s ease,
+			transform 0.2s ease;
 		z-index: 10;
 		& > span {
 			display: block;
