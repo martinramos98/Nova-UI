@@ -39,7 +39,10 @@
 			withArrow={true}
 			content="OK"
 		>
-			<Switch color="success"></Switch>
+			<Switch color="success">
+				<!-- {#snippet iconOn()}{/snippet}
+				{#snippet iconoff()}{/snippet} -->
+			</Switch>
 		</Tooltip>
 	</section>
 </main>

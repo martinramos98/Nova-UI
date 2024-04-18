@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { fade } from 'svelte/transition';
 	export let className = '';
 	export let toggled = false;
 	export let icons: 'inside' | 'outside' = 'inside';
@@ -26,10 +27,14 @@
 	{#if icons === 'outside'}
 		{#if toggled}
 			{#if iconOn}
-				{@render iconOn()}
+				<div transition:fade>
+					{@render iconOn()}
+				</div>
 			{/if}
 		{:else if iconOff}
-			{@render iconOff()}
+			<div transition:fade>
+				{@render iconOff()}
+			</div>
 		{/if}
 	{/if}
 	<span
@@ -40,10 +45,14 @@
 		{#if icons === 'inside'}
 			{#if toggled}
 				{#if iconOn}
-					{@render iconOn()}
+					<div transition:fade>
+						{@render iconOn()}
+					</div>
 				{/if}
 			{:else if iconOff}
-				{@render iconOff()}
+				<div transition:fade>
+					{@render iconOff()}
+				</div>
 			{/if}
 		{/if}
 	</span>

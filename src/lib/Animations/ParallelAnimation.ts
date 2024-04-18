@@ -9,7 +9,6 @@ export class ParallelAnimation implements BasicAnimation {
 	private currentIteration = 0;
 	private iterations = 1;
 	private alternate = false;
-	private reversed = false;
 	private onEndCallback: undefined | ((anim: ParallelAnimation) => void);
 	constructor(animationsParams: ParallelElementParam[]) {
 		animationsParams.forEach((elementAnimationParam) => {
@@ -36,7 +35,7 @@ export class ParallelAnimation implements BasicAnimation {
 									this.finished = true;
 									this.onEndCallback && this.onEndCallback(this);
 								} else {
-									this.alternate && !this.reversed ? this.reverse() : this.playForward();
+									this.alternate && this.currentIteration % 2 === 1 ? this.reverse() : this.playForward();
 								}
 							}
 						}
@@ -78,6 +77,5 @@ export class ParallelAnimation implements BasicAnimation {
 		this.elementAnimations.forEach((anima) => {
 			anima.reverse();
 		});
-		this.reversed = true;
 	}
 }

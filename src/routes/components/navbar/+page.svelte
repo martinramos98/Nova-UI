@@ -109,7 +109,7 @@
 		</div>
 		<div></div>
 		<div class="flex flex-row items-end justify-center">
-			<Avatar className="size-10 bg-zinc-800 m-1 "></Avatar>
+			<Avatar avatarName="Martin Ramos" className="size-10 bg-zinc-800 m-1 "></Avatar>
 		</div>
 	</Navbar>
 	<div class="relative">

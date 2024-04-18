@@ -4,6 +4,7 @@
 	export let onPointerMove: (ev: PointerEvent) => void;
 	export let buttonPosition = 0;
 	export let triggerOnChange: undefined | ((value: number) => void) = undefined;
+	export let className = '';
 	export let variant = '';
 	export let value: number;
 	export let customButton: undefined | Snippet = undefined;
@@ -37,7 +38,7 @@
 	{#if customButton}
 		{@render customButton()}
 	{:else}
-		<span></span>
+		<span class={className}></span>
 	{/if}
 </button>
 

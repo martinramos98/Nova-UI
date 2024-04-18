@@ -10,12 +10,13 @@
 	export let endValue = undefined;
 	export let maxValue: number;
 	export let minValue = 0;
-	// export let valueStart = 0;
 	export let value = 0;
 	export let className = '';
 	export let radius = 'rounded-full';
 	export let classNameBar = '';
 	export let format: 'thick' | 'thin' | 'normal' = 'normal';
+	export let classNameStep = '';
+	export let classNameButton = '';
 	export let withStartSlider = false;
 	export let sliderButtonProps = {};
 	export let steps: undefined | number = undefined;
@@ -93,6 +94,26 @@
 		const distance = maxValue - minValue;
 		value = (distance * position) / 100 + minValue;
 	}
+	function setStepPositions(node: HTMLElement) {
+		let stepCounter = 0;
+		if (steps) {
+			for (const stepNode of node.children) {
+				const el = stepNode as HTMLElement;
+				el.style.left = `${calculateStepPosition(stepCounter, steps)}%`;
+				stepCounter++;
+			}
+		}
+		node.hidden = false;
+	}
+	function calculateStepPosition(stepCounter: number, steps: number) {
+		if (stepCounter === 0) {
+			return 0;
+		}
+		if (stepCounter === steps - 1) {
+			return 100;
+		}
+		return (stepCounter * 100) / (steps - 1);
+	}
 </script>
 
 <div class="ui-slider ui-color-{colors} ui-variant-{variant} {className}">
@@ -108,6 +129,7 @@
 			onPointerMove={onDrag}
 			bind:buttonPosition={buttonPositionEnd}
 			{value}
+			className={classNameButton}
 			{customButton}
 			triggerOnChange={onChange}
 		></SliderButton>
@@ -122,10 +144,10 @@
 		{/if} -->
 
 		{#if steps}
-			<div class="ui-slider-steps-container">
+			<div hidden use:setStepPositions class="ui-slider-steps-container">
 				{#each { length: steps } as _, step}
 					<slot name="step">
-						<span class="ui-slider-step" />
+						<span class="ui-slider-step {classNameStep}" />
 					</slot>
 				{/each}
 			</div>
@@ -166,19 +188,23 @@
 				}
 				& .ui-slider-steps-container {
 					display: flex;
+
 					flex-direction: row;
 					justify-content: space-between;
 					user-select: none;
 					position: absolute;
 					z-index: 9;
-					width: calc(99% + 20px);
+					width: calc(100% + 10px);
 					top: 0;
 					left: 0.25%;
 					height: 100%;
 					& .ui-slider-step {
 						width: 5px;
 						height: 10px;
+						position: absolute;
+						left: 0;
 						border-radius: 0%;
+						top: 0;
 						background-color: #fffa;
 						user-select: none;
 					}

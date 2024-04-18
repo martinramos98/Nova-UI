@@ -1,5 +1,4 @@
 <script lang="ts">
-	// import type { Size } from '$lib/app/Entities/styles.js';
 	import Icon from '../Icons/Icon.svelte';
 	import UserIcon from '../Icons/IconsPath/UserIcon.svelte';
 
@@ -12,6 +11,7 @@
 	export let avatarBordered = false;
 	export let className: string = '';
 	let FirstLettersOfName = '';
+	$: avatarName, () => {};
 	avatarName.split(' ').forEach((word) => {
 		FirstLettersOfName += word.charAt(0);
 	});
@@ -41,6 +41,7 @@
 	@layer nova {
 		.ui-avatar {
 			display: inline-block;
+			flex-shrink: 0;
 			width: var(--width-xxs);
 			height: var(--width-xxs);
 			border-radius: var(--radius-full);
@@ -55,7 +56,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-
+				user-select: none;
 				background-color: var(--color-subcontainer);
 				border: 2px solid transparent;
 

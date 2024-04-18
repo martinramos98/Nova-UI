@@ -8,7 +8,7 @@
 	export let direction: 'vertical' | 'horizontal' = 'horizontal';
 	export let className = '';
 	export let colors = 'container-low';
-	export let variant: 'menu' | 'default-navbar' | 'none' = 'default-navbar';
+	export let variant: 'menu' | 'default' | 'none' = 'default';
 	export let radius = '';
 	export let useContainerQuery = true;
 	export let menuProps = {
@@ -42,7 +42,7 @@
 			<MenuButton onClickMenu={toggleMenu} />
 		</slot>
 	{/if}
-	{#if variant === 'default-navbar'}
+	{#if variant === 'default'}
 		<slot name="start-content" />
 		<slot name="center-content" />
 		<slot name="end-content" />
@@ -108,16 +108,16 @@
 				& > .ui-navbar-start-container {
 					align-self: center;
 					justify-self: start;
-					grid-col: 1 / 1;
+					grid-column: 1 / 1;
 				}
 				& > .ui-navbar-center-container {
 					place-self: center;
-					grid-col: 2 / 2;
+					grid-column: 2 / 2;
 				}
 				& > .ui-navbar-end-container {
 					align-self: center;
 					justify-self: end;
-					grid-col: 3 / 3;
+					grid-column: 3 / 3;
 				}
 			}
 		}
