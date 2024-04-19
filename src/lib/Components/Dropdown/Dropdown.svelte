@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { type Snippet } from 'svelte';
 	import Button from '../Button/Button.svelte';
 	import { ElementAnimation, type ElementAnimationParams } from '$lib/Animations/Animation.js';
 	export let onClickTrigger: undefined | (() => void) = undefined;
+	export let trigger: Snippet | undefined = undefined;
 	export let triggerText = '';
 	let container: HTMLElement;
 	let positionContent = { top: 0, left: 0 };
@@ -62,7 +64,7 @@
 </script>
 
 <div class="ui-dropdown" bind:this={container}>
-	{#if !$$slots.trigger}
+	<slot name="trigger">
 		<Button
 			variant="solid"
 			colors="container-hight"
@@ -78,11 +80,17 @@
 		>
 			{triggerText.toString()}
 		</Button>
+	</slot>
+	{#if trigger}
+		<button
+			on:click={() => {
+				onToggleDropdown();
+				onClickTrigger();
+			}}
+		>
+			{@render trigger()}
+		</button>
 	{/if}
-
-	<button on:click={toggleDropdown}>
-		<slot name="trigger" />
-	</button>
 
 	{#if render}
 		<div

@@ -1,0 +1,28 @@
+@layer nova {
+  .ui-table{
+    &.ui-table-variant-bordered{
+      border: solid 2px var(--color-border);
+      background-color: var(--color-container);
+      color:var(--color-text);
+      border-radius: var(--radius-lg);
+      display: inline-block;
+      padding: 1rem;
+    }
+    &.ui-table-variant-solid{
+      background-color: var(--color-container);
+    }
+    &.ui-table-variant-stripped{
+
+    }
+    &.ui-table-header{
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      &.ui-header-variant-bordered {
+        border: solid 2px var(--color-border);
+      }
+      &.ui-header-variant-solid {
+        background-color: var(--color-container);
+      }
+    }  
+  }
+}

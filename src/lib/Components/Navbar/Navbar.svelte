@@ -1,23 +1,21 @@
 <script lang="ts">
 	import Drawer from '../Drawer/Drawer.svelte';
-	import Button from '../Button/Button.svelte';
-	import Icon from '../Icons/Icon.svelte';
-	import MenuIcon from '../Icons/IconsPath/MenuIcon.svelte';
-	import CloseButton from '../CloseButton/CloseButton.svelte';
 	import MenuButton from '../MenuButton/MenuButton.svelte';
+	import type { Snippet } from 'svelte';
 	export let direction: 'vertical' | 'horizontal' = 'horizontal';
 	export let className = '';
 	export let colors = 'container-low';
 	export let variant: 'menu' | 'default' | 'none' = 'default';
 	export let radius = '';
 	export let useContainerQuery = true;
+	export let menuContent: Snippet<[any]> | undefined = undefined;
 	export let menuProps = {
+		drawerProps: {},
 		position: 'start',
-		contentOnMenu: { startContent: true, centerContent: true, endContent: true }
+		classNameMenu: ''
 	};
 	export let withMenu = false;
 	let openMenu = false;
-	// FIXME: cuando se haga una configuracion y se use un postcss preprocesor que dependiendo que valor se haya cargado se cargue o como container query o como media query
 	function containerQuery(node: Element) {
 		if (useContainerQuery) {
 			node.parentElement?.classList.add('ui-container-navbar');
@@ -28,11 +26,12 @@
 	}
 </script>
 
-<!-- <div class="container-navbar"> -->
 <nav
 	use:containerQuery
 	data-menu={withMenu}
-	class="ui-navbar ui-color-{colors} direction-{direction} ui-variant-{variant}-navbar rounded-{radius} {className}"
+	class="ui-navbar ui-color-{colors} direction-{direction} ui-variant-{variant}-navbar {radius
+		? 'radius-' + radius
+		: ''} {className}"
 >
 	{#if variant === 'none'}
 		<slot />
@@ -45,38 +44,21 @@
 	{#if variant === 'default'}
 		<slot name="start-content" />
 		<slot name="center-content" />
-		<slot name="end-content" />
 		<slot />
+		<slot name="end-content" />
 	{/if}
-
-	{#if withMenu && menuProps.position === 'start'}{/if}
-	{#if withMenu && menuProps.position === 'end'}
-		<Button
-			className="ui-navbar-menu-button"
-			withClickEffect={false}
-			onClick={() => {
-				openMenu = !openMenu;
-			}}
-		>
-			<Icon props={{ viewBox: '0 0 24 24', width: '24px', height: '24px', stroke: 'currentcolor' }}>
-				<MenuIcon />
-			</Icon>
-		</Button>
-	{/if}
-	{#if withMenu || variant === 'menu'}
+	{#if variant === 'menu'}
 		<Drawer
-			size={'full'}
+			size="lg"
+			{...menuProps.drawerProps}
 			open={openMenu}
 			onClose={() => {
 				openMenu = false;
 			}}
 		>
-			<slot name="menu-content" />
-
-			<slot {toggleMenu} name="menu-content">
-				<CloseButton className={'absolute top-2 right-7'} variant="flat" onClose={toggleMenu}
-				></CloseButton>
-			</slot>
+			{#if menuContent}
+				{@render menuContent(toggleMenu)}
+			{/if}
 		</Drawer>
 	{/if}
 </nav>

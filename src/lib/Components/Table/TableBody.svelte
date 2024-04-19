@@ -1,12 +1,12 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { type Snippet } from 'svelte';
+	import type { Snippet } from 'svelte';
 	const { className = '', children }: { className?: string; children?: Snippet } = $props();
 </script>
 
-<tr class="ui-table-row {className}">
+<tbody class="ui-table-body {className}">
 	{#if children}
 		{@render children()}
 	{/if}
-</tr>
+</tbody>

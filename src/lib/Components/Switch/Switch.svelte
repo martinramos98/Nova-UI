@@ -27,12 +27,12 @@
 	{#if icons === 'outside'}
 		{#if toggled}
 			{#if iconOn}
-				<div transition:fade>
+				<div class="icon-on-outside" transition:fade={{ duration: 150 }}>
 					{@render iconOn()}
 				</div>
 			{/if}
 		{:else if iconOff}
-			<div transition:fade>
+			<div class="icon-off-outside" transition:fade={{ duration: 150 }}>
 				{@render iconOff()}
 			</div>
 		{/if}
@@ -45,12 +45,12 @@
 		{#if icons === 'inside'}
 			{#if toggled}
 				{#if iconOn}
-					<div transition:fade>
+					<div class="icon-on-inside">
 						{@render iconOn()}
 					</div>
 				{/if}
 			{:else if iconOff}
-				<div transition:fade>
+				<div class="icon-off-inside">
 					{@render iconOff()}
 				</div>
 			{/if}
@@ -67,6 +67,20 @@
 		background-color: var(--color-surface-low);
 		border-radius: var(--radius-full);
 		transition: all 0.2s ease;
+		& .icon-on-outside,
+		.icon-off-outside {
+			width: 20px;
+			height: 20px;
+			position: absolute;
+		}
+		& .icon-on-outside {
+			left: 3px;
+			top: 2.5px;
+		}
+		& .icon-off-outside {
+			right: 3px;
+			top: 2.5px;
+		}
 		& > span {
 			position: absolute;
 			display: block;

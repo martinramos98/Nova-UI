@@ -8,6 +8,7 @@
 	import Popover from '$lib/Components/Popover/Popover.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
 	import Alert from '$lib/Components/Alert/Alert.svelte';
+	import Dropdown from '$lib/Components/Dropdown/Dropdown.svelte';
 	let openAlert = false;
 	const toggleAlert = () => {
 		openAlert = !openAlert;
@@ -17,10 +18,6 @@
 <div class="container-1">
 	<Navbar
 		variant={'none'}
-		menuProps={{
-			position: 'end',
-			contentOnMenu: { startContent: false, centerContent: true, endContent: true }
-		}}
 		className={'flex flex-row bg-neutral-800 items-center'}
 		direction={'horizontal'}
 		withMenu={false}
@@ -36,6 +33,9 @@
 			<li><Button colors="primary" variant={'light'}>News</Button></li>
 			<li><Button colors="primary" variant={'light'}>About</Button></li>
 		</ul>
+		<Dropdown>
+			<svelte:fragment slot="trigger"></svelte:fragment>
+		</Dropdown>
 		<Avatar
 			avatarBordered
 			colors={'secondary'}
@@ -48,15 +48,7 @@
 	</div>
 </div>
 <div class="container-1">
-	<Navbar
-		menuProps={{
-			position: 'start',
-			contentOnMenu: { startContent: false, centerContent: true, endContent: false }
-		}}
-		className="rounded-3xl"
-		direction={'horizontal'}
-		withMenu={true}
-	>
+	<Navbar className="rounded-3xl" direction={'horizontal'} withMenu={true}>
 		<div slot="start-content">
 			<img class="size-8 inline-block" src="/bank.svg" alt="" />
 			<p class="font-semibold inline align-middle">Bank UI</p>

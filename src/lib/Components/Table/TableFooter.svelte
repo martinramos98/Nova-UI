@@ -1,12 +1,15 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
+	import TableRow from './TableRow.svelte';
 	import { type Snippet } from 'svelte';
 	const { className = '', children }: { className?: string; children?: Snippet } = $props();
 </script>
 
-<tr class="ui-table-row {className}">
-	{#if children}
-		{@render children()}
-	{/if}
-</tr>
+<tfoot class="ui-table-footer {className}">
+	<TableRow>
+		{#if children}
+			{@render children()}
+		{/if}
+	</TableRow>
+</tfoot>

@@ -114,6 +114,7 @@
 		.ui-avatars-hidden-container {
 			display: flex;
 			z-index: 10;
+			overflow: hidden;
 			& > .ui-avatar {
 				margin-inline-start: -20px;
 				z-index: 10;

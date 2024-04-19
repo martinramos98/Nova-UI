@@ -35,7 +35,6 @@
 			} else {
 				tooltip.style.visibility = 'hidden';
 			}
-			animation.commitStyles();
 		});
 	});
 	function onMouseIn(ev: MouseEvent) {
@@ -65,8 +64,8 @@
 
 <div
 	bind:this={container}
-	on:mouseenter={onMouseIn}
-	on:mouseleave={onMouseOut}
+	on:mouseenter|self={onMouseIn}
+	on:mouseleave|self={onMouseOut}
 	class="ui-tooltip-container"
 >
 	<slot />
