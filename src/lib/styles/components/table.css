@@ -12,7 +12,7 @@
       & td:not(:last-child) {
         border-right: solid 2px var(--color-border);
       }
-      & > thead > tr:not(:last-child)>th,
+      & > thead > tr >th,
        & > thead>tr:not(:last-child)>td,
        & > tbody>tr:not(:last-child)>th,
        & > tbody>tr:not(:last-child)>td,
