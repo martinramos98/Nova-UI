@@ -24,6 +24,16 @@
 				place-content: center;
 				transition: all 0.3s ease;
 			}
+
+			.sizes-xs {
+				border-radius: var(--radius-2xl);
+				min-width: var(--spacing-5);
+				min-height: var(--spacing-4);
+				font-size: var(--font-size-xs);
+				height: fit-content;
+
+				padding: 0rem 0.5rem;
+			}
 			.sizes-sm {
 				border-radius: var(--radius-2xl);
 				min-width: var(--spacing-6);

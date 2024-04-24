@@ -8,7 +8,6 @@
 	import Popover from '$lib/Components/Popover/Popover.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
 	import Alert from '$lib/Components/Alert/Alert.svelte';
-	import Dropdown from '$lib/Components/Dropdown/Dropdown.svelte';
 	let openAlert = false;
 	const toggleAlert = () => {
 		openAlert = !openAlert;
@@ -30,12 +29,11 @@
 					>Eccommerce</Button
 				>
 			</li>
-			<li><Button colors="primary" variant={'light'}>News</Button></li>
-			<li><Button colors="primary" variant={'light'}>About</Button></li>
+			<li class="hidden md:block"><Button colors="primary" variant={'light'}>News</Button></li>
+			<li class="hidden md:block">
+				<Button colors="primary" variant={'light'}>About</Button>
+			</li>
 		</ul>
-		<Dropdown>
-			<svelte:fragment slot="trigger"></svelte:fragment>
-		</Dropdown>
 		<Avatar
 			avatarBordered
 			colors={'secondary'}

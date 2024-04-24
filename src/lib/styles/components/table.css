@@ -1,67 +1,110 @@
 @layer nova {
-  .ui-table {
-    &.ui-table-variant-bordered {
-      background-color: var(--color-container);
-      color: var(--color-text);
-      border-collapse: separate;
-      border-spacing: 0;
-      border-radius: var(--radius-lg);
-      border: solid 2px var(--color-border);
+	.ui-table {
+		--row-radius: var(--radius-xl);
+		--row-spacing: 15px;
+		--color-row: var(--color-container);
+		--color-row-stripped: var(--color-subcontainer);
+		&.ui-table-variant-bordered {
+			background-color: var(--color-container);
+			color: var(--color-text);
+			border-collapse: separate;
+			border-spacing: 0;
+			border-radius: var(--radius-lg);
+			border: solid 2px var(--color-border);
+			& td,
+			& th {
+				padding: 0.5rem;
+				text-align: center;
+			}
+			& th:not(:last-child),
+			& td:not(:last-child) {
+				border-right: solid 2px var(--color-border);
+			}
+			& > thead > tr > th,
+			& > thead > tr:not(:last-child) > td,
+			& > tbody > tr:not(:last-child) > th,
+			& > tbody > tr:not(:last-child) > td,
+			& > tfoot > tr:not(:last-child) > th,
+			& > tfoot > tr:not(:last-child) > td,
+			& > tr:not(:last-child) > td,
+			& > tr:not(:last-child) > th,
+			& > thead:not(:last-child),
+			& > tbody:not(:last-child),
+			& > tfoot:not(:last-child) {
+				border-bottom: solid 2px var(--color-border);
+			}
+		}
+		&.ui-table-variant-solid {
+			background-color: var(--color-row);
+		}
 
-      & th:not(:last-child),
-      & td:not(:last-child) {
-        border-right: solid 2px var(--color-border);
-      }
-      & > thead > tr >th,
-       & > thead>tr:not(:last-child)>td,
-       & > tbody>tr:not(:last-child)>th,
-       & > tbody>tr:not(:last-child)>td,
-       & > tfoot>tr:not(:last-child)>th,
-       & > tfoot>tr:not(:last-child)>td,
-       & > tr:not(:last-child)>td,
-       & > tr:not(:last-child)>th,
-       & > thead:not(:last-child),
-       & > tbody:not(:last-child),
-       & > tfoot:not(:last-child)     {
-        border-bottom: solid 2px var(--color-border);
+		&.ui-table-variant-stripped {
+			border-spacing: 0 var(--row-spacing);
+			border-collapse: separate;
+			& tr:nth-child(odd) td,
+			& tr:nth-child(odd) th {
+				background-color: var(--color-row);
+			}
+			& tr:nth-child(even) td,
+			& tr:nth-child(even) th {
+				background-color: var(--color-row-stripped);
+			}
+			& tr > th:first-child,
+			td:first-child {
+				border-radius: var(--row-radius) 0 0 var(--row-radius);
+			}
+			& tr > th:last-child,
+			& tr > td:last-child {
+				border-radius: 0 var(--row-radius) var(--row-radius) 0px;
+			}
+		}
+		&.ui-table-variant-bordered-row {
+			border-spacing: 0 var(--row-spacing);
+			border-collapse: separate;
+			& tr > td,
+			& tr > th {
+				border-bottom: solid 2px var(--color-border);
+				border-top: solid 2px var(--color-border);
+			}
+			& tr > th:first-child,
+			td:first-child {
+				border-left: solid 2px var(--color-border);
+				border-radius: var(--row-radius) 0 0 var(--row-radius);
+			}
+			& tr > th:last-child,
+			& tr > td:last-child {
+				border-right: solid 2px var(--color-border);
+				border-radius: 0 var(--row-radius) var(--row-radius) 0px;
+			}
+		}
 
-      }
-      /* & > thead>tr:not(:last-child)>th,
-      & > thead>tr:not(:last-child)>td,
-      & > tbody>tr:not(:last-child)>th,
-      & > tbody>tr:not(:last-child)>td,
-      & > tfoot>tr:not(:last-child)>th,
-      & > tfoot>tr:not(:last-child)>td,
-      & > tr:not(:last-child)>td,
-      & > tr:not(:last-child)>th,
-      & > thead:not(:last-child),
-      & > tbody:not(:last-child),
-      & > tfoot:not(:last-child) {
-        border-bottom: solid 2px var(--color-border);;
-      } */
-    }
-      &.ui-table-variant-solid {
-        background-color: var(--color-container);
-      }
+		&.ui-table-variant-solid-row {
+			border-spacing: 0 var(--row-spacing);
+			border-collapse: separate;
+			& td,
+			& th {
+				background-color: var(--color-container);
+			}
+			& tr > th:first-child,
+			td:first-child {
+				border-radius: var(--row-radius) 0 0 var(--row-radius);
+			}
+			& tr > th:last-child,
+			& tr > td:last-child {
+				border-radius: 0 var(--row-radius) var(--row-radius) 0px;
+			}
+		}
+		&.ui-table-header {
+			border-radius: var(--radius-lg);
+			padding: 20px;
 
-      &.ui-table-variant-stripped {
+			&.ui-header-variant-bordered {
+				border: solid 2px var(--color-border);
+			}
 
-      }
-      &.ui-table-variant-divided{
-        
-      }
-
-      &.ui-table-header {
-        border-radius: var(--radius-lg);
-        padding: 20px;
-
-        &.ui-header-variant-bordered {
-          border: solid 2px var(--color-border);
-        }
-
-        &.ui-header-variant-solid {
-          background-color: var(--color-container);
-        }
-      }
-    }
-  }
+			&.ui-header-variant-solid {
+				background: var(--color-container);
+			}
+		}
+	}
+}

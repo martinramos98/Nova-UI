@@ -323,7 +323,7 @@
 @layer components {
 	.ui-variant-solid {
 		color: var(--color-text);
-		background-color: var(--color-container);
+		background: var(--color-container);
 		border-radius: 5px;
 		border: none;
 		/* transition: filter 0.25s ease; */
@@ -331,7 +331,7 @@
 	}
 	.ui-variant-faded {
 		border: solid 2px var(--color-surface-highest);
-		background-color: var(--color-surface-hight);
+		background: var(--color-surface-hight);
 		padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
 		color: var(--color-container);
 		border-radius: 8px;
@@ -344,7 +344,7 @@
 	.ui-variant-bordered {
 		border-radius: 5px;
 		color: var(--color-container);
-		background-color: var(--color-surface);
+		background: var(--color-surface);
 
 		padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
 		border: 2px solid var(--color-container);
@@ -360,16 +360,16 @@
 	.ui-variant-ghost {
 		border: 2px solid var(--color-border);
 		color: var(--color-container);
-		background-color: transparent;
+		background: transparent;
 		padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
 		border-radius: 7px;
 		transition:
-			background-color 0.25s ease,
+			background 0.25s ease,
 			border-color 0.25s ease,
 			color 0.25s ease,
 			scale 0.25s ease;
 		&:hover {
-			background-color: var(--color-container);
+			background: var(--color-container);
 			/* border-color: transparent; */
 			color: var(--color-text);
 		}
@@ -377,14 +377,14 @@
 	.ui-variant-neon {
 		color: var(--color-text);
 		border-radius: 5px;
-		background-color: var(--color-container);
+		background: var(--color-container);
 		filter: brightness(0.9);
 		box-shadow: 0px 1px 20px var(--color-container, 0.1);
 	}
 	.ui-variant-shadows {
 		color: var(--color-text);
 		border-radius: 5px;
-		background-color: var(--color-container);
+		background: var(--color-container);
 		filter: brightness(0.9);
 		box-shadow:
 			0 2px 12px -3px #000,
@@ -397,7 +397,7 @@
 		color: var(--color-container);
 		border-radius: 5px;
 		/* TODO: Ver como hacer alpha backgrounds */
-		background-color: color-mix(in srgb, var(--color-container), transparent 90%);
+		background: color-mix(in srgb, var(--color-container), transparent 90%);
 		&.ui-button {
 			& > .click-effect-element {
 				--color-text: var(--color-container);
@@ -408,12 +408,12 @@
 		}
 	}
 	.ui-variant-light {
-		background-color: transparent;
+		background: transparent;
 		color: var(--color-container);
 		border-radius: 5px;
 		&:hover {
 			/* background-color: rgb(var(--color-container), 0.1); */
-			background-color: color-mix(in srgb, var(--color-container), transparent 90%);
+			background: color-mix(in srgb, var(--color-container), transparent 90%);
 		}
 		&.ui-button {
 			& > .click-effect-element {
@@ -422,7 +422,7 @@
 		}
 	}
 	.ui-variant-blurred {
-		background-color: color-mix(in srgb, var(--color-container), transparent 50%);
+		background: color-mix(in srgb, var(--color-container), transparent 50%);
 		backdrop-filter: blur(2px);
 		color: var(--color-text);
 		/* border: 1px solid var(--color-border); */
@@ -431,17 +431,17 @@
 	/* FIXME: Como el style de svelte aplica solo al file no se pueden aplicar los variants. Todos los variants de selection para aca?? me aprece que si   */
 	.ui-selection-variant-flat {
 		& option {
-			background-color: transparent;
+			background: transparent;
 			&:hover {
-				background-color: inherit;
+				background: inherit;
 			}
 		}
 	}
 	.ui-selection-variant-blurred {
 		& option {
-			background-color: transparent;
+			background: transparent;
 			&:hover {
-				background-color: inherit;
+				background: inherit;
 			}
 		}
 	}

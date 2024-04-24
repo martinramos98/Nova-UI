@@ -3,11 +3,13 @@
 	import { type Snippet } from 'svelte';
 	import Button from '../Button/Button.svelte';
 	import { ElementAnimation, type ElementAnimationParams } from '$lib/Animations/Animation.js';
+	import { setFloatingPosition, setPositionDropdown } from '$lib/utils/utils.js';
 	export let onClickTrigger: undefined | (() => void) = undefined;
 	export let trigger: Snippet | undefined = undefined;
+	export let offset = 5;
 	export let triggerText = '';
+	export let position = 'right-start';
 	let container: HTMLElement;
-	let positionContent = { top: 0, left: 0 };
 	let open = false;
 	let render = false;
 	let animationDropdown: ElementAnimation;
@@ -46,10 +48,7 @@
 		}
 	};
 	onMount(() => {
-		const buttonElement = container.firstElementChild;
-		const rects = buttonElement?.getBoundingClientRect();
-		positionContent = { top: (rects?.height as number) + 8, left: 0 };
-		// @ts-expect-error Element custom prop
+		// @ts-expect-error Type definition for element
 		container['toggleDropdown'] = toggleDropdown;
 	});
 	const clickOnOpenedDropdown = (ev: MouseEvent) => {
@@ -60,7 +59,9 @@
 		}
 		ev.preventDefault();
 	};
-	console.log(triggerText);
+	function setDropdownContentPosition(node: HTMLElement) {
+		setFloatingPosition({ element: node, position, offset });
+	}
 </script>
 
 <div class="ui-dropdown" bind:this={container}>
@@ -84,8 +85,8 @@
 	{#if trigger}
 		<button
 			on:click={() => {
-				onToggleDropdown();
-				onClickTrigger();
+				toggleDropdown();
+				onClickTrigger && onClickTrigger();
 			}}
 		>
 			{@render trigger()}
@@ -95,7 +96,7 @@
 	{#if render}
 		<div
 			use:animationOpen
-			style="top:{positionContent.top}px;left:0;"
+			use:setDropdownContentPosition
 			class="ui-dropdown-content ui-color-container-hight ui-variant-solid rounded-xl"
 		>
 			<slot {toggleDropdown} />
@@ -104,19 +105,6 @@
 </div>
 
 <style>
-	/* :global(.dropdown[open='true'] > .dropdown-content) {
-		transition:
-			translate 0.3s var(--ease-elastic-in-out-4),
-			scale 0.2s var(--ease-5),
-			opacity 0.4s var(--ease-4);
-		position: absolute;
-		scale: 100%;
-		opacity: 1;
-	}
-	.ui-dropdown[open='false'] > .ui-dropdown-content {
-		scale: 0;
-		opacity: 0;
-	} */
 	@layer nova {
 		.ui-dropdown {
 			position: relative;
@@ -127,10 +115,6 @@
 			height: auto;
 			padding: 10px;
 			z-index: 99;
-			/* transition:
-			translate 0.3s var(--ease-elastic-in-out-4),
-			scale 0.4s var(--ease-5) 0.1s,
-			opacity 0.3s var(--ease-4); */
 			position: absolute;
 		}
 	}

@@ -169,7 +169,7 @@
 	{#if render}
 		<div
 			use:setOpenHandlersToOptions
-			use:setPositionDropdown={{ desiredPosition: 'bottom', offset: 5 }}
+			use:setPositionDropdown={{ position: 'bottom', offset: 5 }}
 			use:renderAnimation={openSelection}
 			class="ui-selection-options-container {classNameOptionsContainer}"
 		>

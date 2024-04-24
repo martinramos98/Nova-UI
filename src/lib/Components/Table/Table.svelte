@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { setContext } from 'svelte';
+	// import { setContext } from 'svelte';
 	interface TableProps {
 		className?: string;
 		children?: Snippet;

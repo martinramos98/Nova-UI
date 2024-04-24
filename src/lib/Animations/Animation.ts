@@ -27,9 +27,10 @@ export function arrayToList<T>(values: T[]): ListNode<T>[] {
 
 export const easing = {
 	'slow-end': 'cubic-bezier(.001,.7,.1,1)',
-	'elastic-in': 'cubic-bezier(.5,.8,1.4,1)',
-	'elastic-in-out': 'cubic-bezier(.5,.8,1.4,1)',
-	'elastic-out': 'cubic-bezier(.5,.8,1.4,1)'
+	'elastic-1': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+	'elastic-2': 'cubic-bezier(0.4, 0, 0.2, 1)',
+	'elastic-3': 'cubic-bezier(0.4, 0, 0.6, 1)',
+	'elastic-4': 'cubic-bezier(0.25, 0.1, 0.25, 1.2)',
 };
 
 export const defaultKeyframesAnimations: Record<string, Keyframe[]> = {
@@ -40,7 +41,6 @@ export const defaultKeyframesAnimations: Record<string, Keyframe[]> = {
 	'fly-right': [{ translate: '100% 0' }, { translate: 0 }],
 	'fly-bottom': [{ translate: '0 100%' }, { translate: 0 }],
 	'fly-top': [{ translate: '0 -100%' }, { translate: 0 }],
-
 	'fly-left': [{ translate: '-100% 0' }, { translate: 0 }],
 	rotate: [{ rotate: '0deg' }, { rotate: '360deg' }]
 };

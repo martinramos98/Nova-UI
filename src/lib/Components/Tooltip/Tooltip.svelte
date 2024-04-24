@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { setPosition } from '$lib/utils/utils.js';
+	import { setPosisitionPopover } from '$lib/utils/utils.js';
 	export let className = '';
 	export let colors = '';
 	export let variant = '';
@@ -26,7 +26,8 @@
 		fill: 'forwards'
 	};
 	onMount(() => {
-		cssPosition = setPosition(container, { offset: withArrow ? offset + 5 : offset, position });
+		// cssPosition = setPosition(container, { offset: withArrow ? offset + 5 : offset, position });
+
 		effect = new KeyframeEffect(tooltip, animationKeyframe, animationOptions);
 		animation = new Animation(effect, document.timeline);
 		animation.addEventListener('finish', () => {
@@ -60,6 +61,13 @@
 			node.style.cssText = `top:25%;left:-8px;rotate:270deg`;
 		}
 	}
+	function setPosition(node: HTMLElement) {
+		setPosisitionPopover({
+			position: position,
+			element: node,
+			offset: withArrow ? offset + 5 : offset
+		});
+	}
 </script>
 
 <div
@@ -70,8 +78,8 @@
 >
 	<slot />
 	<div
+		use:setPosition
 		bind:this={tooltip}
-		style={`${cssPosition} visibility:hidden`}
 		class="ui-tooltip ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
 			? variant
 			: ''} {className}"
@@ -94,12 +102,6 @@
 			display: inline-block;
 			width: fit-content;
 		}
-		/* .ui-tooltip-container:hover {
-			& > .ui-tooltip {
-				opacity: 1;
-				visibility: visible;
-			}
-		} */
 		.ui-tooltip {
 			background-color: var(--color-container);
 			color: var(--color-text);

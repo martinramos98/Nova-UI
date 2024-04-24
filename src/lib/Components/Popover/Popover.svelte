@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { setPosition } from '$lib/utils/utils.js';
+	import { setPosisitionPopover } from '$lib/utils/utils.js';
 	import { onMount } from 'svelte';
 	export let offset = 5;
 	export let position = 'top-start';
@@ -9,7 +9,6 @@
 	let open = false;
 	let popover: HTMLElement;
 	let container: HTMLElement;
-	let cssPosition = '';
 	let effect: KeyframeEffect;
 	let animation: Animation;
 	const animationKeyframe: Keyframe[] = [
@@ -24,7 +23,7 @@
 		fill: 'forwards'
 	};
 	onMount(() => {
-		cssPosition = setPosition(container, { offset, position });
+		setPosisitionPopover({ offset, position, element: popover });
 		effect = new KeyframeEffect(popover, animationKeyframe, animationOptions);
 		animation = new Animation(effect, document.timeline);
 		popover.style.visibility = 'hidden';
@@ -76,7 +75,6 @@
 	<slot />
 	<div
 		bind:this={popover}
-		style={cssPosition}
 		class="ui-popover ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
 			? variant
 			: ''}  {className}"

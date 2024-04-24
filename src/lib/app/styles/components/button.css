@@ -34,7 +34,7 @@
 .ui-button-group {
 	& > .ui-button {
 		border-radius: 0;
-		background-color: rgb(var(--color-container));
+		background: rgb(var(--color-container));
 	}
 	& > .ui-button:first-child {
 		border-radius: 10px 0 0 10px;
