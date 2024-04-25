@@ -133,7 +133,7 @@ export function SequencedSiblingAnimation(
 	iterations?: number
 ) {
 	if (siblings === 'both') {
-		let silbingsToAnimate: SequencedAnimationElement[] = [];
+		const silbingsToAnimate: SequencedAnimationElement[] = [];
 		let leftSibling = element.previousElementSibling;
 		let rightSibling = element.nextElementSibling;
 		while (leftSibling || rightSibling) {
@@ -154,7 +154,7 @@ export function SequencedSiblingAnimation(
 		}
 		return new SequencedAnimation(silbingsToAnimate, { alternate, iterations });
 	} else {
-		let silbingsToAnimate: SequencedAnimationElement[] = [];
+		const silbingsToAnimate: SequencedAnimationElement[] = [];
 		while (element[`${siblings}ElementSibling`]) {
 			silbingsToAnimate.push({
 				element: element[`${siblings}ElementSibling`] as HTMLElement,
@@ -174,7 +174,7 @@ export function SequencedChildrenAnimation(
 	iterations?: number
 ) {
 	const direction = from === 'first' ? 'next' : 'previous';
-	let childsToAnimate: SequencedAnimationElement[] = [];
+	const childsToAnimate: SequencedAnimationElement[] = [];
 	if (element[`${from}ElementChild`]) {
 		let child = element[`${from}ElementChild`] as HTMLElement;
 		while (child[`${direction}ElementSibling`]) {

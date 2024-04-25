@@ -4,8 +4,6 @@
 	export let onClick = () => {};
 	export let className = '';
 	export let closeOnClick = true;
-	let parentRef: Element;
-	let buttonRef: Element;
 
 	function closeOnClickAction(node: HTMLElement) {
 		if (closeOnClick) {

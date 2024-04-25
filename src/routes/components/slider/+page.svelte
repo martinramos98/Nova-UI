@@ -1,4 +1,4 @@
-<script>
+	<script>
 	import Slider from '$lib/Components/Slider/Slider.svelte';
 	import Switch from '$lib/Components/Switch/Switch.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
