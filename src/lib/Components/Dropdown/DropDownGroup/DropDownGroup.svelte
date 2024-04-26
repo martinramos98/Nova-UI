@@ -1,6 +1,16 @@
-<svelte:options runes={true}></svelte:options>
-<script>
-	import FloatingSubsection from "$lib/Components/FloatingSubsection/FloatingSubsection.svelte";
-	const {} = $props()
+<svelte:options runes={true} />
+
+<script lang="ts">
+	import FloatingSubsection from '$lib/Components/FloatingSubsection/FloatingSubsection.svelte';
+	import DropDownItem from '../DropDownItem/DropDownItem.svelte';
+	const { triggerContent, children }: { triggerContent: Snippet; children: Snippet } = $props();
 </script>
-<FloatingSubsection />
+
+<FloatingSubsection openOnHover={true}>
+	{@render children()}
+	<svelte:fragment slot="trigger">
+		<DropDownItem>
+			{@render triggerContent()}
+		</DropDownItem>
+	</svelte:fragment>
+</FloatingSubsection>

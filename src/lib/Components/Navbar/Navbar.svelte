@@ -10,9 +10,7 @@
 	export let useContainerQuery = true;
 	export let menuContent: Snippet<[any]> | undefined = undefined;
 	export let menuProps = {
-		drawerProps: {},
-		position: 'start',
-		classNameMenu: ''
+		drawerProps: {}
 	};
 	export let withMenu = false;
 	let openMenu = false;

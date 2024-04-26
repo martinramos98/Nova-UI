@@ -1,7 +1,7 @@
-@layer theme, base, nova , components, utilities;
 @import 'https://unpkg.com/open-props/easings.min.css';
 @import 'tailwindcss';
 @import './styles/components.css';
+@layer theme, base, nova, components, utilities;
 @theme {
 	/* --width-*:initial; */
 	--width-4xs: 14rem;
@@ -14,6 +14,7 @@
 	--width-2xxs: 2rem;
 	--width-3xxs: 1rem;
 
+	--radius-full: calc(infinity * 1px);
 	/* Colores Sepia */
 	--color-sepia-10: rgb(255, 224, 181);
 	--color-sepia-20: rgb(255, 228, 189);

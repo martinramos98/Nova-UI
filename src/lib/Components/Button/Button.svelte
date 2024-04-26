@@ -31,6 +31,7 @@
 </button>
 
 <style>
+	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		.ui-button {
 			appearance: none;

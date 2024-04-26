@@ -5,6 +5,7 @@
 	export let onClose: () => void;
 	export let size: any = 'md';
 	export let position: any = 'right';
+	export let className = '';
 	export let backdrop: {
 		className: string;
 		type: 'normal' | 'blur' | 'transparent';
@@ -104,7 +105,12 @@
 </script>
 
 {#if render}
-	<div use:translateToBody use:openAnimation use:closeAnimation={open} class="ui-drawer">
+	<div
+		use:translateToBody
+		use:openAnimation
+		use:closeAnimation={open}
+		class="ui-drawer {className}"
+	>
 		<div class="ui-drawer-content size-{size} drawer-{position} {modalContent.className}">
 			{#if $$slots.header}
 				<div class="ui-drawer-header">

@@ -20,12 +20,7 @@
 	}
 </script>
 
-<button
-	use:closeOnClickAction
-	class="ui-dropdown-item {className}"
-	bind:this={buttonRef}
-	on:click={handleClickEvent}
->
+<button use:closeOnClickAction class="ui-dropdown-item {className}" on:click={handleClickEvent}>
 	<slot />
 </button>
 

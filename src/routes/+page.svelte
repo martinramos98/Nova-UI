@@ -9,105 +9,10 @@
 	import Card from '$lib/Components/Card/Card.svelte';
 	import Image from '$lib/Components/Image/Image.svelte';
 	import Chip from '$lib/Components/Chip/Chip.svelte';
+	import Navbar from '$lib/Components/Navbar/Navbar.svelte';
+	import MenuButton from '$lib/Components/MenuButton/MenuButton.svelte';
 </script>
 
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<section>
-	<Title level={2} className="pl-8">Buttons</Title>
-	<Divider size={1} color={'var(--color-container)'} />
-	<div>
-		<Button colors={'primary'} variant={'shadows'} className=""><p>Button</p></Button>
-		<Button colors={'secondary'} variant={'shadows'} className=""><p>Button</p></Button>
-		<Button colors={'tertiary'} variant={'shadows'} className=""><p>Button</p></Button>
-		<Button colors={'error'} variant={'shadows'} className=""><p>Button</p></Button>
-		<Button colors={'success'} variant={'shadows'} className=""><p>Button</p></Button>
-		<Button colors={'warning'} variant={'shadows'} className=""><p>Button</p></Button>
-		<Button colors={'info'} variant={'shadows'} className="rounded-lg"><p>Button</p></Button>
-	</div>
-	<div>
-		<Button colors={'primary'} variant={'neon'} className=""><p>Button</p></Button>
-		<Button colors={'secondary'} variant={'neon'} className=""><p>Button</p></Button>
-		<Button colors={'tertiary'} variant={'neon'} className=""><p>Button</p></Button>
-		<Button colors={'error'} variant={'neon'} className=""><p>Button</p></Button>
-		<Button colors={'success'} variant={'neon'} className=""><p>Button</p></Button>
-		<Button colors={'warning'} variant={'neon'} className=""><p>Button</p></Button>
-		<Button colors={'info'} variant={'neon'} className="rounded-lg"><p>Button</p></Button>
-	</div>
-	<div>
-		<Button colors={'primary'} variant={'solid'} className=""><p>Button</p></Button>
-		<Button colors={'secondary'} variant={'solid'} className=""><p>Button</p></Button>
-		<Button colors={'tertiary'} variant={'solid'} className=""><p>Button</p></Button>
-		<Button colors={'error'} variant={'solid'} className=""><p>Button</p></Button>
-		<Button colors={'success'} variant={'solid'} className=""><p>Button</p></Button>
-		<Button colors={'warning'} variant={'solid'} className=""><p>Button</p></Button>
-		<Button colors={'info'} variant={'solid'} className="rounded-lg"><p>Button</p></Button>
-	</div>
-	<div>
-		<Button colors={'primary'} variant={'light'} className=""><p>Button</p></Button>
-		<Button colors={'secondary'} variant={'light'} className=""><p>Button</p></Button>
-		<Button colors={'tertiary'} variant={'light'} className=""><p>Button</p></Button>
-		<Button colors={'error'} variant={'light'} className=""><p>Button</p></Button>
-		<Button colors={'success'} variant={'light'} className=""><p>Button</p></Button>
-		<Button colors={'warning'} variant={'light'} className=""><p>Button</p></Button>
-		<Button colors={'info'} variant={'light'} className="rounded-lg"><p>Button</p></Button>
-	</div>
-	<div>
-		<Button colors={'primary'} variant={'bordered'} className=""><p>Button</p></Button>
-		<Button colors={'secondary'} variant={'bordered'} className=""><p>Button</p></Button>
-		<Button colors={'tertiary'} variant={'bordered'} className=""><p>Button</p></Button>
-		<Button colors={'error'} variant={'bordered'} className=""><p>Button</p></Button>
-		<Button colors={'success'} variant={'bordered'} className=""><p>Button</p></Button>
-		<Button colors={'warning'} variant={'bordered'} className=""><p>Button</p></Button>
-		<Button colors={'info'} variant={'bordered'} className="rounded-lg"><p>Button</p></Button>
-	</div>
-	<div>
-		<Button colors={'primary'} variant={'ghost'} className=""><p>Button</p></Button>
-		<Button colors={'secondary'} variant={'ghost'} className=""><p>Button</p></Button>
-		<Button colors={'tertiary'} variant={'ghost'} className=""><p>Button</p></Button>
-		<Button colors={'error'} variant={'ghost'} className=""><p>Button</p></Button>
-		<Button colors={'success'} variant={'ghost'} className=""><p>Button</p></Button>
-		<Button colors={'warning'} variant={'ghost'} className=""><p>Button</p></Button>
-		<Button colors={'info'} variant={'ghost'} className="rounded-lg"><p>Button</p></Button>
-	</div>
-	<div>
-		<Button disabled colors={'primary'} variant={'flat'} className=""><p>Button</p></Button>
-		<Button colors={'secondary'} variant={'flat'} className=""><p>Button</p></Button>
-		<Button colors={'tertiary'} variant={'flat'} className=""><p>Button</p></Button>
-		<Button colors={'error'} variant={'flat'} className=""><p>Button</p></Button>
-		<Button colors={'success'} variant={'flat'} className=""><p>Button</p></Button>
-		<Button colors={'warning'} variant={'flat'} className=""><p>Button</p></Button>
-		<Button colors={'info'} variant={'flat'} className="rounded-lg"><p>Button</p></Button>
-	</div>
-	<div>
-		<Button colors={'primary'} variant={'faded'} className=""><p>Button</p></Button>
-		<Button colors={'secondary'} variant={'faded'} className=""><p>Button</p></Button>
-		<Button colors={'tertiary'} variant={'faded'} className=""><p>Button</p></Button>
-		<Button colors={'error'} variant={'faded'} className=""><p>Button</p></Button>
-		<Button colors={'success'} variant={'faded'} className=""><p>Button</p></Button>
-		<Button colors={'warning'} variant={'faded'} className=""><p>Button</p></Button>
-		<Button colors={'info'} variant={'faded'} className="rounded-lg"><p>Button</p></Button>
-	</div>
-</section>
-<section>
-	<Title level={2} className="pl-8">Button Groups</Title>
-	<Divider size={1} color={'var(--color-container)'} />
-	<div>
-		<ButtonGroup>
-			<Button disabled={true}>Button 1</Button>
-			<Button>Button 2</Button>
-			<Button>Button 3</Button>
-		</ButtonGroup>
-	</div>
-	<div>
-		<ButtonGroup disabled={true}>
-			<Button>Button 1</Button>
-			<Button>Button 2</Button>
-			<Button>Button 3</Button>
-		</ButtonGroup>
-	</div>
-</section>
 <section>
 	<Title level={2} className="pl-8">Avatar</Title>
 	<Divider size={1} color={'var(--color-container)'} />
@@ -359,5 +264,8 @@
 		display: flex;
 		flex-direction: row;
 		gap: 2rem;
+	}
+	.nav-item {
+		margin: 7px;
 	}
 </style>

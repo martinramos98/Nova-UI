@@ -1,16 +1,12 @@
 <script lang="ts">
 	import { ElementAnimation } from '$lib/Animations/Animation.js';
-  import DropDownItem from '../Dropdown/DropDownItem/DropDownItem.svelte';
-  export let textButton: string = '';
-  export let as:'dropdown' | 'contextMenu'
-  export let offset = 15;
-  export let triggerAction: 'hover' | 'click' = 'hover'
-  export let classNameButton = '';
-	export let classNameCotentContainer = '';
+	export let offset = 15;
+	export let classNameContainer = '';
 	export let position: 'right' | 'left' | 'bottom' | 'top' = 'right';
+	export let openOnHover = true;
+	export let open = false;
 	// let content: HTMLElement;
 	let render = false;
-	let open = false;
 
 	let elementAnimation: ElementAnimation;
 
@@ -24,7 +20,12 @@
 		open = false;
 		elementAnimation.reverse();
 	}
-
+	function setHover(node: HTMLElement) {
+		if (openOnHover) {
+			node.addEventListener('mouseenter', mouseEnter);
+			node.addEventListener('mouseleave', mouseLeave);
+		}
+	}
 	function setAnimation(node: HTMLElement) {
 		elementAnimation = new ElementAnimation(node, {
 			animations: {
@@ -47,62 +48,62 @@
 		const selfRects = node.getBoundingClientRect();
 		if (position === 'right') {
 			const top = '0px';
-			console.log(selfRects.width, -((selfRects?.width ?? 0) + offset));
-			const right = `${-(selfRects?.width ?? 0) - offset}px`;
-			node.style.top = top;
-			node.style.right = right;
+			// console.log(selfRects.width, -((selfRects?.width ?? 0) + offset));
+			const right = `${offset}px`;
+			node.style.top = '0';
+			node.style.right = `-${node.offsetWidth + offset}px`;
+			node.style.paddingTop = top;
+			node.style.paddingLeft = right;
 			return;
 		}
 		if (position === 'left') {
 			const top = '0px';
 			const left = `${-(selfRects?.width ?? 0) - offset}px`;
-			node.style.top = top;
-			node.style.left = left;
+			node.style.paddingTop = top;
+			node.style.paddingLeft = left;
 			return;
 		}
 		if (position === 'top') {
 			const top = `${-(selfRects?.height ?? 0) - offset}px`;
 			const left = '0px';
-			node.style.top = top;
-			node.style.left = left;
+			node.style.paddingTop = top;
+			node.style.paddingLeft = left;
 			return;
 		}
 		if (position === 'bottom') {
 			const bottom = `${-(selfRects?.height ?? 0) - offset}px`;
 			const left = '0px';
-			node.style.bottom = bottom;
-			node.style.left = left;
+			node.style.paddingBottom = bottom;
+			node.style.paddingLeft = left;
 			return;
 		}
 	}
 </script>
 
-<div on:mouseenter={mouseEnter} on:mouseleave={mouseLeave} class="ui-{as}-group">
+<div use:setHover class="ui-subsection-group">
 	{#if render}
-		<div
-			use:setPosition
-			use:setAnimation
-			class="ui-{as}-group-content {classNameCotentContainer}"
-		>
-			<slot />
+		<div class="ui-floating-container" use:setPosition use:setAnimation>
+			<div class="ui-subsection-group-content {classNameContainer}">
+				<slot />
+			</div>
 		</div>
 	{/if}
-	<DropDownItem className={classNameButton}>
-		<slot name="trigger">
-			{textButton}
-		</slot>
-	</DropDownItem>
+	<slot name="trigger" />
 </div>
 
 <style>
 	@layer nova {
-		.ui-dropdown-group {
+		.ui-subsection-group {
 			position: relative;
-			background-color: inherit;
 		}
-		.ui-dropdown-group-content {
+		.ui-floating-container {
 			position: absolute;
+			background-color: transparent;
+			width: fit-content;
+		}
+		.ui-subsection-group-content {
 			background-color: inherit;
+			background-color: var(--color-container);
 			border-radius: 12px;
 			padding: 10px 10px 10px 0px;
 			padding-inline-start: 10px;

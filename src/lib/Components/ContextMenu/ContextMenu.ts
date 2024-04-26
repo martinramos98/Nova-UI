@@ -18,8 +18,12 @@ export function asContextMenuContainer(node: HTMLElement) {
 	node.classList.add('relative');
 	const context = getContext<ContextMenuContext>('contexMenu-context');
 	node.addEventListener('contextmenu', (ev) => {
+
 		ev.preventDefault();
 		ev.stopImmediatePropagation();
+		if((ev.target as HTMLElement).closest('.ui-context-menu')){
+			return
+		}
 		if (ev.button === 2) {
 			context.openContextMenu(ev);
 			window.addEventListener('click', handleWindowEventOnOpenMenu);

@@ -10,7 +10,6 @@
 	export let customButton: undefined | Snippet = undefined;
 	let containerElement: HTMLElement;
 	let width: number;
-
 	function onMouseUp(ev: MouseEvent) {
 		window.removeEventListener('pointermove', onPointerMove);
 		window.removeEventListener('mouseup', onMouseUp);

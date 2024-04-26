@@ -1,20 +1,28 @@
-<svelte:options runes={true} ></svelte:options>
+<svelte:options runes={true} />
 
 <script lang="ts">
-	import type { Snippet } from "svelte";
+	import type { Snippet } from 'svelte';
+	import FloatingSubsection from '../FloatingSubsection/FloatingSubsection.svelte';
 
-  interface ContextMenuSubsection{
-    open?:boolean;
-    children?:Snippet
-  }
-  const { open,children }: ContextMenuSubsection = $props()
+	interface ContextMenuSubsection {
+		open?: boolean;
+		children: Snippet;
+		triggerContent: Snippet;
+		offset?: number;
+		classNameContainer?: string;
+	}
+	const {
+		open,
+		children,
+		classNameContainer = '',
+		offset = 0,
+		triggerContent
+	}: ContextMenuSubsection = $props();
 </script>
 
-<div class="ui-context-menu-subsection">
-  <div class="ui-context-menu-subsection-content">
-    {#if children}
-    {@render children()}    
-  {/if}
-
-  </div>
-</div>
+<FloatingSubsection {offset} {classNameContainer}>
+	{@render children()}
+	<svelte:fragment slot="trigger">
+		{@render triggerContent()}
+	</svelte:fragment>
+</FloatingSubsection>

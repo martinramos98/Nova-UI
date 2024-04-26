@@ -1,10 +1,11 @@
 <script>
+	import Button from '$lib/Components/Button/Button.svelte';
 	import {
 		asContextMenuContainer,
 		provideContextMenu
 	} from '$lib/Components/ContextMenu/ContextMenu';
 	import ContextMenu from '$lib/Components/ContextMenu/ContextMenu.svelte';
-	import DropDownGroup from '$lib/Components/Dropdown/DropDownGroup/DropDownGroup.svelte';
+	import ContextMenuSection from '$lib/Components/ContextMenu/ContextMenuSection.svelte';
 	provideContextMenu();
 </script>
 
@@ -12,9 +13,17 @@
 	<section use:asContextMenuContainer>
 		<ContextMenu className="bg-slate-900 p-2 rounded-lg">
 			<p>Hola Mundo From Context Menu!</p>
-			<DropDownGroup textButton='SubMenu'>
-				<p>Submenu</p>
-			</DropDownGroup>
+			<ContextMenuSection offset={15} classNameContainer="bg-slate-900">
+				<p>Test Subsection</p>
+				{#snippet triggerContent()}
+					<Button
+						variant="light"
+						className="w-full px-2 text-start"
+						withClickEffect={false}
+						colors="primary">Test</Button
+					>
+				{/snippet}
+			</ContextMenuSection>
 		</ContextMenu>
 	</section>
 </main>

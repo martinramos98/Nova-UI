@@ -26,6 +26,9 @@
 			classNameCotentContainer="w-[200px] shadow-md"
 			textButton="Subsection"
 		>
+			{#snippet triggerContent()}
+				<span>Open subsection</span>
+			{/snippet}
 			<p class="font-bold text-center my-2">Subsection 1</p>
 			<DropDownGroup textButton="Subsection 2">
 				<p class="font-bold my-2 italic">Subsub section</p>
