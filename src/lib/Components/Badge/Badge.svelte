@@ -3,15 +3,20 @@
 	// FIXME: fix position of badges depending badge's width and heighy
 	export let hideBadge: boolean = false;
 	export let contentBadge: string = '';
-	export let positionBadge: 'topleft' | 'topright' | 'bottomleft' | 'bottomright' = 'bottomright';
+	export let positionBadge: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' =
+		'bottom-right';
 	export let className = '';
-	export let size = 'md';
+	export let size = 3;
 	export let radius = 'full';
 	export let variant = '';
 	export let colors = '';
-	function actionPaddingHandler(node: HTMLElement) {
+	let badgeEl: HTMLElement;
+	let badgeSubEl: HTMLElement;
+
+	function actionPaddingHandler() {
+		const node = badgeSubEl;
 		let value;
-		if (node.innerText) {
+		if (node && node.innerText) {
 			if (node.innerText?.length <= 2) {
 				value = 'px-1';
 			} else if (node.innerText?.length >= 3) {
@@ -20,18 +25,29 @@
 		}
 		if (value) {
 			node.classList.add(value);
-			// node.classList.add('min-w-' + sizes[size]);
-			// node.classList.add('min-h-' + sizes[size]);
 		}
 	}
+	function setBadgePosition() {
+		const node = badgeEl;
+		if (node) {
+			// if (colors === 'error') {
+			// 	debugger;
+			// }
+			const [vert, hor] = positionBadge.split('-');
+			node.style[vert as 'top' | 'bottom'] = `-${node.offsetHeight / 2}px`;
+			node.style[hor as 'left' | 'right'] = `-${node.offsetWidth / 2}px`;
+			node.style.visibility = 'visible';
+		}
+	}
+	$: contentBadge, badgeEl, setBadgePosition(), actionPaddingHandler();
 </script>
 
 <div class="ui-badge-container">
 	<slot />
-	<div class="{positionBadge} rounded-{radius}">
+	<div style="visibility:hidden" class="rounded-{radius}" bind:this={badgeEl}>
 		<div
-			use:actionPaddingHandler
-			class="ui-badge {colors !== '' ? 'ui-color-' + colors : ''} {variant !== ''
+			bind:this={badgeSubEl}
+			class="ui-badge badge-size-{size} {colors !== '' ? 'ui-color-' + colors : ''} {variant !== ''
 				? 'ui-variant-' + variant
 				: ''} rounded-{radius} {className} sizes-{size}"
 		>
@@ -46,17 +62,18 @@
 </div>
 
 <style>
+	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		.ui-badge-container {
 			position: relative;
 			height: fit-content;
+			width: fit-content;
 			& > div {
 				background-color: var(--color-surface);
 				position: absolute;
 			}
 		}
 		.ui-badge {
-			line-height: var(--line-height-5);
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -77,37 +94,57 @@
 			right: -10px;
 		}
 		.bottomleft {
-			bottom: 0.5rem;
+			bottom: -20%;
 			left: -10px;
 		}
 		.bottomright {
-			bottom: 0;
-			right: -10px;
+			bottom: -15%;
+			right: -5px;
 		}
-		.sizes-xs {
-			min-width: 1rem;
-			min-height: 1rem;
-			font-size: var(--font-size-xs);
+		.badge-size-1 {
+			font-size: xx-small;
+			min-width: var(--spacing-3);
+			min-height: var(--spacing-3);
 		}
-		.sizes-sm {
-			min-width: 1.2rem;
-			min-height: 1.2rem;
-			font-size: var(--font-size-sm);
+		.badge-size-2 {
+			font-size: x-small;
+			min-width: var(--spacing-4);
+			min-height: var(--spacing-4);
 		}
-		.sizes-md {
-			min-width: 1.5rem;
-			min-height: 1.5rem;
-			font-size: var(--font-size-base);
+		.badge-size-3 {
+			min-width: var(--spacing-5);
+			min-height: var(--spacing-5);
+			font-size: smaller;
 		}
-		.sizes-lg {
-			min-width: 1.8rem;
-			min-height: 1.8rem;
-			font-size: var(--font-size-lg);
+		.badge-size-4 {
+			font-size: small;
+			min-width: var(--spacing-6);
+			min-height: var(--spacing-6);
 		}
-		.sizes-xl {
-			min-width: 2rem;
-			min-height: 2rem;
-			font-size: var(--font-size-xl);
+		.badge-size-5 {
+			font-size: medium;
+			min-width: var(--spacing-7);
+			min-height: var(--spacing-7);
+		}
+		.badge-size-6 {
+			font-size: large;
+			min-width: var(--spacing-8);
+			min-height: var(--spacing-8);
+		}
+		.badge-size-7 {
+			font-size: larger;
+			min-width: var(--spacing-9);
+			min-height: var(--spacing-9);
+		}
+		.badge-size-8 {
+			font-size: x-large;
+			min-width: var(--spacing-10);
+			min-height: var(--spacing-10);
+		}
+		.badge-size-9 {
+			min-width: var(--spacing-11);
+			min-height: var(--spacing-11);
+			font-size: xx-large;
 		}
 	}
 </style>

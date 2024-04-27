@@ -333,7 +333,7 @@
 	.ui-variant-faded {
 		border: solid 2px var(--color-surface-highest);
 		background: var(--color-surface-hight);
-		padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
+		/* padding: calc(0.25rem - 2px) calc(1.25rem - 2px); */
 		color: var(--color-container);
 		border-radius: 8px;
 		&.ui-button {
@@ -362,7 +362,7 @@
 		border: 2px solid var(--color-border);
 		color: var(--color-container);
 		background: transparent;
-		padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
+		/* padding: calc(0.25rem - 2px) calc(1.25rem - 2px); */
 		border-radius: 7px;
 		transition:
 			background 0.25s ease,

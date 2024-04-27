@@ -41,6 +41,12 @@
 			padding: 0.25rem 1.25rem;
 			position: relative;
 			cursor: pointer;
+			&.ui-variant-faded {
+				padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
+			}
+			&.ui-variant-ghost {
+				padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
+			}
 			&:active {
 				scale: 98%;
 			}

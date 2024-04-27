@@ -8,6 +8,7 @@
 	import Ring180 from '../Icons/IconsPath/Loaders/Rings/Ring180.svelte';
 	import Ring90 from '../Icons/IconsPath/Loaders/Rings/Ring90.svelte';
 	import { fade } from 'svelte/transition';
+	// TODO: Agregar sizes
 	export let type: 'spinner' | 'dots' = 'spinner';
 	export let loaderVariant = 'ringsResize';
 	export let label = '';

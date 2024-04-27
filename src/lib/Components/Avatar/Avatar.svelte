@@ -26,7 +26,7 @@
 		<img src={avatarSrc} alt={'Avatar Image ' + avatarName} />
 	{/if}
 	{#if !avatarSrc && FirstLettersOfName !== ''}
-		<span>{FirstLettersOfName}</span>
+		{FirstLettersOfName}
 	{/if}
 	{#if !avatarSrc && FirstLettersOfName === ''}
 		<Icon
@@ -38,6 +38,7 @@
 </div>
 
 <style>
+	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		.ui-avatar {
 			display: inline-block;

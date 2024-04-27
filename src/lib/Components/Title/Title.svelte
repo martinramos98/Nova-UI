@@ -8,6 +8,7 @@
 </svelte:element>
 
 <style>
+	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		h1.ui-title {
 			font-size: 2.8rem;

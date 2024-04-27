@@ -2,6 +2,7 @@
 	import { afterUpdate } from 'svelte';
 	import type { Action } from 'svelte/action';
 	import Avatar from '../Avatar/Avatar.svelte';
+	// TODO: Cambiar por element Animation
 	export let maxAvatarsToShow = 2;
 	export let collapseOnClick = true;
 	export let collapse = false;
@@ -9,7 +10,6 @@
 	let hiddenGroupRef: Element;
 	let outOfRangeAvatars = 0;
 	let defaultWidthHidden = '';
-	// IDEA: En la configuracion de la lib, se puede modificar las opciones de los componentes, variants, colors, etc. Ademas tambien se tendra diferentes animaciones presseteadas y el usuario podra crear las propias tanto con css como
 	const action: Action<HTMLElement, { maxAvatarsToShow: number; collapse: boolean }> = (
 		node,
 		actionArgs
@@ -94,102 +94,14 @@
 			disabled={!collapseOnClick}
 			on:click={clickExpand}
 		>
-			<Avatar avatarBordered avatarName={`+ ${outOfRangeAvatars}`}></Avatar>
+			<Avatar
+				avatarBordered
+				className={'bg-[var(--color-container)]'}
+				avatarName={`+ ${outOfRangeAvatars}`}
+			></Avatar>
 		</button>
 	{/if}
 </div>
 
 <style>
-	@layer nova {
-		.ui-avatar-group {
-			& .ui-avatars-group-container > .ui-avatar {
-				margin-inline-start: -20px;
-				z-index: 10;
-				&:hover {
-					translate: -20px 0;
-				}
-			}
-		}
-
-		.ui-avatars-hidden-container {
-			display: flex;
-			z-index: 10;
-			overflow: hidden;
-			& > .ui-avatar {
-				margin-inline-start: -20px;
-				z-index: 10;
-				&:hover {
-					translate: -20px 0;
-				}
-			}
-
-			&[data-collapse='true'] {
-				/* overflow: hidden; */
-				& > .ui-avatar {
-					transition:
-						translate 0.3s ease 0.1s,
-						margin-inline-start 0.1s ease 0.1s,
-						border-color 0.2s ease 0.4s;
-				}
-			}
-			&[data-collapse='false'] {
-				/* overflow: hidden; */
-				& > .ui-avatar {
-					border-color: transparent;
-					margin-inline-start: 0px;
-					transition:
-						translate 0.3s ease 0.1s,
-						margin-inline-start 0.1s ease 0.4s,
-						border-color 0.2s ease 0.1s;
-				}
-			}
-		}
-		.ui-avatar-group {
-			display: flex;
-			align-items: center;
-			width: max-content;
-			flex-direction: row;
-			transition: opacity 0.15s ease;
-			& > .ui-avatars-group-container {
-				display: flex;
-				z-index: 9;
-				/* :global(& > .ui-avatar) {
-				margin-inline-start: -10px;
-			} */
-			}
-			& > .ui-avatars-hidden-container {
-				display: flex;
-				z-index: 10;
-				transition: max-width 0.4s ease;
-				&[data-collapse='false'] {
-					transition: max-width 0.3s ease 0.3s;
-				}
-				/* :global(& > .ui-avatar) {
-				margin-inline-start: -15px;
-				overflow: hidden;
-			} */
-			}
-			& > button {
-				cursor: pointer;
-				margin-inline-start: -10px;
-				z-index: 10;
-				transition: translate 0.2s ease 0.1s;
-				&:hover:not([data-collapse='true']) {
-					/* translate: -20px; */
-				}
-				&[data-collapse='true'] {
-					translate: -20px 20px;
-					scale: 0.5;
-					transition:
-						translate 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.32s,
-						scale 0.3s ease 0.32s;
-				}
-				&[data-collapse='false'] {
-					transition:
-						translate 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-						scale 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-				}
-			}
-		}
-	}
 </style>

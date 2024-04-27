@@ -2,87 +2,17 @@
 	import Button from '$lib/Components/Button/Button.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
 	import Divider from '$lib/Components/Divider/Divider.svelte';
-	import ButtonGroup from '$lib/Components/ButtonGroup/ButtonGroup.svelte';
 	import Avatar from '$lib/Components/Avatar/Avatar.svelte';
-	import AvatarGroup from '$lib/Components/AvatarGroup/AvatarGroup.svelte';
 	import Badge from '$lib/Components/Badge/Badge.svelte';
 	import Card from '$lib/Components/Card/Card.svelte';
 	import Image from '$lib/Components/Image/Image.svelte';
 	import Chip from '$lib/Components/Chip/Chip.svelte';
-	import Navbar from '$lib/Components/Navbar/Navbar.svelte';
-	import MenuButton from '$lib/Components/MenuButton/MenuButton.svelte';
 </script>
 
-<section>
-	<Title level={2} className="pl-8">Avatar</Title>
-	<Divider size={1} color={'var(--color-container)'} />
-	<div>
-		<Avatar
-			avatarBordered
-			colors={'error'}
-			avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'}
-		></Avatar>
-		<Avatar
-			avatarBordered
-			colors={'tertiary'}
-			avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-porter.7e18061d.png'}
-		></Avatar>
-		<Avatar
-			avatarBordered
-			colors={'tertiary'}
-			className={'rounded-xl '}
-			avatarSrc={'https://play.nintendo.com/images/profile-kirby-kirby.7bf2a8f2.png'}
-		></Avatar>
-		<Avatar
-			avatarBordered
-			colors={'info'}
-			disabled
-			className={'rounded-md '}
-			avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
-		></Avatar>
-	</div>
-</section>
-<section>
-	<Title level={2} className="pl-8">Avatar Groups</Title>
-	<Divider size={1} color={'var(--color-container)'} />
-	<div class="avatar-group">
-		<AvatarGroup maxAvatarsToShow={3}>
-			<Avatar
-				avatarBordered
-				colors={'success'}
-				avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'}
-			></Avatar>
-			<Avatar
-				avatarBordered
-				colors={'warning'}
-				avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-porter.7e18061d.png'}
-			></Avatar>
-			<Avatar
-				avatarBordered
-				colors={'warning'}
-				avatarSrc={'https://play.nintendo.com/images/profile-kirby-kirby.7bf2a8f2.png'}
-			></Avatar>
-			<Avatar
-				avatarBordered
-				colors={'info'}
-				avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
-			></Avatar>
-		</AvatarGroup>
-	</div>
-</section>
-<section>
-	<Title level={2} className="pl-8">Badge</Title>
-	<Divider size={1} color={'var(--color-container)'} />
-	<div>
-		<Badge positionBadge={'bottomleft'} size="xs" contentBadge="12" colors="info" variant="flat">
-			<Button className="my-2 rounded-md">Holi</Button>
-		</Badge>
-		<Badge contentBadge="12" colors="error" size="xs" variant="neon">
-			<Avatar avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
-			></Avatar>
-		</Badge>
-	</div>
-</section>
+<svelte:head>
+	<title>Nova UI</title>
+	<meta name="description" content="Nova UI is a Component UI library for Svelte JS." />
+</svelte:head>
 <section>
 	<Title level={2} className="pl-8">Cards</Title>
 	<Divider size={1} color={'var(--color-container)'} />
