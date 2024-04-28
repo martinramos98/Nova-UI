@@ -20,11 +20,30 @@
 			</header>
 			<section>
 				<div>
-					<Card>This is a Simple Card</Card>
+					<Card variant="solid" color="container" className="p-2">This is a Simple Card</Card>
 				</div>
 			</section>
 		</article>
-		<article>
+		<article id="contents">
+			<header>
+				<Title level={2}>Contents</Title>
+				<p>
+					Card are constrained with header, body, footer and default content. The default content is
+					rendered with the body content
+				</p>
+			</header>
+			<section>
+				<div>
+					<Card>
+						{#snippet header()}{/snippet}
+					</Card>
+					<Card></Card>
+					<Card></Card>
+					<Card></Card>
+				</div>
+			</section>
+		</article>
+		<article id="layouts">
 			<header>
 				<Title level={2}>Layout</Title>
 			</header>
@@ -32,7 +51,8 @@
 				<div></div>
 			</section>
 		</article>
-		<article>
+
+		<article id="variants">
 			<header>
 				<Title level={2}>Variants</Title>
 			</header>
@@ -40,7 +60,7 @@
 				<div></div>
 			</section>
 		</article>
-		<article>
+		<article class="cases">
 			<header>
 				<Title level={2}>Use of Cases</Title>
 			</header>
