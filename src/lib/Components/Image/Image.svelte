@@ -6,7 +6,6 @@
 	export let height: string | undefined = undefined;
 	export let src: string = '';
 	export let alt: string;
-	export let radius: any = 'sm';
 	export let className: string = '';
 	export let captionInside: boolean = false;
 	export let classNameContainer: string = '';
@@ -15,12 +14,14 @@
 	let ref: HTMLImageElement;
 	let errorOnLoad = false;
 	function onError(ev: any) {
+		console.log('error');
 		errorOnLoad = true;
 		loading = false;
 		ref.style.opacity = '0';
 	}
 	function onLoad(ev: any) {
 		loading = false;
+		console.log(ev);
 		ref.style.opacity = '1';
 	}
 	onMount(() => {
@@ -36,17 +37,28 @@
 			ref.style.opacity = '0';
 		}
 	});
+	function aspectRatio() {
+		const [f, s] = aspect.split(':');
+		console.log(f, s);
+		if (!s) {
+			return aspect;
+		} else {
+			return `${f} / ${s}`;
+		}
+	}
 </script>
 
 <figure
-	style="{height ? `height:${height};` : ''}{width ? `width:${width};` : ''}"
-	class="ui-image-container overflow-hidden relative {classNameContainer} rounded-{radius} "
+	style="{height ? `height:${height};` : ''}{width
+		? `width:${width};`
+		: ''} aspect-ratio:{aspectRatio()};"
+	class="ui-image-container relative {classNameContainer} "
 >
 	{#if loading}
 		<slot name="custom-loader">
 			<div
 				transition:fade
-				class="w-full h-full absolute flex place-content-center place-items-center info faded z-50"
+				class="w-full h-full absolute flex place-content-center place-items-center info faded z-10"
 			>
 				Loading
 			</div>
@@ -56,7 +68,7 @@
 		<slot name="custom-error">
 			<div
 				transition:fade
-				class="w-full h-full absolute flex place-content-center place-items-center error flat z-50"
+				class="w-full h-full absolute flex place-content-center place-items-center ui-color-error ui-variant-flat z-10"
 			>
 				Error On Load
 			</div>
@@ -64,10 +76,15 @@
 	{/if}
 	<img
 		bind:this={ref}
-		style="{height ? `height:${height};` : ''}{width ? `width:${width};` : ''}"
+		style="{height ? `height:${height};` : ''}{width
+			? `width:${width};`
+			: ''} aspect-ratio:{aspectRatio()};"
 		on:load={onLoad}
-		class="ui-image aspect-video {className}"
+		class="ui-image {className}"
 		on:error={onError}
+		on:loadeddata={(ev) => {
+			console.log(ev);
+		}}
 		{alt}
 		{src}
 	/>
@@ -79,12 +96,15 @@
 </figure>
 
 <style>
+	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		.ui-image-container {
-			height: fit-content;
-			width: fit-content;
+			height: 100%;
+			width: 100%;
 			background-color: var(--color-container);
+			overflow: hidden;
 			position: relative;
+			border-radius: var(--radius-lg);
 			& figcaption.captionInside {
 				position: absolute;
 				bottom: 0;
@@ -103,6 +123,9 @@
 		.ui-image {
 			opacity: 0;
 			transition: opacity 0.3s ease;
+			width: 100%;
+			border-radius: var(--radius-lg);
+			height: 100%;
 		}
 	}
 </style>

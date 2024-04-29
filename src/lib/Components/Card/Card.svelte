@@ -1,10 +1,15 @@
 <script>
-	export let footerProps = { className: '' };
-	export let bodyProps = { className: '' };
-	export let headerProps = { className: '' };
+	export let footerClassname = '';
+	export let headerClassname = '';
+	export let bodyClassname = '';
 	export let variant = '';
 	export let color = '';
+
 	export let className = '';
+	/**
+	 * @type {(import('svelte').Snippet) | undefined}
+	 */
+	export let children;
 	/**
 	 * @type {(import('svelte').Snippet) | undefined}
 	 */
@@ -27,27 +32,29 @@
 		: ''} {className}"
 >
 	{#if header}
-		<div class="ui-card-header {headerProps.className}">
+		<div class="ui-card-header {headerClassname}">
 			{@render header()}
 		</div>
 	{/if}
 	{#if body}
-		<div class="ui-card-body{bodyProps.className}">
+		<div class="ui-card-body {bodyClassname}">
 			{@render body()}
 		</div>
 	{/if}
-	<slot />
+	{#if children}
+		{@render children()}
+	{/if}
 	{#if footer}
-		<div class="ui-card-footer {footerProps.className}">
+		<div class="ui-card-footer {footerClassname}">
 			{@render footer()}
 		</div>
 	{/if}
 
-	{#if $$slots['card-backface']}
+	<!-- {#if $$slots['card-backface']}
 		<slot name="card-backface">
 			<slot />
 		</slot>
-	{/if}
+	{/if} -->
 </div>
 
 <style>
@@ -62,6 +69,17 @@
 			overflow: hidden;
 			transition: filter 0.2s ease;
 			height: fit-content;
+		}
+		:global(.ui-card) {
+			& ui-card-header {
+				grid-area: header;
+			}
+			& ui-body-header {
+				grid-area: body;
+			}
+			& ui-footer-header {
+				grid-area: footer;
+			}
 		}
 	}
 </style>

@@ -533,6 +533,17 @@
 }
 /* TODO: Ver por que no toma el componete a los childs*/
 @layer nova {
+	.ui-card {
+		& .ui-card-header {
+			grid-area: header;
+		}
+		& .ui-card-body {
+			grid-area: body;
+		}
+		& .ui-card-footer {
+			grid-area: footer;
+		}
+	}
 	.ui-button-group {
 		display: flex;
 		flex-direction: row;

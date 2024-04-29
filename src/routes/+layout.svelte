@@ -21,10 +21,11 @@
 				}
 			}
 		}}
-		let:toggleMenu
 	>
-		<span class="font-bold"><a href="/">Nova UI</a></span>
-		<MenuButton onClickMenu={toggleMenu} />
+		{#snippet children(toggleMenu)}
+			<span class="font-bold"><a href="/">Nova UI</a></span>
+			<MenuButton onClickMenu={toggleMenu} />
+		{/snippet}
 		{#snippet menuContent()}
 			<Accordion multiopen variant="" className={'p-4'}>
 				<AccordionSection>
@@ -44,6 +45,9 @@
 						</li>
 						<li class="ui-variant-light ui-color-primary">
 							<a href="/components/card">Card</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/image">Image</a>
 						</li>
 					</ul>
 				</AccordionSection>
@@ -82,13 +86,14 @@
 		& li {
 			width: 100%;
 			transition: all 0.2s ease;
-			padding: var(--spacing-1) var(--spacing-2);
 			& a {
 				width: 100%;
 				display: block;
+				padding: var(--spacing-1) var(--spacing-2);
 			}
 		}
 	}
+
 	:root {
 		scroll-behavior: smooth;
 	}

@@ -8,7 +8,12 @@
 	export let variant: 'menu' | 'default' | 'none' = 'default';
 	export let radius = '';
 	export let useContainerQuery = true;
+	export let children: Snippet<[any]> | undefined = undefined;
+	export let startContent: Snippet;
+	export let centerContent: Snippet;
+	export let endContent: Snippet;
 	export let menuContent: Snippet<[any]> | undefined = undefined;
+
 	export let menuProps = {
 		drawerProps: {}
 	};
@@ -32,18 +37,24 @@
 		: ''} {className}"
 >
 	{#if variant === 'none'}
-		<slot />
+		{#if children}
+			{@render children(toggleMenu)}
+		{/if}
 	{/if}
 	{#if variant === 'menu'}
-		<slot {toggleMenu}>
+		{#if children}
+			{@render children(toggleMenu)}
+		{:else}
 			<MenuButton onClickMenu={toggleMenu} />
-		</slot>
+		{/if}
 	{/if}
 	{#if variant === 'default'}
-		<slot name="start-content" />
-		<slot name="center-content" />
-		<slot />
-		<slot name="end-content" />
+		{@render startContent()}
+		{@render centerContent()}
+		{#if children}
+			{@render children(toggleMenu)}
+		{/if}
+		{@render endContent()}
 	{/if}
 	{#if variant === 'menu'}
 		<Drawer
