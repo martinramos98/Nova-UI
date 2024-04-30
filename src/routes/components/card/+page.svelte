@@ -424,7 +424,7 @@
 				align-self: center;
 				display: flex;
 				flex-wrap: wrap;
-				width: fit-content;
+				width: 100%;
 				padding: var(--spacing-4);
 				gap: var(--spacing-8);
 				flex-direction: row;

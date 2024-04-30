@@ -4,6 +4,7 @@
 	export let aspect: '1:1' | '16:9' | '3:4' | 'auto' = 'auto';
 	export let width: string | undefined = undefined;
 	export let height: string | undefined = undefined;
+	export let reloadOnMount = true;
 	export let src: string = '';
 	export let alt: string;
 	export let className: string = '';
@@ -25,16 +26,22 @@
 		ref.style.opacity = '1';
 	}
 	onMount(() => {
-		if (ref.complete) {
-			loading = false;
-			ref.style.opacity = '1';
-			if (!src || src === '') {
-				errorOnLoad = true;
+		if (ref.complete && reloadOnMount) {
+			ref.src = ref.src;
+			// loading = false;
+			// ref.style.opacity = '1';
+			// if (!src || src === '') {
+			// 	errorOnLoad = true;
+			// 	ref.style.opacity = '0';
+			// }
+		} else {
+			if (ref.complete) {
+				loading = false;
+				ref.style.opacity = '1';
+			} else {
+				loading = true;
 				ref.style.opacity = '0';
 			}
-		} else {
-			loading = true;
-			ref.style.opacity = '0';
 		}
 	});
 	function aspectRatio() {
@@ -70,7 +77,7 @@
 				transition:fade
 				class="w-full h-full absolute flex place-content-center place-items-center ui-color-error ui-variant-flat z-10"
 			>
-				Error On Load
+				Error on load
 			</div>
 		</slot>
 	{/if}
@@ -99,8 +106,6 @@
 	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		.ui-image-container {
-			height: 100%;
-			width: 100%;
 			background-color: var(--color-container);
 			overflow: hidden;
 			position: relative;
@@ -109,11 +114,13 @@
 				position: absolute;
 				bottom: 0;
 				left: 0;
+				color: var(--color-text);
 				width: 100%;
 			}
 			&:has(figcaption:not(figcaption.captionInside)) {
 				display: flex;
 				flex-direction: column;
+				color: var(--color-text);
 				justify-content: flex-end;
 			}
 			& figcaption {
@@ -124,7 +131,7 @@
 			opacity: 0;
 			transition: opacity 0.3s ease;
 			width: 100%;
-			border-radius: var(--radius-lg);
+			/* border-radius: var(--radius-lg); */
 			height: 100%;
 		}
 	}

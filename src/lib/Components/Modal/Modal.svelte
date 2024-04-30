@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { SequencedAnimation } from '$lib/Animations/SequencedAnimation.js';
 	import type { ElementAnimationParams } from '$lib/Animations/Animation.js';
+	import { ParallelAnimation } from '$lib/Animations/ParallelAnimation.js';
 	export let open = false;
 	export let size: any = 'md';
 	export let radius: any = 'md';
@@ -39,28 +39,34 @@
 			}
 		});
 	}
-	let animationModal: SequencedAnimation;
+	let animationModal: ParallelAnimation;
 	function openEffect() {
 		if (open) {
 			render = true;
 		}
 	}
+	// {
+	// 			alternate: false,
+	// 			iterations: 1,
+	// 			onEndSequence() {
+	// 				if (!open) {
+	// 					render = false;
+	// 				}
+	// 			}
+	// 		}
+
 	function animationsOpen(node: HTMLElement) {
 		const backdropElement = node.lastElementChild as HTMLElement;
 		const contentElement = node.firstElementChild as HTMLElement;
 
-		animationModal = new SequencedAnimation(
+		animationModal = new ParallelAnimation(
 			[
-				{ element: backdropElement, animationParams: animationConfig },
-				{ element: contentElement, animationParams: animationConfig }
+				{ element: backdropElement, animationOptions: animationConfig },
+				{ element: contentElement, animationOptions: animationConfig }
 			],
-			{
-				alternate: false,
-				iterations: 1,
-				onEndSequence() {
-					if (!open) {
-						render = false;
-					}
+			() => {
+				if (!open) {
+					render = false;
 				}
 			}
 		);

@@ -1,3 +1,4 @@
+// FIXME: On commit style check if element is rendered on document or something.
 import { ElementAnimation, type BasicAnimation, type ElementAnimationParams } from './Animation.js';
 type ParallelElementParam = {
 	element: HTMLElement | string;
@@ -10,7 +11,15 @@ export class ParallelAnimation implements BasicAnimation {
 	private iterations = 1;
 	private alternate = false;
 	private onEndCallback: undefined | ((anim: ParallelAnimation) => void);
-	constructor(animationsParams: ParallelElementParam[]) {
+	constructor(
+		animationsParams: ParallelElementParam[],
+		endCallback?: (anim: ParallelAnimation) => void,
+		iterations?: number,
+		alternate?: boolean
+	) {
+		this.onEndCallback = endCallback;
+		this.iterations = iterations ?? 1;
+		this.alternate = alternate ?? false;
 		animationsParams.forEach((elementAnimationParam) => {
 			if (typeof elementAnimationParam.element === 'string') {
 				const elements = document.querySelectorAll(elementAnimationParam.element);
@@ -24,18 +33,19 @@ export class ParallelAnimation implements BasicAnimation {
 					new ElementAnimation(elementAnimationParam.element, {
 						...elementAnimationParam.animationOptions,
 						onFinishedAnimation: () => {
-							let isFinishedAnimation = false;
+							let isFinishedAnimation = true;
 							this.elementAnimations.forEach((elAnim) => {
 								isFinishedAnimation = isFinishedAnimation && elAnim.finished;
 							});
-							// TODO: Pensar si tiene que llevar alternate, iterations, etc
 							if (isFinishedAnimation) {
 								this.currentIteration++;
 								if (this.currentIteration > this.iterations - 1) {
 									this.finished = true;
 									this.onEndCallback && this.onEndCallback(this);
 								} else {
-									this.alternate && this.currentIteration % 2 === 1 ? this.reverse() : this.playForward();
+									this.alternate && this.currentIteration % 2 === 1
+										? this.reverse()
+										: this.playForward();
 								}
 							}
 						}

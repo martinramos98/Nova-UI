@@ -142,6 +142,7 @@
 			left: 0;
 			width: 100vw;
 			height: 100vh;
+			z-index: 90;
 		}
 
 		.ui-drawer-backdrop {

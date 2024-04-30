@@ -102,7 +102,7 @@
 				<Title level={2}>Loader and Error</Title>
 				<Image
 					alt="Buenos Aires"
-					classNameContainer={'h-[300px] w-[70%]'}
+					classNameContainer={'h-[300px] w-[70%] bg-[var(--surface-low)]'}
 					aspect="auto"
 					src="https://r4.wallpaperflare.com/wallpaper/380/816/944/architecture-landmark-argentine-.jpg"
 				></Image>
@@ -116,7 +116,50 @@
 				<Title level={2}>Captions</Title>
 			</header>
 			<section>
-				<div></div>
+				<div>
+					<Image
+						alt="Salta"
+						className="object-cover"
+						classNameContainer="max-w-[500px]"
+						src="https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__1880bp/public/live_banner/Salta.jpg"
+						classNameCaption="bg-black/70 text-white py-0.5"
+						captionInside
+					>
+						<svelte:fragment slot="caption-content"
+							>Figure 1: Montañas de Colores de Salta</svelte:fragment
+						>
+					</Image>
+					<Image
+						className="object-cover"
+						classNameContainer="max-w-[500px]"
+						alt="Cataratas del Iguazu, Misiones"
+						classNameCaption="bg-black/70 text-white py-0.5"
+						captionInside
+						src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Cataratas.jpg/1200px-Cataratas.jpg"
+					>
+						<svelte:fragment slot="caption-content"
+							>Figure 2: Cataratas del Iguazu Misiones</svelte:fragment
+						>
+					</Image>
+					<Image
+						classNameContainer="max-w-[500px]"
+						classNameCaption="ui-color-primary ui-variant-solid rounded-none py-0.5 italic"
+						alt="Salta"
+						src="https://a.travel-assets.com/findyours-php/viewfinder/images/res40/80000/80287-Salta.jpg"
+					>
+						<svelte:fragment slot="caption-content">Figure 3: Salinas de Salta</svelte:fragment>
+					</Image>
+					<Image
+						classNameContainer="max-w-[500px]"
+						classNameCaption="ui-color-primary ui-variant-solid rounded-none py-0.5 italic"
+						alt="Ruinas de San Ignacio"
+						src="https://www.tangol.com/blog/Fotos/Notas/historia-de-las-ruinas-jesuiticas-de-san-ignacio_443_202107221201440.PNG"
+					>
+						<svelte:fragment slot="caption-content"
+							>Figure 4: Ruinas de San Ignacio, Misiones</svelte:fragment
+						>
+					</Image>
+				</div>
 			</section>
 		</article>
 	</main>
