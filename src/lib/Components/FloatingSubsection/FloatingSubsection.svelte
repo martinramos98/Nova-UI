@@ -2,7 +2,7 @@
 	import { ElementAnimation } from '$lib/Animations/Animation.js';
 	export let offset = 15;
 	export let classNameContainer = '';
-	export let position: 'right' | 'left' | 'bottom' | 'top' = 'right';
+	export let position: string = 'right';
 	export let openOnHover = true;
 	export let open = false;
 	// let content: HTMLElement;

@@ -15,14 +15,12 @@
 	let ref: HTMLImageElement;
 	let errorOnLoad = false;
 	function onError(ev: any) {
-		console.log('error');
 		errorOnLoad = true;
 		loading = false;
 		ref.style.opacity = '0';
 	}
 	function onLoad(ev: any) {
 		loading = false;
-		console.log(ev);
 		ref.style.opacity = '1';
 	}
 	onMount(() => {

@@ -9,12 +9,16 @@
 	let {
 		children,
 		className = '',
-		open = false,
+		open = $bindable(false),
 		offset = 0,
-		position = 'bottom'
+		position = 'bottom',
+		onClose = () => {
+			open = false;
+		}
 	}: {
 		children?: Snippet;
 		className?: string;
+		onClose?: () => void;
 		open?: boolean;
 		offset?: number;
 		position?: string;
@@ -26,6 +30,7 @@
 	let lastRelativeMousePosition = { x: 0, y: 0 };
 	let renderAnimation: ElementAnimation;
 	if (context) {
+		console.log('setting events', onOpenMenu);
 		context.openContextMenu = onOpenMenu;
 		context.closeContextMenu = onCloseMenu;
 	}
@@ -84,7 +89,7 @@
 		}
 	}
 	function onCloseMenu() {
-		open = false;
+		onClose();
 	}
 </script>
 

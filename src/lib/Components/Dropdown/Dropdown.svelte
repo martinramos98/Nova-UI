@@ -1,18 +1,22 @@
 <script lang="ts">
+	// TODO: Prop activeEffect: when is open dropdown mantains click effect styling
+	// FIXME: When click autside validate if is self too, not only if is a ui-dropdown-trigger
 	import { onMount } from 'svelte';
 	import { type Snippet } from 'svelte';
 	import Button from '../Button/Button.svelte';
 	import { ElementAnimation, type ElementAnimationParams } from '$lib/Animations/Animation.js';
 	import { setFloatingPosition, setPositionDropdown } from '$lib/utils/utils.js';
 	export let onClickTrigger: undefined | (() => void) = undefined;
-	export let trigger: Snippet | undefined = undefined;
+	export let children: Snippet<[any]> | undefined = undefined;
 	export let offset = 5;
 	export let triggerText = '';
 	export let position = 'right-start';
+	export let Trigger: Snippet | undefined = undefined;
 	let container: HTMLElement;
 	let open = false;
 	let render = false;
 	let animationDropdown: ElementAnimation;
+	let dropdownEL: HTMLElement;
 	let toggleDropdown: () => void;
 	const animationConfig: ElementAnimationParams = {
 		animations: {
@@ -52,7 +56,7 @@
 		container['toggleDropdown'] = toggleDropdown;
 	});
 	const clickOnOpenedDropdown = (ev: MouseEvent) => {
-		if (!(ev.target as Element).closest('.ui-dropdown')) {
+		if (!dropdownEL || !dropdownEL.contains(ev.target as Element)) {
 			window.removeEventListener('click', clickOnOpenedDropdown);
 			open = false;
 			animationDropdown.reverse();
@@ -60,12 +64,22 @@
 		ev.preventDefault();
 	};
 	function setDropdownContentPosition(node: HTMLElement) {
+		dropdownEL = node.closest('.ui-dropdown') as HTMLElement;
 		setFloatingPosition({ element: node, position, offset });
 	}
 </script>
 
 <div class="ui-dropdown" bind:this={container}>
-	<slot name="trigger">
+	{#if Trigger}
+		<button
+			on:click={() => {
+				toggleDropdown();
+				onClickTrigger && onClickTrigger();
+			}}
+		>
+			{@render Trigger()}
+		</button>
+	{:else}
 		<Button
 			variant="solid"
 			colors="container-hight"
@@ -81,25 +95,16 @@
 		>
 			{triggerText.toString()}
 		</Button>
-	</slot>
-	{#if trigger}
-		<button
-			on:click={() => {
-				toggleDropdown();
-				onClickTrigger && onClickTrigger();
-			}}
-		>
-			{@render trigger()}
-		</button>
 	{/if}
-
 	{#if render}
 		<div
 			use:animationOpen
 			use:setDropdownContentPosition
 			class="ui-dropdown-content ui-color-container-hight ui-variant-solid rounded-xl"
 		>
-			<slot {toggleDropdown} />
+			{#if children}
+				{@render children(toggleDropdown)}
+			{/if}
 		</div>
 	{/if}
 </div>

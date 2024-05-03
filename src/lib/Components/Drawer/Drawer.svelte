@@ -135,6 +135,7 @@
 {/if}
 
 <style>
+	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		.ui-drawer {
 			position: fixed;

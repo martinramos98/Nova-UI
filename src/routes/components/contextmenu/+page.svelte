@@ -1,45 +1,44 @@
 <script>
-	import Button from '$lib/Components/Button/Button.svelte';
-	import {
-		asContextMenuContainer,
-		provideContextMenu
-	} from '$lib/Components/ContextMenu/ContextMenu';
-	import ContextMenu from '$lib/Components/ContextMenu/ContextMenu.svelte';
-	import ContextMenuSection from '$lib/Components/ContextMenu/ContextMenuSection.svelte';
-	provideContextMenu();
+	import Title from '$lib/Components/Title/Title.svelte';
+	import BasicContextMenu from '$lib/app/components/ExampleContextMenues/BasicContextMenu.svelte';
+	import ControledContextMenu from '$lib/app/components/ExampleContextMenues/ControledContextMenu.svelte';
+	import SubsectionContextMenu from '$lib/app/components/ExampleContextMenues/SubsectionContextMenu.svelte';
 </script>
 
-<main>
-	<section use:asContextMenuContainer>
-		<ContextMenu className="bg-slate-900 p-2 rounded-lg">
-			<p>Hola Mundo From Context Menu!</p>
-			<ContextMenuSection offset={15} classNameContainer="bg-slate-900">
-				<p>Test Subsection</p>
-				{#snippet triggerContent()}
-					<Button
-						variant="light"
-						className="w-full px-2 text-start"
-						withClickEffect={false}
-						colors="primary">Test</Button
-					>
-				{/snippet}
-			</ContextMenuSection>
-		</ContextMenu>
-	</section>
-</main>
-
-<style>
-	main {
-		padding: 20px;
-		width: 100vw;
-		height: 500px;
-		display: flex;
-	}
-	section {
-		padding: 20px;
-		border-radius: 50px;
-		width: 100%;
-		height: 100%;
-		background-color: var(--color-surface-highest);
-	}
-</style>
+<div class="flex flex-row page-content">
+	<aside>
+		<span class="font-semibold">On this page</span>
+		<ul>
+			<li><a href="#tabs">Context Menu</a></li>
+			<li><a href="#types"></a></li>
+			<li><a href="#variants">Subsections</a></li>
+			<li><a href="#customs">Customs</a></li>
+		</ul>
+	</aside>
+	<main>
+		<article class="w-full">
+			<header>
+				<Title>Context Menu</Title>
+			</header>
+			<section class="w-full h-[300px]">
+				<BasicContextMenu></BasicContextMenu>
+			</section>
+		</article>
+		<article class="w-full">
+			<header>
+				<Title>Controled</Title>
+			</header>
+			<section class="w-full h-[300px]">
+				<ControledContextMenu />
+			</section>
+		</article>
+		<article>
+			<header>
+				<Title>With Subsection</Title>
+			</header>
+			<section class="w-full h-[300px]">
+				<SubsectionContextMenu></SubsectionContextMenu>
+			</section>
+		</article>
+	</main>
+</div>

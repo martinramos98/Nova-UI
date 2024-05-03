@@ -13,8 +13,11 @@
 		variant="menu"
 		menuProps={{
 			drawerProps: {
-				className: 'z-50',
+				className: 'z-50 ',
 				size: 'sm',
+				modalContent: {
+					className: 'overflow-auto'
+				},
 				backdrop: {
 					className: '',
 					type: 'blur'
@@ -27,12 +30,15 @@
 			<MenuButton onClickMenu={toggleMenu} />
 		{/snippet}
 		{#snippet menuContent()}
-			<Accordion multiopen variant="" className={'p-4'}>
+			<Accordion multiopen variant="" className={'p-4 '}>
 				<AccordionSection>
 					<span slot="header"> Components </span>
 					<ul slot="content">
 						<li class="ui-variant-light ui-color-primary">
-							<a href="/components/button">Button</a>
+							<a href="/components/accordion">Accordion</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/alert">Alert</a>
 						</li>
 						<li class="ui-variant-light ui-color-primary">
 							<a href="/components/avatar">Avatar</a>
@@ -41,13 +47,76 @@
 							<a href="/components/badge">Badge</a>
 						</li>
 						<li class="ui-variant-light ui-color-primary">
-							<a href="/components/chip">Chip</a>
+							<a href="/components/button">Button</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/callout">Callout</a>
 						</li>
 						<li class="ui-variant-light ui-color-primary">
 							<a href="/components/card">Card</a>
 						</li>
 						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/chip">Chip</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/contextmenu">Context Menu</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/drawer">Drawer</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/dropdown">Dropdown</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/icon">Icon</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
 							<a href="/components/image">Image</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/input">Input</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/link">Link</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/loader">Loader</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/modal">Modal</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/navbar">Navbar</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/popover">Popover</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/progress">Progress</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/radio">Radio</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/selection">Selection</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/slider">Slider</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/switch">Switch</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/table">Table</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/tabs">Tabs</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/toast">Toast</a>
+						</li>
+						<li class="ui-variant-light ui-color-primary">
+							<a href="/components/tooltip">Tooltip</a>
 						</li>
 					</ul>
 				</AccordionSection>

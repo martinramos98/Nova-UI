@@ -41,13 +41,7 @@
 		</RadioGroup>
 	</article>
 	<Title className="my-2" level={2}>Callouts</Title>
-	<article class="callout">
-		<Callout>Test for Callout Default</Callout>
-		<Callout variant="flat" colors="warning" type="warning">Test for Callout Warning</Callout>
-		<Callout variant="flat" colors="error" type="alert">Test for Callout Alert</Callout>
-		<Callout variant="flat" colors="info" type="info">Test for Callout Info</Callout>
-		<Callout variant="flat" colors="success" type="success">Test for Callout Success</Callout>
-	</article>
+	<article class="callout"></article>
 	<Button
 		colors="info"
 		variant={'solid'}

@@ -8,11 +8,11 @@
 </script>
 
 <div class="ui-callout {radius} ui-color-{colors} ui-variant-{variant} {className}">
-	<span>
-		<slot name="icon">
+	<slot name="icon">
+		<span>
 			<CalloutIcons {type} />
-		</slot>
-	</span>
+		</span>
+	</slot>
 	<div>
 		<slot />
 	</div>

@@ -109,6 +109,7 @@
 </div>
 
 <style>
+	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		.ui-accordion-header {
 			display: flex;

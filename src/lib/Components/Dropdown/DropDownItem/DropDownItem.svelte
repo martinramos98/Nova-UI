@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	export let shouldCloseOnClick: boolean = true;
 	export let onClick = () => {};
 	export let className = '';

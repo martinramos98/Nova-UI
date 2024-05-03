@@ -7,7 +7,7 @@
 	<aside>
 		<span class="font-semibold">On this page</span>
 		<ul>
-			<li><a href="#card">Card</a></li>
+			<li><a href="#image">Image</a></li>
 			<li><a href="#disabled">Layout</a></li>
 			<li><a href="#variants">Variants</a></li>
 			<li><a href="#group">Use Case</a></li>

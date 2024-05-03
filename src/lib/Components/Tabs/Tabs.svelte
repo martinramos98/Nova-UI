@@ -8,6 +8,7 @@
 	export let className = '';
 	export let classNameContent = '';
 	export let classNameSelectionContainer = '';
+	export let position: 'top' | 'left' | 'bottom' | 'right' | '' = '';
 	export let classNameSelector = '';
 	const selectedTabStore = writable(selectedTabKey ?? '');
 	const keys = new Map<string, HTMLElement>();
@@ -54,7 +55,12 @@
 	}
 </script>
 
-<div use:setSelectOnMount class="ui-tabs ui-tabs-variant-{variant} {className}">
+<div
+	use:setSelectOnMount
+	class="ui-tabs {position !== ''
+		? `ui-tabs-${position}`
+		: ''} ui-tabs-variant-{variant} {className}"
+>
 	<div bind:this={selectionElement} class="ui-tab-selection {classNameSelectionContainer}">
 		<slot name="tab-selection" />
 		<span
@@ -72,83 +78,3 @@
 		<slot />
 	</div>
 </div>
-
-<style>
-	@layer components {
-		.ui-tabs-variant-default {
-			& .ui-tab-selection {
-				background-color: var(--color-surface-hight);
-				width: fit-content;
-				padding: 5px;
-				margin: 5px;
-				border-radius: var(--radius-lg);
-				& span {
-					background-color: var(--color-container);
-				}
-			}
-			& .ui-tab-content {
-				margin: 20px 5px 5px 0px;
-				padding: 5px;
-				border-radius: var(--radius-lg);
-				background-color: var(--color-surface-hight);
-				width: 100%;
-				height: 200px;
-			}
-		}
-		.ui-tabs-variant-bordered {
-			& .ui-tab-selection {
-				/* background-color: var(--color-surface-hight); */
-				width: fit-content;
-				padding: 5px;
-				margin: 5px;
-				border-radius: var(--radius-lg);
-				border: solid 2px var(--color-border);
-				& span {
-					background-color: var(--color-container);
-				}
-			}
-			& .ui-tab-content {
-				margin: 20px 5px 5px 0px;
-				padding: 5px;
-				border-radius: var(--radius-lg);
-				border: solid 2px var(--color-border);
-				/* background-color: var(--color-surface-hight); */
-				width: 100%;
-				height: 200px;
-			}
-		}
-
-		.ui-tabs-variant-underlined {
-			& .ui-tab-selection {
-				/* background-color: var(--color-surface-hight); */
-				width: fit-content;
-				padding: 5px;
-				margin: 5px;
-				border-radius: var(--radius-lg);
-				& span {
-					background-color: var(--color-container);
-				}
-			}
-
-			& .ui-tab-content {
-				margin: 20px 5px 5px 0px;
-				padding: 5px;
-				border-radius: var(--radius-lg);
-				background-color: var(--color-surface-hight);
-				width: 100%;
-				height: 200px;
-			}
-		}
-	}
-	@layer nova {
-		.ui-tab-selection {
-			position: relative;
-			& > span {
-				display: block;
-				position: absolute;
-				z-index: 0;
-				border-radius: var(--radius-lg);
-			}
-		}
-	}
-</style>

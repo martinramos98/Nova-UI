@@ -15,6 +15,7 @@ export function provideContextMenu() {
 }
 
 export function asContextMenuContainer(node: HTMLElement) {
+	console.log('setting container',node)
 	node.classList.add('relative');
 	const context = getContext<ContextMenuContext>('contexMenu-context');
 	node.addEventListener('contextmenu', (ev) => {
@@ -25,6 +26,7 @@ export function asContextMenuContainer(node: HTMLElement) {
 			return
 		}
 		if (ev.button === 2) {
+			console.log(context)
 			context.openContextMenu(ev);
 			window.addEventListener('click', handleWindowEventOnOpenMenu);
 		}

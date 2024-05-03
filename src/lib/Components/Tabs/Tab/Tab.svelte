@@ -3,6 +3,7 @@
 	import { getContext } from 'svelte';
 	import type { Readable } from 'svelte/store';
 	export let key: string;
+	export let className = '';
 	let render = false;
 	let animation: ElementAnimation;
 	const tabContext = getContext<{
@@ -30,6 +31,14 @@
 		params['onFinishedAnimation'] = () => {
 			if (shouldUnmount) {
 				render = false;
+			} else {
+				const styles = node.computedStyleMap();
+				(node.parentElement as HTMLElement).style.minHeight =
+					//
+					node.offsetHeight +
+					styles.get('padding-top').value +
+					styles.get('padding-bottom').value +
+					'px';
 			}
 		};
 		animation = new ElementAnimation(node, params);
@@ -38,13 +47,17 @@
 </script>
 
 {#if render}
-	<div use:renderAnimation class="ui-selection-tab">
+	<div use:renderAnimation class="ui-selected-tab {className}">
 		<slot />
 	</div>
 {/if}
 
 <style>
-	.ui-selection-tab {
-		opacity: 0;
+	@layer nova {
+		.ui-selected-tab {
+			opacity: 0;
+			width: 100%;
+			height: fit-content;
+		}
 	}
 </style>

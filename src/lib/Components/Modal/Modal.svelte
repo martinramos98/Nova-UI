@@ -108,9 +108,10 @@
 		<div
 			aria-roledescription="Backdrop of modal"
 			aria-hidden="true"
-			class="ui-modal-backdrop {backdrop.className} {backdrop.type === 'transparent'
-				? 'opacity-0'
-				: ''} {backdrop.type === 'blur' ? 'backdrop-blur-sm' : ''}"
+			style={backdrop.type === 'transparent' ? 'background-color:transparent;' : ''}
+			class="ui-modal-backdrop {backdrop.className}  {backdrop.type === 'blur'
+				? 'backdrop-blur-sm'
+				: ''}"
 		></div>
 	</div>
 {/if}

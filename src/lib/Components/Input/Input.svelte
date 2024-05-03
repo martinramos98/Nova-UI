@@ -156,6 +156,14 @@
 			& input {
 				border: solid 2px var(--color-surface-highest);
 				background-color: var(--color-surface);
+				color: var(--color-container);
+				border-radius: var(--radius-lg);
+				/* background-color: transparent; */
+			}
+		}
+		.ui-input-variant-bordered {
+			& input {
+				border: solid 2px var(--color-container);
 				border-radius: var(--radius-lg);
 				/* background-color: transparent; */
 			}

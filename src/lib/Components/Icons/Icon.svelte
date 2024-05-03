@@ -1,5 +1,7 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	export let props = {};
+	const { props } = $props();
 </script>
 
 <svg {...props}>
