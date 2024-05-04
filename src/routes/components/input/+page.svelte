@@ -7,10 +7,12 @@
 	<aside>
 		<span class="font-semibold">On this page</span>
 		<ul>
-			<li><a href="#card">Card</a></li>
-			<li><a href="#disabled">Layout</a></li>
+			<li><a href="#card">Input</a></li>
+			<li><a href="#label">With Label</a></li>
+			<li><a href="#types">Input Types</a></li>
 			<li><a href="#variants">Variants</a></li>
-			<li><a href="#group">Use Case</a></li>
+			<li><a href="#error">Error</a></li>
+			<li><a href="#attributes">Custom Input Attributes</a></li>
 		</ul>
 	</aside>
 	<main>
@@ -91,7 +93,18 @@
 				<Title level={2}>Error</Title>
 			</header>
 			<section>
-				<div></div>
+				<div class="error-container">
+					<Input error={true} type="text" name="" variant="bordered" textError="Not valid" />
+					<Input
+						error={(value) => {
+							return value && value.includes('1');
+						}}
+						type="text"
+						name=""
+						variant="bordered"
+						textError="Not valid"
+					/>
+				</div>
 			</section>
 		</article>
 		<article>
@@ -99,8 +112,17 @@
 				<Title level={2}>Custom Input Attributes</Title>
 			</header>
 			<section>
-				<div></div>
+				<Title level={3}>Min and Max number</Title>
+				<div>
+					<Input type={'number'} name="" inputAttributes={{ min: 0, max: 10 }} />
+				</div>
 			</section>
 		</article>
 	</main>
 </div>
+
+<style>
+	.error-container {
+		align-items: baseline;
+	}
+</style>

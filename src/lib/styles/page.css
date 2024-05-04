@@ -48,6 +48,7 @@
 			width: max-content;
 			display: block;
 		}
+		margin-top: var(--spacing-6);
 		position: sticky;
 		height: fit-content;
 		top: 65px;
