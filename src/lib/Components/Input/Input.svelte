@@ -1,10 +1,13 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	export let type: 'text' | 'password' | 'number' | 'email' = 'text';
 	export let value: string | undefined = undefined;
 	export let onChange: undefined | ((ev: Event) => void) = undefined;
 	export let labelText = '';
 	export let classNameLabel = '';
 	export let classNameInput = '';
+	export let classNameError = '';
 	export let name: string;
 	export let colors = '';
 	export let placeholder = '';
@@ -13,6 +16,8 @@
 	export let id: string | null = null;
 	export let error: boolean | ((value: any) => boolean) = false;
 	export let textError = '';
+	export let errorContent: Snippet | undefined = undefined;
+	export let labelContent: Snippet | undefined = undefined;
 	export let inputAttributes = {};
 
 	function translateLabelwithTransition(label: HTMLElement) {
@@ -25,7 +30,6 @@
 			}
 		} else {
 			if (position === 'outside') {
-				console.log('first placing outside');
 				// label.style.setProperty('top', `0 -${label.offsetHeight + 15}px`);
 				label.style.top =
 					!value || placeholder === ''
@@ -73,9 +77,13 @@
 		: 'flex-col'} ui-input-variant-{variant} "
 >
 	<label use:translateLabelwithTransition for={name} class={classNameLabel}>
-		<slot name="label" class={labelProps.className}>
-			{labelText}
-		</slot>
+		{#if labelContent}
+			{@render labelContent()}
+		{:else}
+			<div class={labelProps.className}>
+				{labelText}
+			</div>
+		{/if}
 	</label>
 	<input
 		bind:value
@@ -88,16 +96,22 @@
 		on:change={onChange}
 	/>
 	{#if error === true || (typeof error === 'function' && error(value))}
-		<slot name="error">
-			<span class="ui-error-message">
+		{#if errorContent}
+			{@render errorContent()}
+		{:else}
+			<div class=" ui-color-error ui-error-message {classNameError}">
 				{textError}
-			</span>
-		</slot>
+			</div>
+		{/if}
 	{/if}
 </div>
 
 <style>
 	@layer nova {
+		.ui-error-message {
+			color: var(--color-container);
+			padding: 5px;
+		}
 		input[type='number'] {
 			-moz-appearance: textfield;
 		}

@@ -26,21 +26,18 @@
 	// pass the link directly
 </script>
 
-<a {href} target="_{target}" class="ui-link {colors} {variant} {className}">
+<a {href} target="_{target}" class="ui-link ui-color-{colors} ui-variant-{variant} {className}">
 	{#if type === 'simple'}
 		<slot />
 	{/if}
 	{#if type === 'external'}
 		<slot />
-		<Icon props={{ width: '24px', height: '24px', class: 'inline' }}>
+		<Icon props={{ width: '24px', height: '24px', class: 'inline stroke-[var(--color-text)]' }}>
 			<ExternalIcon />
 		</Icon>
 	{/if}
 	{#if type === 'preview' && previewData}
-		<div
-			in:fade
-			class="ui-link-preview color-container-hight orientation-{orientation} size-{previewSize}"
-		>
+		<div in:fade class="ui-link-preview orientation-{orientation} size-{previewSize}">
 			<!-- <Image radius={'none'} src={previewData.image} alt={previewData.title}></Image> -->
 			<img src={previewData.image} alt="" />
 			<div>
@@ -52,3 +49,105 @@
 		</div>
 	{/if}
 </a>
+
+<style>
+	@layer nova {
+		a {
+			width: fit-content;
+			height: fit-content;
+			display: block;
+		}
+		.ui-link-preview {
+			display: flex;
+			align-items: start;
+			background-color: var(--color-surface-hight);
+			justify-content: start;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			border-radius: var(--radius-xl);
+			& div {
+				/* margin: auto 0; */
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+				width: 100%;
+				& span {
+					align-self: self-start;
+					display: block;
+					width: 100%;
+					font-weight: bold;
+				}
+				& p {
+					width: 100%;
+					align-self: center;
+				}
+			}
+		}
+		.orientation-vertical {
+			flex-direction: column;
+			& div {
+				padding: 4%;
+			}
+			& > img {
+				align-self: normal;
+				height: 50%;
+				width: 100%;
+				object-fit: cover;
+				flex-shrink: 0;
+			}
+			&.size-xs {
+				width: 100px;
+				height: 120px;
+				& div {
+					text-align: center;
+				}
+			}
+			&.size-sm {
+				width: 200px;
+				height: 300px;
+			}
+			&.size-md {
+				width: 250px;
+				height: 350px;
+			}
+			&.size-lg {
+				max-height: 700px;
+				width: 300px;
+				height: 400px;
+			}
+		}
+		.orientation-horizontal {
+			flex-direction: row;
+			& div {
+				padding: 4%;
+			}
+			& > img {
+				max-width: 25%;
+				align-self: normal;
+				object-fit: cover;
+				flex-shrink: 0;
+			}
+			&.size-xs {
+				max-width: 200px;
+				border-radius: var(--radius-lg);
+				align-items: center;
+				font-size: medium;
+				& span {
+					text-overflow: ellipsis;
+					width: calc(100% - 30%);
+					overflow: hidden;
+					white-space: nowrap;
+				}
+			}
+			&.size-sm {
+				max-width: 300px;
+			}
+			&.size-md {
+				max-width: 500px;
+			}
+			&.size-lg {
+				max-width: 700px;
+			}
+		}
+	}
+</style>

@@ -27,8 +27,8 @@
 <!-- <svelte:options ></svelte:options> -->
 <button
 	use:setParentRef
-	on:mousedown={onMouseDown}
-	on:mouseup={onMouseUp}
+	on:pointerdown={onMouseDown}
+	on:pointerup={onMouseUp}
 	bind:offsetWidth={width}
 	bind:this={buttonElement}
 	style="left:{buttonPosition.toFixed(2)}%"
