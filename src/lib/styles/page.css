@@ -1,4 +1,6 @@
 .page-content {
+	display: flex;
+	flex-direction: row;
 	& > main {
 		display: flex;
 		flex-direction: column;
@@ -59,6 +61,20 @@
 		background-color: var(--color-surface-low);
 		& ul {
 			width: max-content;
+		}
+	}
+}
+
+@media (width <= 640px) {
+	.page-content {
+		flex-direction: column;
+		& > aside {
+			position: static;
+			align-self: center;
+			width: 70%;
+		}
+		& > main > article {
+			width: 90%;
 		}
 	}
 }

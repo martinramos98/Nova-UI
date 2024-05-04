@@ -5,7 +5,7 @@
 	import TabButton from '$lib/Components/Tabs/TabButton/TabButton.svelte';
 </script>
 
-<div class="flex flex-row page-content">
+<div class="page-content">
 	<aside>
 		<span class="font-semibold">On this page</span>
 		<ul>
@@ -241,15 +241,6 @@
 			align-items: center;
 			width: 100%;
 			& > article {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				width: 70%;
-				background-color: var(--color-surface-low);
-				padding: var(--spacing-2) var(--spacing-6) var(--spacing-6) var(--spacing-6);
-				border-radius: var(--radius-xl);
-				gap: var(--spacing-4);
-				margin: var(--spacing-6) 0;
 				& > section {
 					display: flex;
 					/* view-timeline: --block;
@@ -262,9 +253,6 @@
 					width: 100%;
 					max-width: 100%;
 					flex-direction: column;
-					background-color: var(--color-surface-low);
-					justify-content: center;
-					gap: var(--spacing-2);
 					& > div {
 						justify-self: center;
 						align-items: center;
@@ -277,23 +265,6 @@
 						flex-direction: row;
 					}
 				}
-			}
-		}
-		& > aside {
-			& > span {
-				width: max-content;
-				display: block;
-			}
-			position: sticky;
-			height: fit-content;
-			top: 65px;
-			width: max-content;
-			left: 2.5%;
-			padding: var(--spacing-4);
-			border-radius: var(--radius-xl);
-			background-color: var(--color-surface-low);
-			& ul {
-				width: max-content;
 			}
 		}
 	}

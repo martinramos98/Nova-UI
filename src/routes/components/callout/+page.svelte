@@ -4,7 +4,7 @@
 	import Icon from '$lib/Components/Icons/Icon.svelte';
 </script>
 
-<div class="flex flex-row page-content">
+<div class=" page-content">
 	<aside>
 		<span class="font-semibold">On this page</span>
 		<ul>

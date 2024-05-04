@@ -5,6 +5,7 @@
 	import Accordion from '$lib/Components/Accordion/Accordion.svelte';
 	import AccordionSection from '$lib/Components/Accordion/AccordionSection/AccordionSection.svelte';
 	import ComponentList from '$lib/app/components/ComponentsList/ComponentList.svelte';
+	import CloseButton from '$lib/Components/CloseButton/CloseButton.svelte';
 </script>
 
 <NovaUiProvider>
@@ -30,12 +31,22 @@
 			<span class="font-bold"><a href="/">Nova UI</a></span>
 			<MenuButton onClickMenu={toggleMenu} />
 		{/snippet}
-		{#snippet menuContent()}
-			<Accordion multiopen variant="" className={'p-4 '}>
+		{#snippet menuContent(toggleMenu)}
+			<CloseButton className="lg:hidden absolute right-6 top-2" onClose={toggleMenu}></CloseButton>
+			<Accordion multiopen variant="" className={'px-4 py-8'}>
 				<AccordionSection>
 					<span slot="header"> <a href="/components"> Components </a></span>
 					<svelte:fragment slot="content">
-						<ComponentList className="text-end" />
+						<div
+							role="list"
+							on:click={(ev) => {
+								if (ev.target?.tagName === 'A') {
+									toggleMenu();
+								}
+							}}
+						>
+							<ComponentList className="text-end" />
+						</div>
 					</svelte:fragment>
 				</AccordionSection>
 				<AccordionSection>

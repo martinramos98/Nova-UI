@@ -7,7 +7,7 @@
 	import Avatar from '$lib/Components/Avatar/Avatar.svelte';
 </script>
 
-<div class="flex flex-row">
+<div class="page-content">
 	<aside>
 		<span class="font-semibold">On this page</span>
 		<ul>
@@ -44,7 +44,7 @@
 							footerClassname="p-2 text-end"
 							variant={'solid'}
 							color="container-hight"
-							className="p-2 rounded-xl gap-2 w-[400px]"
+							className="p-2 rounded-xl gap-2 w-full max-w-[400px]"
 							bodyClassname="flex flex-col items-center"
 						>
 							{#snippet header()}
@@ -52,7 +52,7 @@
 							{/snippet}
 							{#snippet body()}
 								<img
-									class="w-[350px] h-[200px] object-cover rounded-xl"
+									class=" w-full max-w-[350px] max-h-[200px] object-cover rounded-xl"
 									src="https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000027619/9989957eae3a6b545194c42fec2071675c34aadacd65e6b33fdfe7b3b6a86c3a"
 								/>
 								<p class="p-4">
@@ -74,7 +74,7 @@
 						<Card
 							variant={'solid'}
 							color="container-hight"
-							className="rounded-xl w-[400px] h-fit "
+							className="rounded-xl w-full max-w-[400px] h-fit "
 							bodyClassname="p-4"
 						>
 							{#snippet header()}
@@ -97,7 +97,7 @@
 					</div>
 					<div class="example-card-box">
 						<Title level={3} className="text-lg">Body and Footer</Title>
-						<Card className="w-[400px]" footerClassname="py-2 text-end bg-zinc-800 pr-4">
+						<Card className="w-full max-w-[400px]" footerClassname="py-2 text-end bg-zinc-800 pr-4">
 							{#snippet body()}
 								<img
 									src="https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/c_scale,w_1200/ncom/software/switch/70010000068688/1c5583f6bbce5bccdc923c25c35ba8f42128b55df84f4a2fbeea74b6d1d1516e"
@@ -112,7 +112,7 @@
 					</div>
 					<div class="example-card-box">
 						<Title level={3} className="text-lg">Children Content</Title>
-						<Card className="w-[400px] relative">
+						<Card className="w-full max-w-[400px] relative">
 							<img
 								src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/wii_24/SI_Wii_SuperMarioGalaxy2_image1600w.png"
 								alt=""
@@ -167,7 +167,7 @@
 						<Card
 							color="container"
 							variant="solid"
-							className="flex-row w-[600px] rounded-xl "
+							className="lg:flex-row md:flex-col max-w-[600px] w-full rounded-xl "
 							headerClassname="w-fit"
 							bodyClassname="p-2 w-full"
 							footerClassname="p-2  flex flex-col gap-4 justify-center"
@@ -194,7 +194,7 @@
 						<Card
 							color="container"
 							variant="solid"
-							className="grid grid-cols-2 grid-rows-2 w-[500px] rounded-xl gap-4"
+							className="grid grid-cols-2 grid-rows-2 w-full max-w-[500px] rounded-xl gap-4"
 							headerClassname="row-start-1 row-end-3 col-start-1 col-end-2"
 							bodyClassname="row-start-1 row-end-2 col-start-2 col-end-3 pt-2 "
 							footerClassname="row-start-2 row-end-3 col-start-2 col-end-3 flex flex-col gap-2 pr-2 pb-2"
@@ -224,7 +224,7 @@
 						<Card
 							color="container"
 							variant="solid"
-							className="card-custom-grid w-[500px] rounded-xl gap-4"
+							className="card-custom-grid  w-full max-w-[500px] rounded-xl gap-4"
 							bodyClassname="pt-2 pr-2"
 							footerClassname="flex flex-col gap-2 pr-2 pb-2"
 						>
@@ -258,7 +258,7 @@
 			<section>
 				<div>
 					<Card
-						className="flex-col max-w-[400px] px-3 py-2"
+						className="flex-col w-full max-w-[400px] px-3 py-2"
 						headerClassname="flex flex-row items-center gap-2 text-start"
 						bodyClassname="my-2 px-2"
 						variant="solid"
@@ -308,7 +308,7 @@
 						{/snippet}
 					</Card>
 					<Card
-						className="flex-col max-w-[400px] px-3 py-2"
+						className="flex-col w-full max-w-[400px] px-3 py-2"
 						headerClassname="flex flex-row items-center gap-2 text-start"
 						bodyClassname="my-2 px-2"
 						variant="faded"
@@ -365,80 +365,11 @@
 		gap: 1rem;
 		align-self: baseline;
 	}
-	main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 100%;
-	}
-	aside {
-		& > span {
-			width: max-content;
-			display: block;
-		}
-		position: sticky;
-		height: fit-content;
-		top: 65px;
-		width: max-content;
-		left: 2.5%;
-		padding: var(--spacing-4);
-		border-radius: var(--radius-xl);
-		background-color: var(--color-surface-low);
-		& ul {
-			width: max-content;
-		}
-	}
-	article {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		width: 70%;
-		background-color: var(--color-surface-low);
-		padding: var(--spacing-2) var(--spacing-6) var(--spacing-6) var(--spacing-6);
-		border-radius: var(--radius-xl);
-		gap: var(--spacing-4);
-		margin: var(--spacing-6) 0;
-		& header {
-			/* margin: var(--spacing-4) 0; */
-			/* padding: var(--spacing-2); */
-			/* border-radius: var(--radius-xl); */
-		}
-		& section {
-			display: flex;
-			/* view-timeline: --block;
-			view-timeline-axis: inline;
-			animation-timeline: view();
-			animation-name: show;
-			animation-range: entry 80% cover 70%;
-			animation-fill-mode: both; */
-			/* align-self: center; */
-			width: fit-content;
-			max-width: 100%;
+	@media (width <= 912px) {
+		:global(.ui-card) {
 			flex-direction: column;
-			background-color: var(--color-surface-low);
-			justify-content: center;
-			gap: var(--spacing-2);
-			& div {
-				justify-self: center;
-				align-items: center;
-				align-self: center;
-				display: flex;
-				flex-wrap: wrap;
-				width: 100%;
-				padding: var(--spacing-4);
-				gap: var(--spacing-8);
-				flex-direction: row;
-			}
+			/* grid-template-rows: repeat(4, 1fr);
+			grid-template-columns: 1fr; */
 		}
 	}
-	/* @keyframes show {
-		from {
-			opacity: 0;
-			scale: 0.8;
-		}
-		to {
-			opacity: 1;
-			scale: 1;
-		}
-	} */
 </style>

@@ -5,7 +5,7 @@
 	import AccordionSection from '$lib/Components/Accordion/AccordionSection/AccordionSection.svelte';
 </script>
 
-<div class="flex flex-row page-content">
+<div class="page-content">
 	<aside>
 		<span class="font-semibold">On this page</span>
 		<ul>

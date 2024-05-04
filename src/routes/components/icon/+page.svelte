@@ -7,7 +7,7 @@
 	import Title from '$lib/Components/Title/Title.svelte';
 </script>
 
-<div class="flex flex-row page-content">
+<div class=" page-content">
 	<main>
 		<article>
 			<header>
