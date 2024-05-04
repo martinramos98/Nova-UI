@@ -33,7 +33,7 @@
 		{#snippet menuContent()}
 			<Accordion multiopen variant="" className={'p-4 '}>
 				<AccordionSection>
-					<span slot="header"> Components </span>
+					<span slot="header"> <a href="/components"> Components </a></span>
 					<svelte:fragment slot="content">
 						<ComponentList className="text-end" />
 					</svelte:fragment>
