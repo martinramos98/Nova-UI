@@ -5,7 +5,7 @@
 
 <div class="flex place-content-center my-6">
 	<Callout type="warning" colors="warning" className="w-[80%] " variant="flat"
-		>This is a Showcase. The library Still in Develop.</Callout
+		>This is a showcase. The library stills in develop.</Callout
 	>
 </div>
 <slot />

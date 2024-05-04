@@ -57,6 +57,9 @@
 			height: fit-content;
 			display: block;
 		}
+		a:has(.ui-link-preview) {
+			width: 100%;
+		}
 		.ui-link-preview {
 			display: flex;
 			align-items: start;
@@ -96,23 +99,27 @@
 				flex-shrink: 0;
 			}
 			&.size-xs {
-				width: 100px;
+				width: 100%;
+				max-width: 100px;
 				height: 120px;
 				& div {
 					text-align: center;
 				}
 			}
 			&.size-sm {
-				width: 200px;
+				width: 100%;
+				max-width: 200px;
 				height: 300px;
 			}
 			&.size-md {
-				width: 250px;
+				width: 100%;
+				max-width: 250px;
 				height: 350px;
 			}
 			&.size-lg {
+				width: 100%;
 				max-height: 700px;
-				width: 300px;
+				max-width: 300px;
 				height: 400px;
 			}
 		}
