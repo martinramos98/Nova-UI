@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Divider from '$lib/Components/Divider/Divider.svelte';
-	import DropdownGroup from '$lib/Components/Dropdown/DropdownGroup/DropdownGroup.svelte';
+	import DropdownGroup from '$lib/Components/DropdownGroup/DropdownGroup.svelte';
 	import DropDownItem from '$lib/Components/Dropdown/DropDownItem/DropDownItem.svelte';
 	import Dropdown from '$lib/Components/Dropdown/Dropdown.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
