@@ -97,11 +97,7 @@
 		</Button>
 	{/if}
 	{#if render}
-		<div
-			use:animationOpen
-			use:setDropdownContentPosition
-			class="ui-dropdown-content ui-color-container ui-variant-solid rounded-xl"
-		>
+		<div use:animationOpen use:setDropdownContentPosition class="ui-dropdown-content rounded-xl">
 			{#if children}
 				{@render children(toggleDropdown)}
 			{/if}
@@ -117,6 +113,8 @@
 		}
 		.ui-dropdown-content {
 			width: 100%;
+			border: 1px solid var(--color-border);
+			background-color: var(--color-surface);
 			height: auto;
 			padding: 10px;
 			z-index: 99;

@@ -32,7 +32,14 @@
 	{/if}
 	{#if type === 'external'}
 		<slot />
-		<Icon props={{ width: '24px', height: '24px', class: 'inline stroke-[var(--color-text)]' }}>
+		<Icon
+			props={{
+				width: '24px',
+				height: '24px',
+				fill: 'none',
+				class: 'inline stroke-[var(--color-text)]'
+			}}
+		>
 			<ExternalIcon />
 		</Icon>
 	{/if}
@@ -63,7 +70,7 @@
 		.ui-link-preview {
 			display: flex;
 			align-items: start;
-			background-color: var(--color-surface-hight);
+			background-color: var(--color-surface);
 			justify-content: start;
 			overflow: hidden;
 			text-overflow: ellipsis;

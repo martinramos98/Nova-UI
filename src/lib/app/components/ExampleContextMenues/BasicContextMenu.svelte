@@ -11,7 +11,7 @@
 </script>
 
 <div class="w-full h-full p-2 context-container" use:asContextMenuContainer>
-	<ContextMenu className="bg-slate-900 p-2 rounded-lg">
+	<ContextMenu className="p-2 rounded-lg">
 		<Button
 			variant="light"
 			className="w-full px-2 text-start"

@@ -16,22 +16,38 @@
 			<section>
 				<div class="w-full">
 					<Icon
-						props={{ viewBox: '0 0 24 24', class: 'stroke-[var(--color-text)] w-[30px] h-[30px]' }}
+						props={{
+							viewBox: '0 0 24 24',
+							fill: 'none',
+							class: 'stroke-[var(--color-text)] w-[30px] h-[30px]'
+						}}
 					>
 						<InfoIcon />
 					</Icon>
 					<Icon
-						props={{ viewBox: '0 0 24 24', class: 'stroke-[var(--color-text)] w-[30px] h-[30px]' }}
+						props={{
+							viewBox: '0 0 24 24',
+							fill: 'none',
+							class: 'stroke-[var(--color-text)] w-[30px] h-[30px]'
+						}}
 					>
 						<WarningIcon />
 					</Icon>
 					<Icon
-						props={{ viewBox: '0 0 24 24', class: 'stroke-[var(--color-text)] w-[30px] h-[30px]' }}
+						props={{
+							viewBox: '0 0 24 24',
+							fill: 'none',
+							class: 'stroke-[var(--color-text)] w-[30px] h-[30px]'
+						}}
 					>
 						<AlertIcon />
 					</Icon>
 					<Icon
-						props={{ viewBox: '0 0 24 24', class: 'stroke-[var(--color-text)] w-[30px] h-[30px]' }}
+						props={{
+							viewBox: '0 0 24 24',
+							fill: 'none',
+							class: 'stroke-[var(--color-text)] w-[30px] h-[30px]'
+						}}
 					>
 						<SuccessIcon />
 					</Icon>
@@ -45,12 +61,20 @@
 			<section>
 				<div class="w-full">
 					<Icon
-						props={{ viewBox: '0 0 24 24', class: 'stroke-[var(--color-text)] w-[30px] h-[30px]' }}
+						props={{
+							viewBox: '0 0 24 24',
+							fill: 'none',
+							class: 'stroke-[var(--color-text)] w-[30px] h-[30px]'
+						}}
 					>
 						<InfoIcon />
 					</Icon>
 					<Icon
-						props={{ viewBox: '0 0 24 24', class: 'stroke-[var(--color-text)] w-[30px] h-[30px]' }}
+						props={{
+							viewBox: '0 0 24 24',
+							fill: 'none',
+							class: 'stroke-[var(--color-text)] w-[30px] h-[30px]'
+						}}
 					>
 						<WarningIcon />
 					</Icon>

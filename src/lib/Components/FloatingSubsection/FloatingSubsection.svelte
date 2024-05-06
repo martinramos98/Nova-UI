@@ -102,8 +102,7 @@
 			width: fit-content;
 		}
 		.ui-subsection-group-content {
-			background-color: inherit;
-			background-color: var(--color-container);
+			background-color: var(--color-surface);
 			border-radius: 12px;
 			padding: 10px 10px 10px 0px;
 			padding-inline-start: 10px;

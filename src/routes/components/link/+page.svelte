@@ -54,7 +54,7 @@
 						}}
 						target="blank"
 					></Link>
-					<Link
+					<!-- <Link
 						type="preview"
 						href="/"
 						previewData={{ image: '', title: '', description: '', favicon: '' }}
@@ -65,7 +65,7 @@
 						href="/"
 						previewData={{ image: '', title: '', description: '', favicon: '' }}
 						target="blank"
-					></Link>
+					></Link> -->
 				</div>
 				<section class="gap-3 flex flex-col">
 					<Title level={4}>Link Preview Sizes</Title>

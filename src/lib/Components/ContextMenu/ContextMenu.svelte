@@ -112,6 +112,8 @@
 		.ui-context-menu {
 			position: absolute;
 			opacity: 0;
+			background: var(--color-surface);
+			border: 1px solid var(--color-border);
 			width: max-content;
 			height: fit-content;
 		}
