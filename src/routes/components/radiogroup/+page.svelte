@@ -40,8 +40,6 @@
 			<Radio size={'size-6'} id={'item-4'} variant="neon" value={4} labelText="test4"></Radio>
 		</RadioGroup>
 	</article>
-	<Title className="my-2" level={2}>Callouts</Title>
-	<article class="callout"></article>
 	<Button
 		colors="info"
 		variant={'solid'}
@@ -77,15 +75,6 @@
 		}}>Toast Test 2</Button
 	>
 	<Title level={2} className="my-2">Progress</Title>
-	<article class="callout">
-		<Progress />
-		<Progress colors="info" indeterminate={true} progressWidth={8} />
-		<Progress colors="error" progressWidth={8} value={0.3} />
-		<Progress barRounded={false} colors="warning" progressWidth={8} value={0.7} />
-		<Progress type="circle" indeterminate={true} colors="warning" progressWidth={2} value={0.7} />
-		<Progress type="circle" colors="info" progressWidth={3} value={0.9} />
-		<Progress type="circle" colors="primary" progressWidth={2} value={0.5} />
-	</article>
 </main>
 
 <style>

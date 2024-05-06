@@ -50,7 +50,7 @@
 	$: value, calculateMappings(), validatetriggersColors();
 </script>
 
-<div class="ui-loader ui-color-{colors} ui-variant-{variants} {className}">
+<div class="ui-loader ui-color-{colors} {className}">
 	{#if type === 'bar'}
 		<div
 			style="height:{progressWidth}px"
@@ -115,7 +115,7 @@
 			width: 100%;
 			position: absolute;
 			height: inherit;
-			background-color: var(--color-surface-low);
+			background: var(--color-surface-low);
 			z-index: 1;
 		}
 		& .ui-bar-complete {
@@ -124,7 +124,7 @@
 			position: absolute;
 			z-index: 2;
 			height: inherit;
-			background-color: var(--color-container);
+			background: var(--color-container);
 		}
 		&.animate-indeterminate-bar {
 			& .ui-bar-complete {
