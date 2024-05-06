@@ -74,16 +74,16 @@
 			<section>
 				<div>
 					<Badge colors="info" variant="solid" size={1} positionBadge="top-left">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="info" variant="solid" size={1} positionBadge="top-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="info" variant="solid" size={1} positionBadge="bottom-left">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="info" variant="solid" size={1} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 				</div>
 			</section>
@@ -93,22 +93,22 @@
 			<section>
 				<div>
 					<Badge colors="warning" variant="solid" size={1} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="flat" size={1} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="neon" size={1} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="ghost" size={1} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="faded" size={1} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="light" size={1} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 				</div>
 			</section>
@@ -118,22 +118,22 @@
 			<section>
 				<div>
 					<Badge colors="warning" variant="solid" size={1} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="flat" size={2} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="neon" size={3} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="ghost" size={4} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="faded" size={5} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 					<Badge colors="warning" variant="light" size={6} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 					</Badge>
 				</div>
 			</section>
@@ -143,7 +143,7 @@
 			<section>
 				<div>
 					<Badge colors="warning" variant="solid" size={2} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 						<svelte:fragment slot="contentBadge">
 							<Icon
 								props={{
@@ -164,7 +164,7 @@
 						size={2}
 						positionBadge="top-right"
 					>
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 						<svelte:fragment slot="contentBadge">
 							<div class="content-badge-error">
 								<Icon
@@ -181,7 +181,7 @@
 						</svelte:fragment>
 					</Badge>
 					<Badge colors="info" variant="solid" className="" size={3} positionBadge="bottom-right">
-						<Avatar className="size-10 bg-slate-800 p-1 rounded-lg"></Avatar>
+						<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 						<svelte:fragment slot="contentBadge">
 							<Icon
 								props={{

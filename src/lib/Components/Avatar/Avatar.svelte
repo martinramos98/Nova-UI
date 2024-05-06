@@ -47,6 +47,7 @@
 			width: var(--width-xxs);
 			height: var(--width-xxs);
 			border-radius: var(--radius-full);
+			background: var(--color-surface);
 			overflow: hidden;
 			display: flex;
 			align-items: center;

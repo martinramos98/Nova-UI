@@ -4,7 +4,7 @@
 	import type { Snippet } from 'svelte';
 	export let direction: 'vertical' | 'horizontal' = 'horizontal';
 	export let className = '';
-	export let colors = 'container-low';
+	export let colors = 'container';
 	export let variant: 'menu' | 'default' | 'none' = 'default';
 	export let radius = '';
 	export let useContainerQuery = true;
@@ -13,7 +13,6 @@
 	export let centerContent: Snippet;
 	export let endContent: Snippet;
 	export let menuContent: Snippet<[any]> | undefined = undefined;
-
 	export let menuProps = {
 		drawerProps: {}
 	};

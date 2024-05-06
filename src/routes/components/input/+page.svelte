@@ -35,6 +35,7 @@
 					<Input
 						labelText="First Name"
 						name="first_name"
+						classNameContainer="ml-14"
 						labelProps={{ position: 'leftside', dynamic: true }}
 					/>
 					<Input

@@ -197,7 +197,7 @@
 				<div>
 					<Accordion
 						variant="splitted-content"
-						colors="container-hight"
+						colors="container"
 						multiopen={false}
 						className="m-2"
 					>
@@ -243,7 +243,7 @@
 					</Accordion>
 				</div>
 				<div>
-					<Accordion variant="splitted" colors="container-hight" multiopen={false} className="m-2">
+					<Accordion variant="splitted" colors="container" multiopen={false} className="m-2">
 						<AccordionSection>
 							<svelte:fragment slot="header">
 								<p class="font-semibold">Section 1</p>

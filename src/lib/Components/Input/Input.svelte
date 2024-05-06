@@ -8,6 +8,7 @@
 	export let classNameLabel = '';
 	export let classNameInput = '';
 	export let classNameError = '';
+	export let classNameContainer = '';
 	export let name: string;
 	export let colors = '';
 	export let placeholder = '';
@@ -74,7 +75,7 @@
 <div
 	class="ui-input-container ui-color-{colors} {labelProps.position === 'leftside'
 		? 'flex-row'
-		: 'flex-col'} ui-input-variant-{variant} "
+		: 'flex-col'} ui-input-variant-{variant} {classNameContainer} "
 >
 	<label use:translateLabelwithTransition for={name} class={classNameLabel}>
 		{#if labelContent}
@@ -168,11 +169,24 @@
 		}
 		.ui-input-variant-faded {
 			& input {
-				border: solid 2px var(--color-surface);
 				background-color: var(--color-surface);
 				color: var(--color-container);
 				border-radius: var(--radius-lg);
 				/* background-color: transparent; */
+			}
+		}
+		@media (prefers-color-scheme: dark) {
+			.ui-input-variant-faded {
+				& input {
+					border: 2px solid var(--color-surface-hight);
+				}
+			}
+		}
+		@media (prefers-color-scheme: light) {
+			.ui-input-variant-faded {
+				& input {
+					border: 2px solid var(--color-surface-low);
+				}
 			}
 		}
 		.ui-input-variant-bordered {

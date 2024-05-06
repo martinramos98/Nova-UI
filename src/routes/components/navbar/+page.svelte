@@ -7,181 +7,314 @@
 	import Tooltip from '$lib/Components/Tooltip/Tooltip.svelte';
 	import Popover from '$lib/Components/Popover/Popover.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
+	import Divider from '$lib/Components/Divider/Divider.svelte';
+	import CloseButton from '$lib/Components/CloseButton/CloseButton.svelte';
 </script>
 
-<div class="container-1">
-	<!-- <Navbar
-		variant={'none'}
-		className={'flex flex-row bg-neutral-800 items-center'}
-		direction={'horizontal'}
-		withMenu={false}
-	>
-		<img class="size-8 mr-2" src="/bank.svg" alt="" />
-		<p class="font-semibold">Bank UI</p>
-		<ul class="flex gap-2 ml-2">
-			<li>
-				<Button withClickEffect={false} className="font-semibold" colors={'info'} variant={'light'}
-					>Eccommerce</Button
-				>
-			</li>
-			<li class="hidden md:block"><Button colors="primary" variant={'light'}>News</Button></li>
-			<li class="hidden md:block">
-				<Button colors="primary" variant={'light'}>About</Button>
-			</li>
+<div class="page-content">
+	<aside>
+		<span class="font-semibold">On this page</span>
+		<ul>
+			<li><a href="#navbar">Navbar</a></li>
+			<li><a href="#orientation">Orientation</a></li>
+			<li><a href="#variants">Variants</a></li>
+			<li><a href="#container_query">Usage with Container Media Query</a></li>
+			<li><a href="#customs"></a>Customs</li>
 		</ul>
-		<Avatar
-			avatarBordered
-			colors={'secondary'}
-			className="size-10 bg-zinc-700 m-1 p-0.5 ml-auto shadow-xl"
-		></Avatar>
-	</Navbar> -->
-	<div>
-		Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos consequatur incidunt tenetur,
-		distinctio dignissimos eaque asperiores placeat quo quam vitae!
-	</div>
-</div>
-<div class="container-1">
-	<!-- <Navbar className="rounded-3xl" direction={'horizontal'} withMenu={true}> -->
-	<!-- <div slot="start-content">
-			<img class="size-8 inline-block" src="/bank.svg" alt="" />
-			<p class="font-semibold inline align-middle">Bank UI</p>
-		</div>
-		<div slot="center-content">
-			<ul class="flex gap-8">
-				<li>
-					<Button
-						withClickEffect={false}
-						className="font-semibold"
-						colors={'info'}
-						variant={'light'}>Eccommerce</Button
+	</aside>
+	<main>
+		<article>
+			<header><Title>Navbar</Title></header>
+			<section>
+				<div class="container-1">
+					<Navbar
+						variant={'none'}
+						className={'flex flex-row  items-center'}
+						direction={'horizontal'}
+						withMenu={false}
 					>
-				</li>
-				<li><Button colors="primary" variant={'light'}>News</Button></li>
-				<li><Button colors="primary" variant={'light'}>About</Button></li>
-			</ul>
-		</div>
-		<div slot="end-content">
-			<Avatar
-				avatarBordered
-				colors={'secondary'}
-				className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
-			></Avatar>
-		</div> -->
-	<!-- </Navbar> -->
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ullam, dicta ipsam at voluptas
-		consectetur harum, eum culpa dolor veritatis fugit recusandae, velit quis accusantium
-		consequatur eius voluptate voluptatibus doloremque sequi non amet. Quidem eius debitis, vero
-		labore eum qui eos nostrum? Quos consequuntur illo tempore facere delectus architecto eum,
-		adipisci odit praesentium sunt perspiciatis autem omnis accusamus, modi repudiandae suscipit
-		impedit dicta, excepturi exercitationem quaerat vero. Odit totam enim repellendus illo
-		doloribus! Perspiciatis consequatur temporibus odit ipsa dignissimos aspernatur ipsam velit
-		laudantium molestias eius adipisci voluptates impedit voluptatum cumque, aperiam nisi debitis
-		mollitia obcaecati iusto eos fuga beatae voluptate!
-	</div>
-</div>
-<div class="container-2">
-	<Navbar
-		--color-container={'var(--night-850)'}
-		direction={'vertical'}
-		radius={'2xl'}
-		className="shrink-0"
-		variant={'menu'}
-	>
-		{#snippet children(toggleMenu)}
-			<div>
-				<MenuButton onClickMenu={toggleMenu} />
-			</div>
-			<div></div>
-			<div class="flex flex-row items-end justify-center">
-				<Avatar avatarName="Martin Ramos" className="size-10 bg-zinc-800 m-1 "></Avatar>
-			</div>
-		{/snippet}
-	</Navbar>
-	<div class="relative">
-		<p>
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos consequatur incidunt tenetur,
-			distinctio dignissimos eaque asperiores placeat quo quam vitae!
-		</p>
-		<Tooltip
-			position={'bottom'}
-			colors={'primary'}
-			className="rounded-2xl"
-			content="holi from tooltip!"
-		>
-			<Chip className="w-fit rounded-2xl" colors={'info'} variant="shadows">Holi</Chip>
-		</Tooltip>
-		<Popover className="rounded-xl p-2" position="top" colors={'tertiary'} variant="faded">
-			<Button variant="solid" colors="info">Click Me</Button>
-			<svelte:fragment slot="content">
-				<Title level={4}>Popover</Title>
-				<p>Hello From Popover! 💕</p>
-			</svelte:fragment>
-		</Popover>
-	</div>
-</div>
+						<img class="size-8 mr-2" src="/bank.svg" alt="" />
+						<p class="font-semibold">Bank UI</p>
+						<ul class="flex gap-2 ml-2">
+							<li>
+								<Button
+									withClickEffect={false}
+									className="font-semibold"
+									colors={'info'}
+									variant={'light'}>Premium</Button
+								>
+							</li>
+							<li class="hidden md:block">
+								<Button colors="primary" variant={'light'}>Account</Button>
+							</li>
+							<li class="hidden md:block">
+								<Button colors="primary" variant={'light'}>Loans</Button>
+							</li>
+						</ul>
+						<Avatar
+							avatarBordered
+							colors={'secondary'}
+							className="size-10 bg-zinc-700 m-1 p-0.5 ml-auto shadow-xl"
+						></Avatar>
+					</Navbar>
+					<div>
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos consequatur incidunt
+						tenetur, distinctio dignissimos eaque asperiores placeat quo quam vitae!
+					</div>
+				</div>
+			</section>
+		</article>
+		<article id="orientation">
+			<header>
+				<Title level={2}>Orientation</Title>
+			</header>
+			<section>
+				<Title level={3}>Horizontal</Title>
+				<div class="container-1">
+					<Navbar className="rounded-3xl" direction={'horizontal'} withMenu={true}>
+						{#snippet startContent()}
+							<div>
+								<img class="size-8 inline-block" src="/bank.svg" alt="" />
+								<p class="font-semibold inline align-middle">Bank UI</p>
+							</div>
+						{/snippet}
+						{#snippet centerContent()}
+							<div>
+								<ul class="flex gap-8">
+									<li>
+										<Button
+											withClickEffect={false}
+											className="font-semibold"
+											colors={'info'}
+											variant={'light'}>Premium</Button
+										>
+									</li>
+									<li><Button colors="primary" variant={'light'}>Account</Button></li>
+									<li><Button colors="primary" variant={'light'}>Loans</Button></li>
+								</ul>
+							</div>
+						{/snippet}
+						{#snippet endContent()}
+							<div>
+								<Avatar
+									avatarBordered
+									colors={'secondary'}
+									className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
+								></Avatar>
+							</div>
+						{/snippet}
+					</Navbar>
+					<div>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ullam, dicta ipsam at
+						voluptas consectetur harum, eum culpa dolor veritatis fugit recusandae, velit quis
+						accusantium consequatur eius voluptate voluptatibus doloremque sequi non amet. Quidem
+						eius debitis, vero labore eum qui eos nostrum? Quos consequuntur illo tempore facere
+						delectus architecto eum, adipisci odit praesentium sunt perspiciatis autem omnis
+						accusamus, modi repudiandae suscipit impedit dicta, excepturi exercitationem quaerat
+						vero. Odit totam enim repellendus illo doloribus! Perspiciatis consequatur temporibus
+						odit ipsa dignissimos aspernatur ipsam velit laudantium molestias eius adipisci
+						voluptates impedit voluptatum cumque, aperiam nisi debitis mollitia obcaecati iusto eos
+						fuga beatae voluptate!
+					</div>
+				</div>
+			</section>
+			<Divider size={1}></Divider>
+			<section>
+				<Title level={3}>Vertical</Title>
+				<div class="container-2">
+					<Navbar className="rounded-3xl shrink-0 px-1" direction={'vertical'} withMenu={true}>
+						{#snippet startContent()}
+							<img class="size-8 inline-block justify-self-center" src="/bank.svg" alt="" />
+						{/snippet}
+						{#snippet centerContent()}
+							<ul class="flex flex-col gap-8 justify-center">
+								<li>
+									<Button
+										withClickEffect={false}
+										className="font-semibold"
+										colors={'info'}
+										variant={'light'}>Premium</Button
+									>
+								</li>
+								<li><Button colors="primary" variant={'light'}>Loans</Button></li>
+								<li><Button colors="primary" variant={'light'}>Accounts</Button></li>
+							</ul>
+						{/snippet}
+						{#snippet endContent()}
+							<div class="flex flex-row items-end justify-center">
+								<Avatar
+									avatarBordered
+									colors={'secondary'}
+									className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
+								></Avatar>
+							</div>
+						{/snippet}
+					</Navbar>
+					<div>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ullam, dicta ipsam at
+						voluptas consectetur harum, eum culpa dolor veritatis fugit recusandae, velit quis
+						accusantium consequatur eius voluptate voluptatibus doloremque sequi non amet. Quidem
+						eius debitis, vero labore eum qui eos nostrum? Quos consequuntur illo tempore facere
+						delectus architecto eum, adipisci odit praesentium sunt perspiciatis autem omnis
+						accusamus, modi repudiandae suscipit impedit dicta, excepturi exercitationem quaerat
+						vero. Odit totam enim repellendus illo doloribus! Perspiciatis consequatur temporibus
+						odit ipsa dignissimos aspernatur ipsam velit laudantium molestias eius adipisci
+						voluptates impedit voluptatum cumque, aperiam nisi debitis mollitia obcaecati iusto eos
+						fuga beatae voluptate!
+					</div>
+				</div>
+			</section>
+		</article>
+		<article id="variants">
+			<header>
+				<Title level={2}>Variants</Title>
+			</header>
+			<section>
+				<Title level={3}>Default with 3 Sections</Title>
+				<Navbar className="rounded-3xl shrink-0 px-6" direction={'horizontal'}>
+					{#snippet startContent()}
+						<img class="size-8 inline-block justify-self-center" src="/bank.svg" alt="" />
+					{/snippet}
+					{#snippet centerContent()}
+						<ul class="flex flex-row gap-8 justify-center">
+							<li>
+								<Button
+									withClickEffect={false}
+									className="font-semibold"
+									colors={'info'}
+									variant={'light'}>Premium</Button
+								>
+							</li>
+							<li><Button colors="primary" variant={'light'}>Account</Button></li>
+							<li><Button colors="primary" variant={'light'}>Loans</Button></li>
+						</ul>
+					{/snippet}
+					{#snippet endContent()}
+						<div class="flex flex-row items-end justify-center">
+							<Avatar
+								avatarBordered
+								colors={'secondary'}
+								className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
+							></Avatar>
+						</div>
+					{/snippet}
+				</Navbar>
+			</section>
+			<section>
+				<Title level={3}>Menu</Title>
 
-<div class="container-2">
-	<Navbar
-		className="rounded-3xl shrink-0 px-1"
-		direction={'vertical'}
-		colors={'container-hight'}
-		withMenu={true}
-	>
-		{#snippet startContent()}
-			<img class="size-8 inline-block justify-self-center" src="/bank.svg" alt="" />
-		{/snippet}
-		{#snippet centerContent()}
-			<ul class="flex flex-col gap-8 justify-center">
-				<li>
-					<Button
-						withClickEffect={false}
-						className="font-semibold"
-						colors={'info'}
-						variant={'light'}>Eccommerce</Button
-					>
-				</li>
-				<li><Button colors="primary" variant={'light'}>News</Button></li>
-				<li><Button colors="primary" variant={'light'}>About</Button></li>
-			</ul>
-		{/snippet}
-		{#snippet endContent()}
-			<div class="flex flex-row items-end justify-center">
-				<Avatar
-					avatarBordered
-					colors={'secondary'}
-					className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
-				></Avatar>
-			</div>
-		{/snippet}
-	</Navbar>
-	<div>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ullam, dicta ipsam at voluptas
-		consectetur harum, eum culpa dolor veritatis fugit recusandae, velit quis accusantium
-		consequatur eius voluptate voluptatibus doloremque sequi non amet. Quidem eius debitis, vero
-		labore eum qui eos nostrum? Quos consequuntur illo tempore facere delectus architecto eum,
-		adipisci odit praesentium sunt perspiciatis autem omnis accusamus, modi repudiandae suscipit
-		impedit dicta, excepturi exercitationem quaerat vero. Odit totam enim repellendus illo
-		doloribus! Perspiciatis consequatur temporibus odit ipsa dignissimos aspernatur ipsam velit
-		laudantium molestias eius adipisci voluptates impedit voluptatum cumque, aperiam nisi debitis
-		mollitia obcaecati iusto eos fuga beatae voluptate!
-	</div>
+				<Navbar direction={'horizontal'} className="shrink-0 rounded-xl px-2" variant={'menu'}>
+					{#snippet children(toggleMenu)}
+						<div>
+							<MenuButton onClickMenu={toggleMenu} />
+						</div>
+						<div class="flex flex-row items-end justify-center">
+							<Avatar
+								avatarName="Martin Ramos"
+								colors={'secondary'}
+								className="size-10 bg-zinc-800 m-1 "
+							></Avatar>
+						</div>
+					{/snippet}
+					{#snippet menuContent(toggleMenu)}
+						<CloseButton onClose={toggleMenu} colors="container-low"></CloseButton>
+					{/snippet}
+				</Navbar>
+			</section>
+			<section>
+				<Title level={3}>Custom Children</Title>
+				<Navbar
+					variant={'none'}
+					className={'flex flex-row  items-center'}
+					direction={'horizontal'}
+					withMenu={false}
+				>
+					<img class="size-8 mr-2" src="/bank.svg" alt="" />
+					<ul class="flex gap-2 justify-end w-full mr-2">
+						<li class="hidden md:block">
+							<Button colors="primary" variant={'light'}>Account</Button>
+						</li>
+						<li class="hidden md:block">
+							<Button colors="primary" variant={'light'}>Loans</Button>
+						</li>
+					</ul>
+					<Avatar
+						avatarBordered
+						colors={'secondary'}
+						className="size-10 bg-zinc-700 m-1 p-0.5 ml-auto shadow-xl"
+					></Avatar>
+				</Navbar>
+			</section>
+		</article>
+		<article id="container_query">
+			<header>
+				<Title level={2}>Container Query</Title>
+			</header>
+			<section class="responsive-nav-container">
+				<Navbar useContainerQuery={true} className="rounded-3xl shrink-0 " direction={'horizontal'}>
+					{#snippet startContent()}
+						<img class="size-8 inline-block justify-self-center" src="/bank.svg" alt="" />
+					{/snippet}
+					{#snippet centerContent()}
+						<ul class="flex flex-row mid-content gap-8 justify-center">
+							<li>
+								<Button
+									withClickEffect={false}
+									className="font-semibold"
+									colors={'info'}
+									variant={'light'}>Premium</Button
+								>
+							</li>
+							<li><Button colors="primary" variant={'light'}>Loans</Button></li>
+							<li><Button colors="primary" variant={'light'}>Accounts</Button></li>
+						</ul>
+					{/snippet}
+					{#snippet endContent()}
+						<div class="flex flex-row items-end justify-center">
+							<Avatar
+								avatarBordered
+								colors={'secondary'}
+								className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
+							></Avatar>
+						</div>
+					{/snippet}
+				</Navbar>
+			</section>
+		</article>
+		<!-- <article id="customs">
+			<header>
+				<Title>Customs</Title>
+			</header>
+			<section></section>
+		</article> -->
+	</main>
 </div>
 
 <style>
+	@container (width <= 540px) {
+		.mid-content {
+			display: none;
+		}
+	}
+	.responsive-nav-container {
+		resize: horizontal;
+		min-width: 200px;
+		overflow: hidden;
+		max-width: 100%;
+	}
 	.container-1 {
-		width: 80%;
-		margin: 40px;
+		width: 95%;
 		& > div {
 			margin-top: 20px;
 		}
 	}
 	.container-2 {
-		width: 90%;
+		width: 95%;
 		height: 600px;
-		margin: 40px;
 		display: flex;
 		gap: 2rem;
+		align-items: flex-start;
+		flex-wrap: nowrap;
 		flex-direction: row;
 	}
 	:global(.ui-container-navbar) {

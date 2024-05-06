@@ -17,11 +17,7 @@
 </script>
 
 <div class="w-full h-full p-2 context-container" use:asContextMenuContainer>
-	<ContextMenu
-		bind:open={openContext}
-		onClose={closeContextMenu}
-		className="bg-slate-900 p-2 rounded-lg"
-	>
+	<ContextMenu bind:open={openContext} onClose={closeContextMenu} className="p-2 rounded-lg">
 		<Button
 			variant="light"
 			className="w-full px-2 text-start"
@@ -59,7 +55,7 @@
 			colors="primary">Test</Button
 		>
 		<Divider size={1} className="my-2"></Divider>
-		<ContextMenuSection offset={10} classNameContainer="bg-slate-900">
+		<ContextMenuSection offset={10} classNameContainer="">
 			<Button
 				variant="light"
 				className="w-full px-2 text-start"

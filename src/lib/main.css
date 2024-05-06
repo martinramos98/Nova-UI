@@ -630,30 +630,6 @@
 	filter: brightness(130%);
 }
 
-@container navbar (width <= 565px) {
-	.ui-navbar {
-		&:not(.direction-vertical)[data-menu='true'] {
-			& [data-menu-item='true'] {
-				display: none;
-			}
-			.ui-navbar-menu-button {
-				display: block;
-				width: fit-content;
-				padding: 5px;
-			}
-		}
-		&:not(.direction-vertical)[data-menu='false'] {
-			grid-template-rows: auto;
-			grid-template-columns: auto;
-			grid-auto-flow: row;
-			width: 100%;
-			place-content: start;
-			& .ui-navbar-end-container {
-				justify-content: start;
-			}
-		}
-	}
-}
 body {
 	background-color: var(--color-surface);
 	color: var(--color-on-surface);
