@@ -42,6 +42,7 @@
 	@layer nova {
 		.ui-avatar {
 			display: inline-block;
+			color: var(--color-text);
 			flex-shrink: 0;
 			width: var(--width-xxs);
 			height: var(--width-xxs);

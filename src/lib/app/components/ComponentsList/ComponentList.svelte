@@ -64,7 +64,7 @@
 		<a href="/components/progress">Progress</a>
 	</li>
 	<li class="ui-variant-light ui-color-primary">
-		<a href="/components/radio">Radio</a>
+		<a href="/components/radiogroup">Radio</a>
 	</li>
 	<li class="ui-variant-light ui-color-primary">
 		<a href="/components/selection">Selection</a>

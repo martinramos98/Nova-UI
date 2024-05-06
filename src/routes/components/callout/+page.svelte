@@ -33,7 +33,7 @@
 					</header>
 				</div>
 
-				<Callout>This is a Default Callout</Callout>
+				<Callout variant="flat" colors="primary">This is a Default Callout</Callout>
 				<Callout variant="flat" colors="warning" type="warning">This is a Warning Callout</Callout>
 				<Callout variant="flat" colors="error" type="alert">This is a Error Callout</Callout>
 				<Callout variant="flat" colors="info" type="info">This is a Info Callout</Callout>
@@ -64,7 +64,7 @@
 							<img class="h-[40px] w-[40px]" src="/candy.svg" />
 						</span>
 					</svelte:fragment>
-					<p class="font-bold">This is a Custom Callout</p>
+					<p class="text-white font-bold">This is a Custom Callout</p>
 				</Callout>
 			</section>
 		</article>

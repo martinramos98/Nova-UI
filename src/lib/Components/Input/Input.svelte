@@ -155,20 +155,20 @@
 	@layer components {
 		.ui-input-variant-default {
 			& input {
-				background-color: var(--color-surface-hight);
+				background-color: var(--color-surface);
 				border-radius: var(--radius-lg);
 			}
 		}
 		.ui-input-variant-blurred {
 			backdrop-filter: blur(5px);
 			& input {
-				background-color: var(--color-surface-hight);
+				background-color: var(--color-surface);
 				border-radius: var(--radius-lg);
 			}
 		}
 		.ui-input-variant-faded {
 			& input {
-				border: solid 2px var(--color-surface-highest);
+				border: solid 2px var(--color-surface);
 				background-color: var(--color-surface);
 				color: var(--color-container);
 				border-radius: var(--radius-lg);
@@ -210,7 +210,7 @@
 			}
 			& input {
 				border-radius: 0;
-				background-color: var(--color-surface-hight);
+				background-color: var(--color-surface);
 				/* &:has(input:focus)::after {
 				width: 100%;
 				left: 0;

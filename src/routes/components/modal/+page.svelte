@@ -12,14 +12,6 @@
 	let openDefault = false;
 	let openBlurred = false;
 	let openTransparent = false;
-	// let openDrawer = false;
-	// let openDrawerTop = false;
-	// let openDrawerLeft = false;
-	// let openDrawerRight = false;
-	// let openDrawerBottom = false;
-	// let openBlur = false;
-	// let openNormal = false;
-	// let openTransparent = false;
 </script>
 
 <div class="page-content">
@@ -302,69 +294,3 @@
 		</article>
 	</main>
 </div>
-
-<style>
-	.page-content {
-		& > main {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			width: 100%;
-			& > article {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				width: 70%;
-				background-color: var(--color-surface-low);
-				padding: var(--spacing-2) var(--spacing-6) var(--spacing-6) var(--spacing-6);
-				border-radius: var(--radius-xl);
-				gap: var(--spacing-4);
-				margin: var(--spacing-6) 0;
-				& > section {
-					display: flex;
-					/* view-timeline: --block;
-			view-timeline-axis: inline;
-			animation-timeline: view();
-			animation-name: show;
-			animation-range: entry 80% cover 70%;
-			animation-fill-mode: both; */
-					/* align-self: center; */
-					width: fit-content;
-					max-width: 100%;
-					flex-direction: column;
-					background-color: var(--color-surface-low);
-					justify-content: center;
-					gap: var(--spacing-2);
-					& > div {
-						justify-self: center;
-						align-items: center;
-						align-self: center;
-						display: flex;
-						flex-wrap: wrap;
-						width: fit-content;
-						padding: var(--spacing-4);
-						gap: var(--spacing-8);
-						flex-direction: row;
-					}
-				}
-			}
-		}
-		& > aside {
-			& > span {
-				width: max-content;
-				display: block;
-			}
-			position: sticky;
-			height: fit-content;
-			top: 65px;
-			width: max-content;
-			left: 2.5%;
-			padding: var(--spacing-4);
-			border-radius: var(--radius-xl);
-			background-color: var(--color-surface-low);
-			& ul {
-				width: max-content;
-			}
-		}
-	}
-</style>

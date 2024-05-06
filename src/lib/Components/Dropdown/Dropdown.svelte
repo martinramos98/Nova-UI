@@ -82,7 +82,7 @@
 	{:else}
 		<Button
 			variant="solid"
-			colors="container-hight"
+			colors="container"
 			className="rounded-lg py-2"
 			buttonProps={{
 				events: {
@@ -100,7 +100,7 @@
 		<div
 			use:animationOpen
 			use:setDropdownContentPosition
-			class="ui-dropdown-content ui-color-container-hight ui-variant-solid rounded-xl"
+			class="ui-dropdown-content ui-color-container ui-variant-solid rounded-xl"
 		>
 			{#if children}
 				{@render children(toggleDropdown)}

@@ -53,7 +53,7 @@
 			& span {
 				translate: 5px 13px;
 				display: block;
-				color: var(--color-gray-400);
+				color: var(--color-subtext);
 				font-weight: 500;
 			}
 		}

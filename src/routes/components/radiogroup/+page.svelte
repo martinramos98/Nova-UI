@@ -76,58 +76,6 @@
 			);
 		}}>Toast Test 2</Button
 	>
-	<Title level={2}>Loaders</Title>
-	<Title level={3}>Ring</Title>
-	<article class="callout row">
-		<Loader
-			label={'Loading...'}
-			svgLoaderProps={{ class: 'size-12', 'stroke-width': 3 }}
-			colors="info"
-			loaderVariant={'ringResize'}
-		/>
-		<Loader
-			label={'Loading...'}
-			svgLoaderProps={{ class: 'size-12', 'stroke-width': 1 }}
-			colors="error"
-			loaderVariant={'ring90'}
-		/>
-		<Loader
-			label={'Loading...'}
-			svgLoaderProps={{ class: 'size-12' }}
-			colors="warning"
-			loaderVariant={'ring180'}
-		/>
-		<Loader
-			label={'Loading...'}
-			svgLoaderProps={{ class: 'size-12' }}
-			colors="success"
-			loaderVariant={'ring270'}
-		/>
-	</article>
-	<Title className="my-2" level={3}>Dotted</Title>
-	<article class="callout row">
-		<Loader
-			label={'Loading...'}
-			svgLoaderProps={{ class: 'size-12', 'stroke-width': 3 }}
-			colors="primary"
-			type="dots"
-			loaderVariant={'threeDotsBounce'}
-		/>
-		<Loader
-			label={'Loading...'}
-			svgLoaderProps={{ class: 'size-12', 'stroke-width': 1 }}
-			colors="primary"
-			type="dots"
-			loaderVariant={'threeDotsMove'}
-		/>
-		<Loader
-			label={'Loading...'}
-			svgLoaderProps={{ class: 'size-12' }}
-			colors="primary"
-			type="dots"
-			loaderVariant={'revolve'}
-		/>
-	</article>
 	<Title level={2} className="my-2">Progress</Title>
 	<article class="callout">
 		<Progress />

@@ -1,6 +1,6 @@
 <script>
 	import CalloutIcons from './CalloutIcons.svelte';
-	export let colors = 'container-hight';
+	export let colors = 'container';
 	export let variant = 'solid';
 	export let className = '';
 	export let radius = 'rounded-xl';

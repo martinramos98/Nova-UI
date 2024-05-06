@@ -38,7 +38,7 @@
 	--color-night-300: rgb(170, 170, 170);
 	--color-night-200: rgb(204, 204, 204);
 	--color-night-100: rgb(221, 221, 221);
-
+	--color-night-50: rgb(230, 230, 230);
 	--color-red-A100: rgb(255, 209, 220);
 	--color-red-A200: rgb(255, 183, 183);
 	--color-red-A400: rgb(255, 152, 152);
@@ -127,8 +127,9 @@
 			--color-surface-highest: var(--color-night-600);
 			/* NOTE: Color scheme Variables Default */
 			--color-container: var(--color-night-500);
-			--color-subcontainer: var(--color-night-400);
+			--color-subcontainer: var(--color-night-700);
 			--color-text: var(--color-white);
+			--color-subtext: var(--color-night-300);
 			--color-border: var(--color-night-400);
 			--shadow: 2px 2px 5px rgb(--color-night-800);
 
@@ -185,68 +186,75 @@
 	/* TODO: Change */
 	@media (prefers-color-scheme: light) {
 		:root {
-			--primary-50: var(--night-700);
-			--primary-40: var(--night-500);
-			--primary-30: var(--night-300);
-			--primary-20: var(--night-200);
-			--primary-10: var(--night-100);
-			--on-primary-20: var(--night-900);
-			--on-primary-10: var(--night-800);
+			--primary-50: var(--color-night-700);
+			--primary-40: var(--color-night-500);
+			--primary-30: var(--color-night-300);
+			--primary-20: var(--color-night-200);
+			--primary-10: var(--color-night-100);
+			--on-primary-20: var(--color-night-100);
+			--on-primary-10: var(--color-night-200);
 
-			--secondary-50: var(--night-700);
-			--secondary-40: var(--night-500);
-			--secondary-30: var(--night-300);
-			--secondary-20: var(--night-200);
-			--secondary-10: var(--night-100);
-			--on-secondary-20: var(--night-900);
-			--on-secondary-10: var(--night-800);
+			--secondary-50: var(--color-night-600);
+			--secondary-40: var(--color-night-400);
+			--secondary-30: var(--color-night-300);
+			--secondary-20: var(--color-night-200);
+			--secondary-10: var(--color-night-50);
+			--on-secondary-20: var(--color-night-200);
+			--on-secondary-10: var(--color-night-300);
 
-			--tertiary-50: var(--night-700);
-			--tertiary-40: var(--night-500);
-			--tertiary-30: var(--night-300);
-			--tertiary-20: var(--night-200);
-			--tertiary-10: var(--night-100);
-			--on-tertiary-20: var(--night-900);
-			--on-tertiary-10: var(--night-800);
+			--tertiary-50: var(--color-night-500);
+			--tertiary-40: var(--color-night-300);
+			--tertiary-30: var(--color-night-200);
+			--tertiary-20: var(--color-night-100);
+			--tertiary-10: var(--color-night-50);
+			--on-tertiary-20: var(--color-night-300);
+			--on-tertiary-10: var(--color-night-400);
 
-			--error-50: var(--red-900);
-			--error-40: var(--red-700);
-			--error-30: var(--red-500);
-			--error-20: var(--red-300);
-			--error-10: var(--red-200);
-			--on-error-20: var(--red-A200);
-			--on-error-10: var(--red-A400);
+			--error-50: var(--color-red-900);
+			--error-40: var(--color-red-700);
+			--error-30: var(--color-red-500);
+			--error-20: var(--color-red-300);
+			--error-10: var(--color-red-200);
+			--on-error-20: var(--color-red-A200);
+			--on-error-10: var(--color-red-A400);
 
-			--success-50: var(--green-900);
-			--success-40: var(--green-700);
-			--success-30: var(--green-500);
-			--success-20: var(--green-300);
-			--success-10: var(--green-200);
-			--on-success-20: var(--green-A200);
-			--on-success-10: var(--green-A400);
+			--success-50: var(--color-green-900);
+			--success-40: var(--color-green-700);
+			--success-30: var(--color-green-500);
+			--success-20: var(--color-green-300);
+			--success-10: var(--color-green-200);
+			--on-success-20: var(--color-green-A200);
+			--on-success-10: var(--color-green-A400);
 
-			--warning-50: var(--yellow-900);
-			--warning-40: var(--yellow-700);
-			--warning-30: var(--yellow-500);
-			--warning-20: var(--yellow-400);
-			--warning-10: var(--yellow-300);
-			--on-warning-20: var(--yellow-A100);
-			--on-warning-10: var(--yellow-200);
+			--warning-50: var(--color-yellow-900);
+			--warning-40: var(--color-yellow-700);
+			--warning-30: var(--color-yellow-500);
+			--warning-20: var(--color-yellow-400);
+			--warning-10: var(--color-yellow-300);
+			--on-warning-20: var(--color-yellow-A100);
+			--on-warning-10: var(--color-yellow-200);
 
-			--info-10: var(--blue-200);
-			--info-20: var(--blue-300);
-			--info-30: var(--blue-400);
-			--info-40: var(--blue-600);
-			--info-50: var(--blue-800);
-			--on-info-20: var(--blue-A400);
-			--on-info-10: var(--blue-A200);
+			--info-10: var(--color-blue-200);
+			--info-20: var(--color-blue-300);
+			--info-30: var(--color-blue-400);
+			--info-40: var(--color-blue-600);
+			--info-50: var(--color-blue-800);
+			--on-info-20: var(--color-blue-A50);
+			--on-info-10: var(--color-blue-A200);
 
 			/* NOTE: Color scheme Variables Default */
-			--color-container: var(--night-900);
-			--color-subcontainer: var(--night-800);
-			--color-text: var(--white);
-			--color-border: var(--night-night-900);
-			--color-shadow: 2px 2px 5px rgb(--night-800);
+			--color-surface-lowest: var(--color-night-300);
+			--color-surface-low: var(--color-night-200);
+			--color-surface: var(--color-night-100);
+			--color-surface-hight: var(--color-night-50);
+			--color-surface-highest: var(--color-white);
+			--color-on-surface: var(--color-night-900);
+			--color-container: var(--color-night-200);
+			--color-subcontainer: var(--color-night-300);
+			--color-text: var(--color-night-900);
+			--color-subtext: var(--color-night-500);
+			--color-border: var(--color-night-200);
+			--color-shadow: 2px 2px 5px rgb(--color-night-400);
 		}
 
 		.ui-color-primary {
@@ -315,9 +323,25 @@
 	.ui-color-container-hight {
 		--color-container: var(--color-surface-hight);
 		--color-subcontainer: var(--color-surface-highest);
-		--color-text: var(--seasalt);
-		--color-sub-text: var(--white);
-		--color-border: var(--seasalt);
+		--color-text: var(--color-on-surface);
+		--color-sub-text: var(--color-on-surface);
+		--color-border: var(--color-on-surface);
+	}
+}
+@media (prefers-color-scheme: dark) {
+	@layer components {
+		.ui-variant-faded {
+			border: solid 2px var(--color-surface-highest);
+			background: var(--color-surface-hight);
+		}
+	}
+}
+@media (prefers-color-scheme: light) {
+	@layer components {
+		.ui-variant-faded {
+			border: solid 2px var(--color-surface-lowest);
+			background: var(--color-surface-low);
+		}
 	}
 }
 @layer components {
@@ -329,9 +353,8 @@
 		/* transition: filter 0.25s ease; */
 		/* border: 2px solid var(--color-border); */
 	}
+
 	.ui-variant-faded {
-		border: solid 2px var(--color-surface-highest);
-		background: var(--color-surface-hight);
 		/* padding: calc(0.25rem - 2px) calc(1.25rem - 2px); */
 		color: var(--color-container);
 		border-radius: 8px;
@@ -630,4 +653,8 @@
 			}
 		}
 	}
+}
+body {
+	background-color: var(--color-surface);
+	color: var(--color-on-surface);
 }

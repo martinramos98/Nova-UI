@@ -43,7 +43,7 @@
 						<Card
 							footerClassname="p-2 text-end"
 							variant={'solid'}
-							color="container-hight"
+							color="container"
 							className="p-2 rounded-xl gap-2 w-full max-w-[400px]"
 							bodyClassname="flex flex-col items-center"
 						>
@@ -73,7 +73,7 @@
 						<Title level={3} className="text-lg">Header and Body</Title>
 						<Card
 							variant={'solid'}
-							color="container-hight"
+							color="container"
 							className="rounded-xl w-full max-w-[400px] h-fit "
 							bodyClassname="p-4"
 						>
@@ -97,7 +97,10 @@
 					</div>
 					<div class="example-card-box">
 						<Title level={3} className="text-lg">Body and Footer</Title>
-						<Card className="w-full max-w-[400px]" footerClassname="py-2 text-end bg-zinc-800 pr-4">
+						<Card
+							className="w-full max-w-[400px]"
+							footerClassname="py-2 text-end bg-[var(--color-surface)] pr-4"
+						>
 							{#snippet body()}
 								<img
 									src="https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/c_scale,w_1200/ncom/software/switch/70010000068688/1c5583f6bbce5bccdc923c25c35ba8f42128b55df84f4a2fbeea74b6d1d1516e"
@@ -262,7 +265,7 @@
 						headerClassname="flex flex-row items-center gap-2 text-start"
 						bodyClassname="my-2 px-2"
 						variant="solid"
-						color="container-hight"
+						color="container"
 					>
 						{#snippet header()}
 							<Avatar avatarSrc="https://play.nintendo.com/images/profile-mk-bowser.7bf2a8f2.png" />
