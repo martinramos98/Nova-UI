@@ -1,86 +1,88 @@
 <script lang="ts">
+	import { ElementAnimation } from '$lib/Animations/Animation.js';
 	import { setPosisitionPopover } from '$lib/utils/utils.js';
-	import { onMount } from 'svelte';
+	import { type Snippet } from 'svelte';
+	export let popoverContent: Snippet;
 	export let offset = 5;
 	export let position = 'top-start';
 	export let className = '';
 	export let colors = '';
 	export let variant = '';
-	let open = false;
+	export let open = false;
+	export let children: Snippet;
+	let render = false;
 	let popover: HTMLElement;
-	let container: HTMLElement;
-	let effect: KeyframeEffect;
-	let animation: Animation;
+	let animation: ElementAnimation;
 	const animationKeyframe: Keyframe[] = [
-		{ opacity: 0, scale: 0, offset: 0 },
-		{ opacity: 0, offset: 0.5 },
-		{ opacity: 1, scale: 1, offset: 1 }
+		{ opacity: 0, scale: 0.9 },
+		{ opacity: 1, scale: 1 }
 	];
 	const animationOptions: KeyframeEffectOptions = {
 		duration: 300,
 		easing: 'ease-in-out',
 		iterations: 1,
-		fill: 'forwards'
+		direction: 'normal',
+		fill: 'both'
 	};
-	onMount(() => {
-		setPosisitionPopover({ offset, position, element: popover });
-		effect = new KeyframeEffect(popover, animationKeyframe, animationOptions);
-		animation = new Animation(effect, document.timeline);
-		popover.style.visibility = 'hidden';
-		animation.addEventListener('finish', () => {
-			if (open) {
-				popover.style.visibility = 'visible';
-			} else {
-				popover.style.visibility = 'hidden';
-			}
-			animation.commitStyles();
-		});
-	});
 	function handleTogglePopover(ev: MouseEvent) {
 		const el = ev.target as HTMLElement;
-		if (open && !popover.contains(el) && popover !== el) {
-			console.log('closing from extern');
+		console.log(!popover.contains(el));
+		if (open && !popover.contains(el)) {
 			open = false;
-			animation.pause();
 			animation.reverse();
 			window.removeEventListener('click', handleTogglePopover);
 		}
 		ev.preventDefault();
-		ev.stopImmediatePropagation();
 	}
 	function onClickPopover(ev: MouseEvent) {
-		// console.log('click', open);
-		ev.preventDefault();
 		ev.stopImmediatePropagation();
-		if (popover.contains(ev.target) && popover !== ev.target) {
-			return;
-		}
+		ev.preventDefault();
 		if (open) {
-			open = false;
-			window.removeEventListener('click', handleTogglePopover);
-			animation.pause();
-			animation.reverse();
+			if (!popover.contains(ev.target)) {
+				open = false;
+				window.removeEventListener('click', handleTogglePopover);
+				animation.reverse();
+			}
 		} else {
-			popover.style.visibility = 'visible';
 			open = true;
-			animation.pause();
-			animation.playbackRate = 1;
-			animation.play();
-			window.addEventListener('click', handleTogglePopover);
+			render = true;
 		}
+	}
+	function setPopover(node: HTMLElement) {
+		setPosisitionPopover({ offset, position, element: node });
+
+		animation = new ElementAnimation(popover, {
+			animations: {
+				keyframes: animationKeyframe,
+				animationOptions: animationOptions
+			},
+			iterations: 1,
+			alternate: false,
+			onFinishedAnimation() {
+				if (!open) {
+					render = false;
+				}
+			}
+		});
+		node.style.visibility = 'visible';
+		animation.playForward();
+		window.addEventListener('click', handleTogglePopover);
 	}
 </script>
 
-<div on:click|capture={onClickPopover} bind:this={container} class="ui-popover-container">
-	<slot />
-	<div
-		bind:this={popover}
-		class="ui-popover ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
-			? variant
-			: ''}  {className}"
-	>
-		<slot name="content" />
-	</div>
+<div on:click|capture={onClickPopover} class="ui-popover-container">
+	{@render children()}
+	{#if render}
+		<div
+			use:setPopover
+			bind:this={popover}
+			class="ui-popover ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
+				? variant
+				: ''}  {className}"
+		>
+			{@render popoverContent()}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -88,6 +90,7 @@
 		.ui-popover-container {
 			position: relative;
 			display: inline-block;
+			width: max-content;
 		}
 		/* .ui-tooltip-container:hover {
 			& > .ui-tooltip {
@@ -106,6 +109,7 @@
 			height: auto;
 			position: absolute;
 			opacity: 0;
+			z-index: 10;
 		}
 	}
 </style>

@@ -30,7 +30,7 @@ export const easing = {
 	'elastic-1': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
 	'elastic-2': 'cubic-bezier(0.4, 0, 0.2, 1)',
 	'elastic-3': 'cubic-bezier(0.4, 0, 0.6, 1)',
-	'elastic-4': 'cubic-bezier(0.25, 0.1, 0.25, 1.2)',
+	'elastic-4': 'cubic-bezier(0.25, 0.1, 0.25, 1.2)'
 };
 
 export const defaultKeyframesAnimations: Record<string, Keyframe[]> = {

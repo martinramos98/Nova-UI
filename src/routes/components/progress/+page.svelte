@@ -76,6 +76,12 @@
 					indeterminate={true}
 					value={0.5}
 				/>
+				<Progress
+					className="mx-auto mt-8 w-fit"
+					--color-container={'#4299E1'}
+					indeterminate={true}
+					type={'circle'}
+				/>
 			</section>
 		</article>
 		<article id="width">

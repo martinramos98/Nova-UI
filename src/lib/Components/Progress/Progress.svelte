@@ -4,7 +4,7 @@
 	import { quadInOut } from 'svelte/easing';
 	export let className = '';
 	export let colors = '';
-	export let variants = '';
+	// export let variants = '';
 	export let type: 'bar' | 'circle' = 'bar';
 	export let value = 0;
 	export let colorsTriggers: undefined | Record<number, string> = undefined;
@@ -115,7 +115,7 @@
 			width: 100%;
 			position: absolute;
 			height: inherit;
-			background: var(--color-surface-low);
+			background: var(--color-surface);
 			z-index: 1;
 		}
 		& .ui-bar-complete {
@@ -146,7 +146,7 @@
 			stroke-dashoffset: 200;
 		}
 		& .ui-circle-total {
-			stroke: var(--color-surface-low);
+			stroke: var(--color-surface);
 		}
 	}
 	@keyframes indeterminate-bar {
