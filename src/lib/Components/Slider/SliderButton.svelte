@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	export let buttonElement: HTMLElement | undefined = undefined;
-	export let onPointerMove: (ev: PointerEvent) => void;
+	export let onPointerMove: (ev: PointerEvent | TouchEvent) => void;
 	export let buttonPosition = 0;
 	export let triggerOnChange: undefined | ((value: number) => void) = undefined;
 	export let className = '';
@@ -10,14 +10,20 @@
 	export let customButton: undefined | Snippet = undefined;
 	let containerElement: HTMLElement;
 	let width: number;
-	function onMouseUp(ev: MouseEvent) {
+	function onMouseUp() {
 		window.removeEventListener('pointermove', onPointerMove);
-		window.removeEventListener('mouseup', onMouseUp);
+		window.removeEventListener('touchmove', onPointerMove);
+		window.removeEventListener('pointerup', onMouseUp);
 		triggerOnChange && triggerOnChange(value);
 	}
-	function onMouseDown(ev: MouseEvent) {
-		window.addEventListener('pointermove', onPointerMove);
-		window.addEventListener('mouseup', onMouseUp);
+	function onMouseDown() {
+		// @ts-expect-error Error cause is not defined, see compatibility on other browsers
+		if (navigator.userAgentData && navigator.userAgentData.mobile) {
+			window.addEventListener('touchmove', onPointerMove);
+		} else {
+			window.addEventListener('pointermove', onPointerMove);
+		}
+		window.addEventListener('pointerup', onMouseUp);
 	}
 	function setParentRef(node: HTMLElement) {
 		containerElement = node.parentElement as HTMLElement;

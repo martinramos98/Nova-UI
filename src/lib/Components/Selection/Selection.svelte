@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { ElementAnimation, type ElementAnimationParams } from '$lib/Animations/Animation.js';
 	import { setPositionDropdown } from '$lib/utils/utils.js';
-	import { setContext } from 'svelte';
-	import { writable } from 'svelte/store';
 	export let multiselection = false;
 	export let type = 'default';
 	export let variant = 'default';
-	export let colors = 'container-hight';
+	export let colors = 'primary';
 	export let selectionLabel = '';
 	export let disabled = false;
 	export let isInvalid = false;
@@ -22,6 +20,7 @@
 	export let value: any = undefined;
 	export let onSelect: undefined | ((value: any) => void) = undefined;
 	// const selected = writable<any[]>([]);
+
 	let selected: Set<any> = new Set(value ? [value] : []);
 	let openSelection = false;
 	let render = false;
@@ -184,7 +183,7 @@
 			position: relative;
 			height: fit-content;
 			width: fit-content;
-			color: var(--color-text);
+			/* color: var(--color-text); */
 			&.ui-selection-variant-default {
 				& .ui-selection-input {
 					border-radius: var(--radius-lg);
@@ -201,7 +200,9 @@
 				}
 			}
 			&.ui-selection-variant-blurred {
+				color: var(--color-container);
 				& .ui-selection-input {
+					color: var(--color-on-surface);
 					border-radius: var(--radius-lg);
 					background-color: color-mix(in srgb, var(--color-container), transparent 95%);
 					backdrop-filter: blur(5px);
@@ -209,7 +210,7 @@
 				& .ui-selection-options-container {
 					border-radius: var(--radius-lg);
 					background-color: color-mix(in srgb, var(--color-container), transparent 95%);
-					color: var(--color-text);
+					color: var(--color-on-surface);
 					backdrop-filter: blur(5px);
 				}
 			}
@@ -275,16 +276,17 @@
 			&.ui-selection-variant-underlined {
 				& .ui-selection-input {
 					background-color: var(--color-surface);
-					color: var(--color-text);
+					color: var(--color-container);
 					border-bottom: 2px solid var(--color-border);
 					border-radius: var(--radius-none);
 					& span {
+						color: var(--color-text);
 						background-color: var(--color-container);
 					}
 				}
 				& .ui-selection-options-container {
 					background-color: var(--color-surface);
-					color: var(--color-text);
+					color: var(--color-container);
 					border-radius: var(--radius-none);
 					border-bottom: 2px solid var(--color-border);
 				}
@@ -316,7 +318,7 @@
 					opacity: 0.4;
 				}
 				& span {
-					color: var(--color-sub-text);
+					/* color: var(--color-text); */
 					padding: 2px;
 					opacity: 1;
 					margin: 0 2px;

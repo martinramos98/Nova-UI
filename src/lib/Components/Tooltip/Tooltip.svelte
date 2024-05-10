@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
 	import { setPosisitionPopover } from '$lib/utils/utils.js';
 	export let className = '';
 	export let colors = '';
@@ -7,11 +7,12 @@
 	export let offset = 5;
 	export let position = 'top-start';
 	export let withArrow = false;
-	export let content = '';
+	export let content: string | Snippet = '';
+	export let children: Snippet | undefined = undefined;
 	let open = false;
 	let tooltip: HTMLElement;
 	let container: HTMLElement;
-	let cssPosition = '';
+	// let cssPosition = '';
 	let effect: KeyframeEffect;
 	let animation: Animation;
 	let arrowPosition = '';
@@ -72,11 +73,14 @@
 
 <div
 	bind:this={container}
+	role="tooltip"
 	on:mouseenter|self={onMouseIn}
 	on:mouseleave|self={onMouseOut}
 	class="ui-tooltip-container"
 >
-	<slot />
+	{#if children}
+		{@render children()}
+	{/if}
 	<div
 		use:setPosition
 		bind:this={tooltip}
@@ -89,9 +93,11 @@
 				<path d="M2.5 0L4.66506 3.75H0.334936L2.5 0Z" />
 			</svg>
 		{/if}
-		<slot name="content">
+		{#if typeof content === 'string'}
 			{content}
-		</slot>
+		{:else}
+			{@render content()}
+		{/if}
 	</div>
 </div>
 

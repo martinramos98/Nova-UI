@@ -3,7 +3,7 @@
 	export let variant: any | '' = '';
 	export let colors: any | '' = '';
 	export let className = '';
-	export let size: 'sm' | 'md' | 'lg' = 'sm';
+	export let size: 'xs' | 'sm' | 'md' | 'lg' = 'sm';
 </script>
 
 <span

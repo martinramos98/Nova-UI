@@ -2,11 +2,12 @@
 	import CalloutIcons from '../Callout/CalloutIcons.svelte';
 	import { SequencedAnimation } from '$lib/Animations/SequencedAnimation.js';
 	import CloseButton from '../CloseButton/CloseButton.svelte';
+	import type { Snippet } from 'svelte';
 	export let className = '';
 	export let variant = 'solid';
 	export let type = 'default';
 	export let colors: string | undefined = undefined;
-	export let content: string | { component: ConstructorOfATypedSvelteComponent; props: any } = '';
+	export let content: string | Snippet<[any]>;
 	export let withIcon = true;
 	export let delay: number | undefined = undefined;
 	export let withCloseButton = false;
@@ -89,7 +90,7 @@
 			}
 		);
 		anim.playForward();
-		if (delay) {
+		if (delay && delay !== Infinity) {
 			setTimeout(() => {
 				console.log('animating reverse');
 				reversed = true;
@@ -105,13 +106,16 @@
 		? 'error'
 		: type} ui-variant-{variant} {className}"
 >
-	{#if withIcon}
-		<CalloutIcons {type} />
-	{/if}
 	{#if typeof content === 'string'}
+		{#if withIcon}
+			<CalloutIcons {type} />
+		{/if}
 		<span>{content}</span>
 	{:else}
-		<svelte:component this={content.component} {...content.props} {onClose} />
+		{@render content(() => {
+			reversed = true;
+			anim.reverse();
+		})}
 	{/if}
 	{#if withCloseButton}
 		<CloseButton

@@ -43,6 +43,7 @@
 			estado: 'Activo'
 		}
 	];
+	const colHeaders = ['nombre', 'apellido', 'direccion', 'estado'];
 	const prom = new Promise((resolve, reject) => {
 		setTimeout(() => {
 			resolve(datosEjemplo);
@@ -50,179 +51,218 @@
 	});
 </script>
 
-<Title>Tables</Title>
-<main>
-	<Table>
-		<TableHeader>
-			<Cell as="header" scope="col">Nombre</Cell>
-			<Cell as="header" scope="col">Apellido</Cell>
-			<Cell as="header" scope="col">Direccion</Cell>
-			<Cell as="header" scope="col">Estado</Cell>
-		</TableHeader>
-		<TableBody>
-			<TableRow>
-				<Cell as="header" scope="row">Martin</Cell>
-				<Cell>Ramos</Cell>
-				<Cell>San Blas 1683</Cell>
-				<Cell>Activo</Cell>
-			</TableRow>
-			<TableRow>
-				<Cell as="header" scope="row">Ricardo</Cell>
-				<Cell>Ramos</Cell>
-				<Cell>San Blas 1683</Cell>
-				<Cell>Activo</Cell>
-			</TableRow>
-		</TableBody>
-	</Table>
-	<Table className="my-4 " variant="bordered">
-		<TableHeader>
-			<Cell as="header" scope="col">Nombre</Cell>
-			<Cell as="header" scope="col">Apellido</Cell>
-			<Cell as="header" scope="col">Direccion</Cell>
-			<Cell as="header" scope="col">Estado</Cell>
-		</TableHeader>
-		<TableBody>
-			<TableRow>
-				<Cell as="header" scope="row">Martin</Cell>
-				<Cell>Ramos</Cell>
-				<Cell>San Blas 1683</Cell>
-				<Cell className="p-2">
-					<div class="flex justify-center">
-						<Chip
-							colors="success"
-							className="m-1 wi rounded-lg h-8 w-12 text-xs"
-							variant="shadows"
-							size="sm"
-						>
-							Activo
-						</Chip>
-					</div>
-				</Cell>
-			</TableRow>
-			<TableRow>
-				<Cell as="header" scope="row">Ricardo</Cell>
-				<Cell>Ramos</Cell>
-				<Cell>San Blas 1683</Cell>
-				<Cell className="p-2">
-					<Chip colors="success" className="m-1 rounded-lg" variant="shadows" size="sm">
-						Activo
-					</Chip>
-				</Cell>
-			</TableRow>
-		</TableBody>
-	</Table>
-	<Table variant="bordered-row" className="my-4 ">
-		<TableHeader>
-			<Cell className="p-3 border-none" as="header" scope="col">Nombre</Cell>
-			<Cell className="p-3 border-none" as="header" scope="col">Apellido</Cell>
-			<Cell className="p-3 border-none" as="header" scope="col">Direccion</Cell>
-			<Cell className="p-3 border-none" as="header" scope="col">Estado</Cell>
-		</TableHeader>
-		<TableBody>
-			{#each datosEjemplo as dato}
-				<TableRow>
-					<Cell as="header" scope="row">{dato.nombre}</Cell>
-					<Cell>{dato.apellido}</Cell>
-					<Cell>{dato.direccion}</Cell>
-					<Cell className="p-2">
-						<Chip
-							colors={dato.estado === 'Activo' ? 'success' : 'error'}
-							className="m-1 rounded-lg"
-							variant="neon"
-							size="xs"
-						>
-							{dato.estado}
-						</Chip>
-					</Cell>
-				</TableRow>
-			{/each}
-		</TableBody>
-	</Table>
-	<Table variant="solid-row" color="" --color-container="#3E3E3E85" className="my-4 ">
-		<TableHeader>
-			<Cell className="p-3" as="header" scope="col">Nombre</Cell>
-			<Cell className="p-3" as="header" scope="col">Apellido</Cell>
-			<Cell className="p-3" as="header" scope="col">Direccion</Cell>
-			<Cell className="p-3" as="header" scope="col">Estado</Cell>
-		</TableHeader>
-		<TableBody>
-			{#each datosEjemplo as dato}
-				<TableRow>
-					<Cell as="header" scope="row">{dato.nombre}</Cell>
-					<Cell>{dato.apellido}</Cell>
-					<Cell>{dato.direccion}</Cell>
-					<Cell className="p-2">
-						<div class="flex justify-center">
-							<Chip
-								colors={dato.estado === 'Activo' ? 'success' : 'error'}
-								className="m-1 rounded-lg w-fit h-6 px-6 py-2"
-								variant="neon"
-								size="xs"
+<div class="page-content">
+	<main>
+		<article>
+			<header><Title>Table</Title></header>
+			<section>
+				<Table>
+					<TableHeader>
+						{#each colHeaders as header}
+							<Cell
+								className={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
+								as="header"
+								scope="col">{header}</Cell
 							>
-								{dato.estado}
-							</Chip>
-						</div>
-					</Cell>
-				</TableRow>
-			{/each}
-		</TableBody>
-	</Table>
-	{#await prom}
-		<Loader
-			className="w-full h-full"
-			colors="warning"
-			svgLoaderProps={{ height: '80', width: '80' }}
-		/>
-	{:then datos}
-		<div transition:fade>
-			<Table variant="stripped" color="" --color-container="#3E3E3E85" className="my-4 w-full">
-				<TableHeader>
-					<Cell className="p-3" as="header" scope="col">Nombre</Cell>
-					<Cell className="p-3" as="header" scope="col">Apellido</Cell>
-					<Cell className="p-3" as="header" scope="col">Direccion</Cell>
-					<Cell className="p-3" as="header" scope="col">Estado</Cell>
-				</TableHeader>
-				<TableBody>
-					{#each datos as dato}
-						<TableRow>
-							<Cell as="header" scope="row">{dato.nombre}</Cell>
-							<Cell>{dato.apellido}</Cell>
-							<Cell>{dato.direccion}</Cell>
-							<Cell className="p-2">
-								<div class="flex justify-center">
+						{/each}
+					</TableHeader>
+					<TableBody>
+						{#each datosEjemplo as dato}
+							<TableRow>
+								<Cell as="header" scope="row">{dato.nombre}</Cell>
+								<Cell>{dato.apellido}</Cell>
+								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell className="p-2">
+									<div class="flex justify-center">
+										<Chip
+											colors={dato.estado === 'Activo' ? 'success' : 'error'}
+											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											variant="neon"
+											size="xs"
+										>
+											{dato.estado}
+										</Chip>
+									</div>
+								</Cell>
+							</TableRow>
+						{/each}
+					</TableBody>
+				</Table>
+			</section>
+		</article>
+		<article>
+			<header>
+				<Title level={2}>Variants</Title>
+			</header>
+			<section>
+				<Title level={3}>None</Title>
+				<Table>
+					<TableHeader>
+						{#each colHeaders as header}
+							<Cell
+								className={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
+								as="header"
+								scope="col">{header}</Cell
+							>
+						{/each}
+					</TableHeader>
+					<TableBody>
+						{#each datosEjemplo as dato}
+							<TableRow>
+								<Cell as="header" scope="row">{dato.nombre}</Cell>
+								<Cell>{dato.apellido}</Cell>
+								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell className="p-2">
+									<div class="flex justify-center">
+										<Chip
+											colors={dato.estado === 'Activo' ? 'success' : 'error'}
+											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											variant="neon"
+											size="xs"
+										>
+											{dato.estado}
+										</Chip>
+									</div>
+								</Cell>
+							</TableRow>
+						{/each}
+					</TableBody>
+				</Table>
+			</section>
+			<section>
+				<Title level={3}>Bordered</Title>
+
+				<Table className="my-4 " variant="bordered">
+					<TableHeader>
+						{#each colHeaders as header}
+							<Cell
+								className={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
+								as="header"
+								scope="col">{header}</Cell
+							>
+						{/each}
+					</TableHeader>
+					<TableBody>
+						{#each datosEjemplo as dato}
+							<TableRow>
+								<Cell as="header" scope="row">{dato.nombre}</Cell>
+								<Cell>{dato.apellido}</Cell>
+								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell className="p-2">
+									<div class="flex justify-center">
+										<Chip
+											colors={dato.estado === 'Activo' ? 'success' : 'error'}
+											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											variant="neon"
+											size="xs"
+										>
+											{dato.estado}
+										</Chip>
+									</div>
+								</Cell>
+							</TableRow>
+						{/each}
+					</TableBody>
+				</Table>
+			</section>
+			<section>
+				<Title level={3}>Bordered Row</Title>
+				<Table variant="bordered-row" className="my-4 ">
+					{#each colHeaders as header}
+						<Cell
+							className={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
+							as="header"
+							scope="col">{header}</Cell
+						>
+					{/each}
+					<TableBody>
+						{#each datosEjemplo as dato}
+							<TableRow>
+								<Cell as="header" scope="row">{dato.nombre}</Cell>
+								<Cell>{dato.apellido}</Cell>
+								<Cell className="sm:hidden md:table-cell">{dato.direccion}</Cell>
+								<Cell className="p-2">
 									<Chip
 										colors={dato.estado === 'Activo' ? 'success' : 'error'}
-										className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+										className="m-1 rounded-lg"
 										variant="neon"
 										size="xs"
 									>
 										{dato.estado}
 									</Chip>
-								</div>
-							</Cell>
-						</TableRow>
-					{/each}
-				</TableBody>
-			</Table>
-		</div>
-	{/await}
-	<Button
-		variant="solid"
-		colors="info"
-		className="w-fit h-fit"
-		onClick={() => {
-			showRows = !showRows;
-		}}
-	>
-		Show Row
-	</Button>
-</main>
+								</Cell>
+							</TableRow>
+						{/each}
+					</TableBody>
+				</Table>
+			</section>
+			<section>
+				<Title level={3}>Solid Row</Title>
+				<Table variant="solid-row" color="" --color-container="#3E3E3E85" className="my-4 ">
+					<TableHeader>
+						<Cell className="p-3" as="header" scope="col">Nombre</Cell>
+						<Cell className="p-3" as="header" scope="col">Apellido</Cell>
+						<Cell className="p-3 hidden sm:table-cell" as="header" scope="col">Direccion</Cell>
+						<Cell className="p-3" as="header" scope="col">Estado</Cell>
+					</TableHeader>
+					<TableBody>
+						{#each datosEjemplo as dato}
+							<TableRow>
+								<Cell as="header" scope="row">{dato.nombre}</Cell>
+								<Cell>{dato.apellido}</Cell>
+								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell className="p-2">
+									<div class="flex justify-center">
+										<Chip
+											colors={dato.estado === 'Activo' ? 'success' : 'error'}
+											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											variant="neon"
+											size="xs"
+										>
+											{dato.estado}
+										</Chip>
+									</div>
+								</Cell>
+							</TableRow>
+						{/each}
+					</TableBody>
+				</Table>
+			</section>
+			<section>
+				<Title level={3}>Stripped Row</Title>
+				<Table variant="stripped" color="" --color-container="#3E3E3E85" className="my-4 ">
+					<TableHeader>
+						<Cell className="p-3" as="header" scope="col">Nombre</Cell>
+						<Cell className="p-3" as="header" scope="col">Apellido</Cell>
+						<Cell className="p-3 hidden sm:table-cell" as="header" scope="col">Direccion</Cell>
+						<Cell className="p-3" as="header" scope="col">Estado</Cell>
+					</TableHeader>
+					<TableBody>
+						{#each datosEjemplo as dato}
+							<TableRow>
+								<Cell as="header" scope="row">{dato.nombre}</Cell>
+								<Cell>{dato.apellido}</Cell>
+								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell className="p-2">
+									<div class="flex justify-center">
+										<Chip
+											colors={dato.estado === 'Activo' ? 'success' : 'error'}
+											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											variant="neon"
+											size="xs"
+										>
+											{dato.estado}
+										</Chip>
+									</div>
+								</Cell>
+							</TableRow>
+						{/each}
+					</TableBody>
+				</Table>
+			</section>
+		</article>
+	</main>
+</div>
 
 <style>
-	main {
-		margin: 10px;
-		display: grid;
-		gap: 2rem;
-		grid-template-columns: 1fr 1fr;
-	}
 </style>

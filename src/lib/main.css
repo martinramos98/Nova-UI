@@ -471,8 +471,8 @@
 	.ui-radio-button {
 		& .ui-icon-indeterminate {
 			position: absolute;
-			left: 0;
-			top: 0;
+			left: -1px;
+			top: 0px;
 			opacity: 0;
 			transition: opacity 0.2s linear 0.4s;
 		}

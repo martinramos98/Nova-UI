@@ -55,7 +55,9 @@
 		<div
 			style="height:{progressWidth}px"
 			role="progressbar"
-			class="ui-bar-loader {indeterminate ? 'animate-indeterminate-bar' : ''}"
+			class="ui-bar-loader {indeterminate ? 'animate-indeterminate-bar' : ''} {barRounded
+				? 'rounded-full'
+				: ''}"
 		>
 			<span
 				style="{indeterminate ? '' : `width:${$valueWidth * 100}%`} {forcedColor

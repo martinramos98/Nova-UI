@@ -5,94 +5,209 @@
 	import Title from '$lib/Components/Title/Title.svelte';
 </script>
 
-<Title className="my-2" level={2}>Input</Title>
-<section>
-	<Input labelText="Nombre" name="nombre" type="text" placeholder="Test" />
-	<Input
-		labelText="Edad"
-		name="edad"
-		labelProps={{ position: 'leftside', dynamic: true }}
-		type="number"
-	/>
-	<Input
-		labelText="Password"
-		name="password"
-		labelProps={{ position: 'outside', dynamic: true, className: '' }}
-		type="password"
-	/>
-	<Input name="email" labelText="Email" type="email" />
-</section>
-<Title className="my-2" level={4}>Input Variants</Title>
-<section></section>
-<Title className="my-2" level={2}>Selection</Title>
-<section>
-	<Selection
-		selectionLabel={'Test Selection'}
-		colors={'info'}
-		variant={'flat'}
-		classNameSelected="rounded-sm"
-	>
-		<Option value={1}>1</Option>
-		<Option value={2}>2</Option>
-		<Option value={3}>3</Option>
-		<Option value={4}>4</Option>
-	</Selection>
-	<Selection multiselection placeholder={'With Multiselection'} selectionLabel={'Test Selection'}>
-		<Option value={1}>1</Option>
-		<Option value={2}>2</Option>
-		<Option value={3}>3</Option>
-		<Option value={4}>4</Option>
-	</Selection>
-</section>
-<section>
-	<Selection
-		selectionLabel={'Test Selection'}
-		colors={'info'}
-		classNameInputBox="w-[300px]"
-		variant={'blurred'}
-		classNameSelected="rounded-sm"
-	>
-		<Option value={1}>1</Option>
-		<Option value={2}>2</Option>
-		<Option value={3}>3</Option>
-		<Option value={4}>4</Option>
-	</Selection>
-	<Selection
-		multiselection
-		variant={'faded'}
-		colors={'primary'}
-		placeholder={'With Multiselection'}
-		selectionLabel={'Test Selection'}
-	>
-		<Option value={1}>1</Option>
-		<Option value={2}>2</Option>
-		<Option value={3}>3</Option>
-		<Option value={4}>4</Option>
-	</Selection>
-</section>
-<section>
-	<Selection
-		selectionLabel={'Test Selection'}
-		colors={'info'}
-		variant={'underlined'}
-		classNameSelected="rounded-sm"
-	>
-		<Option value={1}>1</Option>
-		<Option value={2}>2</Option>
-		<Option value={3}>3</Option>
-		<Option value={4}>4</Option>
-	</Selection>
-	<Selection
-		multiselection
-		variant={'bordered'}
-		colors={'primary'}
-		placeholder={'With Multiselection'}
-		classNameInputBox="w-[300px]"
-		selectionLabel={'Test Selection'}
-	>
-		<Option value={1}>1</Option>
-		<Option value={2}>2</Option>
-		<Option value={3}>3</Option>
-		<Option value={4}>4</Option>
-	</Selection>
-</section>
+<div class="page-content">
+	<main>
+		<article>
+			<header>
+				<Title>Selection</Title>
+			</header>
+			<section>
+				<div class="w-full">
+					<Selection
+						selectionLabel={'Test Selection'}
+						colors="container"
+						variant={'default'}
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+				</div>
+			</section>
+		</article>
+		<article>
+			<header>
+				<Title level={2}>Mutiselection</Title>
+			</header>
+			<section>
+				<div class="w-full">
+					<Selection colors="container" multiselection selectionLabel={'Multiselection Selection'}>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+				</div>
+			</section>
+		</article>
+		<article>
+			<header>
+				<Title level={2}>Placeholder</Title>
+			</header>
+			<section>
+				<div class="w-full">
+					<Selection
+						selectionLabel={'Default Selection'}
+						colors="container"
+						variant={'default'}
+						placeholder="Placeholder"
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+					<Selection
+						colors="container"
+						variant={'default'}
+						placeholder="Placeholder"
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+				</div>
+			</section>
+		</article>
+		<article>
+			<header>
+				<Title level={2}>Variants</Title>
+			</header>
+			<section>
+				<div>
+					<Selection
+						selectionLabel={'Default Selection'}
+						colors="container-hight"
+						variant={'default'}
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+					<Selection
+						selectionLabel={'Blurred Selection'}
+						classNameInputBox="min-w-[200px]"
+						variant={'blurred'}
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+					<Selection
+						multiselection
+						variant={'faded'}
+						colors="primary"
+						classNameInputBox="min-w-[200px]"
+						selectionLabel={'Faded Selection'}
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+					<Selection
+						selectionLabel={'Underlined Selection'}
+						variant={'underlined'}
+						classNameInputBox="min-w-[200px]"
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+					<Selection
+						multiselection
+						variant={'bordered'}
+						colors={'primary'}
+						classNameInputBox="min-w-[200px]"
+						selectionLabel={'Bordered'}
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+				</div>
+			</section>
+		</article>
+		<article>
+			<header>
+				<Title level={2}>Colors</Title>
+			</header>
+			<section>
+				<div>
+					<Selection
+						selectionLabel={'Selection Success'}
+						variant={'underlined'}
+						colors="success"
+						classNameInputBox="min-w-[200px]"
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+					<Selection
+						selectionLabel={'Selection Error'}
+						variant={'underlined'}
+						colors="error"
+						classNameInputBox="min-w-[200px]"
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+					<Selection
+						selectionLabel={'Selection Warning'}
+						variant={'underlined'}
+						colors="warning"
+						classNameInputBox="min-w-[200px]"
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+					<Selection
+						selectionLabel={'Selection Primary'}
+						variant={'underlined'}
+						colors="primary"
+						classNameInputBox="min-w-[200px]"
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+					<Selection
+						selectionLabel={'Selection Info'}
+						variant={'underlined'}
+						colors="info"
+						classNameInputBox="min-w-[200px]"
+						classNameSelected="rounded-sm"
+					>
+						<Option value={1}>1</Option>
+						<Option value={2}>2</Option>
+						<Option value={3}>3</Option>
+						<Option value={4}>4</Option>
+					</Selection>
+				</div>
+			</section>
+		</article>
+	</main>
+</div>

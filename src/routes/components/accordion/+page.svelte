@@ -108,6 +108,7 @@
 		<article>
 			<header><Title>Variants</Title></header>
 			<section>
+				<Title level={3}>None</Title>
 				<div>
 					<Accordion variant="" multiopen={false} className="m-2">
 						<AccordionSection>
@@ -152,6 +153,7 @@
 					</Accordion>
 				</div>
 				<div>
+					<Title level={3}>Default</Title>
 					<Accordion multiopen={false} className="m-2">
 						<AccordionSection>
 							<svelte:fragment slot="header">
@@ -195,6 +197,7 @@
 					</Accordion>
 				</div>
 				<div>
+					<Title level={3}>Splitted Content</Title>
 					<Accordion
 						variant="splitted-content"
 						colors="container"
@@ -243,6 +246,7 @@
 					</Accordion>
 				</div>
 				<div>
+					<Title level={3}>Splitted</Title>
 					<Accordion variant="splitted" colors="container" multiopen={false} className="m-2">
 						<AccordionSection>
 							<svelte:fragment slot="header">
@@ -286,6 +290,7 @@
 					</Accordion>
 				</div>
 				<div>
+					<Title level={3}>Bordered Items</Title>
 					<Accordion variant="bordered-items" multiopen={false} className="m-2">
 						<AccordionSection>
 							<svelte:fragment slot="header">

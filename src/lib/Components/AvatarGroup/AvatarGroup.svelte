@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { afterUpdate } from 'svelte';
 	import type { Action } from 'svelte/action';
 	import Avatar from '../Avatar/Avatar.svelte';
+	import type { SequencedAnimation } from '$lib/Animations/SequencedAnimation.js';
 	// TODO: Cambiar por element Animation
 	export let maxAvatarsToShow = 2;
 	export let collapseOnClick = true;
@@ -10,11 +10,8 @@
 	let hiddenGroupRef: Element;
 	let outOfRangeAvatars = 0;
 	let defaultWidthHidden = '';
-	const action: Action<HTMLElement, { maxAvatarsToShow: number; collapse: boolean }> = (
-		node,
-		actionArgs
-	) => {
-		let idx = 0;
+	export let sequenceAnimation: SequencedAnimation;
+	const action: Action<HTMLElement, { maxAvatarsToShow: number }> = (node) => {
 		const hiddenGroupEl = node.querySelector('.ui-avatars-hidden-container') as Element;
 		const showGroupEl = node.querySelector('.ui-avatars-group-container') as Element;
 		const firsChild = node.firstElementChild;
@@ -43,11 +40,7 @@
 	function clickExpand() {
 		collapse = !collapse;
 		if (collapse) {
-			// @ts-expect-error styling type
-			hiddenGroupRef.style.maxWidth = defaultWidthHidden + 'px';
 		} else {
-			// @ts-expect-error styling type
-			hiddenGroupRef.style.maxWidth = '0';
 		}
 	}
 	// const keyframeToHide: Keyframe[] = [{ maxWidth: '100%' }, { maxWidth: '0' }];
@@ -79,7 +72,7 @@
 	// }
 </script>
 
-<div use:action={{ maxAvatarsToShow, collapse }} style="opacity: 0;" class="ui-avatar-group">
+<div use:action={{ maxAvatarsToShow }} style="opacity: 0;" class="ui-avatar-group">
 	<slot />
 	<div class="ui-avatars-group-container"></div>
 	<div

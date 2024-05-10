@@ -3,6 +3,7 @@
 	import { fade } from 'svelte/transition';
 	export let className = '';
 	export let toggled = false;
+	export let size = 'sm';
 	export let icons: 'inside' | 'outside' = 'inside';
 	export let iconOn: undefined | Snippet = undefined;
 	export let color = 'container-highest';
@@ -22,7 +23,7 @@
 	role="switch"
 	aria-checked={toggled}
 	style={customColor && toggled ? `background-color:${customColor};` : ''}
-	class="ui-switch ui-color-{color} {className}"
+	class="ui-switch size-{size} ui-color-{color} {className}"
 >
 	{#if icons === 'outside'}
 		{#if toggled}
@@ -59,18 +60,53 @@
 </button>
 
 <style>
+	.ui-switch {
+		&.size-sm {
+			--width: 48px;
+			--height: 25px;
+			width: var(--width);
+			height: var(--height);
+			width: var(--width);
+			height: var(--height);
+			border-radius: var(--radius-xl);
+			& > span {
+				height: calc(var(--height) - 5px);
+				width: calc(var(--height) - 5px);
+			}
+		}
+		&.size-md {
+			--width: 58px;
+			--height: 30px;
+			width: var(--width);
+			height: var(--height);
+			border-radius: var(--radius-2xl);
+			& > span {
+				height: calc(var(--height) - 5px);
+				width: calc(var(--height) - 5px);
+			}
+		}
+		&.size-lg {
+			--width: 68px;
+			--height: 35px;
+			width: var(--width);
+			height: var(--height);
+			border-radius: var(--radius-3xl);
+			& > span {
+				height: calc(var(--height) - 5px);
+				width: calc(var(--height) - 5px);
+			}
+		}
+	}
 	button {
 		position: relative;
-		width: 48px;
-		height: 25px;
 		display: block;
-		background-color: var(--color-surface-low);
-		border-radius: var(--radius-full);
+		cursor: pointer;
+		background-color: var(--color-surface);
 		transition: all 0.2s ease;
 		& .icon-on-outside,
 		.icon-off-outside {
-			width: 20px;
-			height: 20px;
+			height: calc(var(--height) - 5px);
+			width: calc(var(--height) - 5px);
 			position: absolute;
 		}
 		& .icon-on-outside {
@@ -84,8 +120,6 @@
 		& > span {
 			position: absolute;
 			display: block;
-			height: 20px;
-			width: 20px;
 			border-radius: var(--radius-full);
 			background-color: white;
 			top: 2.5px;
@@ -93,7 +127,7 @@
 			transition: all 0.2s ease;
 		}
 		&[aria-checked='true'] {
-			background-color: var(--color-container);
+			background: var(--color-container);
 			& > span {
 				left: 100%;
 				/* left: unset; */

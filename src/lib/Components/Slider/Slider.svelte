@@ -1,24 +1,23 @@
 <script lang="ts">
-	import { spring } from 'svelte/motion';
 	import SliderButton from './SliderButton.svelte';
 	import type { Snippet } from 'svelte';
+
 	// TODO: Implement steps variations for space-around and space-evenly
-	// FIXME: Slider button when it's thick overflows bar parent.
-	//
+	// FIXME: reduce value of bar cause when it's moving, complete bar moves a little bit forwards of slider button position.
+	// FIXME: on mouse down click event, position the slider button half of its width to the left.
 	export let variant = '';
 	export let colors = 'info';
-	export let endValue = undefined;
 	export let maxValue: number;
 	export let minValue = 0;
-	export let value = 0;
+	export let value = minValue;
 	export let className = '';
 	export let radius = 'rounded-full';
 	export let classNameBar = '';
 	export let format: 'thick' | 'thin' | 'normal' = 'normal';
 	export let classNameStep = '';
 	export let classNameButton = '';
-	export let withStartSlider = false;
-	export let sliderButtonProps = {};
+	// export let withStartSlider = false;
+	// export let sliderButtonProps = {};
 	export let steps: undefined | number = undefined;
 	export let customButton: undefined | Snippet = undefined;
 	export let onChange: undefined | ((value: number) => void) = undefined;
@@ -40,9 +39,11 @@
 			step === steps - 1 ? 100 : (nextStepDistance - stepDistance) / 2 + stepDistance;
 		return firstPoint < position && position < secondPoint;
 	}
-	function onDrag(ev: MouseEvent) {
+	function onDrag(ev: MouseEvent | TouchEvent) {
+		// @ts-expect-error error of type event
+		const pointerPosX = ev.type === 'touchmove' ? ev.touches[0].clientX : ev.clientX;
 		const position =
-			((ev.clientX - 10 - containerElement.offsetLeft) / containerElement.offsetWidth) * 100;
+			((pointerPosX - 10 - containerElement.offsetLeft) / containerElement.offsetWidth) * 100;
 
 		if (position >= 0 && position <= 100) {
 			if (steps) {
@@ -121,7 +122,7 @@
 		role="button"
 		tabindex="0"
 		on:keydown={() => {}}
-		on:click={onClickBar}
+		on:pointerdown={onClickBar}
 		bind:this={containerElement}
 		class="ui-slider-bar-container {radius} ui-{format}"
 	>
@@ -147,7 +148,7 @@
 			<div hidden use:setStepPositions class="ui-slider-steps-container">
 				{#each { length: steps } as _, step}
 					<slot name="step">
-						<span class="ui-slider-step {classNameStep}" />
+						<span class="ui-slider-step {classNameStep}"></span>
 					</slot>
 				{/each}
 			</div>
@@ -168,7 +169,7 @@
 				position: relative;
 				width: 100%;
 				& .ui-slider-total-bar {
-					background-color: var(--color-surface-highest);
+					background: var(--color-surface-highest);
 					width: calc(100% + 18px);
 					height: inherit;
 					display: block;
@@ -176,7 +177,7 @@
 				/* background-color: var(--color-surface-highest); */
 				& .ui-slider-bar {
 					position: absolute;
-					background-color: var(--color-container);
+					background: var(--color-container);
 					display: block;
 					height: inherit;
 					top: 0;

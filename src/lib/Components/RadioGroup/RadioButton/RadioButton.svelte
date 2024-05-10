@@ -12,7 +12,9 @@
 	export let checked = false;
 	export let size = 'size-8';
 	export let lineThroughtOnCheck = false;
-	export let onChange: undefined | (() => void);
+	export let onChange: undefined | (() => void) = () => {
+		checked = !checked;
+	};
 	let name = '';
 	function getName(node: HTMLElement) {
 		name = node.parentElement?.getAttribute('name') ?? '';
@@ -34,10 +36,10 @@
 		on:click={onChange}
 		class="ui-radio-button {size} {className}"
 	>
-		<div aria-hidden="true">
+		<div aria-hidden="true" style="width: 100%; height:100%;">
 			<slot name="icon">
 				{#if type === 'checkbox'}
-					<Icon props={{ viewBox: '0 0 20 20', class: 'ui-icon-indeterminate' }}>
+					<Icon props={{ viewBox: '0 0 20 20', class: 'ui-icon-indeterminate w-full h-full' }}>
 						<line
 							x1="4"
 							x2="16"
@@ -76,11 +78,26 @@
 </div>
 
 <style>
+	@media (prefers-color-scheme: light) {
+		@layer nova {
+			.ui-radio > button {
+				background-color: var(--color-surface);
+				border: solid 2px var(--color-surface-low);
+			}
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		@layer nova {
+			.ui-radio > button {
+				background-color: var(--color-surface-hight);
+				border: solid 2px var(--color-surface-highest);
+			}
+		}
+	}
 	@layer components {
 		.ui-radio-variant-faded {
 			& button[role='checkbox'] {
-				background-color: var(--color-surface-hight);
-				border: solid 2px var(--color-surface-highest);
 				&::after {
 					background-color: transparent;
 				}
@@ -96,8 +113,6 @@
 				} */
 			}
 			& button[role='radio'] {
-				background-color: var(--color-surface-hight);
-				border: solid 2px var(--color-surface-highest);
 				& circle {
 					fill: var(--color-container);
 				}
@@ -138,8 +153,6 @@
 		}
 		.ui-radio-variant-solid {
 			& button[role='checkbox'] {
-				background-color: var(--color-surface-hight);
-				border: solid 2px var(--color-surface-highest);
 				& polyline {
 					stroke: var(--color-text);
 				}
@@ -148,8 +161,6 @@
 				} */
 			}
 			& button[role='radio'] {
-				background-color: var(--color-surface-hight);
-				border: solid 2px var(--color-surface-highest);
 				& circle {
 					fill: var(--color-text);
 				}
@@ -157,8 +168,6 @@
 		}
 		.ui-radio-variant-neon {
 			& button[role='checkbox'] {
-				background-color: var(--color-surface-hight);
-				border: solid 2px var(--color-surface-highest);
 				& polyline {
 					stroke: var(--color-text);
 				}
@@ -167,8 +176,6 @@
 				}
 			}
 			& button[role='radio'] {
-				background-color: var(--color-surface-hight);
-				border: solid 2px var(--color-surface-highest);
 				& circle {
 					fill: var(--color-text);
 				}
