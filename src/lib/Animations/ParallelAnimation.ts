@@ -4,6 +4,11 @@ type ParallelElementParam = {
 	element: HTMLElement | string;
 	animationOptions: ElementAnimationParams;
 };
+type ParallelAnimationOptions = {
+	endCallback?: (anim: ParallelAnimation) => void;
+	iterations?: number;
+	alternate?: boolean;
+};
 export class ParallelAnimation implements BasicAnimation {
 	private elementAnimations: ElementAnimation[] = [];
 	finished: boolean = false;
@@ -13,9 +18,7 @@ export class ParallelAnimation implements BasicAnimation {
 	private onEndCallback: undefined | ((anim: ParallelAnimation) => void);
 	constructor(
 		animationsParams: ParallelElementParam[],
-		endCallback?: (anim: ParallelAnimation) => void,
-		iterations?: number,
-		alternate?: boolean
+		{ endCallback, iterations, alternate }: ParallelAnimationOptions
 	) {
 		this.onEndCallback = endCallback;
 		this.iterations = iterations ?? 1;

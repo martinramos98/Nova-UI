@@ -98,7 +98,6 @@
 	.ui-avatars-hidden-container {
 		display: flex;
 		z-index: 10;
-		overflow: hidden;
 		& .ui-avatar {
 			margin-inline-start: -20px;
 			z-index: 10;
@@ -107,7 +106,7 @@
 			}
 		}
 
-		&[data-collapse='true'] {
+		/* &[data-collapse='true'] {
 			overflow: visible;
 			& > .ui-avatar {
 				transition:
@@ -126,7 +125,7 @@
 					margin-inline-start 0.1s ease 0.4s,
 					border-color 0.2s ease 0.1s;
 			}
-		}
+		} */
 	}
 	.ui-avatar-group {
 		display: flex;
@@ -153,13 +152,12 @@
 				overflow: hidden;
 			} */
 		}
-		& > button {
+		/* & > button {
 			cursor: pointer;
 			margin-inline-start: -10px;
 			z-index: 10;
 			transition: translate 0.2s ease 0.1s;
 			&:hover:not([data-collapse='true']) {
-				/* translate: -20px; */
 			}
 			&[data-collapse='true'] {
 				translate: -20px 20px;
@@ -173,6 +171,6 @@
 					translate 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
 					scale 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 			}
-		}
+		} */
 	}
 }

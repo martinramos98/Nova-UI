@@ -64,9 +64,11 @@
 				{ element: backdropElement, animationOptions: animationConfig },
 				{ element: contentElement, animationOptions: animationConfig }
 			],
-			() => {
-				if (!open) {
-					render = false;
+			{
+				endCallback: () => {
+					if (!open) {
+						render = false;
+					}
 				}
 			}
 		);
