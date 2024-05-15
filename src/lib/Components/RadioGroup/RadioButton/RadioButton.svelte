@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Icon from '$lib/Components/Icons/Icon.svelte';
+	import { spring } from 'svelte/motion';
 	export let variant = 'solid';
 	export let colors = 'info';
 	export let value: any;
@@ -16,8 +17,17 @@
 		checked = !checked;
 	};
 	let name = '';
+	let springRadius = spring(0, { stiffness: 0.1, damping: 0.18 });
 	function getName(node: HTMLElement) {
 		name = node.parentElement?.getAttribute('name') ?? '';
+	}
+	$: checked, radioAnim();
+	function radioAnim() {
+		if (checked) {
+			springRadius.set(1);
+		} else {
+			springRadius.set(0);
+		}
 	}
 </script>
 
@@ -64,8 +74,8 @@
 						></polyline>
 					</Icon>
 				{:else}
-					<Icon props={{ viewBox: '0 0 5 5' }}>
-						<circle cx="2.5" cy="2.5" r="1.5" fill="#030104" />
+					<Icon props={{ viewBox: '0 0 5 5', style: `scale:${$springRadius}` }}>
+						<circle cx="2.5" cy="2.5" r={'1.5'} fill="#030104" />
 					</Icon>
 				{/if}
 			</slot>
@@ -219,13 +229,14 @@
 				left: 0px;
 				/* top: 1px; */
 			}
-			& circle {
-				r: 0;
-				transition: all 0.2s ease;
-			}
-			&[data-checked='true'] circle {
-				r: 1.5;
-			}
+
+			/* & circle { */
+			/* 	r: 0; */
+			/* 	transition: all 0.2s ease; */
+			/* } */
+			/* &[data-checked='true'] circle { */
+			/* 	r: 1.5; */
+			/* } */
 
 			&::after {
 				display: block;
@@ -236,12 +247,14 @@
 				left: -2px;
 				background-color: var(--color-container);
 				z-index: 1;
-				scale: 0;
+				scale: 0.7;
+				opacity: 0;
 				content: '';
 				border-radius: var(--radius-full);
 			}
 			&[data-checked='true']::after {
 				scale: 1;
+				opacity: 1;
 				transition: all 0.2s ease;
 			}
 			&[data-checked='false']::after {
@@ -269,7 +282,8 @@
 				left: -2px;
 				background-color: var(--color-container);
 				z-index: 1;
-				scale: 0;
+				scale: 0.9;
+				opacity: 0;
 				content: '';
 				border-radius: var(--radius-lg);
 			}
@@ -283,10 +297,12 @@
 
 			&[data-checked='true']::after {
 				scale: 1;
+				opacity: 1;
 				transition: all 0.2s ease;
 			}
 			&[data-indeterminated='true']::after {
 				scale: 1;
+				opacity: 1;
 				transition: all 0.2s ease;
 			}
 

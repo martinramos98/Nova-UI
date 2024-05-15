@@ -10,7 +10,7 @@ type ParallelAnimationOptions = {
 	alternate?: boolean;
 };
 export class ParallelAnimation implements BasicAnimation {
-	private elementAnimations: ElementAnimation[] = [];
+	private elementAnimations: BasicAnimation [] = [];
 	finished: boolean = false;
 	private currentIteration = 0;
 	private iterations = 1;

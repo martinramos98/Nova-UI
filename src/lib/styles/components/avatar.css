@@ -1,93 +1,14 @@
-/* .ui-avatar {
-	display: inline-block;
-	width: theme(size.16);
-	height: theme(size.16);
-	border-radius: theme(borderRadius.full);
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	& img {
-		padding: 2.5px;
-		background-color: rgb(var(--color-surface-hight));
-		border-radius: inherit;
-	}
-}
-.ui-avatar-group {
-	& .ui-avatars-group-container > .ui-avatar {
-		margin-inline-start: -20px;
-		z-index: 10;
-		&:hover {
-			translate: -20px 0;
-		}
-	}
-}
-
-.ui-avatars-hidden-container {
-	display: flex;
-	z-index: 10;
-	& > .ui-avatar {
-		margin-inline-start: -20px;
-		z-index: 10;
-		&:hover {
-			translate: -20px 0;
-		}
-	}
-
-	&[data-collapse='true'] {
-		overflow: hidden;
-		& > .ui-avatar {
-			transition:
-				translate 0.3s ease 0.1s,
-				margin-inline-start 0.1s ease 0.1s,
-				border-color 0.2s ease 0.4s;
-		}
-	}
-	&[data-collapse='false'] {
-		overflow: hidden;
-		& > .ui-avatar {
-			border-color: transparent;
-			margin-inline-start: 0px;
-			transition:
-				translate 0.3s ease 0.1s,
-				margin-inline-start 0.1s ease 0.4s,
-				border-color 0.2s ease 0.1s;
-		}
-	}
-}
-
-.ui-avatar {
-	transition:
-		translate 0.3s ease 0.1s,
-		margin-inline-start 0.1s ease;
-	& > span {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		background-color: rgb(var(--color-subcontainer));
-		border: 2px solid transparent;
-
-		width: 100%;
-		height: 100%;
-		border-radius: inherit;
-	}
-	& span {
-		text-transform: capitalize;
-	}
-}
-.avatarBordered {
-	border: 2px solid rgb(var(--color-container));
-}
-.ui-avatar[aria-disabled='true'] {
-	cursor: not-allowed;
-	filter: brightness(0.5);
-} */
 
 @layer nova {
 	.ui-avatar-group {
 		& .ui-avatars-group-container .ui-avatar {
-			margin-inline-start: -20px;
+			/* margin-inline-start: -20px; */
+      &:not(:first-child){
+				translate: -30px 0;
+			&:hover {
+				translate: -70% 0;
+			}
+      }
 			z-index: 10;
 			&:hover {
 				translate: -20px 0;
@@ -96,81 +17,36 @@
 	}
 
 	.ui-avatars-hidden-container {
-		display: flex;
-		z-index: 10;
+		z-index: 2;
+    display:flex;
 		& .ui-avatar {
 			margin-inline-start: -20px;
-			z-index: 10;
+			z-index: 1;
 			&:hover {
 				translate: -20px 0;
 			}
 		}
 
-		/* &[data-collapse='true'] {
-			overflow: visible;
-			& > .ui-avatar {
-				transition:
-					translate 0.3s ease 0.1s,
-					margin-inline-start 0.1s ease 0.1s,
-					border-color 0.2s ease 0.4s;
-			}
-		}
-		&[data-collapse='false'] {
-			overflow: hidden;
-			& > .ui-avatar {
-				border-color: transparent;
-				margin-inline-start: 0px;
-				transition:
-					translate 0.3s ease 0.1s,
-					margin-inline-start 0.1s ease 0.4s,
-					border-color 0.2s ease 0.1s;
-			}
-		} */
 	}
 	.ui-avatar-group {
 		display: flex;
 		align-items: center;
 		width: max-content;
+    padding-left:40px;
+    overflow-x:hidden;
+    overflow-y:visible;
 		flex-direction: row;
 		transition: opacity 0.15s ease;
-		& > .ui-avatars-group-container {
-			display: flex;
-			z-index: 9;
-			/* :global(& > .ui-avatar) {
-				margin-inline-start: -10px;
-			} */
-		}
-		& > .ui-avatars-hidden-container {
-			display: flex;
-			z-index: 10;
-			transition: max-width 0.4s ease;
-			&[data-collapse='false'] {
-				transition: max-width 0.3s ease 0.3s;
+    & > .ui-avatar {
+			margin-inline-start: -20px;
+      z-index:1;
+			&:hover {
+				translate: -20px 0;
 			}
-			/* :global(& > .ui-avatar) {
-				margin-inline-start: -15px;
-				overflow: hidden;
-			} */
-		}
-		/* & > button {
-			cursor: pointer;
-			margin-inline-start: -10px;
-			z-index: 10;
-			transition: translate 0.2s ease 0.1s;
-			&:hover:not([data-collapse='true']) {
-			}
-			&[data-collapse='true'] {
-				translate: -20px 20px;
-				scale: 0.5;
-				transition:
-					translate 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.32s,
-					scale 0.3s ease 0.32s;
-			}
-			&[data-collapse='false'] {
-				transition:
-					translate 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-					scale 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-			}
-		} */
+
+    }
+    & .ui-button-collapse-avatars{
+			margin-inline-start: -20px;
+    }
 	}
 }

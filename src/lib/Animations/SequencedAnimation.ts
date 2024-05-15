@@ -15,8 +15,8 @@ export class SequencedAnimation implements BasicAnimation {
 	private iterations = 1;
 	private alternate = false;
 	private reversed = false;
-	currentAnimation: ListNode<ElementAnimation>;
-	private animations: ListArray<ElementAnimation>;
+	currentAnimation: ListNode<BasicAnimation>;
+	private animations: ListArray<BasicAnimation>;
 	constructor(
 		params: SequencedAnimationElement[],
 		options: {
