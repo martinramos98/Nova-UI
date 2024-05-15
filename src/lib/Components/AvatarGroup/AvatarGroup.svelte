@@ -1,23 +1,28 @@
 <script lang="ts">
 	import type { Action } from 'svelte/action';
 	import Avatar from '../Avatar/Avatar.svelte';
-	import type { SequencedAnimation } from '$lib/Animations/SequencedAnimation.js';
+	import { ParallelAnimation } from '$lib/Animations/ParallelAnimation.js';
+	import {
+		buttonControlAnimationProps,
+		avatarHiddenContainerAnimationProps
+	} from '$lib/Animations/DefinedAnimations/AvatarAnimations.js';
 	// TODO: Cambiar por element Animation
 	export let maxAvatarsToShow = 2;
 	export let collapseOnClick = true;
 	export let collapse = false;
 	// export let isCompressed = true;
-	let hiddenGroupRef: Element;
+	let showGroupEl: HTMLElement;
+	let hiddenGroupEl: HTMLElement;
+	let buttonHiddenControlerEl: HTMLElement;
 	let outOfRangeAvatars = 0;
 	let defaultWidthHidden = '';
-	export let sequenceAnimation: SequencedAnimation;
-	const action: Action<HTMLElement, { maxAvatarsToShow: number }> = (node) => {
-		const hiddenGroupEl = node.querySelector('.ui-avatars-hidden-container') as Element;
-		const showGroupEl = node.querySelector('.ui-avatars-group-container') as Element;
+	let animation: ParallelAnimation;
+	const action: Action<HTMLElement, { maxAvatarsToShow: number; collapse: boolean }> = (node) => {
+		let idx = 0;
 		const firsChild = node.firstElementChild;
 		recursiveInsertionOfAvatars(firsChild, 0);
 		function recursiveInsertionOfAvatars(child: Element | null, idx: number) {
-			if (!child || child === hiddenGroupEl || child === showGroupEl) {
+			if (!child || child === hiddenGroupEl.parentElement || child === showGroupEl) {
 				return;
 			}
 			if (idx < maxAvatarsToShow) {
@@ -32,15 +37,24 @@
 			}
 		}
 		defaultWidthHidden = hiddenGroupEl.clientWidth.toString();
-		// @ts-expect-error styling type
-		hiddenGroupEl.style.maxWidth = '0';
 		node.style.cssText = '';
+		animation = new ParallelAnimation(
+			[
+				{ element: buttonHiddenControlerEl, animationOptions: buttonControlAnimationProps },
+				{ element: hiddenGroupEl, animationOptions: avatarHiddenContainerAnimationProps }
+			],
+			{ alternate: false, iterations: 1 }
+		);
 	};
 
 	function clickExpand() {
 		collapse = !collapse;
 		if (collapse) {
+			animation.playForward();
+			// hiddenGroupRef.style.maxWidth = defaultWidthHidden + 'px';
 		} else {
+			animation.reverse();
+			// hiddenGroupRef.style.maxWidth = '0';
 		}
 	}
 	// const keyframeToHide: Keyframe[] = [{ maxWidth: '100%' }, { maxWidth: '0' }];
@@ -74,16 +88,15 @@
 
 <div use:action={{ maxAvatarsToShow }} style="opacity: 0;" class="ui-avatar-group">
 	<slot />
-	<div class="ui-avatars-group-container"></div>
-	<div
-		bind:this={hiddenGroupRef}
-		class="ui-avatars-hidden-container"
-		data-collapse={collapse}
-	></div>
+	<div bind:this={showGroupEl} class="ui-avatars-group-container"></div>
+	<div data-collapse={collapse}>
+		<div bind:this={hiddenGroupEl} class="ui-avatars-hidden-container"></div>
+	</div>
 	{#if outOfRangeAvatars !== 0}
 		<button
 			class="ui-button-collapse-avatars"
 			data-collapse={collapse}
+			bind:this={buttonHiddenControlerEl}
 			disabled={!collapseOnClick}
 			on:click={clickExpand}
 		>
@@ -97,4 +110,22 @@
 </div>
 
 <style>
+	@layer nova {
+		div[data-collapse] {
+			overflow-x: hidden;
+			position: relative;
+		}
+		.ui-avatar-group {
+			position: relative;
+			gap: 0;
+		}
+		.ui-button-collapse-avatars {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			width: 50px;
+			height: 50px;
+			z-index: 15;
+		}
+	}
 </style>
