@@ -13,7 +13,7 @@
 		const firstChild = node.firstChild as HTMLElement;
 		recursiveInsertionOfAvatars(firstChild, 0);
 		function recursiveInsertionOfAvatars(child: Element | null, idx: number) {
-			if (!child || child === hiddenGroupEl) {
+			if (!child || child === hiddenGroupEl || child === buttonHiddenControlerEl) {
 				return;
 			}
 			if (idx < maxAvatarsToShow) {
@@ -55,6 +55,9 @@
 
 <style>
 	@layer nova {
+		.ui-button-collapse-avatars {
+			cursor: pointer;
+		}
 		.ui-avatar-group {
 			position: relative;
 			gap: 0;

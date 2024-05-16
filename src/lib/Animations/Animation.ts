@@ -1,9 +1,25 @@
+// FIXME: Refactor crear una abstract class que implemente basic animation que tenga implementado subscribeEndCallback, state y finished.
 export interface BasicAnimation {
 	play(): void;
 	reset(): void;
 	pause(): void;
 	cancel(): void;
 	reverse(): void;
+	playForward(): void;
+	subscribeEndCallback(callback: (anima: BasicAnimation) => void): void;
+	finished: Promise<boolean>;
+	state: 'paused' | 'playing' | 'finished' | 'start';
+}
+
+export function instanceOfBasicAnimation(object: any): boolean {
+	return (
+		'play' in object &&
+		'reset' in object &&
+		'pause' in object &&
+		'cancel' in object &&
+		'reverse' in object &&
+		'playForward' in object
+	);
 }
 export interface ListNode<T> {
 	value: T;
@@ -71,8 +87,8 @@ export type ElementAnimationParams = {
 	onFinishedAnimation?: (anim: ElementAnimation) => void;
 };
 export class ElementAnimation implements BasicAnimation {
-	finished: boolean;
 	iterations: number = 1;
+	state: 'paused' | 'playing' | 'finished' | 'start' = 'start';
 	private animations: Animation[] = [];
 	private element: HTMLElement | SVGPathElement;
 	private alternate: boolean;
@@ -90,7 +106,7 @@ export class ElementAnimation implements BasicAnimation {
 		if (onFinishedAnimation) {
 			this.onEndCallbacks.push(onFinishedAnimation);
 		}
-		this.finished = false;
+		// this.finished = false;
 		const defaultOptions: KeyframeAnimationOptions = {
 			duration: 500,
 			easing: 'ease',
@@ -141,7 +157,7 @@ export class ElementAnimation implements BasicAnimation {
 					if (this.currentIteration < this.iterations) {
 						this.alternate && this.currentIteration % 2 === 1 ? this.reverse() : this.playForward();
 					} else {
-						this.finished = true;
+						// this.finished = true;
 						this.onEndCallbacks.forEach((callback) => {
 							callback(this);
 						});
@@ -153,6 +169,7 @@ export class ElementAnimation implements BasicAnimation {
 	play(): void {
 		if (this.delay) {
 			setTimeout(() => {
+				this.state = 'playing';
 				this.getAnimations().forEach((animation) => {
 					if (this.currentIteration >= this.iterations) {
 						this.currentIteration = 0;
@@ -161,6 +178,7 @@ export class ElementAnimation implements BasicAnimation {
 				});
 			}, this.delay);
 		} else {
+			this.state = 'playing';
 			this.getAnimations().forEach((animation) => {
 				if (this.currentIteration >= this.iterations) {
 					this.currentIteration = 0;
@@ -172,6 +190,7 @@ export class ElementAnimation implements BasicAnimation {
 	playForward(): void {
 		if (this.delay) {
 			setTimeout(() => {
+				this.state = 'playing';
 				// console.log(this.element, 'with delay');
 				this.getAnimations().forEach((animation) => {
 					if (this.currentIteration >= this.iterations) {
@@ -183,6 +202,7 @@ export class ElementAnimation implements BasicAnimation {
 				});
 			}, this.delay);
 		} else {
+			this.state = 'playing';
 			this.getAnimations().forEach((animation) => {
 				if (this.currentIteration >= this.iterations) {
 					this.currentIteration = 0;
@@ -194,11 +214,13 @@ export class ElementAnimation implements BasicAnimation {
 		}
 	}
 	pause(): void {
+		this.state = 'paused';
 		this.getAnimations().forEach((animation) => {
 			animation.pause();
 		});
 	}
 	cancel(): void {
+		this.state = 'start';
 		this.getAnimations().forEach((animation) => {
 			animation.cancel();
 		});
@@ -210,6 +232,8 @@ export class ElementAnimation implements BasicAnimation {
 	reverse(): void {
 		if (this.delay) {
 			setTimeout(() => {
+				this.state = 'playing';
+
 				this.getAnimations().forEach((animation) => {
 					animation.pause();
 					animation.playbackRate = -1;
@@ -217,6 +241,8 @@ export class ElementAnimation implements BasicAnimation {
 				});
 			}, this.delay);
 		} else {
+			this.state = 'playing';
+
 			this.getAnimations().forEach((animation) => {
 				animation.playbackRate = -1;
 				animation.play();
@@ -226,6 +252,21 @@ export class ElementAnimation implements BasicAnimation {
 	getAnimations(): Animation[] {
 		return this.animations;
 	}
+
+	public get finished(): Promise<boolean> {
+		if (this.state === 'finished')
+			return new Promise((resolve) => {
+				resolve(true);
+			});
+		return new Promise((resolve) => {
+			const fnEnd = () => {
+				resolve(true);
+				this.onEndCallbacks.filter((fn) => fnEnd === fn);
+			};
+			this.subscribeEndCallback(fnEnd);
+		});
+	}
+
 	subscribeEndCallback(callback: (anima: ElementAnimation) => void) {
 		this.onEndCallbacks.push(callback);
 	}

@@ -5,24 +5,25 @@ type ParallelElementParam = {
 	animationOptions: ElementAnimationParams;
 };
 type ParallelAnimationOptions = {
-	endCallback?: (anim: ParallelAnimation) => void;
+	onEndAnimation?: (anim: ParallelAnimation) => void;
 	iterations?: number;
 	alternate?: boolean;
 };
 export class ParallelAnimation implements BasicAnimation {
-	private elementAnimations: BasicAnimation [] = [];
-	finished: boolean = false;
+	private elementAnimations: BasicAnimation[] = [];
+	// finished: boolean = false;
+	state: 'paused' | 'playing' | 'finished' | 'start' = 'start';
 	private currentIteration = 0;
 	private iterations = 1;
 	private alternate = false;
-	private onEndCallback: undefined | ((anim: ParallelAnimation) => void);
+	private onEndCallbacks: ((anim: ParallelAnimation) => void)[];
 	constructor(
 		animationsParams: ParallelElementParam[],
-		{ endCallback, iterations, alternate }: ParallelAnimationOptions
+		{ onEndAnimation, iterations, alternate }: ParallelAnimationOptions
 	) {
-		this.onEndCallback = endCallback;
 		this.iterations = iterations ?? 1;
 		this.alternate = alternate ?? false;
+		this.onEndCallbacks = onEndAnimation ? [onEndAnimation] : [];
 		animationsParams.forEach((elementAnimationParam) => {
 			if (typeof elementAnimationParam.element === 'string') {
 				const elements = document.querySelectorAll(elementAnimationParam.element);
@@ -37,14 +38,17 @@ export class ParallelAnimation implements BasicAnimation {
 						...elementAnimationParam.animationOptions,
 						onFinishedAnimation: () => {
 							let isFinishedAnimation = true;
-							this.elementAnimations.forEach((elAnim) => {
-								isFinishedAnimation = isFinishedAnimation && elAnim.finished;
+							this.elementAnimations.forEach(async (elAnim) => {
+								isFinishedAnimation = isFinishedAnimation && (await elAnim.finished);
 							});
 							if (isFinishedAnimation) {
 								this.currentIteration++;
 								if (this.currentIteration > this.iterations - 1) {
-									this.finished = true;
-									this.onEndCallback && this.onEndCallback(this);
+									// this.finished = true;
+									this.currentIteration = 0;
+									this.onEndCallbacks.forEach((callback) => {
+										callback(this);
+									});
 								} else {
 									this.alternate && this.currentIteration % 2 === 1
 										? this.reverse()
@@ -59,36 +63,56 @@ export class ParallelAnimation implements BasicAnimation {
 	}
 
 	play(): void {
+		this.state = 'playing';
 		this.elementAnimations.forEach((anima) => {
 			anima.play();
 		});
 	}
 	playForward() {
+		this.state = 'playing';
+
 		this.elementAnimations.forEach((anima) => {
 			anima.playForward();
 		});
 	}
 	pause(): void {
+		this.state = 'paused';
+
 		this.elementAnimations.forEach((anima) => {
 			anima.pause();
 		});
 	}
 
 	reset(): void {
+		this.state = 'playing';
 		this.elementAnimations.forEach((anima) => {
 			anima.reset();
 		});
 	}
 
 	cancel(): void {
+		this.state = 'start';
 		this.elementAnimations.forEach((anima) => {
 			anima.cancel();
 		});
 	}
 
 	reverse(): void {
+		this.state = 'playing';
 		this.elementAnimations.forEach((anima) => {
 			anima.reverse();
+		});
+	}
+	subscribeEndCallback(callback: (anima: BasicAnimation) => void): void {
+		this.onEndCallbacks.push(callback);
+	}
+	public get finished(): Promise<boolean> {
+		return new Promise((resolve) => {
+			const fnEnd = () => {
+				resolve(true);
+				this.onEndCallbacks.filter((fn) => fnEnd === fn);
+			};
+			this.subscribeEndCallback(fnEnd);
 		});
 	}
 }

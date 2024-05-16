@@ -2,7 +2,8 @@ import {
 	type BasicAnimation,
 	type ListNode,
 	type ListArray,
-	ElementAnimation
+	ElementAnimation,
+	instanceOfBasicAnimation
 } from './Animation.js';
 import { arrayToList } from './Animation.js';
 import { type ElementAnimationParams } from './Animation.js';
@@ -11,32 +12,40 @@ export type SequencedAnimationElement = {
 	animationParams: ElementAnimationParams;
 };
 export class SequencedAnimation implements BasicAnimation {
+	state: 'paused' | 'playing' | 'finished' | 'start' = 'start';
 	private currentIteration = 0;
 	private iterations = 1;
 	private alternate = false;
+	private onEndCallbacks: ((anim: SequencedAnimation) => void)[];
 	private reversed = false;
 	currentAnimation: ListNode<BasicAnimation>;
 	private animations: ListArray<BasicAnimation>;
 	constructor(
-		params: SequencedAnimationElement[],
+		params: (SequencedAnimationElement | BasicAnimation)[],
 		options: {
 			alternate?: boolean;
 			iterations?: number;
-			onEndSequence?: (anim: SequencedAnimation) => void;
+			onEndAnimation?: (anim: SequencedAnimation) => void;
 		}
 	) {
 		this.reversed = false;
 		this.iterations = options.iterations ?? 1;
 		this.currentIteration = 0;
 		this.alternate = options.alternate ?? false;
+		this.onEndCallbacks = options.onEndAnimation ? [options.onEndAnimation] : [];
 		this.animations = arrayToList(
 			params.map((animationParamsElement) => {
-				if (animationParamsElement.animationParams.iterations === Infinity) {
-					throw Error('Sequenced Animation must not have infinites animations');
+				if (instanceOfBasicAnimation(animationParamsElement)) {
+					return animationParamsElement as BasicAnimation;
+				} else {
+					const paramsToBuild = animationParamsElement as SequencedAnimationElement;
+					if (paramsToBuild.animationParams.iterations === Infinity) {
+						throw Error('Sequenced Animation must not have infinites animations');
+					}
+					return new ElementAnimation(paramsToBuild.element, {
+						...paramsToBuild.animationParams
+					});
 				}
-				return new ElementAnimation(animationParamsElement.element, {
-					...animationParamsElement.animationParams
-				});
 			})
 		);
 		this.currentAnimation = this.animations[0];
@@ -52,13 +61,6 @@ export class SequencedAnimation implements BasicAnimation {
 					this.currentAnimation = nodeAnimation.next;
 					this.currentAnimation.value.playForward();
 					return;
-					// } else {
-
-					// 	// if (alternate) {
-					// 	// 	this.reversed = !this.reversed;
-					// 	// } else {
-					// 	// 	this.currentAnimation = this.animations[0];
-					// 	// }
 				}
 				if (this.currentIteration < this.iterations - 1) {
 					this.currentIteration++;
@@ -74,26 +76,29 @@ export class SequencedAnimation implements BasicAnimation {
 						: this.playForward();
 					// this.play();
 				} else {
-					options.onEndSequence && options.onEndSequence(this);
+					this.onEndCallbacks.forEach((callback) => {
+						callback(this);
+					});
 					this.currentIteration = 0;
 				}
 			});
 		});
 	}
 	play(): void {
+		this.state = 'playing';
 		this.currentAnimation.value.play();
 	}
 	playForward(): void {
+		this.state = 'playing';
 		this.reversed = false;
 		this.currentAnimation.value.playForward();
 	}
 	pause(): void {
+		this.state = 'paused';
 		this.currentAnimation.value.pause();
 	}
-	stop(): void {
-		this.currentAnimation.value.reset();
-	}
 	cancel(): void {
+		this.state = 'start';
 		this.cancelAllAnimations('all');
 		if (this.reversed) {
 			this.currentAnimation = this.animations[this.animations.length - 1];
@@ -103,10 +108,12 @@ export class SequencedAnimation implements BasicAnimation {
 		this.currentIteration = 0;
 	}
 	reset(): void {
+		this.state = 'playing';
 		this.cancel();
 		this.play();
 	}
 	reverse(): void {
+		this.state = 'playing';
 		this.reversed = true;
 		this.currentAnimation.value.reverse();
 	}
@@ -123,6 +130,19 @@ export class SequencedAnimation implements BasicAnimation {
 				animNode.value.cancel();
 			}
 		}
+	}
+	subscribeEndCallback(callback: (anima: BasicAnimation) => void): void {
+		this.onEndCallbacks.push(callback);
+	}
+
+	public get finished(): Promise<boolean> {
+		return new Promise((resolve) => {
+			const fnEnd = () => {
+				resolve(true);
+				this.onEndCallbacks.filter((fn) => fnEnd === fn);
+			};
+			this.subscribeEndCallback(fnEnd);
+		});
 	}
 }
 export function SequencedSiblingAnimation(
