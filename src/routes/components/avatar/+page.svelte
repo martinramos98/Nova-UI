@@ -112,8 +112,8 @@
 			<header>
 				<Title level={2}>Avatar Group</Title>
 			</header>
-			<section class="ml-6">
-				<div>
+			<section class="ml-6 bg-inherit">
+				<div class="bg-inherit">
 					<AvatarGroup>
 						<Avatar
 							avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'}

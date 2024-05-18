@@ -1,6 +1,8 @@
 
 @layer nova {
 	.ui-avatar-group {
+    display:relative;
+    background-color:inherit;
 		& .ui-avatars-group-container .ui-avatar {
 			/* margin-inline-start: -20px; */
       &:not(:first-child){
@@ -14,6 +16,17 @@
 				translate: -20px 0;
 			}
 		}
+    &::after{
+      display:block;
+      content:'';
+      position:absolute;
+      top:0;
+      right:0px;
+      height:100%;
+      width:25px;
+      background-color:inherit;
+      z-index: 2;
+    }
 	}
 
 	.ui-avatars-hidden-container {
@@ -30,6 +43,7 @@
 	}
 	.ui-avatar-group {
 		display: flex;
+    background-color:inherit;
 		align-items: center;
 		width: max-content;
     padding-left:40px;
