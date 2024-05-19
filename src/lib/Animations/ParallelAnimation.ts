@@ -39,7 +39,10 @@ export class ParallelAnimation implements BasicAnimation {
 						onFinishedAnimation: () => {
 							let isFinishedAnimation = true;
 							this.elementAnimations.forEach(async (elAnim) => {
-								isFinishedAnimation = isFinishedAnimation && (await elAnim.finished);
+								
+								const fin = await elAnim.finished
+								isFinishedAnimation = isFinishedAnimation && fin;
+
 							});
 							if (isFinishedAnimation) {
 								this.currentIteration++;
@@ -109,8 +112,8 @@ export class ParallelAnimation implements BasicAnimation {
 	public get finished(): Promise<boolean> {
 		return new Promise((resolve) => {
 			const fnEnd = () => {
-				resolve(true);
 				this.onEndCallbacks.filter((fn) => fnEnd === fn);
+				resolve(true);
 			};
 			this.subscribeEndCallback(fnEnd);
 		});

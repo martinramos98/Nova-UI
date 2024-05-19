@@ -28,6 +28,7 @@
 			<header>
 				<Title level={1} className=" text-start w-full ">Avatar</Title>
 			</header>
+
 			<p class="py-2 px-2">
 				Avatars components are a visual representation often used to depict users or entities within
 				a user interface. It typically consists of an image or icon that represents a person,

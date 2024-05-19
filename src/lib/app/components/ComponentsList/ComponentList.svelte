@@ -28,6 +28,9 @@
 		<a href="/components/chip">Chip</a>
 	</li>
 	<li class="ui-variant-light ui-color-primary">
+		<a href="/components/collapsable">Collapsable Block</a>
+	</li>
+	<li class="ui-variant-light ui-color-primary">
 		<a href="/components/contextmenu">Context Menu</a>
 	</li>
 	<li class="ui-variant-light ui-color-primary">

@@ -65,7 +65,7 @@
 				{ element: contentElement, animationOptions: animationConfig }
 			],
 			{
-				endCallback: () => {
+				onEndAnimation: () => {
 					if (!open) {
 						render = false;
 					}
