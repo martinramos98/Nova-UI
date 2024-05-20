@@ -13,6 +13,7 @@
 	let render = false;
 	let popover: HTMLElement;
 	let animation: ElementAnimation;
+	let popoverContainer: HTMLElement;
 	const animationKeyframe: Keyframe[] = [
 		{ opacity: 0, scale: 0.9 },
 		{ opacity: 1, scale: 1 }
@@ -24,23 +25,21 @@
 		direction: 'normal',
 		fill: 'both'
 	};
-	function handleTogglePopover(ev: MouseEvent) {
+	function handleTogglePopover(ev: PointerEvent) {
 		const el = ev.target as HTMLElement;
-		console.log(!popover.contains(el));
-		if (open && !popover.contains(el)) {
+		if (open && !popoverContainer.contains(el)) {
 			open = false;
 			animation.reverse();
-			window.removeEventListener('click', handleTogglePopover);
+			window.removeEventListener('pointerdown', handleTogglePopover);
 		}
 		ev.preventDefault();
 	}
-	function onClickPopover(ev: MouseEvent) {
-		ev.stopImmediatePropagation();
-		ev.preventDefault();
+
+	function onClickPopover(ev: PointerEvent) {
 		if (open) {
 			if (!popover.contains(ev.target)) {
 				open = false;
-				window.removeEventListener('click', handleTogglePopover);
+				window.removeEventListener('pointerdown', handleTogglePopover);
 				animation.reverse();
 			}
 		} else {
@@ -66,11 +65,17 @@
 		});
 		node.style.visibility = 'visible';
 		animation.playForward();
-		window.addEventListener('click', handleTogglePopover);
+		window.addEventListener('pointerdown', handleTogglePopover);
 	}
 </script>
 
-<div on:click|capture={onClickPopover} class="ui-popover-container">
+<div
+	on:pointerdown|capture={onClickPopover}
+	on:keydown={() => {}}
+	role="tooltip"
+	bind:this={popoverContainer}
+	class="ui-popover-container"
+>
 	{@render children()}
 	{#if render}
 		<div

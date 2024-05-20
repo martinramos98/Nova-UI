@@ -1,22 +1,35 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	// TODO: Ver el alert type promt
 	import Button from '../Button/Button.svelte';
 	import { ElementAnimation } from '$lib/Animations/Animation.js';
-	export let open = false;
-	export let size: any = 'md';
-	export let radius: any = 'md';
-	export let className = '';
-	export let text = '';
-	export let type: 'default' | 'promp' = 'default';
-	export let onClose: () => void;
-	export let backdrop: {
-		className: string;
-		type: 'normal' | 'blur' | 'transparent';
-	} = {
-		className: '',
-		type: 'normal'
-	};
-	let render = false;
+	import type { Snippet } from 'svelte';
+	let {
+		open = $bindable(false),
+		size = 'md',
+		radius = 'md',
+		className = '',
+		text,
+		type = 'default',
+		children,
+		onClose,
+		backdrop = { className: '', type: 'normal' }
+	}: {
+		open?: boolean;
+		size?: any;
+		radius?: any;
+		children?: Snippet;
+		className?: string;
+		text?: string;
+		type?: 'default' | 'prompt' | 'confirm';
+		onClose: (value: string | undefined | boolean) => void;
+		backdrop?: {
+			className: string;
+			type: 'normal' | 'blur' | 'transparent';
+		};
+	} = $props();
+	let render = $state(false);
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
 	}
@@ -58,18 +71,12 @@
 		iterations: 1,
 		alternate: false
 	};
+	$effect(() => {
+		if (open) {
+			openEffect();
+		}
+	});
 
-	$: open && openEffect();
-	function closeAnimation(node: HTMLElement, open: boolean) {
-		return {
-			update(open: boolean) {
-				if (!open) {
-					animationBackdrop.reverse();
-					animationContent.reverse();
-				}
-			}
-		};
-	}
 	function openAnimation(node: HTMLElement) {
 		const backdropElement = node.lastElementChild as HTMLElement;
 		const contentElement = node.firstElementChild as HTMLElement;
@@ -81,26 +88,24 @@
 </script>
 
 {#if render}
-	<div
-		use:translateToBody
-		use:openAnimation
-		use:closeAnimation={open}
-		class="ui-alert"
-		aria-modal="true"
-	>
+	<div use:translateToBody use:openAnimation class="ui-alert" aria-modal="true">
 		<div class="ui-alert-content rounded-{radius} size-{size} {className}">
-			{#if $$slots.header}
-				<div class="ui-alert-header">
-					<slot name="header" />
-				</div>
-			{/if}
-			<slot>
+			{#if children}
+				{@render children()}
+			{:else}
 				{text}
-			</slot>
+			{/if}
 			<div class="ui-alert-footer">
-				<slot name="footer">
-					<Button colors="error" variant="flat" onClick={onClose}>Close</Button>
-				</slot>
+				<Button
+					colors="error"
+					variant="flat"
+					onClick={() => {
+						open = false;
+						animationBackdrop.reverse();
+						animationContent.reverse();
+						onClose(undefined);
+					}}>Close</Button
+				>
 			</div>
 		</div>
 		<div

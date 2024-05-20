@@ -117,7 +117,7 @@ const availableFloatingDependantPositions: Record<string, PositionResolver> = {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
 
 		if (parentBounds.left - (bounds.width + offset) > 0) {
-			return `top:0px;left:-${bounds.width + offset}px`;
+			return `bottom:0px;left:-${bounds.width + offset}px`;
 		} else {
 			return undefined;
 		}

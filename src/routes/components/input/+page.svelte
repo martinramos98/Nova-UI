@@ -7,7 +7,7 @@
 	<aside>
 		<span class="font-semibold">On this page</span>
 		<ul>
-			<li><a href="#card">Input</a></li>
+			<li><a href="#input">Input</a></li>
 			<li><a href="#label">With Label</a></li>
 			<li><a href="#types">Input Types</a></li>
 			<li><a href="#variants">Variants</a></li>
@@ -52,12 +52,18 @@
 					<Input
 						labelText="First Name"
 						name="first_name"
-						labelProps={{ position: 'leftside', dynamic: false }}
+						labelProps={{ position: 'inside', dynamic: false }}
 					/>
 					<Input
 						labelText="Last Name"
 						name="last_name"
 						labelProps={{ position: 'outside', dynamic: false, className: '' }}
+					/>
+					<Input
+						classNameContainer="ml-14"
+						labelText="Last Name"
+						name="last_name"
+						labelProps={{ position: 'leftside', dynamic: false, className: '' }}
 					/>
 				</div>
 			</section>
@@ -69,7 +75,7 @@
 			<section>
 				<div>
 					<Input labelText="Name" name="name" type="text" />
-					<Input name="" labelText={'Cantidad'} type="text" colors={'warning'} />
+					<Input name="" labelText={'Cantidad'} type="number" colors={'warning'} />
 					<Input name="" labelText="Password" type="password" />
 					<Input name="" labelText="Email" type="email" colors={'info'} />
 				</div>

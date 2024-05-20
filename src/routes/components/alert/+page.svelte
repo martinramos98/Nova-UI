@@ -27,7 +27,7 @@
 			<section>
 				<div>
 					<Button variant={'solid'} colors="info" onClick={toggleAlert}>Click Me</Button>
-					<Alert onClose={toggleAlert} open={openAlert}>
+					<Alert onClose={() => {}} bind:open={openAlert}>
 						<Title level={4}>Alert!</Title>
 						<p>Something Happens!</p>
 					</Alert>

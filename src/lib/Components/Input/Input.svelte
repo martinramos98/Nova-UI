@@ -27,7 +27,15 @@
 		const initialPaddingTop = input.computedStyleMap().get('padding-top')?.value;
 		if (!dynamic) {
 			if (position === 'inside') {
-				label.style.translate = `${label.offsetHeight}px`;
+				label.style.top = `2px`;
+				input.style.paddingTop = `${label.offsetHeight}px`;
+				label.style.left = `0.5rem`;
+			} else if (position === 'outside') {
+				label.style.top = `-${label.offsetHeight + 2}px`;
+				label.style.left = `0.5rem`;
+			} else if (position === 'leftside') {
+				label.style.left = `-${label.offsetWidth + 10}px`;
+				label.style.top = `${label.offsetHeight / 2 - 3}px`;
 			}
 		} else {
 			if (position === 'outside') {
@@ -69,6 +77,30 @@
 				}
 			}
 		});
+		input.addEventListener('input', () => {
+			if (value !== '') {
+				if (dynamic) {
+					if (position === 'outside') {
+						label.style.top = `-${label.offsetHeight + 3}px`;
+					} else if (position === 'leftside') {
+						label.style.left = `-${label.offsetWidth + 15}px`;
+					} else if (position === 'inside') {
+						label.style.top = `5px`;
+					}
+				}
+			} else {
+				if (dynamic) {
+					if (position === 'outside' && !value && placeholder === '') {
+						label.style.top = `${label.offsetHeight / 2 - 3}px`;
+					} else if (position === 'leftside' && !value && placeholder === '') {
+						label.style.left = `0.5rem`;
+					} else if (position === 'inside' && !value && placeholder === '') {
+						input.style.paddingTop = `${label.offsetHeight + initialPaddingTop}px`;
+						label.style.top = `${label.offsetHeight + initialPaddingTop}px`;
+					}
+				}
+			}
+		});
 	}
 </script>
 
@@ -94,7 +126,7 @@
 		{placeholder}
 		class="ui-input {classNameInput}"
 		{type}
-		on:change={onChange}
+		on:input={onChange}
 	/>
 	{#if error === true || (typeof error === 'function' && error(value))}
 		{#if errorContent}
