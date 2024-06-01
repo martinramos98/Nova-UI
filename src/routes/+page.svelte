@@ -1,10 +1,11 @@
 <script>
+	import { test } from '@nova-ui/element-animation-js/src/index.js';
 	import Title from '$lib/Components/Title/Title.svelte';
-
 	import Divider from '$lib/Components/Divider/Divider.svelte';
 	import Image from '$lib/Components/Image/Image.svelte';
 	import Button from '$lib/Components/Button/Button.svelte';
 	import Link from '$lib/Components/Link/Link.svelte';
+	test();
 </script>
 
 <svelte:head>
