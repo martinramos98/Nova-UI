@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
+	import { getContext, type Snippet } from 'svelte';
 	import type { Readable, Writable } from 'svelte/store';
 	import RadioButton from './RadioButton.svelte';
 	export let labelText = '';
@@ -12,6 +12,8 @@
 	export let lineThroughtOnCheck = false;
 	export let disabled = false;
 	export let checked = false;
+	export let custom: Snippet | undefined = undefined;
+	export let children: Snippet | undefined = undefined;
 	let name = '';
 	const radioContext = getContext<{
 		type: Readable<'checkbox' | 'radio'>;
@@ -65,20 +67,34 @@
 	$: checked, onChange();
 </script>
 
-<RadioButton
-	onChange={handleChange}
-	{id}
-	{size}
-	{className}
-	{value}
-	{variant}
-	{colors}
-	{disabled}
-	{type}
-	{checked}
-	{lineThroughtOnCheck}
->
-	<slot>
-		{labelText}
-	</slot>
-</RadioButton>
+{#if custom}
+	<button
+		class="ui-radio {className} ui-color-{colors} ui-variant-{variant}"
+		aria-checked={checked}
+		data-custom={!!custom}
+		{disabled}
+		on:click={handleChange}
+	>
+		{@render custom()}
+	</button>
+{:else}
+	<RadioButton
+		onChange={handleChange}
+		{id}
+		{size}
+		{className}
+		{value}
+		{variant}
+		{colors}
+		{disabled}
+		{type}
+		{checked}
+		{lineThroughtOnCheck}
+	>
+		{#if children}
+			{@render children()}
+		{:else}
+			{labelText}
+		{/if}
+	</RadioButton>
+{/if}

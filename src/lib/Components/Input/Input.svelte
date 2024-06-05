@@ -10,7 +10,7 @@
 	export let classNameError = '';
 	export let classNameContainer = '';
 	export let name: string;
-	export let colors = '';
+	export let colors = 'container';
 	export let placeholder = '';
 	export let labelProps = { position: 'inside', dynamic: true, className: '' };
 	export let variant = 'default';
@@ -188,7 +188,7 @@
 	@layer components {
 		.ui-input-variant-default {
 			& input {
-				background-color: var(--color-surface);
+				background-color: var(--color-container);
 				border-radius: var(--radius-lg);
 			}
 		}

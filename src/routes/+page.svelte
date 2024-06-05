@@ -5,6 +5,47 @@
 	import Image from '$lib/Components/Image/Image.svelte';
 	import Button from '$lib/Components/Button/Button.svelte';
 	import Link from '$lib/Components/Link/Link.svelte';
+	import Badge from '$lib/Components/Badge/Badge.svelte';
+	import Avatar from '$lib/Components/Avatar/Avatar.svelte';
+	import Card from '$lib/Components/Card/Card.svelte';
+	import Selection from '$lib/Components/Selection/Selection.svelte';
+	import Option from '$lib/Components/Selection/Option.svelte';
+	import Input from '$lib/Components/Input/Input.svelte';
+	import Radio from '$lib/Components/RadioGroup/RadioButton/Radio.svelte';
+	import RadioGroup from '$lib/Components/RadioGroup/RadioGroup.svelte';
+	import Tooltip from '$lib/Components/Tooltip/Tooltip.svelte';
+	import LeftTextIcon from '$lib/app/components/Icons/LeftTextIcon.svelte';
+	import CenterTextIcon from '$lib/app/components/Icons/CenterTextIcon.svelte';
+	import RightTextIcon from '$lib/app/components/Icons/RightTextIcon.svelte';
+	const cardsData = [
+		{
+			title: 'Fully Themeable',
+			description: `
+			Theme any aspect of the UI to match your brand's look and feel effortlessly. Perfect for
+			any project, big or small
+		`
+		},
+		{
+			title: 'Powerfull Customize',
+			description: `
+			Define styling in many format, as you want. Define our custom color schemes that adapts
+			your web.
+		`
+		},
+		{
+			title: 'Extensible',
+			description: `
+			Create your own component on base of ours. Extend variants of a components only with CSS.
+		`
+		},
+		{
+			title: 'Top Development',
+			description: `
+			Developed with Svelte 5 y TailwindCSS 4. Components are fully motionables, improving best
+			web applications.
+		`
+		}
+	];
 </script>
 
 <svelte:head>
@@ -13,6 +54,7 @@
 </svelte:head>
 <main>
 	<article class="hero">
+		<img src="/logo.svg" alt="Nova UI Logo" />
 		<section>
 			<div class="hero-title">
 				<span>Innovate your web with</span>
@@ -27,13 +69,158 @@
 					href="/components">Components</Link
 				>
 				<Link
+					--color-container={'#FDB220'}
 					className="p-2 px-3 font-semibold rounded-full"
 					target="self"
 					variant="bordered"
-					colors="primary"
 					href="/components">Get Started</Link
 				>
 			</div>
+		</section>
+	</article>
+	<article class="detailed-article">
+		<section class="component-pool">
+			<div class="absolute top-[28%] left-[23%]">
+				<Badge --color-container="#FDB220" variant="solid">
+					<Avatar className="invert p-1"></Avatar>
+				</Badge>
+			</div>
+			<div class="absolute top-[15%] left-[35%]">
+				<Card color="container-hight" className="p-4 gap-2" footerClassname="flex flex-row gap-4">
+					<p class="font-semibold text-center">Nova UI</p>
+					<p class="w-[200px]">Go to the next level with Svelte</p>
+					{#snippet footer()}
+						<Button colors="primary" className="rounded-full w-full font-semibold" variant="solid"
+							>Go!</Button
+						>
+						<Button
+							colors="primary"
+							className="rounded-full w-full font-semibold"
+							variant="bordered">Cancel</Button
+						>
+					{/snippet}
+				</Card>
+			</div>
+			<div class="absolute top-[30vh] right-[20%]">
+				<Image
+					classNameContainer="w-fit "
+					alt=""
+					className="w-[300px] h-[300px] object-cover object-left-top"
+					src="/pm.jpg"
+				></Image>
+			</div>
+			<div class="absolute top-[20%] right-[23.5%]">
+				<Selection colors="container" classNameInputBox="w-[200px]" selectionLabel="Select Option">
+					<Option value="Svelte">Svelte</Option>
+					<Option value="Angular">Angular</Option>
+					<Option value="React">React</Option>
+					<Option value="Vue">Vue</Option>
+				</Selection>
+			</div>
+			<div
+				class="login-example p-6 bg-[var(--color-surface-hight)] w-[300px] rounded-xl absolute top-[45%] left-[20%]"
+			>
+				<h1 class="font-semibold text-3xl text-center">Nova UI</h1>
+				<div class="flex flex-col gap-6 mt-6">
+					<Input
+						colors=""
+						--color-container="#464646"
+						name="username"
+						type="text"
+						classNameContainer="w-full"
+						labelText="Username"
+						labelProps={{ position: 'inside', dynamic: false, className: 'text-xs' }}
+					></Input>
+					<Input
+						name="password"
+						type="password"
+						colors=""
+						classNameContainer="w-full"
+						labelProps={{ position: 'inside', dynamic: false, className: 'text-xs' }}
+						--color-container="#464646"
+						labelText="Password"
+					></Input>
+					<div class="mt-4">
+						<Button variant="solid" className="w-full my-2" colors="primary">Login</Button>
+						<Button variant="solid" className="w-full my-2" colors="primary">Sign Up</Button>
+					</div>
+				</div>
+			</div>
+			<RadioGroup
+				name=""
+				type="checkbox"
+				className="bg-[#2C2C2C] flex flex-row w-fit rounded-lg absolute bottom-[28vh] right-[20%]"
+			>
+				<Tooltip content="Italic" className="" colors="container-hight">
+					<Radio
+						id="italic"
+						value="italic"
+						colors="container-hight"
+						className="rounded-none rounded-l-lg"
+					>
+						{#snippet custom()}
+							<span><i>K</i></span>
+						{/snippet}
+					</Radio>
+				</Tooltip>
+				<Tooltip content="Bold" colors="container-hight">
+					<Radio id="bold" value="bold" colors="container-hight" className="rounded-none">
+						{#snippet custom()}
+							<span><b>B</b></span>
+						{/snippet}
+					</Radio>
+				</Tooltip>
+				<Tooltip content="Left" colors="container-hight">
+					<Radio id="left" value="left" colors="container-hight" className="rounded-none">
+						{#snippet custom()}
+							<LeftTextIcon />
+						{/snippet}
+					</Radio>
+				</Tooltip>
+				<Tooltip content="Center" colors="container-hight">
+					<Radio id="center" value="center" colors="container-hight" className="rounded-none">
+						{#snippet custom()}
+							<CenterTextIcon />
+						{/snippet}
+					</Radio>
+				</Tooltip>
+				<Tooltip content="Right" position="top" colors="container-hight">
+					<Radio
+						id="right"
+						value="right"
+						colors="container-hight"
+						className="rounded-none rounded-r-lg"
+					>
+						{#snippet custom()}
+							<RightTextIcon />
+						{/snippet}
+					</Radio>
+				</Tooltip>
+			</RadioGroup>
+		</section>
+		<section class="text-content">
+			<p>
+				All in one <br />
+				library with<br />
+				<span>Modern</span><br />
+				<span>Components</span><br />
+				to improve<br />
+				your web
+			</p>
+		</section>
+	</article>
+	<article class="cards">
+		<section>
+			{#each cardsData as card}
+				<Card className="p-3 w-[300px] gap-2" color="container-low">
+					{#snippet header()}
+						<span><b>{card.title}</b></span>
+					{/snippet}
+					<p>
+						{card.description}
+					</p>
+				</Card>
+			{/each}
 		</section>
 	</article>
 </main>
@@ -41,14 +228,67 @@
 <style>
 	main {
 		width: 100%;
-		height: 90vh;
-		margin: 30px 0;
+		background: rgb(20, 20, 20);
+		background: url('/bg_next.svg');
+		background-repeat: repeat;
+		background-position: top;
+		background-size: contain;
+		height: fit-content;
+	}
+	article {
+		height: 100vh;
+	}
+	.detailed-article {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		& .text-content {
+			display: flex;
+			align-items: center;
+			& p {
+				margin-left: auto;
+				margin-right: 8vw;
+				font-size: 4rem;
+				line-height: 5rem;
+				& span {
+					color: #fdb220;
+				}
+			}
+		}
+		&:last-child {
+			display: flex;
+			flex-shrink: 0;
+		}
+		& section {
+			height: 100%;
+			display: inline-block;
+		}
+	}
+	.cards {
+		height: fit-content;
+		width: 100%;
+		padding: 50px 20px;
+		& section {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 2rem;
+			justify-content: space-around;
+		}
+	}
+	.component-pool {
+		width: 100%;
+		position: relative;
 	}
 	.hero {
+		background: url('/bg.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
 		display: flex;
-		height: 100%;
 		place-content: center;
 		place-items: center;
+		flex-direction: column;
 		& .hero-title {
 			& span {
 				translate: 5px 13px;
@@ -59,10 +299,31 @@
 		}
 		& .hero-buttons {
 			place-content: center;
-			margin: 40px 0;
+			margin: 5px 0;
 			gap: var(--spacing-4);
 			display: flex;
 			flex-direction: row;
+			margin-bottom: 50px;
+		}
+	}
+	:global {
+		[data-custom='true'].ui-radio {
+			cursor: pointer;
+			padding: var(--spacing-2) var(--spacing-4);
+			transition: all 0.25s ease;
+			height: 100%;
+			/* &:first-child {
+				border-radius: 10px 0 0 10px;
+			}
+			&:last-child {
+				border-radius: 0px 10px 10px 0px;
+			} */
+			&[aria-checked='false']:hover {
+				filter: brightness(120%);
+			}
+			&[aria-checked='true'] {
+				filter: brightness(150%);
+			}
 		}
 	}
 </style>

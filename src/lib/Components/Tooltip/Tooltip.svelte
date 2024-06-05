@@ -53,9 +53,9 @@
 	}
 	function setArrowPosition(node: SVGElement) {
 		if (position === 'top' || position === 'top-start' || position === 'top-end') {
-			node.style.cssText = `bottom:-8px;left:45%;rotate:180deg;`;
+			node.style.cssText = `bottom:-8px;left:calc(50% - 7px);rotate:180deg;`;
 		} else if (position === 'bottom' || position === 'bottom-start' || position === 'bottom-end') {
-			node.style.cssText = `top:-8px;left:45%; `;
+			node.style.cssText = `top:-8px;left:calc(50% - 7px); `;
 		} else if (position === 'left' || position === 'left-start' || position === 'left-end') {
 			node.style.cssText = `top:25%;right:-8px;rotate:90deg;`;
 		} else if (position === 'right' || position === 'right-start' || position === 'right-end') {

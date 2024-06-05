@@ -186,7 +186,7 @@
 						disabled
 					>
 						<span> Loading </span>
-						<Loader svgLoaderProps={{ class: 'size-6', 'stroke-width': 3 }} />
+						<Loader size={20} stroke={2} />
 					</Button>
 				</div>
 			</section>

@@ -1,6 +1,7 @@
 <script>
 	import Title from '$lib/Components/Title/Title.svelte';
 	import Loader from '$lib/Components/Loader/Loader.svelte';
+	import Link from '$lib/Components/Link/Link.svelte';
 </script>
 
 <div class="page-content">
@@ -19,11 +20,12 @@
 				<Title>Loader</Title>
 			</header>
 			<section class="w-full">
+				<p>
+					Loader components uses the library
+					<Link className="inline" href="https://uiball.com/ldrs/">ldrs</Link> wrapped for loaders.
+				</p>
 				<div class="w-full">
-					<Loader
-						svgLoaderProps={{ class: 'size-12', 'stroke-width': 1 }}
-						loaderVariant={'ring90'}
-					/>
+					<Loader />
 				</div>
 			</section>
 		</article>
@@ -32,112 +34,92 @@
 				<Title level={2}>Types</Title>
 			</header>
 			<section>
-				<Title level={3}>Circular</Title>
+				<p>
+					These are a few loaders that the library provides, you can see a full list of them on the
+					link provided above.
+				</p>
+				<Title level={3}>Spinner</Title>
 				<div class="w-full">
-					<Loader
-						svgLoaderProps={{ class: 'size-12', 'stroke-width': 3 }}
-						colors="info"
-						loaderVariant={'ringResize'}
-					/>
-					<Loader
-						svgLoaderProps={{ class: 'size-12', 'stroke-width': 1 }}
-						loaderVariant={'ring90'}
-					/>
-					<Loader
-						svgLoaderProps={{ class: 'size-12' }}
-						colors="warning"
-						loaderVariant={'ring180'}
-					/>
-					<Loader
-						svgLoaderProps={{ class: 'size-12' }}
-						colors="success"
-						loaderVariant={'ring270'}
-					/>
+					<Loader icon="ring" speed={1.8} />
+					<Loader icon="tailspin" />
+					<Loader icon="line-spinner" />
+					<Loader icon="dot-spinner" />
 				</div>
 			</section>
 			<section>
 				<Title level={3}>Dotted</Title>
 				<div class="w-full">
-					<Loader
-						svgLoaderProps={{ class: 'size-12', 'stroke-width': 3 }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'threeDotsBounce'}
-					/>
-					<Loader
-						svgLoaderProps={{ class: 'size-12', 'stroke-width': 1 }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'threeDotsMove'}
-					/>
-					<Loader
-						svgLoaderProps={{ class: 'size-12' }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'revolve'}
-					/>
+					<Loader icon="dot-wave" speed={1.2} />
+					<Loader icon="dot-pulse" speed={1.2} />
+					<Loader icon="dot-stream" speed={1.2} />
 				</div>
 			</section>
-		</article>
-		<article>
-			<header>
-				<Title level={2}>Label</Title>
-			</header>
 			<section>
+				<Title level={3}>Others</Title>
 				<div class="w-full">
-					<Loader
-						label="Loading"
-						svgLoaderProps={{ class: 'size-12 rotate-180', 'stroke-width': 1 }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'threeDotsMove'}
-					/>
-					<Loader
-						label="Commiting a loan"
-						svgLoaderProps={{ class: 'size-12', 'stroke-width': 1 }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'threeDotsMove'}
-					/>
+					<Loader icon="hourglass" speed={1.5} />
+					<Loader icon="grid" speed={1.5} />
+					<Loader icon="pulsar" speed={1.5} />
 				</div>
 			</section>
 		</article>
 		<article>
 			<header>
-				<Title level={2}>Sizes</Title>
+				<Title level={2}>Props</Title>
 			</header>
 			<section>
-				<div class="w-full items-center">
-					<Loader
-						svgLoaderProps={{ class: 'size-8' }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'revolve'}
-					/>
-					<Loader
-						svgLoaderProps={{ class: 'size-10' }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'revolve'}
-					/>
-					<Loader
-						svgLoaderProps={{ class: 'size-12' }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'revolve'}
-					/>
-					<Loader
-						svgLoaderProps={{ class: 'size-14' }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'revolve'}
-					/>
-					<Loader
-						svgLoaderProps={{ class: 'size-16' }}
-						colors="primary"
-						type="dots"
-						loaderVariant={'revolve'}
-					/>
+				<Title level={3}>Speed</Title>
+				<div class="w-full">
+					<Loader speed={0.5} />
+					<Loader speed={0.8} />
+					<Loader speed={1} />
+					<Loader speed={1.5} />
+					<Loader speed={2} />
+				</div>
+			</section>
+			<section>
+				<Title level={3}>Size</Title>
+				<div class="w-full">
+					<Loader size={30} />
+					<Loader size={40} />
+					<Loader size={45} />
+					<Loader size={50} />
+					<Loader size={55} />
+				</div>
+			</section>
+			<section>
+				<Title level={3}>Color</Title>
+				<div class="w-full">
+					<Loader color="var(--info-40)" />
+					<Loader --color-container={'var(--error-30)'} color={'var(--color-container)'} />
+					<Loader color={'var(--color-pink-300)'} />
+					<Loader color={'white'} />
+				</div>
+			</section>
+			<section>
+				<Title level={3}>Stroke</Title>
+				<div class="w-full">
+					<Loader stroke={2} />
+					<Loader stroke={5} />
+					<Loader stroke={7} />
+				</div>
+			</section>
+			<section>
+				<Title level={3}>Stroke Length</Title>
+				<div class="w-full">
+					<Loader strokeLength={0.1} />
+					<Loader strokeLength={0.25} />
+					<Loader strokeLength={0.5} />
+					<Loader strokeLength={0.8} />
+				</div>
+			</section>
+			<section>
+				<Title level={3}>Background Opacity</Title>
+				<div class="w-full">
+					<Loader bgOpacity={0} />
+					<Loader bgOpacity={0.1} />
+					<Loader bgOpacity={0.2} />
+					<Loader bgOpacity={0.3} />
 				</div>
 			</section>
 		</article>

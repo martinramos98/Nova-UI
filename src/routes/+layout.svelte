@@ -11,7 +11,7 @@
 <NovaUiProvider>
 	<Navbar
 		useContainerQuery={false}
-		className="navbar-color  flex flex-row justify-between backdrop-blur-sm sticky top-3 left-[2.5%] w-[95%] h-[40px] rounded-full z-40"
+		className="navbar-color  flex flex-row justify-between backdrop-blur-sm fixed top-3 left-[2.5%] w-[95%] h-[40px] rounded-full z-40"
 		variant="menu"
 		menuProps={{
 			drawerProps: {
@@ -78,10 +78,16 @@
 
 	:root {
 		scroll-behavior: smooth;
+		background: rgb(20, 20, 20);
 	}
 
 	/* TODO: Change media color-scheme for [data-theme] when feat is ready*/
 	:global(.navbar-color) {
 		background-color: color-mix(in srgb, var(--color-surface-low) 50%, transparent);
+	}
+	:global {
+		body {
+			background: rgb(20, 20, 20);
+		}
 	}
 </style>

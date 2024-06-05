@@ -69,19 +69,19 @@
 			--on-primary-20: var(--color-white);
 			--on-primary-10: var(--color-night-200);
 
-			--secondary-50: var(--color-night-900);
-			--secondary-40: var(--color-night-800);
-			--secondary-30: var(--color-night-700);
-			--secondary-20: var(--color-night-600);
-			--secondary-10: var(--color-night-500);
+			--secondary-50: var(--color-night-800);
+			--secondary-40: var(--color-night-700);
+			--secondary-30: var(--color-night-600);
+			--secondary-20: var(--color-night-500);
+			--secondary-10: var(--color-night-400);
 			--on-secondary-20: var(--color-white);
 			--on-secondary-10: var(--color-night-200);
 
-			--tertiary-50: var(--color-night-900);
-			--tertiary-40: var(--color-night-800);
-			--tertiary-30: var(--color-night-700);
-			--tertiary-20: var(--color-night-600);
-			--tertiary-10: var(--color-night-500);
+			--tertiary-50: var(--color-night-700);
+			--tertiary-40: var(--color-night-600);
+			--tertiary-30: var(--color-night-500);
+			--tertiary-20: var(--color-night-400);
+			--tertiary-10: var(--color-night-300);
 			--on-tertiary-20: var(--color-white);
 			--on-tertiary-10: var(--color-night-200);
 

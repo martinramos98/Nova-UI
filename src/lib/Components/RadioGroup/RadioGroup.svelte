@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
 	import { readonly, writable, get } from 'svelte/store';
-	import Radio from './RadioButton/Radio.svelte';
 	import RadioButton from './RadioButton/RadioButton.svelte';
 	export let type: 'checkbox' | 'radio' = 'radio';
 	export let errorMessage = '';

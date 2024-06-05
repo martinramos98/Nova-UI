@@ -75,9 +75,9 @@
 			<section>
 				<div>
 					<Input labelText="Name" name="name" type="text" />
-					<Input name="" labelText={'Cantidad'} type="number" colors={'warning'} />
+					<Input name="" labelText={'Cantidad'} type="number" />
 					<Input name="" labelText="Password" type="password" />
-					<Input name="" labelText="Email" type="email" colors={'info'} />
+					<Input name="" labelText="Email" type="email" />
 				</div>
 			</section>
 		</article>

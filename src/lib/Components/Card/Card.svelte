@@ -64,7 +64,7 @@
 			display: flex;
 			flex-direction: column;
 			border-radius: var(--radius-xl);
-			/* background-color: var(--color-surface-hight); */
+			background-color: var(--color-container);
 			width: fit-content;
 			overflow: hidden;
 			transition: filter 0.2s ease;
