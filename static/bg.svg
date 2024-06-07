@@ -613,8 +613,8 @@
 </g>
 <defs>
 <radialGradient id="paint0_radial_1_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(720 476.5) rotate(-179.778) scale(386.503 543.52)">
-<stop stop-color="#282828"/>
-<stop offset="1" stop-color="#121212"/>
+<stop stop-color="#theme"/>
+<stop offset="1" stop-color="transparent"/>
 </radialGradient>
 <clipPath id="clip0_1_3">
 <rect width="1440" height="1024" fill="white"/>

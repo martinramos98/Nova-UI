@@ -1,7 +1,5 @@
 <script>
 	import Title from '$lib/Components/Title/Title.svelte';
-
-	import Divider from '$lib/Components/Divider/Divider.svelte';
 	import Image from '$lib/Components/Image/Image.svelte';
 	import Button from '$lib/Components/Button/Button.svelte';
 	import Link from '$lib/Components/Link/Link.svelte';
@@ -17,6 +15,23 @@
 	import LeftTextIcon from '$lib/app/components/Icons/LeftTextIcon.svelte';
 	import CenterTextIcon from '$lib/app/components/Icons/CenterTextIcon.svelte';
 	import RightTextIcon from '$lib/app/components/Icons/RightTextIcon.svelte';
+	import { getContext } from 'svelte';
+	const context = getContext('nova-ui-context');
+	function themeString() {
+		if (context.theme === 'default') {
+			if (
+				typeof window !== 'undefined' &&
+				window.matchMedia('(prefers-color-scheme: dark)').matches
+			) {
+				return 'dark';
+			} else {
+				return 'light';
+			}
+		} else {
+			return context.theme;
+		}
+		return undefined;
+	}
 	const cardsData = [
 		{
 			title: 'Fully Themeable',
@@ -53,7 +68,7 @@
 	<meta name="description" content="Nova UI is a Component UI library for Svelte JS." />
 </svelte:head>
 <main>
-	<article class="hero">
+	<article class="hero" style={`background-image:url('/api/bg?theme=${themeString()}&type=svg')`}>
 		<img src="/logo.svg" alt="Nova UI Logo" />
 		<section>
 			<div class="hero-title">
@@ -80,12 +95,12 @@
 	</article>
 	<article class="detailed-article">
 		<section class="component-pool">
-			<div class="absolute top-[28%] left-[23%]">
+			<div class="position-avatar">
 				<Badge --color-container="#FDB220" variant="solid">
 					<Avatar className="invert p-1"></Avatar>
 				</Badge>
 			</div>
-			<div class="absolute top-[15%] left-[35%]">
+			<div class="position-card">
 				<Card color="container-hight" className="p-4 gap-2" footerClassname="flex flex-row gap-4">
 					<p class="font-semibold text-center">Nova UI</p>
 					<p class="w-[200px]">Go to the next level with Svelte</p>
@@ -101,7 +116,7 @@
 					{/snippet}
 				</Card>
 			</div>
-			<div class="absolute top-[30vh] right-[20%]">
+			<div class="position-image">
 				<Image
 					classNameContainer="w-fit "
 					alt=""
@@ -109,7 +124,7 @@
 					src="/pm.jpg"
 				></Image>
 			</div>
-			<div class="absolute top-[20%] right-[23.5%]">
+			<div class="position-select">
 				<Selection colors="container" classNameInputBox="w-[200px]" selectionLabel="Select Option">
 					<Option value="Svelte">Svelte</Option>
 					<Option value="Angular">Angular</Option>
@@ -118,7 +133,7 @@
 				</Selection>
 			</div>
 			<div
-				class="login-example p-6 bg-[var(--color-surface-hight)] w-[300px] rounded-xl absolute top-[45%] left-[20%]"
+				class="login-example p-6 bg-[var(--color-surface-hight)] w-[300px] h-fit rounded-xl position-login"
 			>
 				<h1 class="font-semibold text-3xl text-center">Nova UI</h1>
 				<div class="flex flex-col gap-6 mt-6">
@@ -149,7 +164,7 @@
 			<RadioGroup
 				name=""
 				type="checkbox"
-				className="bg-[#2C2C2C] flex flex-row w-fit rounded-lg absolute bottom-[28vh] right-[20%]"
+				className="bg-[#2C2C2C] flex flex-row w-fit h-fit rounded-lg position-radio "
 			>
 				<Tooltip content="Italic" className="" colors="container-hight">
 					<Radio
@@ -229,7 +244,7 @@
 	main {
 		width: 100%;
 		background: rgb(20, 20, 20);
-		background: url('/bg_next.svg');
+		background: url('/api/bg_next?theme=dark&type=svg');
 		background-repeat: repeat;
 		background-position: top;
 		background-size: contain;
@@ -261,7 +276,6 @@
 		}
 		& section {
 			height: 100%;
-			display: inline-block;
 		}
 	}
 	.cards {
@@ -279,9 +293,14 @@
 	.component-pool {
 		width: 100%;
 		position: relative;
+		display: grid;
+		grid-template-areas:
+			' . avatar card . . . '
+			' . . card select . . '
+			' . login login image image . '
+			' . login login toolbar . . ';
 	}
 	.hero {
-		background: url('/bg.svg');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -324,6 +343,30 @@
 			&[aria-checked='true'] {
 				filter: brightness(150%);
 			}
+		}
+		.position-radio {
+			grid-area: toolbar;
+		}
+		.position-login {
+			grid-area: login;
+		}
+		.position-image {
+			grid-area: image;
+		}
+		.position-avatar {
+			grid-area: avatar;
+			align-self: end;
+			justify-self: center;
+		}
+		.position-select {
+			grid-area: select;
+			align-self: center;
+			justify-self: center;
+		}
+		.position-card {
+			grid-area: card;
+			justify-self: center;
+			align-self: center;
 		}
 	}
 </style>

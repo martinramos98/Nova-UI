@@ -1,13 +1,15 @@
-<script>
-	import { onMount } from 'svelte';
+<svelte:options runes={true} />
+
+<script lang="ts">
+	import { setContext } from 'svelte';
 	import '../main.css';
-	// onMount(() => {
-	// 	const style = document.createElement('style');
-	// 	style.innerHTML = `
-	// 	@layer theme, base, nova, components, utilities;
-	// 	`;
-	// 	document.head.prepend(style);
-	// });
+	let { theme = 'default' } = $props();
+	setContext('nova-ui-context', {
+		theme
+	});
+	$effect.pre(() => {
+		document.body.dataset.theme = theme;
+	});
 </script>
 
 <slot />

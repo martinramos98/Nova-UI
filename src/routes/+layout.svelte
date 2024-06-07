@@ -87,7 +87,7 @@
 	}
 	:global {
 		body {
-			background: rgb(20, 20, 20);
+			background: var(--color-surface-low);
 		}
 	}
 </style>
