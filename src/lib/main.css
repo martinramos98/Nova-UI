@@ -309,16 +309,16 @@
 	.ui-color-container {
 		--color-container: var(--color-surface);
 		--color-subcontainer: var(--color-surface-hight);
-		--color-text: var(--color-seasalt);
+		--color-text: var(--color-on-surface);
 		--color-sub-text: var(--color-white);
 		--color-border: var(--color-white);
 	}
 	.ui-color-container-low {
 		--color-container: var(--color-surface-low);
 		--color-subcontainer: var(--color-surface);
-		--color-text: var(--seasalt);
+		--color-text: var(--color-on-surface);
 		--color-sub-text: var(--white);
-		--color-border: var(--seasalt);
+		--color-text: var(--color-on-surface);
 	}
 	.ui-color-container-hight {
 		--color-container: var(--color-surface-hight);

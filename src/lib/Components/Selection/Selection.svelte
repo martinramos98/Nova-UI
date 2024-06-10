@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ElementAnimation, type ElementAnimationParams } from '$lib/Animations/Animation.js';
-	import { setPositionDropdown } from '$lib/utils/utils.js';
+	import { setFloatingPosition } from '$lib/utils/utils.js';
 	export let multiselection = false;
 	export let type = 'default';
 	export let variant = 'default';
@@ -132,6 +132,9 @@
 			}
 		};
 	}
+	function setSelectionPosition(element: HTMLElement) {
+		setFloatingPosition({ element, position: 'top', offset: 2 });
+	}
 </script>
 
 <div
@@ -168,7 +171,7 @@
 	{#if render}
 		<div
 			use:setOpenHandlersToOptions
-			use:setPositionDropdown={{ position: 'bottom', offset: 5 }}
+			use:setSelectionPosition
 			use:renderAnimation={openSelection}
 			class="ui-selection-options-container {classNameOptionsContainer}"
 		>

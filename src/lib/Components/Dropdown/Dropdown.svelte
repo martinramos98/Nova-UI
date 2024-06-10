@@ -5,7 +5,7 @@
 	import { type Snippet } from 'svelte';
 	import Button from '../Button/Button.svelte';
 	import { ElementAnimation, type ElementAnimationParams } from '$lib/Animations/Animation.js';
-	import { setFloatingPosition, setPositionDropdown } from '$lib/utils/utils.js';
+	import { setFloatingPosition } from '$lib/utils/utils.js';
 	export let onClickTrigger: undefined | (() => void) = undefined;
 	export let children: Snippet<[any]> | undefined = undefined;
 	export let offset = 5;

@@ -48,7 +48,6 @@
 		const selfRects = node.getBoundingClientRect();
 		if (position === 'right') {
 			const top = '0px';
-			// console.log(selfRects.width, -((selfRects?.width ?? 0) + offset));
 			const right = `${offset}px`;
 			node.style.top = '0';
 			node.style.right = `-${node.offsetWidth + offset}px`;

@@ -8,7 +8,6 @@ const availableClickContentPositions: Record<string, ClickPositionResolver> = {
 		}
 	},
 	bottom: ({ element, offset, mouseRelativePosition = { x: 0, y: 0 }, mouseRealPosition = { x: 0, y: 0 } }) => {
-		// FIXME: Offset height is not displaying. Might be because element is hidden by html?
 		if (mouseRealPosition.y + element.offsetHeight + offset < window.innerHeight) {
 			return `left:${mouseRelativePosition.x}px;top:${mouseRelativePosition.y - offset}px`;
 		} else {
@@ -32,150 +31,114 @@ const availableClickContentPositions: Record<string, ClickPositionResolver> = {
 };
 const availableFloatingDependantPositions: Record<string, PositionResolver> = {
 	'top-end': ({ element, offset }) => {
-		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-		const height = element.offsetHeight;
-		if (parentBounds.top - (height + offset) > 0) {
-			return `top:-${height + offset}px;right:0px`;
+		const overflow = isOverflowingWindow((element.parentElement as HTMLElement).getBoundingClientRect(),element.offsetWidth,element.offsetHeight,offset)
+		if (!overflow[0]) {
+			return `top:-${element.offsetHeight + offset}px;${overflow[4] ? 'left':'right'}:0px`;
 		} else {
 			return undefined;
 		}
 	},
 	top: ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-		const height = element.offsetHeight;
-		if (parentBounds.top - (height + offset) > 0) {
-			return `top:-${height + offset}px;left:${parentBounds.width / 2 - element.offsetWidth / 2}px`;
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
+		console.log(overflow)
+		if (!overflow[0]) {
+			return `top:-${element.offsetHeight + offset}px;left:${parentBounds.width / 2 - element.offsetWidth / 2}px`;
 		} else {
 			return undefined;
 		}
 	},
 	'top-start': ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-		const height = element.offsetHeight;
-		if (parentBounds.top - (height + offset) > 0) {
-			return `top:-${height + offset}px;left:0px`;
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
+		if (!overflow[0]) {
+			return `top:-${element.offsetHeight + offset}px;${overflow[3] ? 'right':'left'}:0px`;
 		} else {
 			return undefined;
 		}
 	},
 	'bottom-end': ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-		const height = element.offsetHeight;
-		if (parentBounds.bottom + (height + offset) < window.innerHeight) {
-			return `bottom:-${height + offset}px;right:0px`;
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
+		if (!overflow[1]) {
+			return `bottom:-${element.offsetHeight + offset}px;${overflow[3] ? 'left':'right'}:0px`;
 		} else {
 			return undefined;
 		}
 	},
 	bottom: ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-		const height = element.offsetHeight;
-		if (parentBounds.bottom + (height + offset) < window.innerHeight) {
-			return `bottom:-${height + offset}px;left:${parentBounds.width / 2 - element.offsetWidth / 2}px`;
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
+		if (!overflow[1]) {
+			return `bottom:-${element.offsetHeight+ offset}px;left:${parentBounds.width / 2 - element.offsetWidth / 2}px`;
 		} else {
 			return undefined;
 		}
 	},
 	'bottom-start': ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-		const height = element.offsetHeight;
-		if (parentBounds.bottom + (height + offset) < window.innerHeight) {
-			return `bottom:-${height + offset}px;left:0px`;
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
+		if (!overflow[1]) {
+			return `bottom:-${element.offsetHeight+ offset}px;${overflow[4] ? 'right':'left'}:0px`;
 		} else {
 			return undefined;
 		}
 	},
 	'right-end': ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-		const width = element.offsetWidth;
-		if (parentBounds.right + (width + offset) < window.innerWidth) {
-			return `right:-${width + offset}px;bottom:0px`;
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
+		if (parentBounds.right + (element.offsetWidth + offset) < window.innerWidth) {
+			return `right:-${element.offsetWidth + offset}px;${overflow[0] ? 'bottom':'top'}:0px`;
 		} else {
 			return undefined;
 		}
 	},
 	right: ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
 		const width = element.offsetWidth;
-		if (parentBounds.right + (width + offset) < window.innerWidth) {
-			return `right:-${width + offset}px;top:${parentBounds.height / 2}px`;
+		if (!overflow[4]) {
+			return `right:-${width + offset}px;${overflow[1]?'top':'bottom'}:${parentBounds.height / 2}px`;
 		} else {
 			return undefined;
 		}
 	},
 	'right-start': ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
 		const width = element.offsetWidth;
-		if (parentBounds.right + (width + offset) < window.innerWidth) {
-			return `right:-${width + offset}px;top:0px`;
+		if (!overflow[4]) {
+			return `right:-${width + offset}px;${overflow[0]?'bottom':'top'}:0px`;
 		} else {
 			return undefined;
 		}
 	},
 	'left-end': ({ element, offset }) => {
-		const bounds = element.getBoundingClientRect();
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-
-		if (parentBounds.left - (bounds.width + offset) > 0) {
-			return `bottom:0px;left:-${bounds.width + offset}px`;
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
+		if (!overflow[3]) {
+			return `${overflow[1]?'top':'bottom'}:0px;left:-${element.offsetWidth + offset}px`;
 		} else {
 			return undefined;
 		}
 	},
 	left: ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
+
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
 		const width = element.offsetWidth;
-		if (parentBounds.left - (width + offset) > 0) {
-			return `top:${parentBounds.height / 2}px;left:-${width + offset}px`;
+		if (!overflow[3]) {
+			return `${overflow[1]?'top':'bottom'}:${parentBounds.height / 2}px;left:-${width + offset}px`;
 		} else {
 			return undefined;
 		}
 	},
 	'left-start': ({ element, offset }) => {
 		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
+		const overflow = isOverflowingWindow(parentBounds,element.offsetWidth,element.offsetHeight,offset)
 		const width = element.offsetWidth;
-		if (parentBounds.left - (width + offset) > 0) {
-			return `top:0px;left:-${width + offset}px`;
-		} else {
-			return undefined;
-		}
-	}
-};
-const availableDropdownPositions: Record<string, PositionResolver> = {
-	top: ({ element, offset }) => {
-		const bounds = element.getBoundingClientRect();
-		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-		if (parentBounds.top - (bounds.height + offset) > 0) {
-			return `top:-${bounds.height + offset}px;left:0px`;
-		} else {
-			return undefined;
-		}
-	},
-	bottom: ({ element, offset }) => {
-		const bounds = element.getBoundingClientRect();
-		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-		if (parentBounds.bottom + (bounds.height + offset) < window.innerHeight) {
-			return `bottom:-${bounds.height + offset}px;left:0px`;
-		} else {
-			return undefined;
-		}
-	},
-	left: ({ element, offset }) => {
-		const bounds = element.getBoundingClientRect();
-		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-
-		if (parentBounds.left - (bounds.width + offset) > 0) {
-			return `top:0px;left:-${bounds.width + offset}px`;
-		} else {
-			return undefined;
-		}
-	},
-	right: ({ element, offset }) => {
-		const bounds = element.getBoundingClientRect();
-		const parentBounds = (element.parentElement as HTMLElement).getBoundingClientRect();
-
-		if (parentBounds.right + (bounds.width + offset) < window.innerWidth) {
-			return `right:-${bounds.width + offset}px;top:0px`;
+		if (!overflow[3]) {
+			return `${overflow[0]?"bottom":'top'}:0px;left:-${width + offset}px`;
 		} else {
 			return undefined;
 		}
@@ -227,18 +190,6 @@ export function setPosisitionPopover(
 	const result = resolvePosition(args);
 	args.element.style.cssText = result as string;
 }
-export function setPositionDropdown(
-	node: HTMLElement,
-	args: {
-		position: 'top' | 'left' | 'right' | 'bottom';
-		offset: number;
-	}
-) {
-	// element.hidden = true;
-	const resolvePosition = createPositionResolver(availableDropdownPositions);
-	const result = resolvePosition({ ...args, element: node });
-	node.style.cssText = result as string;
-}
 export function setFloatingPosition(
 	args: { element: HTMLElement, position: string; offset: number; }
 ) {
@@ -264,4 +215,17 @@ export function createPositionResolver(availablePositions: Record<string, Positi
 			}
 		}
 	};
+}
+
+function isOverflowingWindow(parentBounds:DOMRect,width:number, height:number, offset:number){
+	const overflow = [false,false,false,false]
+	if(!(parentBounds.top - (height + offset) > 0))
+		overflow[0] = true
+	if(!(parentBounds.bottom + (height + offset) < window.innerHeight))
+		overflow[1] = true
+	if(!(parentBounds.left - (width + offset) > 0))
+		overflow[2] = true
+	if(!(parentBounds.right + (width + offset) < window.innerWidth))
+		overflow[3] = true
+	return overflow
 }
