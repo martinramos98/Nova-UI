@@ -304,13 +304,13 @@
 		height: fit-content;
 		min-height: fit-content;
 		width: 100%;
-		padding: 50px 50px;
+		padding: 50px 80px;
 		& section {
 			display: grid;
 			grid-auto-flow: column;
 			align-items: flex-start;
-			gap: 9rem;
-			justify-content: center;
+			gap: 2rem;
+			justify-content: space-around;
 			& div {
 				display: flex;
 				align-items: center;

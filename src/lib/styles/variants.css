@@ -1,0 +1,249 @@
+@media (prefers-color-scheme: dark) {
+	@layer components {
+		.ui-variant-faded {
+			border: solid 2px var(--color-surface-highest);
+			background: var(--color-surface-hight);
+		}
+	}
+}
+@media (prefers-color-scheme: light) {
+	@layer components {
+		.ui-variant-faded {
+			border: solid 2px var(--color-surface-lowest);
+			background: var(--color-surface-low);
+		}
+	}
+}
+@layer components {
+	.ui-variant-solid {
+		color: var(--color-text);
+		background: var(--color-container);
+		border-radius: 5px;
+		border: none;
+		/* transition: filter 0.25s ease; */
+		/* border: 2px solid var(--color-border); */
+	}
+
+	.ui-variant-faded {
+		/* padding: calc(0.25rem - 2px) calc(1.25rem - 2px); */
+		color: var(--color-container);
+		border-radius: 8px;
+		&.ui-button {
+			& > .click-effect-element {
+				--color-text: var(--color-container);
+			}
+		}
+	}
+	.ui-variant-bordered {
+		border-radius: 5px;
+		color: var(--color-container);
+		background: var(--color-surface);
+
+		padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
+		border: 2px solid var(--color-container);
+		&:hover {
+			filter: brightness(0.95);
+		}
+		&.ui-button {
+			& > .click-effect-element {
+				--color-text: var(--color-container);
+			}
+		}
+	}
+	.ui-variant-ghost {
+		border: 2px solid var(--color-border);
+		color: var(--color-container);
+		background: transparent;
+		/* padding: calc(0.25rem - 2px) calc(1.25rem - 2px); */
+		border-radius: 7px;
+		transition:
+			background 0.25s ease,
+			border-color 0.25s ease,
+			color 0.25s ease,
+			scale 0.25s ease;
+		&:hover {
+			background: var(--color-container);
+			/* border-color: transparent; */
+			color: var(--color-text);
+		}
+	}
+	.ui-variant-neon {
+		color: var(--color-text);
+		border-radius: 5px;
+		background: var(--color-container);
+		filter: brightness(0.9);
+		box-shadow: 0px 1px 20px var(--color-container, 0.1);
+	}
+	.ui-variant-shadows {
+		color: var(--color-text);
+		border-radius: 5px;
+		background: var(--color-container);
+		filter: brightness(0.9);
+		box-shadow:
+			0 2px 12px -3px #000,
+			0 0px 12px -3px #000,
+			0px 10px 12px -3px var(--color-container, 0),
+			0px 4px 6px -4px var(--color-container, 0);
+	}
+
+	.ui-variant-flat {
+		color: var(--color-container);
+		border-radius: 5px;
+		/* TODO: Ver como hacer alpha backgrounds */
+		background: color-mix(in srgb, var(--color-container), transparent 90%);
+		&.ui-button {
+			& > .click-effect-element {
+				--color-text: var(--color-container);
+			}
+			&:hover {
+				filter: brightness(90%);
+			}
+		}
+	}
+	.ui-variant-light {
+		background: transparent;
+		color: var(--color-container);
+		border-radius: 5px;
+		&:hover {
+			/* background-color: rgb(var(--color-container), 0.1); */
+			background: color-mix(in srgb, var(--color-container), transparent 90%);
+		}
+		&.ui-button {
+			& > .click-effect-element {
+				--color-text: var(--color-container);
+			}
+		}
+	}
+	.ui-variant-blurred {
+		background: color-mix(in srgb, var(--color-container), transparent 50%);
+		backdrop-filter: blur(2px);
+		color: var(--color-text);
+		/* border: 1px solid var(--color-border); */
+		border-radius: var(--radius-lg);
+	}
+	/* FIXME: Como el style de svelte aplica solo al file no se pueden aplicar los variants. Todos los variants de selection para aca?? me aprece que si   */
+	.ui-selection-variant-flat {
+		& option {
+			background: transparent;
+			&:hover {
+				background: inherit;
+			}
+		}
+	}
+	.ui-selection-variant-blurred {
+		& option {
+			background: transparent;
+			&:hover {
+				background: inherit;
+			}
+		}
+	}
+	.ui-radio-button {
+		& .ui-icon-indeterminate {
+			position: absolute;
+			left: -1px;
+			top: 0px;
+			opacity: 0;
+			transition: opacity 0.2s linear 0.4s;
+		}
+		&[data-indeterminated='true'] .ui-icon-indeterminate {
+			opacity: 1;
+		}
+		&[data-indeterminated='false'] .ui-icon-indeterminate {
+			opacity: 0;
+			transition-delay: 0s;
+		}
+	}
+	.ui-toast-container {
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		width: fit-content;
+		height: fit-content;
+		z-index: 70;
+		margin: 5px;
+		&.top {
+			top: 0;
+			left: 50%;
+			align-items: center;
+		}
+
+		&.top-left {
+			top: 0;
+			left: 0;
+			align-items: flex-start;
+		}
+		&.top-right {
+			top: 0;
+			right: 0;
+			align-items: flex-end;
+		}
+		&.bottom {
+			bottom: 0;
+			left: 50%;
+			align-items: center;
+		}
+		&.bottom-left {
+			bottom: 0;
+			left: 0;
+			align-items: flex-start;
+		}
+		&.bottom-right {
+			bottom: 0;
+			right: 0;
+			align-items: flex-end;
+		}
+	}
+	.ui-slider {
+		& .ui-thin {
+			height: 5px;
+			& .ui-slider-button-start,
+			.ui-slider-button-end {
+				top: -150%;
+			}
+		}
+		& .ui-normal {
+			height: 10px;
+			& .ui-slider-button-start,
+			.ui-slider-button-end {
+				top: -50%;
+				/* transform: translate(-10px); */
+			}
+		}
+		& .ui-thick {
+			height: 20px;
+			& .ui-slider-button-start,
+			.ui-slider-button-end {
+				top: 0px;
+				/* transform: translate(0px); */
+				&:active {
+					/* transform: translate(-10px); */
+				}
+			}
+		}
+	}
+}
+
+@layer utilities {
+	.rounded-full {
+		border-radius: var(--radius-full);
+	}
+	.rounded-lg {
+		border-radius: var(--radius-lg);
+	}
+	.rounded-md {
+		border-radius: var(--radius-md);
+	}
+	.rounded-sm {
+		border-radius: var(--radius-sm);
+	}
+	.rounded-xl {
+		border-radius: var(--radius-xl);
+	}
+	.rounded-2xl {
+		border-radius: var(--radius-2xl);
+	}
+	.rounded-3xl {
+		border-radius: var(--radius-3xl);
+	}
+}

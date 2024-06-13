@@ -85,9 +85,4 @@
 	:global(.navbar-color) {
 		background-color: color-mix(in srgb, var(--color-surface-low) 50%, transparent);
 	}
-	:global {
-		body {
-			background: var(--color-surface-low);
-		}
-	}
 </style>

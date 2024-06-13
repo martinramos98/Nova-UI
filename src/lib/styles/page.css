@@ -1,11 +1,11 @@
- main > article:first-child  {
-   margin-top:20px;
-   border-radius: 20px 20px 0 0; 
+main > article:first-child {
+	margin-top: 20px;
+	border-radius: 20px 20px 0 0;
 }
 main > article:last-child {
-   margin-bottom:40px;
-   border-radius:0 0 20px 20px ;
- }
+	margin-bottom: 40px;
+	border-radius: 0 0 20px 20px;
+}
 .page-content {
 	display: flex;
 	flex-direction: row;
@@ -80,7 +80,7 @@ main > article:last-child {
 @media (prefers-color-scheme: light) {
 	.page-content {
 		& > main > article {
-			background-color: var(--color-surface-hight);
+			background-color: var(--color-surface);
 		}
 	}
 }

@@ -133,7 +133,7 @@
 		};
 	}
 	function setSelectionPosition(element: HTMLElement) {
-		setFloatingPosition({ element, position: 'top', offset: 2 });
+		setFloatingPosition({ element, position: 'bottom', offset: 4 });
 	}
 </script>
 

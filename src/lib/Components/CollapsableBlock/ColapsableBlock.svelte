@@ -46,7 +46,6 @@
 		animation.playForward();
 	}
 	$effect(() => {
-		console.log(open);
 		if (open) {
 			render = true;
 		} else if (!open && animation) {

@@ -75,6 +75,15 @@
 <style>
 	@layer theme, base, nova, components, utilities;
 	@layer nova {
+		:global {
+			.ui-container-navbar {
+				container-type: inline-size;
+				container-name: navbar;
+			}
+			.ui-navbar-menu-button {
+				display: none;
+			}
+		}
 		.ui-navbar {
 			&.direction-vertical {
 				/* grid-template-rows: repeat(3, 1fr); */

@@ -70,15 +70,17 @@
 			transition: filter 0.2s ease;
 			height: fit-content;
 		}
-		:global(.ui-card) {
-			& ui-card-header {
-				grid-area: header;
-			}
-			& ui-body-header {
-				grid-area: body;
-			}
-			& ui-footer-header {
-				grid-area: footer;
+		:global {
+			.ui-card {
+				& .ui-card-header {
+					grid-area: header;
+				}
+				& .ui-card-body {
+					grid-area: body;
+				}
+				& .ui-card-footer {
+					grid-area: footer;
+				}
 			}
 		}
 	}

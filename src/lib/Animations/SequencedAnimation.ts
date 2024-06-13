@@ -42,7 +42,6 @@ export class SequencedAnimation implements BasicAnimation {
 					if (paramsToBuild.animationParams.iterations === Infinity) {
 						throw Error('Sequenced Animation must not have infinites animations');
 					}
-          console.log(paramsToBuild.element)
 					return new ElementAnimation(paramsToBuild.element, {
 						...paramsToBuild.animationParams
 					});
@@ -77,7 +76,6 @@ export class SequencedAnimation implements BasicAnimation {
 						: this.playForward();
 					// this.play();
 				} else {
-          console.log('animation ended');
 					this.onEndCallbacks.forEach((callback) => {
 						callback(this);
 					});

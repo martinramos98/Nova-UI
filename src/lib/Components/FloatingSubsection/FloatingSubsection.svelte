@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { ElementAnimation } from '$lib/Animations/Animation.js';
+	import { setFloatingPosition, setSubsectionPosition } from '$lib/utils/utils.js';
 	export let offset = 15;
 	export let classNameContainer = '';
 	export let position: string = 'right';
@@ -45,37 +46,38 @@
 	function setPosition(node: HTMLElement) {
 		const button = node.previousElementSibling;
 		// const rects = button?.getBoundingClientRect();
-		const selfRects = node.getBoundingClientRect();
-		if (position === 'right') {
-			const top = '0px';
-			const right = `${offset}px`;
-			node.style.top = '0';
-			node.style.right = `-${node.offsetWidth + offset}px`;
-			node.style.paddingTop = top;
-			node.style.paddingLeft = right;
-			return;
-		}
-		if (position === 'left') {
-			const top = '0px';
-			const left = `${-(selfRects?.width ?? 0) - offset}px`;
-			node.style.paddingTop = top;
-			node.style.paddingLeft = left;
-			return;
-		}
-		if (position === 'top') {
-			const top = `${-(selfRects?.height ?? 0) - offset}px`;
-			const left = '0px';
-			node.style.paddingTop = top;
-			node.style.paddingLeft = left;
-			return;
-		}
-		if (position === 'bottom') {
-			const bottom = `${-(selfRects?.height ?? 0) - offset}px`;
-			const left = '0px';
-			node.style.paddingBottom = bottom;
-			node.style.paddingLeft = left;
-			return;
-		}
+		// const selfRects = node.getBoundingClientRect();
+		// if (position.includes('right')) {
+		// 	const top = '0px';
+		// 	const right = `${offset}px`;
+		// 	node.style.top = '0';
+		// 	node.style.right = `-${node.offsetWidth + offset}px`;
+		// 	node.style.paddingTop = top;
+		// 	node.style.paddingLeft = right;
+		// 	return;
+		// }
+		// if (position.includes('left')) {
+		// 	const top = '0px';
+		// 	const left = `${-(selfRects?.width ?? 0) - offset}px`;
+		// 	node.style.paddingTop = top;
+		// 	node.style.paddingLeft = left;
+		// 	return;
+		// }
+		// if (position.includes('top')) {
+		// 	const top = `${-(selfRects?.height ?? 0) - offset}px`;
+		// 	const left = '0px';
+		// 	node.style.paddingTop = top;
+		// 	node.style.paddingLeft = left;
+		// 	return;
+		// }
+		// if (position.includes('bottom')) {
+		// 	const bottom = `${-(selfRects?.height ?? 0) - offset}px`;
+		// 	const left = '0px';
+		// 	node.style.paddingBottom = bottom;
+		// 	node.style.paddingLeft = left;
+		// 	return;
+		// }
+		setSubsectionPosition({ element: node, offset, position });
 	}
 </script>
 

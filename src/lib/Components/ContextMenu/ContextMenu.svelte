@@ -30,7 +30,6 @@
 	let lastRelativeMousePosition = { x: 0, y: 0 };
 	let renderAnimation: ElementAnimation;
 	if (context) {
-		console.log('setting events', onOpenMenu);
 		context.openContextMenu = onOpenMenu;
 		context.closeContextMenu = onCloseMenu;
 	}

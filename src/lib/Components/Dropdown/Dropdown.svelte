@@ -121,4 +121,9 @@
 			position: absolute;
 		}
 	}
+	:global {
+		.ui-dropdown-group > .ui-dropdown-group-content:hover ~ .ui-dropdown-item {
+			filter: brightness(130%);
+		}
+	}
 </style>

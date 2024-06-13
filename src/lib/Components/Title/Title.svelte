@@ -8,31 +8,24 @@
 </svelte:element>
 
 <style>
-	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		h1.ui-title {
 			font-size: 2.8rem;
-			font-weight: 500;
 		}
 		h2.ui-title {
 			font-size: 2.2rem;
-			font-weight: 500;
 		}
 		h3.ui-title {
 			font-size: 1.8rem;
-			font-weight: 500;
 		}
 		h4.ui-title {
 			font-size: 1.4rem;
-			font-weight: 500;
 		}
 		h5.ui-title {
 			font-size: 1rem;
-			font-weight: 500;
 		}
 		h6.ui-title {
 			font-size: 0.8rem;
-			font-weight: 500;
 		}
 	}
 </style>

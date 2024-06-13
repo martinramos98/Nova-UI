@@ -22,8 +22,6 @@
 		const marginBottom = node.computedStyleMap().get('margin-top');
 		node.style.maxHeight = '0';
 		node.style.visibility = 'visible';
-		// TODO: add padding and margin in the animation
-		console.log(height);
 		anim = new SequencedAnimation(
 			[
 				{
@@ -92,7 +90,6 @@
 		anim.playForward();
 		if (delay && delay !== Infinity) {
 			setTimeout(() => {
-				console.log('animating reverse');
 				reversed = true;
 				anim.reverse();
 			}, delay + 800);

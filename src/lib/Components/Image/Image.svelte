@@ -44,7 +44,6 @@
 	});
 	function aspectRatio() {
 		const [f, s] = aspect.split(':');
-		console.log(f, s);
 		if (!s) {
 			return aspect;
 		} else {
@@ -87,9 +86,6 @@
 		on:load={onLoad}
 		class="ui-image {className}"
 		on:error={onError}
-		on:loadeddata={(ev) => {
-			console.log(ev);
-		}}
 		{alt}
 		{src}
 	/>
