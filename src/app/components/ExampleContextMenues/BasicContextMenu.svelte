@@ -49,7 +49,6 @@
 		border: solid 2px var(--color-surface-highest);
 		border-radius: var(--radius-3xl);
 		background: var(--color-surface-hight);
-
 		background-repeat: repeat;
 	}
 </style>

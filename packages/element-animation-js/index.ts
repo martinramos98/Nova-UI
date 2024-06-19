@@ -2,7 +2,9 @@ import {
 	type ElementAnimationParams,
 	ElementAnimation,
 	type BasicAnimation,
-	elementAnimationsConstructs
+	elementAnimationsConstructs,
+	defaultKeyframesAnimations,
+	easing
 } from './src/Animation.js';
 import {
 	SequencedAnimation,
@@ -18,6 +20,8 @@ import {
 // ---
 export {
 	ElementAnimation,
+	easing,
+	defaultKeyframesAnimations,
 	type ElementAnimationParams,
 	type BasicAnimation,
 	SequencedAnimation,

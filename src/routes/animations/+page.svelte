@@ -1,13 +1,9 @@
 <script lang="ts">
-	import {
-		ElementAnimation,
-		defaultKeyframesAnimations,
-		easing
-	} from '$lib/Animations/Animation.js';
+	import { ElementAnimation, defaultKeyframesAnimations } from '@nova/element-animation-js';
 	import {
 		SequencedChildrenAnimation,
 		SequencedSiblingAnimation
-	} from '$lib/Animations/SequencedAnimation.js';
+	} from '@nova/element-animation-js';
 	// import Button from '$lib/Components/Button/Button.svelte';
 	import Divider from '$lib/Components/Divider/Divider.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
