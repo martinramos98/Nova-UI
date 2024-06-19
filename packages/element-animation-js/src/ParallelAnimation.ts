@@ -1,10 +1,10 @@
 // FIXME: On commit style check if element is rendered on document or something.
 import { ElementAnimation, type BasicAnimation, type ElementAnimationParams } from './Animation.js';
-type ParallelElementParam = {
+export type ParallelElementParam = {
 	element: HTMLElement | string;
 	animationOptions: ElementAnimationParams;
 };
-type ParallelAnimationOptions = {
+export type ParallelAnimationOptions = {
 	onEndAnimation?: (anim: ParallelAnimation) => void;
 	iterations?: number;
 	alternate?: boolean;
@@ -39,10 +39,8 @@ export class ParallelAnimation implements BasicAnimation {
 						onFinishedAnimation: () => {
 							let isFinishedAnimation = true;
 							this.elementAnimations.forEach(async (elAnim) => {
-								
-								const fin = await elAnim.finished
+								const fin = await elAnim.finished;
 								isFinishedAnimation = isFinishedAnimation && fin;
-
 							});
 							if (isFinishedAnimation) {
 								this.currentIteration++;

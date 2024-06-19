@@ -1,10 +1,8 @@
 <script lang="ts">
-	// TODO: Prop activeEffect: when is open dropdown mantains click effect styling
-	// FIXME: When click autside validate if is self too, not only if is a ui-dropdown-trigger
 	import { onMount } from 'svelte';
 	import { type Snippet } from 'svelte';
-	import Button from '../Button/Button.svelte';
-	import { ElementAnimation, type ElementAnimationParams } from '$lib/Animations/Animation.js';
+	import Button from '$lib/Components/Button/Button.svelte';
+	import { ElementAnimation, type ElementAnimationParams } from '@nova/element-animation-js';
 	import { setFloatingPosition } from '$lib/utils/utils.js';
 	export let onClickTrigger: undefined | (() => void) = undefined;
 	export let children: Snippet<[any]> | undefined = undefined;

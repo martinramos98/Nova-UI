@@ -1,7 +1,7 @@
 <svelte:options runes={true} />
 
 <script>
-	import ContextMenu from '$lib/Components/ContextMenu/ContextMenu.svelte';
+	import { ContextMenu } from '$lib/index';
 	import Button from '$lib/Components/Button/Button.svelte';
 	import {
 		provideContextMenu,

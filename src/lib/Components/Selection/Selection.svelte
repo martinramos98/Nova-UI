@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ElementAnimation, type ElementAnimationParams } from '$lib/Animations/Animation.js';
+	import { ElementAnimation, type ElementAnimationParams } from '@nova/element-animation-js';
 	import { setFloatingPosition } from '$lib/utils/utils.js';
 	export let multiselection = false;
 	export let type = 'default';

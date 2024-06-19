@@ -1,6 +1,6 @@
 <script lang="ts">
 	import CalloutIcons from '../Callout/CalloutIcons.svelte';
-	import { SequencedAnimation } from '$lib/Animations/SequencedAnimation.js';
+	import { SequencedAnimation } from '@nova/element-animation-js';
 	import CloseButton from '../CloseButton/CloseButton.svelte';
 	import type { Snippet } from 'svelte';
 	export let className = '';

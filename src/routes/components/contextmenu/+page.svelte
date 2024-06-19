@@ -1,8 +1,8 @@
 <script>
 	import Title from '$lib/Components/Title/Title.svelte';
-	import BasicContextMenu from '$lib/app/components/ExampleContextMenues/BasicContextMenu.svelte';
-	import ControledContextMenu from '$lib/app/components/ExampleContextMenues/ControledContextMenu.svelte';
-	import SubsectionContextMenu from '$lib/app/components/ExampleContextMenues/SubsectionContextMenu.svelte';
+	import BasicContextMenu from '../../../app/components/ExampleContextMenues/BasicContextMenu.svelte';
+	import ControledContextMenu from '../../../app/components/ExampleContextMenues/ControledContextMenu.svelte';
+	import SubsectionContextMenu from '../../../app/components/ExampleContextMenues/SubsectionContextMenu.svelte';
 </script>
 
 <div class=" page-content">

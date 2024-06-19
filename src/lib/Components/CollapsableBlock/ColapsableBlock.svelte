@@ -1,7 +1,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { ElementAnimation } from '$lib/Animations/Animation.js';
+	import { ElementAnimation } from '@nova/element-animation-js';
 	import type { Snippet } from 'svelte';
 
 	const {

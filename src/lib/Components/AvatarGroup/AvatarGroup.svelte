@@ -1,10 +1,7 @@
 <script lang="ts">
 	import type { Action } from 'svelte/action';
 	import Avatar from '../Avatar/Avatar.svelte';
-	import {
-		SequencedAnimation,
-		SequencedChildrenAnimation
-	} from '$lib/Animations/SequencedAnimation.js';
+	import { SequencedAnimation } from '@nova/element-animation-js';
 	export let maxAvatarsToShow = 2;
 	export let collapseOnClick = true;
 	export let collapse = false;

@@ -1,6 +1,6 @@
 <script>
 	import Title from '$lib/Components/Title/Title.svelte';
-	import ComponentList from '$lib/app/components/ComponentsList/ComponentList.svelte';
+	import ComponentList from '../../app/components/ComponentsList/ComponentList.svelte';
 </script>
 
 <main>

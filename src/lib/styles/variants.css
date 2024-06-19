@@ -164,7 +164,8 @@
 		margin: 5px;
 		&.top {
 			top: 0;
-			left: 50%;
+			width: 80%;
+			left: calc(50% - calc(80% / 2));
 			align-items: center;
 		}
 
@@ -180,7 +181,8 @@
 		}
 		&.bottom {
 			bottom: 0;
-			left: 50%;
+			width: 80%;
+			left: calc(50% - calc(80% / 2));
 			align-items: center;
 		}
 		&.bottom-left {

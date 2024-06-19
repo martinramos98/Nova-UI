@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import Button from '../Button/Button.svelte';
-	import { ElementAnimation } from '$lib/Animations/Animation.js';
+	import { ElementAnimation } from '@nova/element-animation-js';
 	import type { Snippet } from 'svelte';
 	import Input from '../Input/Input.svelte';
 	let {

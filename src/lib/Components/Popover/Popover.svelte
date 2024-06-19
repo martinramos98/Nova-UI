@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ElementAnimation } from '$lib/Animations/Animation.js';
+	import { ElementAnimation } from '@nova/element-animation-js';
 	import { setPosisitionPopover } from '$lib/utils/utils.js';
 	import { type Snippet } from 'svelte';
 	export let popoverContent: Snippet;

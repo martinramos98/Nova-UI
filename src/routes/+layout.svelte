@@ -1,14 +1,16 @@
 <script>
-	import NovaUiProvider from '$lib/providers/NovaUIProvider.svelte';
-	import Navbar from '$lib/Components/Navbar/Navbar.svelte';
-	import MenuButton from '$lib/Components/MenuButton/MenuButton.svelte';
-	import Accordion from '$lib/Components/Accordion/Accordion.svelte';
-	import AccordionSection from '$lib/Components/Accordion/AccordionSection/AccordionSection.svelte';
-	import ComponentList from '$lib/app/components/ComponentsList/ComponentList.svelte';
-	import CloseButton from '$lib/Components/CloseButton/CloseButton.svelte';
+	import {
+		NovaUIProvider,
+		Navbar,
+		MenuButton,
+		Accordion,
+		AccordionSection,
+		CloseButton
+	} from '$lib/index';
+	import ComponentList from '../app/components/ComponentsList/ComponentList.svelte';
 </script>
 
-<NovaUiProvider>
+<NovaUIProvider>
 	<Navbar
 		useContainerQuery={false}
 		className="navbar-color  flex flex-row justify-between backdrop-blur-sm fixed top-3 left-[2.5%] w-[95%] h-[40px] rounded-full z-40"
@@ -71,7 +73,7 @@
 		{/snippet}
 	</Navbar>
 	<slot />
-</NovaUiProvider>
+</NovaUIProvider>
 
 <style>
 	@layer theme, base, nova, components, utilities;

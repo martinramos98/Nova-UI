@@ -1,25 +1,27 @@
 <script>
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Image from '$lib/Components/Image/Image.svelte';
-	import Button from '$lib/Components/Button/Button.svelte';
-	import Link from '$lib/Components/Link/Link.svelte';
-	import Badge from '$lib/Components/Badge/Badge.svelte';
-	import Avatar from '$lib/Components/Avatar/Avatar.svelte';
-	import Card from '$lib/Components/Card/Card.svelte';
-	import Selection from '$lib/Components/Selection/Selection.svelte';
-	import Option from '$lib/Components/Selection/Option.svelte';
-	import Input from '$lib/Components/Input/Input.svelte';
-	import Radio from '$lib/Components/RadioGroup/RadioButton/Radio.svelte';
-	import RadioGroup from '$lib/Components/RadioGroup/RadioGroup.svelte';
-	import Tooltip from '$lib/Components/Tooltip/Tooltip.svelte';
-	import LeftTextIcon from '$lib/app/components/Icons/LeftTextIcon.svelte';
-	import CenterTextIcon from '$lib/app/components/Icons/CenterTextIcon.svelte';
-	import RightTextIcon from '$lib/app/components/Icons/RightTextIcon.svelte';
+	import {
+		Title,
+		Image,
+		Button,
+		Link,
+		Badge,
+		Avatar,
+		Card,
+		Selection,
+		Option,
+		Input,
+		Radio,
+		Tooltip,
+		RadioGroup
+	} from '$lib/index';
+	import LeftTextIcon from '../app/components/Icons/LeftTextIcon.svelte';
+	import CenterTextIcon from '../app/components/Icons/CenterTextIcon.svelte';
+	import RightTextIcon from '../app/components/Icons/RightTextIcon.svelte';
 	import { getContext } from 'svelte';
-	import CssIcon from '$lib/app/components/Icons/CssIcon.svelte';
-	import PalleteIcon from '$lib/app/components/Icons/PalleteIcon.svelte';
-	import SparkIcon from '$lib/app/components/Icons/SparkIcon.svelte';
-	import ComponentIcon from '$lib/app/components/Icons/ComponentIcon.svelte';
+	import CssIcon from '../app/components/Icons/CssIcon.svelte';
+	import PalleteIcon from '../app/components/Icons/PalleteIcon.svelte';
+	import SparkIcon from '../app/components/Icons/SparkIcon.svelte';
+	import ComponentIcon from '../app/components/Icons/ComponentIcon.svelte';
 	const icons = {
 		css: CssIcon,
 		pallete: PalleteIcon,

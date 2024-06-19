@@ -1,4 +1,4 @@
-import { type ElementAnimationParams } from '../Animation.js';
+import { type ElementAnimationParams } from '@nova/element-animation-js';
 export const buttonControlAnimationProps: ElementAnimationParams = {
 	animations: {
 		keyframes: [

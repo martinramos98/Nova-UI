@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { ElementAnimation } from '$lib/Animations/Animation.js';
-	import { fade, fly } from 'svelte/transition';
+	import { ElementAnimation } from '@nova/element-animation-js';
 	export let open: boolean;
 	export let onClose: () => void;
 	export let size: any = 'md';
