@@ -1,7 +1,6 @@
 <script>
 	import Title from '$lib/Components/Title/Title.svelte';
 	import Callout from '$lib/Components/Callout/Callout.svelte';
-	import Icon from '$lib/Components/Icons/Icon.svelte';
 </script>
 
 <div class=" page-content">

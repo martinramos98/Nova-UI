@@ -22,9 +22,41 @@ import Avatar from './Components/Avatar/Avatar.svelte';
 import Tooltip from './Components/Tooltip/Tooltip.svelte';
 import ContextMenu from './Components/ContextMenu/ContextMenu.svelte';
 import ContextMenuSection from './Components/ContextMenu/ContextMenuSection.svelte';
+import Callout from './Components/Callout/Callout.svelte';
+import Divider from './Components/Divider/Divider.svelte';
+import Dropdown from './Components/Dropdown/Dropdown.svelte';
+import DropdownGroup from './Components/DropdownGroup/DropdownGroup.svelte';
+import ColapsableBlock from './Components/CollapsableBlock/ColapsableBlock.svelte';
+import Drawer from './Components/Drawer/Drawer.svelte';
+import Modal from './Components/Modal/Modal.svelte';
+import Icon from './Components/Icons/Icon.svelte';
+import Tab from './Components/Tabs/Tab/Tab.svelte';
+import Tabs from './Components/Tabs/Tabs.svelte';
+import Table from './Components/Table/Table.svelte';
+import TableBody from './Components/Table/TableBody.svelte';
+import TableFooter from './Components/Table/TableFooter.svelte';
+import TableHeader from './Components/Table/TableHeader.svelte';
+import Cell from './Components/Table/Cell.svelte';
+import TableRow from './Components/Table/TableRow.svelte';
 
 // Reexport your entry components here
 export {
+	ColapsableBlock,
+	Drawer,
+	Modal,
+	Icon,
+	Tab,
+	Tabs,
+	Table,
+	TableBody,
+	TableRow,
+	TableFooter,
+	TableHeader,
+	Cell,
+	Callout,
+	Divider,
+	Dropdown,
+	DropdownGroup,
 	ContextMenu,
 	ContextMenuSection,
 	Button,
