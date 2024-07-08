@@ -1,12 +1,28 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import Icon from '../../Icons/Icon.svelte';
 	import ChevronIcon from '../../Icons/IconsPath/ChevronIcon.svelte';
 	import type { Writable } from 'svelte/store';
-	import { afterUpdate, getContext } from 'svelte';
-	export let showSection = false;
-	export let classNameContent = '';
-	export let classNameHeader = '';
-	export let disabled = false;
+	import { getContext, type Snippet } from 'svelte';
+	interface AccordionSectionProps {
+		showSection?: boolean;
+		classNameContent?: string;
+		classNameHeader?: string;
+		disabled?: boolean;
+		children: Snippet;
+		header?: Snippet;
+		trigger?: Snippet;
+	}
+	let {
+		showSection = false,
+		classNameContent = '',
+		classNameHeader = '',
+		disabled = false,
+		children,
+		trigger,
+		header
+	}: AccordionSectionProps = $props();
 	interface HTMLElementIndexed extends HTMLElement {
 		secIdx: number;
 	}
@@ -49,7 +65,7 @@
 		}
 		return accumH;
 	}
-	afterUpdate(() => {
+	$effect(() => {
 		if (showSection) {
 			accordionContent.animate(
 				[{ maxHeight: '0px' }, { maxHeight: `${childrenHeight(accordionContent)}px` }],
@@ -81,10 +97,14 @@
 </script>
 
 <div data-open={showSection} bind:this={accordionSectionRef} class="ui-accordion-section">
-	<button {disabled} class="ui-accordion-header {classNameHeader}" on:click={toggleSection}>
-		<slot name="header" />
+	<button {disabled} class="ui-accordion-header {classNameHeader}" onclick={toggleSection}>
+		{#if header}
+			{@render header()}
+		{/if}
 		<div class="ui-accordion-trigger">
-			<slot name="trigger">
+			{#if trigger}
+				{@render trigger()}
+			{:else}
 				<span class="default-icon">
 					<Icon
 						props={{
@@ -97,19 +117,17 @@
 						<ChevronIcon />
 					</Icon>
 				</span>
-			</slot>
+			{/if}
 		</div>
 	</button>
 	<div bind:this={accordionContent}>
 		<div class="ui-accordion-content {classNameContent}">
-			<slot name="content" />
-			<slot />
+			{@render children()}
 		</div>
 	</div>
 </div>
 
 <style>
-	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		.ui-accordion-header {
 			display: flex;
@@ -128,9 +146,6 @@
 		.ui-accordion-trigger {
 			margin-left: auto;
 			margin-right: 10px;
-			& > .default-icon > svg {
-				transition: rotate 0.2s ease;
-			}
 		}
 	}
 </style>

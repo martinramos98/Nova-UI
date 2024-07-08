@@ -2,6 +2,9 @@
 	.ui-accordion {
 		height: fit-content;
 		& .ui-accordion-section {
+			& .default-icon > svg {
+				transition: rotate 0.25s ease-in-out;
+			}
 			&[data-open='false'] .default-icon > svg {
 				rotate: 90deg;
 			}

@@ -1,13 +1,17 @@
-/* TODO: Ver si se requieren mas variables de colores */
-@import 'tailwindcss/base';
-@import './base.css';
-@import 'tailwindcss/components';
-@import './components.css';
-@import './components/variants.css';
-@import 'tailwindcss/utilities';
-@import './utilities.css';
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+.indeterminate-rotate {
+	animation: indeterminate-rotate 3s linear infinite normal forwards;
+}
+
+@keyframes indeterminate-rotate {
+	0% {
+		rotate: 0deg;
+	}
+	100% {
+		rotate: 360deg;
+	}
+}
+
+body {
+	background-color: var(--color-surface-lowest);
+	color: var(--color-on-surface);
 }

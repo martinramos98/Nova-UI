@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import { setContext } from 'svelte';
-	import '../main.css';
+	import '../styles/main.css';
 	let { theme = 'default' } = $props();
 	setContext('nova-ui-context', {
 		theme

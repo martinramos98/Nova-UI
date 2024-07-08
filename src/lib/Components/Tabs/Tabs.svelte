@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { setContext } from 'svelte';
+	import { setContext, type Snippet } from 'svelte';
 	import { readonly, writable } from 'svelte/store';
 	import { spring } from 'svelte/motion';
 
@@ -8,11 +8,12 @@
 	export let className = '';
 	export let classNameContent = '';
 	export let classNameSelectionContainer = '';
+	export let TabSelection: Snippet | undefined = undefined;
+	export let children: Snippet;
 	export let position: 'top' | 'left' | 'bottom' | 'right' | '' = '';
 	export let classNameSelector = '';
 	const selectedTabStore = writable(selectedTabKey ?? '');
 	const keys = new Map<string, HTMLElement>();
-	let selectionElement: HTMLElement;
 	function subscribeKey(key: string, el: HTMLElement) {
 		keys.set(key, el);
 	}
@@ -61,8 +62,10 @@
 		? `ui-tabs-${position}`
 		: ''} ui-tabs-variant-{variant} {className}"
 >
-	<div bind:this={selectionElement} class="ui-tab-selection {classNameSelectionContainer}">
-		<slot name="tab-selection" />
+	<div class="ui-tab-selection {classNameSelectionContainer}">
+		{#if TabSelection}
+			{@render TabSelection()}
+		{/if}
 		<span
 			class={classNameSelector}
 			style="top:{variant === 'underlined'
@@ -75,6 +78,6 @@
 		></span>
 	</div>
 	<div class="ui-tab-content {classNameContent}">
-		<slot />
+		{@render children()}
 	</div>
 </div>

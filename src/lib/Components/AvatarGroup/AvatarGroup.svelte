@@ -66,7 +66,10 @@
 					element: hiddenGroupEl,
 					animationParams: {
 						animations: {
-							keyframes: [{ maxWidth: '0px' }, { maxWidth: `${width}px` }],
+							keyframes: [
+								{ maxWidth: '0px', offset: 0, opacity: 0 },
+								{ maxWidth: `${width}px`, opacity: '1', offset: 1 }
+							],
 							animationOptions: {
 								duration: hiddenGroupEl.childElementCount * 120,
 								iterations: 1,
@@ -154,6 +157,9 @@
 			width: fit-content;
 			height: fit-content;
 			z-index: 15;
+		}
+		.ui-avatars-hidden-container {
+			opacity: 0;
 		}
 		:global(.ui-avatars-hidden-container > .ui-avatar) {
 			overflow-x: hidden;

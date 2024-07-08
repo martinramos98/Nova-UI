@@ -37,23 +37,25 @@
 			<CloseButton className="lg:hidden absolute right-6 top-2" onClose={toggleMenu}></CloseButton>
 			<Accordion multiopen variant="" className={'px-4 py-8'}>
 				<AccordionSection>
-					<span slot="header"> <a href="/components"> Components </a></span>
-					<svelte:fragment slot="content">
-						<div
-							role="list"
-							on:click={(ev) => {
-								if (ev.target?.tagName === 'A') {
-									toggleMenu();
-								}
-							}}
-						>
-							<ComponentList className="text-end" />
-						</div>
-					</svelte:fragment>
+					{#snippet header()}
+						<span> <a href="/components"> Components </a></span>
+					{/snippet}
+					<div
+						role="list"
+						on:click={(ev) => {
+							if (ev.target?.tagName === 'A') {
+								toggleMenu();
+							}
+						}}
+					>
+						<ComponentList className="text-end" />
+					</div>
 				</AccordionSection>
 				<AccordionSection>
-					<span slot="header">Styling</span>
-					<ul slot="content">
+					{#snippet header()}
+						<span>Styling</span>
+					{/snippet}
+					<ul>
 						<li class="ui-variant-light ui-color-primary">
 							<a href="/styling#design_system">Design System</a>
 						</li>
@@ -86,5 +88,11 @@
 	/* TODO: Change media color-scheme for [data-theme] when feat is ready*/
 	:global(.navbar-color) {
 		background-color: color-mix(in srgb, var(--color-surface-low) 50%, transparent);
+	}
+
+	:global {
+		html {
+			tab-size: 2 !important;
+		}
 	}
 </style>

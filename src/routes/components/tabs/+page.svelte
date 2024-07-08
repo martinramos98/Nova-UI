@@ -21,12 +21,12 @@
 			</header>
 			<section>
 				<div>
-					<Tabs className="w-full">
-						<svelte:fragment slot="tab-selection">
+					<Tabs>
+						{#snippet TabSelection()}
 							<TabButton key="1">Salta</TabButton>
 							<TabButton key="2">Buenos Aires</TabButton>
 							<TabButton key="3">Tierra del Fuego</TabButton>
-						</svelte:fragment>
+						{/snippet}
 						<Tab className="p-2" key={'1'}>
 							<p>
 								<b> Salta, la tierra de contrastes y colores vivos: </b><br />
@@ -76,11 +76,11 @@
 			<section>
 				<div>
 					<Tabs position="top" className="w-full " variant={'bordered'}>
-						<svelte:fragment slot="tab-selection">
+						{#snippet TabSelection()}
 							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
-						</svelte:fragment>
+						{/snippet}
 						<Tab className="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
@@ -94,11 +94,11 @@
 				</div>
 				<div>
 					<Tabs position="bottom" className="w-full " variant={'bordered'}>
-						<svelte:fragment slot="tab-selection">
+						{#snippet TabSelection()}
 							<TabButton key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
-						</svelte:fragment>
+						{/snippet}
 						<Tab className="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
@@ -112,11 +112,11 @@
 				</div>
 				<div>
 					<Tabs position="left" className="w-full " variant={'bordered'}>
-						<svelte:fragment slot="tab-selection">
+						{#snippet TabSelection()}
 							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
-						</svelte:fragment>
+						{/snippet}
 						<Tab className="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
@@ -131,11 +131,11 @@
 
 				<div>
 					<Tabs position="right" className="w-full " variant={'bordered'}>
-						<svelte:fragment slot="tab-selection">
+						{#snippet TabSelection()}
 							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
-						</svelte:fragment>
+						{/snippet}
 						<Tab className="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
@@ -156,11 +156,11 @@
 			<section>
 				<div>
 					<Tabs position="top" className="w-full " variant={''}>
-						<svelte:fragment slot="tab-selection">
+						{#snippet TabSelection()}
 							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
-						</svelte:fragment>
+						{/snippet}
 						<Tab className="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
@@ -174,11 +174,11 @@
 				</div>
 				<div>
 					<Tabs position="top" className="w-full " variant={'default'}>
-						<svelte:fragment slot="tab-selection">
+						{#snippet TabSelection()}
 							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
-						</svelte:fragment>
+						{/snippet}
 						<Tab className="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
@@ -192,11 +192,11 @@
 				</div>
 				<div>
 					<Tabs className="w-full" variant={'bordered'}>
-						<svelte:fragment slot="tab-selection">
+						{#snippet TabSelection()}
 							<TabButton key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
-						</svelte:fragment>
+						{/snippet}
 						<Tab className="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
@@ -212,11 +212,11 @@
 			<section>
 				<div>
 					<Tabs className="w-full" variant={'underlined'}>
-						<svelte:fragment slot="tab-selection">
+						{#snippet TabSelection()}
 							<TabButton key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
-						</svelte:fragment>
+						{/snippet}
 						<Tab className="" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>

@@ -13,6 +13,7 @@
 		className: '',
 		labelPosition: 'inside'
 	};
+	export let className = '';
 	export let classNameOptionsContainer = '';
 	export let classNameSelected = '';
 	export let classNameInputBox = '';
@@ -139,7 +140,7 @@
 
 <div
 	role="listbox"
-	class="ui-selection ui-color-{colors} ui-selection-variant-{variant}"
+	class="ui-selection ui-color-{colors} ui-selection-variant-{variant} {className}"
 	data-selection-open={render}
 	aria-multiselectable={multiselection}
 	bind:this={selectionEL}
@@ -156,12 +157,14 @@
 				{/each}
 			{/if}
 		</div>
-		<label
-			use:setLabelPositioning={openSelection}
-			class="ui-selection-label {labelProps.labelPosition}-label {labelProps.className}"
-		>
-			{selectionLabel}
-		</label>
+		{#if selectionLabel !== ''}
+			<label
+				use:setLabelPositioning={openSelection}
+				class="ui-selection-label {labelProps.labelPosition}-label {labelProps.className}"
+			>
+				{selectionLabel}
+			</label>
+		{/if}
 	</button>
 	{#if isInvalid && errorMessage}
 		<span>
@@ -300,6 +303,7 @@
 		.ui-selection-input {
 			padding: 10px 10px 10px 10px;
 			min-width: 100px;
+			width: 100%;
 			/* min-height: 50px; */
 			position: relative;
 			display: grid;
@@ -322,7 +326,7 @@
 				}
 				& span {
 					/* color: var(--color-text); */
-					padding: 2px;
+					padding: 2px 7px;
 					opacity: 1;
 					margin: 0 2px;
 					border-radius: var(--radius-md);

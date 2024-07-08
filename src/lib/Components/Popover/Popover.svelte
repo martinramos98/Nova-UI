@@ -1,18 +1,30 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	import { ElementAnimation } from '@nova/element-animation-js';
 	import { setPosisitionPopover } from '$lib/utils/utils.js';
 	import { type Snippet } from 'svelte';
-	export let popoverContent: Snippet;
-	export let offset = 5;
-	export let position = 'top-start';
-	export let className = '';
-	export let colors = '';
-	export let variant = '';
-	export let open = false;
-	export let children: Snippet;
-	let render = false;
-	let popover: HTMLElement;
-	let animation: ElementAnimation;
+	import { animateRender } from '$lib/utils/animatedRender.svelte.js';
+	interface PopoverProps {
+		offset?: number;
+		position?: string;
+		variant?: string;
+		open?: boolean;
+		children: Snippet;
+		popoverContent: Snippet;
+		className?: string;
+		color?: string;
+	}
+	let {
+		popoverContent,
+		offset = 5,
+		position = 'top-start',
+		className = '',
+		color = '',
+		variant = '',
+		open = $bindable(false),
+		children
+	}: PopoverProps = $props();
+	let popover: HTMLElement | undefined = $state();
 	let popoverContainer: HTMLElement;
 	const animationKeyframe: Keyframe[] = [
 		{ opacity: 0, scale: 0.9 },
@@ -25,12 +37,31 @@
 		direction: 'normal',
 		fill: 'both'
 	};
+	const animationRender = animateRender({
+		get open() {
+			return open;
+		},
+		get element() {
+			return popover;
+		},
+		animationParams: {
+			animations: {
+				keyframes: animationKeyframe,
+				animationOptions
+			},
+			iterations: 1
+		}
+	});
+	$effect(() => {
+		if (!open) {
+			window.removeEventListener('pointerdown', handleTogglePopover);
+		}
+	});
 	function handleTogglePopover(ev: PointerEvent) {
 		const el = ev.target as HTMLElement;
 		if (open && !popoverContainer.contains(el)) {
 			open = false;
-			animation.reverse();
-			window.removeEventListener('pointerdown', handleTogglePopover);
+			// animation.reverse();
 		}
 		ev.preventDefault();
 	}
@@ -39,32 +70,31 @@
 		if (open) {
 			if (!popover.contains(ev.target)) {
 				open = false;
-				window.removeEventListener('pointerdown', handleTogglePopover);
-				animation.reverse();
+				// animation.reverse();
 			}
 		} else {
 			open = true;
-			render = true;
+			// render = true;
 		}
 	}
 	function setPopover(node: HTMLElement) {
 		setPosisitionPopover({ offset, position, element: node });
 
-		animation = new ElementAnimation(popover, {
-			animations: {
-				keyframes: animationKeyframe,
-				animationOptions: animationOptions
-			},
-			iterations: 1,
-			alternate: false,
-			onFinishedAnimation() {
-				if (!open) {
-					render = false;
-				}
-			}
-		});
+		// animation = new ElementAnimation(popover, {
+		// 	animations: {
+		// 		keyframes: animationKeyframe,
+		// 		animationOptions: animationOptions
+		// 	},
+		// 	iterations: 1,
+		// 	alternate: false,
+		// 	onFinishedAnimation() {
+		// 		if (!open) {
+		// 			render = false;
+		// 		}
+		// 	}
+		// });
 		node.style.visibility = 'visible';
-		animation.playForward();
+		// animation.playForward();
 		window.addEventListener('pointerdown', handleTogglePopover);
 	}
 </script>
@@ -77,11 +107,11 @@
 	class="ui-popover-container"
 >
 	{@render children()}
-	{#if render}
+	{#if animationRender.render}
 		<div
 			use:setPopover
 			bind:this={popover}
-			class="ui-popover ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
+			class="ui-popover ui-color-{color !== '' ? color : ''} ui-variant-{variant !== ''
 				? variant
 				: ''}  {className}"
 		>
@@ -107,7 +137,6 @@
 			background-color: var(--color-container);
 			color: var(--color-text);
 			width: max-content;
-			min-width: 100px;
 			border-radius: var(--radius-xl);
 			visibility: hidden;
 			padding: 0.35rem;

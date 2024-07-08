@@ -1,6 +1,7 @@
 <script>
 	import Callout from '$lib/Components/Callout/Callout.svelte';
-	import '../../lib/styles/page.css';
+	import '../../app/styles/page.css';
+	import 'svelte-highlight/styles/darktooth.css';
 </script>
 
 <div class="flex place-content-center my-6">
