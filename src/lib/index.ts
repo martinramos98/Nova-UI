@@ -38,8 +38,12 @@ import TableFooter from './Components/Table/TableFooter.svelte';
 import TableHeader from './Components/Table/TableHeader.svelte';
 import Cell from './Components/Table/Cell.svelte';
 import TableRow from './Components/Table/TableRow.svelte';
+import { toast } from './Components/Toast/toast.js';
+import { asContextMenuContainer } from './Components/ContextMenu/ContextMenu.js';
+import { animateRender } from './utils/animatedRender.svelte.js';
 
 // Reexport your entry components here
+
 export {
 	ColapsableBlock,
 	Drawer,
@@ -80,5 +84,9 @@ export {
 	RadioButton,
 	Avatar,
 	Tooltip,
-	RadioGroup
+	RadioGroup,
+	toast,
+	asContextMenuContainer,
+	animateRender
+
 };

@@ -20,7 +20,7 @@
 			<header>
 				<Title>Context Menu</Title>
 			</header>
-			<section class="w-full h-[300px]">
+			<section class="w-full">
 				<BasicContextMenu></BasicContextMenu>
 			</section>
 		</article>
@@ -28,7 +28,7 @@
 			<header>
 				<Title>Controled</Title>
 			</header>
-			<section class="w-full h-[300px]">
+			<section class="w-full">
 				<ControledContextMenu />
 			</section>
 		</article>
@@ -36,7 +36,7 @@
 			<header>
 				<Title>With Subsection</Title>
 			</header>
-			<section class="w-full h-[300px]">
+			<section class="w-full">
 				<SubsectionContextMenu></SubsectionContextMenu>
 			</section>
 		</article>

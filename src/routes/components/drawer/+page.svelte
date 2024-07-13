@@ -2,6 +2,7 @@
 	import Button from '$lib/Components/Button/Button.svelte';
 	import Drawer from '$lib/Components/Drawer/Drawer.svelte';
 	import Title from '$lib/Components/Title/Title.svelte';
+	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	let openDrawer = false;
 	let openDrawerTop = false;
 	let openDrawerBottom = false;
@@ -37,18 +38,37 @@
 			<section>
 				<div>
 					<Button
+						variant="solid"
+						colors="primary"
 						onClick={() => {
 							openDrawer = true;
 						}}>Open Drawer</Button
 					>
 					<Drawer
+						drawerContentClassName="p-2 flex flex-col"
 						open={openDrawer}
 						size={'xs'}
 						onClose={() => {
 							openDrawer = false;
 						}}
 					>
-						<p>Holi from Drawer</p>
+						<Title class="m-2">Drawer</Title>
+						<p class="m-2">
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+							aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+							quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum dolor
+							sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta quis
+							voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem repellendus
+							fugiat corporis aliquid cumque est?
+						</p>
+						<Button
+							colors="error"
+							variant="flat"
+							className="w-fit mt-auto ml-auto mr-2 mb-2"
+							onClick={() => {
+								openDrawer = false;
+							}}>Close</Button
+						>
 					</Drawer>
 				</div>
 			</section>
@@ -58,181 +78,771 @@
 				<Title level={2}>Positions</Title>
 			</header>
 			<section>
-				<div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerTop = true;
-							}}>Open Drawer Top</Button
-						>
-						<Drawer
-							open={openDrawerTop}
-							size={'xs'}
-							position="top"
-							onClose={() => {
-								openDrawerTop = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerBottom = true;
-							}}>Open Drawer Bottom</Button
-						>
-						<Drawer
-							open={openDrawerBottom}
-							size={'xs'}
-							position="bottom"
-							onClose={() => {
-								openDrawerBottom = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerLeft = true;
-							}}>Open Drawer Left</Button
-						>
-						<Drawer
-							open={openDrawerLeft}
-							size={'xs'}
-							position="left"
-							onClose={() => {
-								openDrawerLeft = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerRight = true;
-							}}>Open Drawer Right</Button
-						>
-						<Drawer
-							open={openDrawerRight}
-							size={'xs'}
-							position="right"
-							onClose={() => {
-								openDrawerRight = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerTop = true;
+	}}
+	>
+	Open Drawer Top
+</Button>
+<Drawer
+	open={openDrawerTop}
+	size={'xs'}
+	position="top"
+	drawerContentClassName="p-2 flex flex-col w-full"
+	onClose={() => {
+		openDrawerTop = false;
+	}}
+>
+	<Title level={2} class="m-2">Top Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+		autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+		voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+		sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+		dolorem repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerTop = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerTop = true;
+								}}
+							>
+								Open Drawer Top
+							</Button>
+							<Drawer
+								open={openDrawerTop}
+								size={'sm'}
+								position="top"
+								drawerContentClassName="p-2 flex flex-col w-full"
+								onClose={() => {
+									openDrawerTop = false;
+								}}
+							>
+								<Title level={2} class="m-2">Top Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerTop = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerBottom = true;
+	}}>Open Drawer Bottom</Button
+>
+<Drawer
+	open={openDrawerBottom}
+	size={'xs'}
+	drawerContentClassName="p-2 flex flex-col w-full"
+	position="bottom"
+	onClose={() => {
+		openDrawerBottom = false;
+	}}
+>
+	<Title level={2} class="m-2">Bottom Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum dolor
+		sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta quis
+		voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem repellendus
+		fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerBottom = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+					`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerBottom = true;
+								}}>Open Drawer Bottom</Button
+							>
+							<Drawer
+								open={openDrawerBottom}
+								size={'xs'}
+								drawerContentClassName="p-2 flex flex-col w-full"
+								position="bottom"
+								onClose={() => {
+									openDrawerBottom = false;
+								}}
+							>
+								<Title level={2} class="m-2">Bottom Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerBottom = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerLeft = true;
+	}}>Open Drawer Left</Button
+>
+<Drawer
+	open={openDrawerLeft}
+	size={'xs'}
+	drawerContentClassName="p-2 flex flex-col w-full"
+	position="left"
+	onClose={() => {
+		openDrawerLeft = false;
+	}}
+>
+	<Title level={2} class="m-2">Left Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum dolor
+		sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta quis
+		voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem repellendus
+		fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerBottom = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+					`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerLeft = true;
+								}}>Open Drawer Left</Button
+							>
+							<Drawer
+								open={openDrawerLeft}
+								size={'xs'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								position="left"
+								onClose={() => {
+									openDrawerLeft = false;
+								}}
+							>
+								<Title level={2} class="m-2">Left Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerLeft = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Drawer
+	open={openDrawerRight}
+	size={'xs'}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	position="right"
+	onClose={() => {
+		openDrawerRight = false;
+	}}
+>
+	<Title level={2} class="m-2">Right Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum dolor
+		sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta quis
+		voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem repellendus
+		fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerRight= false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+					`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerRight = true;
+								}}>Open Drawer Right</Button
+							>
+							<Drawer
+								open={openDrawerRight}
+								size={'xs'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								position="right"
+								onClose={() => {
+									openDrawerRight = false;
+								}}
+							>
+								<Title level={2} class="m-2">Right Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerRight = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
 				</div>
 			</section>
 		</article>
+
 		<article>
 			<header>
 				<Title level={2}>Sizes</Title>
 			</header>
 			<section>
-				<div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerXS = true;
-							}}>Open Drawer</Button
-						>
-						<Drawer
-							open={openDrawerXS}
-							size={'xs'}
-							onClose={() => {
-								openDrawerXS = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerSM = true;
-							}}>Open Drawer SM</Button
-						>
-						<Drawer
-							open={openDrawerSM}
-							size={'sm'}
-							onClose={() => {
-								openDrawerSM = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerMD = true;
-							}}>Open Drawer MD</Button
-						>
-						<Drawer
-							open={openDrawerMD}
-							size={'md'}
-							onClose={() => {
-								openDrawerMD = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerLG = true;
-							}}>Open Drawer LG</Button
-						>
-						<Drawer
-							open={openDrawerLG}
-							size={'lg'}
-							onClose={() => {
-								openDrawerLG = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerXL = true;
-							}}>Open DrawerXL</Button
-						>
-						<Drawer
-							open={openDrawerXL}
-							size={'xl'}
-							onClose={() => {
-								openDrawerXL = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerFull = true;
-							}}>Open Drawer Full</Button
-						>
-						<Drawer
-							open={openDrawerFull}
-							size={'full'}
-							onClose={() => {
-								openDrawerFull = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Drawer
+	open={openDrawerXS}
+	size={'xs'}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	onClose={() => {
+		openDrawerXS = false;
+	}}
+>
+	<Title level={2} class="m-2">XS Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum
+		dolor sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta
+		quis voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem
+		repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerXS = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+					`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerXS = true;
+								}}>Open Drawer XS</Button
+							>
+							<Drawer
+								open={openDrawerXS}
+								size={'xs'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								onClose={() => {
+									openDrawerXS = false;
+								}}
+							>
+								<Title level={2} class="m-2">XS Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerXS = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerSM = true;
+	}}>Open Drawer SM</Button
+>
+<Drawer
+	open={openDrawerSM}
+	size={'sm'}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	onClose={() => {
+		openDrawerSM = false;
+	}}
+>
+	<Title level={2} class="m-2">SM Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum
+		dolor sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta
+		quis voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem
+		repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerSM = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+					`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerSM = true;
+								}}>Open Drawer SM</Button
+							>
+							<Drawer
+								open={openDrawerSM}
+								size={'sm'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								onClose={() => {
+									openDrawerSM = false;
+								}}
+							>
+								<Title level={2} class="m-2">SM Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerSM = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerMD = true;
+	}}>Open Drawer MD</Button
+>
+<Drawer
+	open={openDrawerMD}
+	size={'md'}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	onClose={() => {
+		openDrawerMD = false;
+	}}
+>
+	<Title level={2} class="m-2">MD Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum
+		dolor sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta
+		quis voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem
+		repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerMD = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+					`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerMD = true;
+								}}>Open Drawer MD</Button
+							>
+							<Drawer
+								open={openDrawerMD}
+								size={'md'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								onClose={() => {
+									openDrawerMD = false;
+								}}
+							>
+								<Title level={2} class="m-2">MD Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerMD = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerLG = true;
+	}}>Open Drawer LG</Button
+>
+<Drawer
+	open={openDrawerLG}
+	size={'lg'}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	onClose={() => {
+		openDrawerLG = false;
+	}}
+>
+	<Title level={2} class="m-2">LG Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum
+		dolor sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta
+		quis voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem
+		repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerLG = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+					`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerLG = true;
+								}}>Open Drawer LG</Button
+							>
+							<Drawer
+								open={openDrawerLG}
+								size={'lg'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								onClose={() => {
+									openDrawerLG = false;
+								}}
+							>
+								<Title level={2} class="m-2">LG Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerLG = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerXL = true;
+	}}>Open DrawerXL</Button
+>
+<Drawer
+	open={openDrawerXL}
+	size={'xl'}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	onClose={() => {
+		openDrawerXL = false;
+	}}
+>
+	<Title level={2} class="m-2">XL Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum
+		dolor sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta
+		quis voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem
+		repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerXL = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+					
+					`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerXL = true;
+								}}>Open DrawerXL</Button
+							>
+							<Drawer
+								open={openDrawerXL}
+								size={'xl'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								onClose={() => {
+									openDrawerXL = false;
+								}}
+							>
+								<Title level={2} class="m-2">XL Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerXL = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerFull = true;
+	}}>Open Drawer Full</Button
+>
+<Drawer
+	open={openDrawerFull}
+	size={'full'}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	onClose={() => {
+		openDrawerFull = false;
+	}}
+>
+	<Title level={2} class="m-2">Right Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum
+		dolor sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta
+		quis voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem
+		repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerFull = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+					`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerFull = true;
+								}}>Open Drawer Full</Button
+							>
+							<Drawer
+								open={openDrawerFull}
+								size={'full'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								onClose={() => {
+									openDrawerFull = false;
+								}}
+							>
+								<Title level={2} class="m-2">Right Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerFull = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
 				</div>
 			</section>
 		</article>
@@ -241,67 +851,252 @@
 				<Title level={2}>Backdrop</Title>
 			</header>
 			<section>
-				<div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerNormal = true;
-							}}>Open Drawer Normal</Button
-						>
-						<Drawer
-							open={openDrawerNormal}
-							size={'md'}
-							backdrop={{
-								className: '',
-								type: 'normal'
-							}}
-							onClose={() => {
-								openDrawerNormal = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerBlurred = true;
-							}}>Open Drawer Blur</Button
-						>
-						<Drawer
-							open={openDrawerBlurred}
-							size={'xs'}
-							backdrop={{
-								className: '',
-								type: 'blur'
-							}}
-							onClose={() => {
-								openDrawerBlurred = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
-					<div>
-						<Button
-							onClick={() => {
-								openDrawerTransparent = true;
-							}}>Open Drawer Transparent</Button
-						>
-						<Drawer
-							open={openDrawerTransparent}
-							size={'xs'}
-							backdrop={{
-								className: '',
-								type: 'transparent'
-							}}
-							onClose={() => {
-								openDrawerTransparent = false;
-							}}
-						>
-							<p>Holi from Drawer</p>
-						</Drawer>
-					</div>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerNormal = true;
+	}}>Open Drawer Normal</Button
+>
+<Drawer
+	open={openDrawerNormal}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	size={'md'}
+	backdrop={{
+		className: '',
+		type: 'normal'
+	}}
+	onClose={() => {
+		openDrawerNormal = false;
+	}}
+>
+	<Title level={2} class="m-2">Default Backdrop Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum
+		dolor sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta
+		quis voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem
+		repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerNormal = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+			`}
+						>{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerNormal = true;
+								}}>Open Drawer Normal</Button
+							>
+							<Drawer
+								open={openDrawerNormal}
+								size={'md'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								backdrop={{
+									className: '',
+									type: 'normal'
+								}}
+								onClose={() => {
+									openDrawerNormal = false;
+								}}
+							>
+								<Title level={2} class="m-2">Default Backdrop Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerNormal = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}</ComponentCodeTabs
+					>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerBlurred = true;
+	}}>Open Drawer Blur</Button
+>
+<Drawer
+	open={openDrawerBlurred}
+	size={'xs'}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	backdrop={{
+		className: '',
+		type: 'blur'
+	}}
+	onClose={() => {
+		openDrawerBlurred = false;
+	}}
+>
+	<Title level={2} class="m-2">Blur Backdrop Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum
+		dolor sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta
+		quis voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem
+		repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerNormal = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>`}
+						>{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerBlurred = true;
+								}}>Open Drawer Blur</Button
+							>
+							<Drawer
+								open={openDrawerBlurred}
+								size={'xs'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								backdrop={{
+									className: '',
+									type: 'blur'
+								}}
+								onClose={() => {
+									openDrawerBlurred = false;
+								}}
+							>
+								<Title level={2} class="m-2">Blur Backdrop Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerNormal = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}</ComponentCodeTabs
+					>
+				</div>
+			</section>
+			<section>
+				<div class="w-full">
+					<ComponentCodeTabs
+						code={`<Button
+	onClick={() => {
+		openDrawerTransparent = true;
+	}}>Open Drawer Transparent</Button
+>
+<Drawer
+	open={openDrawerTransparent}
+	size={'xs'}
+	drawerContentClassName="p-2 flex flex-col h-full"
+	backdrop={{
+		className: '',
+		type: 'transparent'
+	}}
+	onClose={() => {
+		openDrawerTransparent = false;
+	}}
+>
+	<Title level={2} class="m-2">Transparent Backdrop Drawer</Title>
+	<p class="m-2">
+		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus autem
+		aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae voluptatum
+		quae expedita provident error! Accusamus asperiores quia voluptatum. Lorem ipsum
+		dolor sit amet consectetur adipisicing elit. Totam amet odit non sed sapiente soluta
+		quis voluptate dicta consequatur doloremque! Amet ratione adipisci dolorem
+		repellendus fugiat corporis aliquid cumque est?
+	</p>
+	<Button
+		colors="error"
+		variant="flat"
+		className="w-fit mt-auto ml-auto mr-2 mb-2"
+		onClick={() => {
+			openDrawerNormal = false;
+		}}
+	>
+		Close
+	</Button>
+</Drawer>
+				`}
+					>
+						{#snippet component()}
+							<Button
+								onClick={() => {
+									openDrawerTransparent = true;
+								}}>Open Drawer Transparent</Button
+							>
+							<Drawer
+								open={openDrawerTransparent}
+								size={'xs'}
+								drawerContentClassName="p-2 flex flex-col h-full"
+								backdrop={{
+									className: '',
+									type: 'transparent'
+								}}
+								onClose={() => {
+									openDrawerTransparent = false;
+								}}
+							>
+								<Title level={2} class="m-2">Transparent Backdrop Drawer</Title>
+								<p class="m-2">
+									Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio necessitatibus
+									autem aperiam, nisi iusto cum non quibusdam nemo deserunt adipisci recusandae
+									voluptatum quae expedita provident error! Accusamus asperiores quia voluptatum.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam amet odit non sed
+									sapiente soluta quis voluptate dicta consequatur doloremque! Amet ratione adipisci
+									dolorem repellendus fugiat corporis aliquid cumque est?
+								</p>
+								<Button
+									colors="error"
+									variant="flat"
+									className="w-fit mt-auto ml-auto mr-2 mb-2"
+									onClick={() => {
+										openDrawerNormal = false;
+									}}
+								>
+									Close
+								</Button>
+							</Drawer>
+						{/snippet}
+					</ComponentCodeTabs>
 				</div>
 			</section>
 		</article>

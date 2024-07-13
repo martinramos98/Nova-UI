@@ -1,3 +1,1 @@
-export function useModalAnimation(){
-
-}
+export function useModalAnimation() {}

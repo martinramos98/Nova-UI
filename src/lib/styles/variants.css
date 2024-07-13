@@ -39,12 +39,12 @@
 		color: var(--color-container);
 		background: var(--color-surface);
 
-		padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
 		border: 2px solid var(--color-container);
 		&:hover {
 			filter: brightness(0.95);
 		}
 		&.ui-button {
+			padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
 			& > .click-effect-element {
 				--color-text: var(--color-container);
 			}

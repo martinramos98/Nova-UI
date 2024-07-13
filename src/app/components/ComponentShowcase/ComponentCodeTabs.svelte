@@ -16,7 +16,7 @@
 	} = $props();
 </script>
 
-<Tabs classNameContent="bg-transparent">
+<Tabs classNameContent="bg-transparent w-full" className="w-full">
 	{#snippet TabSelection()}
 		<TabButton key="Component">Component</TabButton>
 		<TabButton key="Code">Code</TabButton>

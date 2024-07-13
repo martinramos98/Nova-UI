@@ -1,20 +1,29 @@
+<svelte:options runes={true} />
+
 <script>
 	import CalloutIcons from './CalloutIcons.svelte';
-	export let colors = 'container';
-	export let variant = 'solid';
-	export let className = '';
-	export let radius = 'rounded-xl';
-	export let type = 'default';
+	/** @type {{colors?:string,variant?:string,className?:string,radius?:string,type?:string,icon?:import('svelte').Snippet ,children:import('svelte').Snippet}}*/
+	const {
+		colors = 'container',
+		variant = 'solid',
+		className = '',
+		radius = 'rounded-xl',
+		type = 'default',
+		icon,
+		children
+	} = $props();
 </script>
 
 <div class="ui-callout {radius} ui-color-{colors} ui-variant-{variant} {className}">
-	<slot name="icon">
+	{#if icon}
+		{@render icon()}
+	{:else}
 		<span>
 			<CalloutIcons {type} />
 		</span>
-	</slot>
+	{/if}
 	<div>
-		<slot />
+		{@render children()}
 	</div>
 </div>
 

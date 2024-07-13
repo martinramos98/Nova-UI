@@ -63,9 +63,8 @@
 		max-height: 400px;
 		overflow: auto;
 		justify-content: space-between;
-		padding: 0;
 		width: 100%;
 		gap: 0;
-		padding-left: var(--spacing-2);
+		padding: 0 0 0 var(--spacing-2);
 	}
 </style>

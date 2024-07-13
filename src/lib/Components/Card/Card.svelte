@@ -1,29 +1,19 @@
+<svelte:options runes={true} />
+
 <script>
-	export let footerClassname = '';
-	export let headerClassname = '';
-	export let bodyClassname = '';
-	export let variant = '';
-	export let color = '';
-
-	export let className = '';
-	/**
-	 * @type {(import('svelte').Snippet) | undefined}
-	 */
-	export let children;
-	/**
-	 * @type {(import('svelte').Snippet) | undefined}
-	 */
-	export let header = undefined;
-	/**
-	 * @type {(import('svelte').Snippet) | undefined}
-	 */
-
-	export let body = undefined;
-	/**
-	 * @type {(import('svelte').Snippet) | undefined}
-	 */
-
-	export let footer = undefined;
+	/** @type {{className?:string,footerClassname?:string,headerClassname?:string,bodyClassname?:string,variant?:string,color?:string,children?:import('svelte').Snippet,header?:import('svelte').Snippet, body?:import('svelte').Snippet,footer?:import('svelte').Snippet}} */
+	const {
+		footerClassname = '',
+		headerClassname = '',
+		bodyClassname = '',
+		variant = '',
+		color = '',
+		className = '',
+		children,
+		header,
+		body,
+		footer
+	} = $props();
 </script>
 
 <div

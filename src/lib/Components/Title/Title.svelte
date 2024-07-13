@@ -1,10 +1,12 @@
-<script lang="ts">
-	export let level: 1 | 2 | 3 | 4 | 5 | 6 = 1;
-	export let className = '';
+<svelte:options runes={true} />
+
+<script>
+	/** @type {{level?:number,class?:string,children:import('svelte').Snippet}} */
+	const { level = 1, class: className = '', children } = $props();
 </script>
 
 <svelte:element this={'h' + level} class="ui-title {className}">
-	<slot />
+	{@render children()}
 </svelte:element>
 
 <style>
