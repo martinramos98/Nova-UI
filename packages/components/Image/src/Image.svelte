@@ -1,19 +1,35 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	export let aspect: '1:1' | '16:9' | '3:4' | 'auto' = 'auto';
-	export let width: string | undefined = undefined;
-	export let height: string | undefined = undefined;
-	export let reloadOnMount = true;
-	export let src: string = '';
-	export let alt: string;
-	export let className: string = '';
-	export let captionInside: boolean = false;
-	export let classNameContainer: string = '';
-	export let classNameCaption: string = '';
-	let loading = false;
+	type Aspect = '1:1' | '16:9' | '3:4' | 'auto';
+	interface ImageProps {
+		aspect?: Aspect;
+		width?: string;
+		height?: string;
+		src: string;
+		alt: string;
+		reloadOnMount?: boolean;
+		class?: String;
+		captionInside?: boolean;
+		classContainer?: string;
+		classCaption?: string;
+	}
+	const {
+		aspect = 'auto',
+		width = undefined,
+		height = undefined,
+		src = '',
+		alt,
+		reloadOnMount = true,
+		class: className = '',
+		captionInside = false,
+		classContainer = '',
+		classCaption = ''
+	}: ImageProps = $props();
+	let loading = $state(false);
 	let ref: HTMLImageElement;
-	let errorOnLoad = false;
+	let errorOnLoad = $state(false);
 	function onError(ev: any) {
 		errorOnLoad = true;
 		loading = false;
@@ -23,15 +39,9 @@
 		loading = false;
 		ref.style.opacity = '1';
 	}
-	onMount(() => {
+	$effect(() => {
 		if (ref.complete && reloadOnMount) {
 			ref.src = ref.src;
-			// loading = false;
-			// ref.style.opacity = '1';
-			// if (!src || src === '') {
-			// 	errorOnLoad = true;
-			// 	ref.style.opacity = '0';
-			// }
 		} else {
 			if (ref.complete) {
 				loading = false;
@@ -56,7 +66,7 @@
 	style="{height ? `height:${height};` : ''}{width
 		? `width:${width};`
 		: ''} aspect-ratio:{aspectRatio()};"
-	class="ui-image-container relative {classNameContainer} "
+	class="ui-image-container relative {classContainer} "
 >
 	{#if loading}
 		<slot name="custom-loader">
@@ -90,7 +100,7 @@
 		{src}
 	/>
 	{#if $$slots['caption-content'] && !loading && !errorOnLoad}
-		<figcaption class:captionInside class={classNameCaption}>
+		<figcaption class:captionInside class={classCaption}>
 			<slot name="caption-content" />
 		</figcaption>
 	{/if}
