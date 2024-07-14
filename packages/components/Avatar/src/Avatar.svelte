@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Icon from '@nova/icon';
-	import UserIcon from '@nova/icon';
-
+	import { Icon, UserIcon } from '@nova/icon';
 	export let disabled = false;
 	export let avatarSrc: string | undefined = undefined;
 	export let defaultIcon = undefined;

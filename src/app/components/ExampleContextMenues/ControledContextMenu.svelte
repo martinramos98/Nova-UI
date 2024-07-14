@@ -1,14 +1,8 @@
 <svelte:options runes={true} />
 
 <script>
-	import ContextMenu from '$lib/Components/ContextMenu/ContextMenu.svelte';
-	import ContextMenuSection from '$lib/Components/ContextMenu/ContextMenuSection.svelte';
-	import Button from '$lib/Components/Button/Button.svelte';
-	import {
-		provideContextMenu,
-		asContextMenuContainer
-	} from '$lib/Components/ContextMenu/ContextMenu';
-	import Divider from '$lib/Components/Divider/Divider.svelte';
+	import { ContextMenu, asContextMenuContainer, provideContextMenu } from '@nova/context-menu';
+	import { Button } from '@nova/button';
 	import ComponentCodeTabs from '../ComponentShowcase/ComponentCodeTabs.svelte';
 	provideContextMenu();
 	let openContext = $state(false);

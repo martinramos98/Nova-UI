@@ -1,12 +1,9 @@
 <svelte:options runes={true} />
 
 <script>
-	import Button from '$lib/Components/Button/Button.svelte';
-	import Option from '$lib/Components/Selection/Option.svelte';
-	import Selection from '$lib/Components/Selection/Selection.svelte';
-	import Tab from '$lib/Components/Tabs/Tab/Tab.svelte';
-	import TabButton from '$lib/Components/Tabs/TabButton/TabButton.svelte';
-	import Tabs from '$lib/Components/Tabs/Tabs.svelte';
+	import { Button } from '@nova/button';
+	import { Option, Selection } from '@nova/selection';
+	import { Tab, TabButton, Tabs } from '@nova/tabs';
 	import CodeSnippet from '../../CodeSnippet/CodeSnippet.svelte';
 	let variant = $state('solid');
 	let color = $state('primary');

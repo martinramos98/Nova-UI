@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Accordion from '$lib/Components/Accordion/Accordion.svelte';
-	import AccordionSection from '$lib/Components/Accordion/AccordionSection/AccordionSection.svelte';
+	import { Title } from '@nova/title';
+	import { Accordion, AccordionSection } from '@nova/accordion';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
 	function codeStringWith(propsStrig: string) {

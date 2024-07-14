@@ -1,7 +1,7 @@
 <script>
-	import Popover from '$lib/Components/Popover/Popover.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Button from '$lib/Components/Button/Button.svelte';
+	import { Popover } from '@nova/popover';
+	import { Title } from '@nova/title';
+	import { Button } from '@nova/button';
 </script>
 
 <div class="page-content">
@@ -12,7 +12,7 @@
 			</header>
 			<section>
 				<div class="w-full">
-					<Popover variant="solid" colors="container">
+					<Popover variant="solid" color="container">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
@@ -27,73 +27,73 @@
 			</header>
 			<section>
 				<div class="position-grid">
-					<Popover variant="solid" colors="container" position="top-start">
+					<Popover variant="solid" color="container" position="top-start">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">top-start</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="top">
+					<Popover variant="solid" color="container" position="top">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">top</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="top-end">
+					<Popover variant="solid" color="container" position="top-end">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">top-end</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="left-start">
+					<Popover variant="solid" color="container" position="left-start">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">left-start</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="left">
+					<Popover variant="solid" color="container" position="left">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">left</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="left-end">
+					<Popover variant="solid" color="container" position="left-end">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">left-end</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="right-start">
+					<Popover variant="solid" color="container" position="right-start">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">right-start</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="right">
+					<Popover variant="solid" color="container" position="right">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">right</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="right-end">
+					<Popover variant="solid" color="container" position="right-end">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">right-end</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="bottom-start">
+					<Popover variant="solid" color="container" position="bottom-start">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">bottom-start</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="bottom">
+					<Popover variant="solid" color="container" position="bottom">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}
 						<Button variant="faded" colors="primary">bottom</Button>
 					</Popover>
-					<Popover variant="solid" colors="container" position="bottom-end">
+					<Popover variant="solid" color="container" position="bottom-end">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
 						{/snippet}

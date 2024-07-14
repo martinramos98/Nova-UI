@@ -1,10 +1,10 @@
 <script>
-	import Card from '$lib/Components/Card/Card.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Button from '$lib/Components/Button/Button.svelte';
-	import Divider from '$lib/Components/Divider/Divider.svelte';
-	import Image from '$lib/Components/Image/Image.svelte';
-	import Avatar from '$lib/Components/Avatar/Avatar.svelte';
+	import { Card } from '@nova/card';
+	import { Title } from '@nova/title';
+	import { Button } from '@nova/button';
+	import { Divider } from '@nova/divider';
+	import { Image } from '@nova/image';
+	import { Avatar } from '@nova/avatar';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 </script>
 

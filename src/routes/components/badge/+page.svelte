@@ -1,11 +1,9 @@
 <script>
-	import Avatar from '$lib/Components/Avatar/Avatar.svelte';
-	import Badge from '$lib/Components/Badge/Badge.svelte';
-	import Button from '$lib/Components/Button/Button.svelte';
-	import Icon from '$lib/Components/Icons/Icon.svelte';
-	import AlertIcon from '$lib/Components/Icons/IconsPath/AlertIcon.svelte';
-	import WarningIcon from '$lib/Components/Icons/IconsPath/WarningIcon.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
+	import { Avatar } from '@nova/avatar';
+	import { Badge } from '@nova/badge';
+	import { Button } from '@nova/button';
+	import { Icon, AlertIcon, WarningIcon } from '@nova/icon';
+	import { Title } from '@nova/title';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	let counter = 0;
 </script>

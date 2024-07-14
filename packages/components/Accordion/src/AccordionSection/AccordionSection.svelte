@@ -1,8 +1,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import Icon from '../../../Icons/Icon.svelte';
-	import ChevronIcon from '../../../Icons/src/IconsPath/ChevronIcon.svelte';
+	import { Icon, ChevronIcon } from '@nova/icon';
 	import type { Writable } from 'svelte/store';
 	import { getContext, type Snippet } from 'svelte';
 	interface AccordionSectionProps {

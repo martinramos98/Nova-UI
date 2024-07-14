@@ -1,6 +1,6 @@
 <script>
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Callout from '$lib/Components/Callout/Callout.svelte';
+	import { Title } from '@nova/title';
+	import { Callout } from '@nova/callout';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 </script>
 

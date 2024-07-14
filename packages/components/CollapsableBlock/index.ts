@@ -1,2 +1,2 @@
-import CollapsableBlock from './src/ColapsableBlock.svelte';
+import CollapsableBlock from './src/CollapsableBlock.svelte';
 export { CollapsableBlock };

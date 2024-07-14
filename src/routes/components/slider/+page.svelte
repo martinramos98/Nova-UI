@@ -1,6 +1,6 @@
 <script>
-	import Slider from '$lib/Components/Slider/Slider.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
+	import { Slider } from '@nova/slider';
+	import { Title } from '@nova/title';
 	let value = 0;
 	let value2 = 500;
 	let valueSteps = 0;

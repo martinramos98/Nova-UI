@@ -1,16 +1,7 @@
 <script>
-	import Button from '$lib/Components/Button/Button.svelte';
-	import Chip from '$lib/Components/Chip/Chip.svelte';
-	import Loader from '$lib/Components/Loader/Loader.svelte';
-	import Progress from '$lib/Components/Progress/Progress.svelte';
-	import Cell from '$lib/Components/Table/Cell.svelte';
-	import Table from '$lib/Components/Table/Table.svelte';
-	import TableBody from '$lib/Components/Table/TableBody.svelte';
-	import TableHeader from '$lib/Components/Table/TableHeader.svelte';
-	import TableRow from '$lib/Components/Table/TableRow.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
-	import { fade } from 'svelte/transition';
-	let showRows = false;
+	import { Cell, Table, TableBody, TableFooter, TableHeader, TableRow } from '@nova/table';
+	import { Chip } from '@nova/chip';
+	import { Title } from '@nova/title';
 	const datosEjemplo = [
 		{
 			nombre: 'Juan',

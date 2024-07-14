@@ -1,9 +1,8 @@
 <script lang="ts">
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Divider from '$lib/Components/Divider/Divider.svelte';
-	import Button from '$lib/Components/Button/Button.svelte';
-	import Modal from '$lib/Components/Modal/Modal.svelte';
-	// import Drawer from '$lib/Components/Drawer/Drawer.svelte';
+	import { Title } from '@nova/title';
+	import { Divider } from '@nova/divider';
+	import { Button } from '@nova/button';
+	import { Modal } from '@nova/modal';
 	let testOpen = false;
 	let openLG = false;
 	let openMD = false;
@@ -45,7 +44,7 @@
 						}}
 					>
 						<svelte:fragment slot="header">
-							<Title level={3} className="text-center w-full">Modal</Title>
+							<Title level={3} class="text-center w-full">Modal</Title>
 						</svelte:fragment>
 						<svelte:fragment slot="footer">
 							<Button variant="solid" colors="success">Accept</Button>
@@ -82,7 +81,7 @@
 						}}
 					>
 						<svelte:fragment slot="header">
-							<Title level={3} className="text-center w-full">Modal</Title>
+							<Title level={3} class="text-center w-full">Modal</Title>
 						</svelte:fragment>
 						<svelte:fragment slot="footer">
 							<Button variant="solid" colors="success">Accept</Button>
@@ -142,7 +141,7 @@
 						}}
 					>
 						<svelte:fragment slot="header">
-							<Title level={3} className="text-center w-full">Modal</Title>
+							<Title level={3} class="text-center w-full">Modal</Title>
 						</svelte:fragment>
 						<svelte:fragment slot="footer">
 							<Button variant="solid" colors="success">Accept</Button>
@@ -164,7 +163,7 @@
 						}}
 					>
 						<svelte:fragment slot="header">
-							<Title level={3} className="text-center w-full">Modal</Title>
+							<Title level={3} class="text-center w-full">Modal</Title>
 						</svelte:fragment>
 						<svelte:fragment slot="footer">
 							<Button variant="solid" colors="success">Accept</Button>
@@ -187,7 +186,7 @@
 						}}
 					>
 						<svelte:fragment slot="header">
-							<Title level={3} className="text-center w-full">Modal</Title>
+							<Title level={3} class="text-center w-full">Modal</Title>
 						</svelte:fragment>
 						<svelte:fragment slot="footer">
 							<Button variant="solid" colors="success">Accept</Button>
@@ -210,7 +209,7 @@
 						}}
 					>
 						<svelte:fragment slot="header">
-							<Title level={3} className="text-center w-full">Modal</Title>
+							<Title level={3} class="text-center w-full">Modal</Title>
 						</svelte:fragment>
 						<svelte:fragment slot="footer">
 							<Button variant="solid" colors="success">Accept</Button>

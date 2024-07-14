@@ -1,8 +1,6 @@
 <script>
-	import Input from '$lib/Components/Input/Input.svelte';
-	import Option from '$lib/Components/Selection/Option.svelte';
-	import Selection from '$lib/Components/Selection/Selection.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
+	import { Option, Selection } from '@nova/selection';
+	import { Title } from '@nova/title';
 </script>
 
 <div class="page-content">

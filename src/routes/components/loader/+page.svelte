@@ -1,7 +1,7 @@
 <script>
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Loader from '$lib/Components/Loader/Loader.svelte';
-	import Link from '$lib/Components/Link/Link.svelte';
+	import { Title } from '@nova/title';
+	import { Loader } from '@nova/loader';
+	import { Link } from '@nova/link';
 </script>
 
 <div class="page-content">

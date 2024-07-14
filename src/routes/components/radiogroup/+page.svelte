@@ -1,9 +1,6 @@
 <script>
-	import Radio from '$lib/Components/RadioGroup/RadioButton/Radio.svelte';
-	import RadioGroup from '$lib/Components/RadioGroup/RadioGroup.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
-	import { toast } from '$lib/Components/Toast/toast';
-	import RadioButton from '$lib/Components/RadioGroup/RadioButton/RadioButton.svelte';
+	import { Radio, RadioGroup, RadioButton } from '@nova/radio';
+	import { Title } from '@nova/title';
 </script>
 
 <div class="page-content">

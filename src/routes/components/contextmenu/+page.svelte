@@ -1,5 +1,5 @@
 <script>
-	import Title from '$lib/Components/Title/Title.svelte';
+	import { Title } from '@nova/title';
 	import BasicContextMenu from '../../../app/components/ExampleContextMenues/BasicContextMenu.svelte';
 	import ControledContextMenu from '../../../app/components/ExampleContextMenues/ControledContextMenu.svelte';
 	import SubsectionContextMenu from '../../../app/components/ExampleContextMenues/SubsectionContextMenu.svelte';
@@ -10,7 +10,7 @@
 		<span class="font-semibold">On this page</span>
 		<ul>
 			<li><a href="#tabs">Context Menu</a></li>
-			<li><a href="#types"></a></li>
+			<li><a href="#types">Types</a></li>
 			<li><a href="#variants">Subsections</a></li>
 			<li><a href="#customs">Customs</a></li>
 		</ul>

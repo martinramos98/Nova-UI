@@ -1,8 +1,8 @@
 <script>
-	import ColapsableBlock from '$lib/Components/CollapsableBlock/ColapsableBlock.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Navbar from '$lib/Components/Navbar/Navbar.svelte';
-	import MenuButton from '$lib/Components/MenuButton/MenuButton.svelte';
+	import { CollapsableBlock } from '@nova/collapsable-block';
+	import { Title } from '@nova/title';
+	import { Navbar } from '@nova/navbar';
+	import { MenuButton } from '@nova/button';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	let open = false;
 	let openLeft = false;
@@ -39,7 +39,7 @@
 					<Navbar useContainerQuery={false} variant={'none'} withMenu={false}>
 						<MenuButton onClickMenu={toggleOpen}></MenuButton>
 					</Navbar>
-					<ColapsableBlock className="w-full" classNameContainer={'w-full'} bind:open>
+					<CollapsableBlock className="w-full" classNameContainer={'w-full'} bind:open>
 						<p class="mt-4">
 							Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore
 							culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim
@@ -59,7 +59,7 @@
 								<li>Test</li>
 							</ul>
 						{/snippet}
-					</ColapsableBlock>
+					</CollapsableBlock>
 				</div>
 			</section>
 		</article>
@@ -74,7 +74,7 @@
 						code={`<Navbar useContainerQuery={false} variant={'none'} withMenu={false}>
 	<MenuButton onClickMenu={toggleOpenTop}></MenuButton>
 </Navbar>
-<ColapsableBlock
+<CollapsableBlock
 	position="top"
 	className="w-full"
 	classNameContainer={'w-full'}
@@ -99,13 +99,13 @@
 			<li class="ui-color-primary px-2 ui-variant-light">Test</li>
 		</ul>
 	{/snippet}
-</ColapsableBlock>`}
+</CollapsableBlock>`}
 					>
 						{#snippet component()}
 							<Navbar useContainerQuery={false} variant={'none'} withMenu={false}>
 								<MenuButton onClickMenu={toggleOpenTop}></MenuButton>
 							</Navbar>
-							<ColapsableBlock
+							<CollapsableBlock
 								position="top"
 								className="w-full"
 								classNameContainer={'w-full'}
@@ -130,7 +130,7 @@
 										<li class="ui-color-primary px-2 ui-variant-light">Test</li>
 									</ul>
 								{/snippet}
-							</ColapsableBlock>
+							</CollapsableBlock>
 						{/snippet}
 					</ComponentCodeTabs>
 				</div>
@@ -142,7 +142,7 @@
 						code={`<Navbar useContainerQuery={false} variant={'none'} withMenu={false}>
 	<MenuButton onClickMenu={toggleOpenBottom}></MenuButton>
 </Navbar>
-<ColapsableBlock
+<CollapsableBlock
 	position="bottom"
 	className="w-full"
 	classNameContainer={'w-full'}
@@ -167,14 +167,14 @@
 			<li class="ui-color-primary px-2 ui-variant-light">Test</li>
 		</ul>
 	{/snippet}
-</ColapsableBlock>
+</CollapsableBlock>
 					`}
 					>
 						{#snippet component()}
 							<Navbar useContainerQuery={false} variant={'none'} withMenu={false}>
 								<MenuButton onClickMenu={toggleOpenBottom}></MenuButton>
 							</Navbar>
-							<ColapsableBlock
+							<CollapsableBlock
 								position="bottom"
 								className="w-full"
 								classNameContainer={'w-full'}
@@ -199,7 +199,7 @@
 										<li class="ui-color-primary px-2 ui-variant-light">Test</li>
 									</ul>
 								{/snippet}
-							</ColapsableBlock>
+							</CollapsableBlock>
 						{/snippet}
 					</ComponentCodeTabs>
 				</div>
@@ -211,7 +211,7 @@
 						code={`<Navbar useContainerQuery={false} variant={'none'} withMenu={false}>
 	<MenuButton onClickMenu={toggleOpenLeft}></MenuButton>
 </Navbar>
-<ColapsableBlock
+<CollapsableBlock
 	className="w-[200px]"
 	position="left"
 	classNameContainer={'w-full'}
@@ -236,14 +236,14 @@
 			<li class="ui-color-primary px-2 ui-variant-light">Test</li>
 		</ul>
 	{/snippet}
-</ColapsableBlock>
+</CollapsableBlock>
 					`}
 					>
 						{#snippet component()}
 							<Navbar useContainerQuery={false} variant={'none'} withMenu={false}>
 								<MenuButton onClickMenu={toggleOpenLeft}></MenuButton>
 							</Navbar>
-							<ColapsableBlock
+							<CollapsableBlock
 								className="w-[200px]"
 								position="left"
 								classNameContainer={'w-full'}
@@ -268,7 +268,7 @@
 										<li class="ui-color-primary px-2 ui-variant-light">Test</li>
 									</ul>
 								{/snippet}
-							</ColapsableBlock>
+							</CollapsableBlock>
 						{/snippet}
 					</ComponentCodeTabs>
 				</div>
@@ -281,7 +281,7 @@
 						code={`<Navbar useContainerQuery={false} variant={'none'} withMenu={false}>
 	<MenuButton onClickMenu={toggleOpenRight}></MenuButton>
 </Navbar>
-<ColapsableBlock
+<CollapsableBlock
 	className="w-[200px]"
 	position="right"
 	classNameContainer={'w-full'}
@@ -306,13 +306,13 @@
 			<li class="ui-color-primary px-2 ui-variant-light">Test</li>
 		</ul>
 	{/snippet}
-</ColapsableBlock>`}
+</CollapsableBlock>`}
 					>
 						{#snippet component()}
 							<Navbar useContainerQuery={false} variant={'none'} withMenu={false}>
 								<MenuButton onClickMenu={toggleOpenRight}></MenuButton>
 							</Navbar>
-							<ColapsableBlock
+							<CollapsableBlock
 								className="w-[200px]"
 								position="right"
 								classNameContainer={'w-full'}
@@ -337,7 +337,7 @@
 										<li class="ui-color-primary px-2 ui-variant-light">Test</li>
 									</ul>
 								{/snippet}
-							</ColapsableBlock>
+							</CollapsableBlock>
 						{/snippet}
 					</ComponentCodeTabs>
 				</div>

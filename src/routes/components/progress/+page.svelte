@@ -1,6 +1,6 @@
 <script>
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Progress from '$lib/Components/Progress/Progress.svelte';
+	import { Title } from '@nova/title';
+	import { Progress } from '@nova/progress';
 	let valueBar = 0;
 	let valueCircle = 0;
 	setInterval(() => {

@@ -1,10 +1,6 @@
 <script>
-	import Icon from '$lib/Components/Icons/Icon.svelte';
-	import AlertIcon from '$lib/Components/Icons/IconsPath/AlertIcon.svelte';
-	import InfoIcon from '$lib/Components/Icons/IconsPath/InfoIcon.svelte';
-	import SuccessIcon from '$lib/Components/Icons/IconsPath/SuccessIcon.svelte';
-	import WarningIcon from '$lib/Components/Icons/IconsPath/WarningIcon.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
+	import { Icon, AlertIcon, InfoIcon, SuccessIcon, WarningIcon } from '@nova/icon';
+	import { Title } from '@nova/title';
 </script>
 
 <div class=" page-content">

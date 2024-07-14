@@ -1,8 +1,7 @@
 <script>
-	import Switch from '$lib/Components/Switch/Switch.svelte';
-	import Tooltip from '$lib/Components/Tooltip/Tooltip.svelte';
-	import Button from '$lib/Components/Button/Button.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
+	import { Switch } from '@nova/switch';
+	import { Button } from '@nova/button';
+	import { Title } from '@nova/title';
 	let switchState = false;
 </script>
 

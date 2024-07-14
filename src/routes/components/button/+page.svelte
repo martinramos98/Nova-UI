@@ -1,17 +1,12 @@
 <script>
 	// @ts-nocheck
-
-	import Button from '$lib/Components/Button/Button.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Icon from '$lib/Components/Icons/Icon.svelte';
-	import ButtonGroup from '$lib/Components/ButtonGroup/ButtonGroup.svelte';
-	import Loader from '$lib/Components/Loader/Loader.svelte';
-	import WarningIcon from '$lib/Components/Icons/IconsPath/WarningIcon.svelte';
+	import { Button, ButtonGroup } from '@nova/button';
+	import { Loader } from '@nova/loader';
+	import { Title } from '@nova/title';
+	import { Icon, WarningIcon } from '@nova/icon';
+	import { Tab, Tabs, TabButton } from '@nova/tabs';
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
 	import ButtonComponentShowcase from '../../../app/components/ComponentShowcase/ButtonComponentShowcase/ButtonComponentShowcase.svelte';
-	import Tabs from '$lib/Components/Tabs/Tabs.svelte';
-	import Tab from '$lib/Components/Tabs/Tab/Tab.svelte';
-	import TabButton from '$lib/Components/Tabs/TabButton/TabButton.svelte';
 </script>
 
 <svelte:head>

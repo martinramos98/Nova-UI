@@ -4,7 +4,7 @@
 	import { Button } from '@nova/button';
 	import { ElementAnimation } from '@nova/element-animation-js';
 	import type { Snippet } from 'svelte';
-	import Input from '@nova/input';
+	import { Input } from '@nova/input';
 	let {
 		open = $bindable(false),
 		size = 'md',

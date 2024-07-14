@@ -1,14 +1,9 @@
 <script>
-	import Navbar from '$lib/Components/Navbar/Navbar.svelte';
-	import Button from '$lib/Components/Button/Button.svelte';
-	import Avatar from '$lib/Components/Avatar/Avatar.svelte';
-	import MenuButton from '$lib/Components/MenuButton/MenuButton.svelte';
-	import Chip from '$lib/Components/Chip/Chip.svelte';
-	import Tooltip from '$lib/Components/Tooltip/Tooltip.svelte';
-	import Popover from '$lib/Components/Popover/Popover.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Divider from '$lib/Components/Divider/Divider.svelte';
-	import CloseButton from '$lib/Components/CloseButton/CloseButton.svelte';
+	import { Navbar } from '@nova/Navbar';
+	import { Button, MenuButton, CloseButton } from '@nova/button';
+	import { Avatar } from '@nova/avatar';
+	import { Title } from '@nova/title';
+	import { Divider } from '@nova/divider';
 </script>
 
 <div class="page-content">

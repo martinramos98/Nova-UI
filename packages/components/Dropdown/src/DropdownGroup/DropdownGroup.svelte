@@ -1,7 +1,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import FloatingSubsection from '@nova/floating-subsection';
+	import { FloatingSubsection } from '@nova/floating-subsection';
 	import type { Snippet } from 'svelte';
 	import DropDownItem from '../DropdownItem/DropDownItem.svelte';
 	const {

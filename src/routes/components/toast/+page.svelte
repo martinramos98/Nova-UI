@@ -1,9 +1,7 @@
 <script lang="ts">
-	import Button from '$lib/Components/Button/Button.svelte';
-	import ButtonGroup from '$lib/Components/ButtonGroup/ButtonGroup.svelte';
-	import Icon from '$lib/Components/Icons/Icon.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
-	import { toast } from '$lib/Components/Toast/toast';
+	import { Button } from '@nova/button';
+	import { Title } from '@nova/title';
+	import { toast } from '@nova/toast';
 	function triggerBasicToast() {
 		toast(
 			'top-right',

@@ -1,3 +1,3 @@
 import Callout from './src/Callout.svelte';
-import CalloutIcon from './src/CalloutIcons.svelte'
-export { Callout, CalloutIcon };
+import CalloutIcons from './src/CalloutIcons.svelte'
+export { Callout, CalloutIcons };

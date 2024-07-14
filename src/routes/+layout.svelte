@@ -1,18 +1,11 @@
 <script>
-	// import {
-	// 	NovaUIProvider,
-	// 	Navbar,
-	// 	MenuButton,
-	// 	Accordion,
-	// 	AccordionSection,
-	// 	CloseButton
-	// } from '$lib/index';
-	// import ComponentList from '../app/components/ComponentsList/ComponentList.svelte';
+	import { Navbar, MenuButton, Accordion, AccordionSection, CloseButton } from '$lib/index';
+	import ComponentList from '../app/components/ComponentsList/ComponentList.svelte';
 	import NovaUIProvider from '$lib/providers/NovaUIProvider.svelte';
 </script>
 
 <NovaUIProvider>
-	<!-- <Navbar
+	<Navbar
 		useContainerQuery={false}
 		className="navbar-color  flex flex-row justify-between backdrop-blur-sm fixed top-3 left-[2.5%] w-[95%] h-[40px] rounded-full z-40"
 		variant="menu"
@@ -74,7 +67,7 @@
 				</AccordionSection>
 			</Accordion>
 		{/snippet}
-	</Navbar> -->
+	</Navbar>
 	<slot />
 </NovaUIProvider>
 

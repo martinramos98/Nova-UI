@@ -1,9 +1,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import Tab from '$lib/Components/Tabs/Tab/Tab.svelte';
-	import TabButton from '$lib/Components/Tabs/TabButton/TabButton.svelte';
-	import Tabs from '$lib/Components/Tabs/Tabs.svelte';
+	import { Tab, TabButton, Tabs } from '@nova/tabs';
 	import type { Snippet } from 'svelte';
 	import CodeSnippet from '../CodeSnippet/CodeSnippet.svelte';
 

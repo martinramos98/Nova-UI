@@ -1,8 +1,6 @@
 <script>
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Tabs from '$lib/Components/Tabs/Tabs.svelte';
-	import Tab from '$lib/Components/Tabs/Tab/Tab.svelte';
-	import TabButton from '$lib/Components/Tabs/TabButton/TabButton.svelte';
+	import { Title } from '@nova/title';
+	import { Tab, TabButton, Tabs } from '@nova/tabs';
 </script>
 
 <div class="page-content">

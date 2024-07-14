@@ -1,7 +1,7 @@
 <script>
-	import Chip from '$lib/Components/Chip/Chip.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
-	import Tooltip from '$lib/Components/Tooltip/Tooltip.svelte';
+	import { Chip } from '@nova/chip';
+	import { Title } from '@nova/title';
+	import { Tooltip } from '@nova/tooltip';
 </script>
 
 <div class="page-content">

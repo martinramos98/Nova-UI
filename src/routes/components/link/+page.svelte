@@ -1,6 +1,6 @@
 <script>
-	import Link from '$lib/Components/Link/Link.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
+	import { Link } from '@nova/link';
+	import { Title } from '@nova/title';
 </script>
 
 <div class="page-content">

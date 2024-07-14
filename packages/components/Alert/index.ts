@@ -1,2 +1,2 @@
-import Alert from './src/Alert.svelte'
-export {Alert}
+import Alert from './src/Alert.svelte';
+export { Alert };

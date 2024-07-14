@@ -56,7 +56,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@nova/accordion": "workspace:*",
+		"@nova/accordion":"workspace:*",
 		"@nova/alert":"workspace:*",
 		"@nova/avatar":"workspace:*",
 		"@nova/badge":"workspace:*",

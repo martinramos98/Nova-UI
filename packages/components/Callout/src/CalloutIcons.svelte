@@ -1,10 +1,5 @@
 <script lang="ts">
-	import CircleIcon from '@nova/icon';
-	import WarningIcon from '@nova/icon';
-	import AlertIcon from '@nova/icon';
-	import InfoIcon from '@nova/icon';
-	import SuccessIcon from '@nova/icon';
-	import Icon from '@nova/icon';
+	import { CircleIcon, WarningIcon, AlertIcon, InfoIcon, Icon, SuccessIcon } from '@nova/icon';
 
 	export let type: 'default' | 'warning' | 'alert' | 'success' | 'info' = 'default';
 	const icons = {
