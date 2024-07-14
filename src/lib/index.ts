@@ -27,9 +27,15 @@ import { Tooltip } from '@nova/tooltip';
 import { Alert } from '@nova/alert';
 import { animateRender } from './utils/animatedRender.svelte.js';
 import { Loader } from '@nova/loader';
+import { Slider } from '@nova/slider';
+import { Switch } from '@nova/switch';
+import { Progress } from '@nova/progress';
 // Reexport your entry components here
 
 export {
+	Progress,
+	Switch,
+	Slider,
 	Loader,
 	Alert,
 	CollapsableBlock,

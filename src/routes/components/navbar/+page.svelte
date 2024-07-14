@@ -1,5 +1,5 @@
 <script>
-	import { Navbar } from '@nova/Navbar';
+	import { Navbar } from '@nova/navbar';
 	import { Button, MenuButton, CloseButton } from '@nova/button';
 	import { Avatar } from '@nova/avatar';
 	import { Title } from '@nova/title';

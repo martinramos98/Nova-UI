@@ -1,11 +1,11 @@
 <script>
-	import Title from '$lib/Components/Title/Title.svelte';
+	import { Title } from '@nova/title';
 	import ComponentList from '../../app/components/ComponentsList/ComponentList.svelte';
 </script>
 
 <main>
 	<article>
-		<Title className="w-[80%]">Components</Title>
+		<Title class="w-[80%]">Components</Title>
 		<ComponentList className="w-[80%]" />
 	</article>
 </main>
