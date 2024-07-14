@@ -5,8 +5,8 @@
 		SequencedSiblingAnimation
 	} from '@nova/element-animation-js';
 	// import Button from '$lib/Components/Button/Button.svelte';
-	import Divider from '$lib/Components/Divider/Divider.svelte';
-	import Title from '$lib/Components/Title/Title.svelte';
+	import { Divider } from '@nova/divider';
+	import { Title } from '@nova/title';
 	import { onMount } from 'svelte';
 	let a: HTMLElement, b: HTMLElement, c: HTMLElement, d: HTMLElement;
 	let e: HTMLElement, f: HTMLElement, g: HTMLElement, h: HTMLElement;
@@ -15,7 +15,7 @@
 	let parent2: HTMLElement;
 	let sibling1: HTMLElement;
 	let sibling2: HTMLElement;
-	let sibling3;
+	let sibling3: HTMLElement;
 	const keyframeA: Keyframe[] = [{ scale: '1' }, { scale: '1.5' }];
 	const keyframeB: Keyframe[] = [
 		{ rotate: '0deg', composite: 'accumulate' },
