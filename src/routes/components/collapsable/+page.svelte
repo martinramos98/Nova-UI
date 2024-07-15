@@ -1,8 +1,8 @@
 <script>
-	import { CollapsableBlock } from '@nova/collapsable-block';
-	import { Title } from '@nova/title';
-	import { Navbar } from '@nova/navbar';
-	import { MenuButton } from '@nova/button';
+	import { CollapsableBlock } from '@nv-org/collapsable-block';
+	import { Title } from '@nv-org/title';
+	import { Navbar } from '@nv-org/navbar';
+	import { MenuButton } from '@nv-org/button';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	let open = false;
 	let openLeft = false;

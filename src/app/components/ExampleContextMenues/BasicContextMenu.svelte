@@ -1,8 +1,8 @@
 <svelte:options runes={true} />
 
 <script>
-	import { ContextMenu, asContextMenuContainer, provideContextMenu } from '@nova/context-menu';
-	import { Button } from '@nova/button';
+	import { ContextMenu, asContextMenuContainer, provideContextMenu } from '@nv-org/context-menu';
+	import { Button } from '@nv-org/button';
 	import ComponentCodeTabs from '../ComponentShowcase/ComponentCodeTabs.svelte';
 	provideContextMenu();
 </script>

@@ -1,7 +1,7 @@
 <script>
-	import { Popover } from '@nova/popover';
-	import { Title } from '@nova/title';
-	import { Button } from '@nova/button';
+	import { Popover } from '@nv-org/popover';
+	import { Title } from '@nv-org/title';
+	import { Button } from '@nv-org/button';
 </script>
 
 <div class="page-content">

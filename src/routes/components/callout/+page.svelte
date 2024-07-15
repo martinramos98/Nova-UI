@@ -1,6 +1,6 @@
 <script>
-	import { Title } from '@nova/title';
-	import { Callout } from '@nova/callout';
+	import { Title } from '@nv-org/title';
+	import { Callout } from '@nv-org/callout';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 </script>
 

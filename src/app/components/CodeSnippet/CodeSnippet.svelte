@@ -1,9 +1,9 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { Button } from '@nova/button';
-	import { Icon } from '@nova/icon';
-	import { Popover } from '@nova/popover';
+	import { Button } from '@nv-org/button';
+	import { Icon } from '@nv-org/icon';
+	import { Popover } from '@nv-org/popover';
 	import { HighlightAuto, HighlightSvelte } from 'svelte-highlight';
 	const {
 		textCode,

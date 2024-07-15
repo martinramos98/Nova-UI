@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { ElementAnimation, defaultKeyframesAnimations } from '@nova/element-animation-js';
+	import { ElementAnimation, defaultKeyframesAnimations } from '@nv-org/element-animation-js';
 	import {
 		SequencedChildrenAnimation,
 		SequencedSiblingAnimation
-	} from '@nova/element-animation-js';
+	} from '@nv-org/element-animation-js';
 	// import Button from '$lib/Components/Button/Button.svelte';
-	import { Divider } from '@nova/divider';
-	import { Title } from '@nova/title';
+	import { Divider } from '@nv-org/divider';
+	import { Title } from '@nv-org/title';
 	import { onMount } from 'svelte';
 	let a: HTMLElement, b: HTMLElement, c: HTMLElement, d: HTMLElement;
 	let e: HTMLElement, f: HTMLElement, g: HTMLElement, h: HTMLElement;

@@ -1,9 +1,9 @@
 <script>
-	import { Avatar } from '@nova/avatar';
-	import { Badge } from '@nova/badge';
-	import { Button } from '@nova/button';
-	import { Icon, AlertIcon, WarningIcon } from '@nova/icon';
-	import { Title } from '@nova/title';
+	import { Avatar } from '@nv-org/avatar';
+	import { Badge } from '@nv-org/badge';
+	import { Button } from '@nv-org/button';
+	import { Icon, AlertIcon, WarningIcon } from '@nv-org/icon';
+	import { Title } from '@nv-org/title';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	let counter = 0;
 </script>

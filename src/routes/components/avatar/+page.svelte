@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Title } from '@nova/title';
-	import { Avatar, AvatarGroup } from '@nova/avatar';
+	import { Title } from '@nv-org/title';
+	import { Avatar, AvatarGroup } from '@nv-org/avatar';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	function codeString(props: string) {
 		return `<Avatar ${props}/>`;

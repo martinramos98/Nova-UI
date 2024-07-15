@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ElementAnimation } from '@nova/element-animation-js';
+	import { ElementAnimation } from '@nv-org/element-animation-js';
 	import { setFloatingPosition, setSubsectionPosition } from '$lib/utils/utils.js';
 	export let offset = 15;
 	export let classNameContainer = '';

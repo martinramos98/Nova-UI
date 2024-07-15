@@ -1,6 +1,6 @@
 <script>
-	import { Option, Selection } from '@nova/selection';
-	import { Title } from '@nova/title';
+	import { Option, Selection } from '@nv-org/selection';
+	import { Title } from '@nv-org/title';
 </script>
 
 <div class="page-content">

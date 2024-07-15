@@ -1,6 +1,6 @@
 <script>
-	import { Title } from '@nova/title';
-	import { Progress } from '@nova/progress';
+	import { Title } from '@nv-org/title';
+	import { Progress } from '@nv-org/progress';
 	let valueBar = 0;
 	let valueCircle = 0;
 	setInterval(() => {

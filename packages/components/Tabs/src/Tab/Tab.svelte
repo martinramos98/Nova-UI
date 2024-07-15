@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ElementAnimation, elementAnimationsConstructs } from '@nova/element-animation-js';
+	import { ElementAnimation, elementAnimationsConstructs } from '@nv-org/element-animation-js';
 	import { getContext } from 'svelte';
 	import type { Readable } from 'svelte/store';
 	export let key: string;

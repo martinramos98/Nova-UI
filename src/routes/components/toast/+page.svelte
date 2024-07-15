@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Button } from '@nova/button';
-	import { Title } from '@nova/title';
-	import { toast } from '@nova/toast';
+	import { Button } from '@nv-org/button';
+	import { Title } from '@nv-org/title';
+	import { toast } from '@nv-org/toast';
 	function triggerBasicToast() {
 		toast(
 			'top-right',

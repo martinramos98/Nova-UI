@@ -1,7 +1,7 @@
 <script>
-	import { Cell, Table, TableBody, TableFooter, TableHeader, TableRow } from '@nova/table';
-	import { Chip } from '@nova/chip';
-	import { Title } from '@nova/title';
+	import { Cell, Table, TableBody, TableFooter, TableHeader, TableRow } from '@nv-org/table';
+	import { Chip } from '@nv-org/chip';
+	import { Title } from '@nv-org/title';
 	const datosEjemplo = [
 		{
 			nombre: 'Juan',

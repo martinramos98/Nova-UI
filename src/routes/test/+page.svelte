@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Button } from '@nova/button';
-	import { Accordion, AccordionSection } from '@nova/accordion';
+	import { Button } from '@nv-org/button';
+	import { Accordion, AccordionSection } from '@nv-org/accordion';
 </script>
 
 <!-- <svelte:window on:pointermove={move} /> -->

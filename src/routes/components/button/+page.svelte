@@ -1,10 +1,10 @@
 <script>
 	// @ts-nocheck
-	import { Button, ButtonGroup } from '@nova/button';
-	import { Loader } from '@nova/loader';
-	import { Title } from '@nova/title';
-	import { Icon, WarningIcon } from '@nova/icon';
-	import { Tab, Tabs, TabButton } from '@nova/tabs';
+	import { Button, ButtonGroup } from '@nv-org/button';
+	import { Loader } from '@nv-org/loader';
+	import { Title } from '@nv-org/title';
+	import { Icon, WarningIcon } from '@nv-org/icon';
+	import { Tab, Tabs, TabButton } from '@nv-org/tabs';
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
 	import ButtonComponentShowcase from '../../../app/components/ComponentShowcase/ButtonComponentShowcase/ButtonComponentShowcase.svelte';
 </script>

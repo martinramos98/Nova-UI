@@ -6,9 +6,9 @@
 		asContextMenuContainer,
 		provideContextMenu,
 		ContextMenuSection
-	} from '@nova/context-menu';
-	import { Button } from '@nova/button';
-	import { Divider } from '@nova/divider';
+	} from '@nv-org/context-menu';
+	import { Button } from '@nv-org/button';
+	import { Divider } from '@nv-org/divider';
 	import ComponentCodeTabs from '../ComponentShowcase/ComponentCodeTabs.svelte';
 	provideContextMenu();
 	let openContext = $state(false);

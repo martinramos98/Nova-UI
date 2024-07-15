@@ -1,10 +1,10 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { Button } from '@nova/button';
-	import { ElementAnimation } from '@nova/element-animation-js';
+	import { Button } from '@nv-org/button';
+	import { ElementAnimation } from '@nv-org/element-animation-js';
 	import type { Snippet } from 'svelte';
-	import { Input } from '@nova/input';
+	import { Input } from '@nv-org/input';
 	let {
 		open = $bindable(false),
 		size = 'md',

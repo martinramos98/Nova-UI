@@ -2,10 +2,10 @@
 
 <script>
 	// @ts-nocheck
-	import { Alert } from '@nova/alert';
-	import { Button, CloseButton } from '@nova/button';
-	import { Icon, SuccessIcon } from '@nova/icon';
-	import { Title } from '@nova/title';
+	import { Alert } from '@nv-org/alert';
+	import { Button, CloseButton } from '@nv-org/button';
+	import { Icon, SuccessIcon } from '@nv-org/icon';
+	import { Title } from '@nv-org/title';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	let openAlert = $state(false);
 	let openAlertType = $state(false);

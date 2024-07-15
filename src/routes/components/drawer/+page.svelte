@@ -1,7 +1,7 @@
 <script>
-	import { Button } from '@nova/button';
-	import { Drawer } from '@nova/drawer';
-	import { Title } from '@nova/title';
+	import { Button } from '@nv-org/button';
+	import { Drawer } from '@nv-org/drawer';
+	import { Title } from '@nv-org/title';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	let openDrawer = false;
 	let openDrawerTop = false;

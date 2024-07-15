@@ -1,5 +1,5 @@
 <script>
-	import { Title } from '@nova/title';
+	import { Title } from '@nv-org/title';
 	import ComponentList from '../../app/components/ComponentsList/ComponentList.svelte';
 </script>
 

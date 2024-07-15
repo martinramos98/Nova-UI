@@ -1,7 +1,7 @@
 <script>
-	import { Switch } from '@nova/switch';
-	import { Button } from '@nova/button';
-	import { Title } from '@nova/title';
+	import { Switch } from '@nv-org/switch';
+	import { Button } from '@nv-org/button';
+	import { Title } from '@nv-org/title';
 	let switchState = false;
 </script>
 

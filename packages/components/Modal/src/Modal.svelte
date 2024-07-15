@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ElementAnimationParams } from '@nova/element-animation-js';
-	import { ParallelAnimation } from '@nova/element-animation-js';
+	import type { ElementAnimationParams } from '@nv-org/element-animation-js';
+	import { ParallelAnimation } from '@nv-org/element-animation-js';
 	export let open = false;
 	export let size: any = 'md';
 	export let radius: any = 'md';

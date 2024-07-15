@@ -1,5 +1,5 @@
 <script>
-	import { Title } from '@nova/title';
+	import { Title } from '@nv-org/title';
 	import BasicContextMenu from '../../../app/components/ExampleContextMenues/BasicContextMenu.svelte';
 	import ControledContextMenu from '../../../app/components/ExampleContextMenues/ControledContextMenu.svelte';
 	import SubsectionContextMenu from '../../../app/components/ExampleContextMenues/SubsectionContextMenu.svelte';

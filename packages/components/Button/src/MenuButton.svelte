@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from './Button.svelte';
-	import { Icon, MenuIcon } from '@nova/icon';
+	import { Icon, MenuIcon } from '@nv-org/icon';
 	export let onClickMenu: () => void;
 	export let className = '';
 </script>

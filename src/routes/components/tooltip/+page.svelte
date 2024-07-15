@@ -1,7 +1,7 @@
 <script>
-	import { Chip } from '@nova/chip';
-	import { Title } from '@nova/title';
-	import { Tooltip } from '@nova/tooltip';
+	import { Chip } from '@nv-org/chip';
+	import { Title } from '@nv-org/title';
+	import { Tooltip } from '@nv-org/tooltip';
 </script>
 
 <div class="page-content">

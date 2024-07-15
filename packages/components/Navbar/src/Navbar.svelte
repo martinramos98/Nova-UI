@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Drawer } from '@nova/drawer';
-	import { MenuButton } from '@nova/button';
+	import { Drawer } from '@nv-org/drawer';
+	import { MenuButton } from '@nv-org/button';
 	import type { Snippet } from 'svelte';
 	export let direction: 'vertical' | 'horizontal' = 'horizontal';
 	export let className = '';

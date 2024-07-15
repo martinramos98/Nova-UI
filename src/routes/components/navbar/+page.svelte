@@ -1,9 +1,9 @@
 <script>
-	import { Navbar } from '@nova/navbar';
-	import { Button, MenuButton, CloseButton } from '@nova/button';
-	import { Avatar } from '@nova/avatar';
-	import { Title } from '@nova/title';
-	import { Divider } from '@nova/divider';
+	import { Navbar } from '@nv-org/navbar';
+	import { Button, MenuButton, CloseButton } from '@nv-org/button';
+	import { Avatar } from '@nv-org/avatar';
+	import { Title } from '@nv-org/title';
+	import { Divider } from '@nv-org/divider';
 </script>
 
 <div class="page-content">

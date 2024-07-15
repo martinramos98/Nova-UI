@@ -1,6 +1,6 @@
 <script>
-	import { Image } from '@nova/image';
-	import { Title } from '@nova/title';
+	import { Image } from '@nv-org/image';
+	import { Title } from '@nv-org/title';
 </script>
 
 <div class=" page-content">

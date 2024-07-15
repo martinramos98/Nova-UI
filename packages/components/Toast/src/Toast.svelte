@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { CalloutIcons } from '@nova/callout';
-	import { SequencedAnimation } from '@nova/element-animation-js';
-	import { CloseButton } from '@nova/button';
+	import { CalloutIcons } from '@nv-org/callout';
+	import { SequencedAnimation } from '@nv-org/element-animation-js';
+	import { CloseButton } from '@nv-org/button';
 	import type { Snippet } from 'svelte';
 	export let className = '';
 	export let variant = 'solid';

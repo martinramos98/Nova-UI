@@ -1,7 +1,7 @@
 <script>
-	import { Title } from '@nova/title';
-	import { Loader } from '@nova/loader';
-	import { Link } from '@nova/link';
+	import { Title } from '@nv-org/title';
+	import { Loader } from '@nv-org/loader';
+	import { Link } from '@nv-org/link';
 </script>
 
 <div class="page-content">

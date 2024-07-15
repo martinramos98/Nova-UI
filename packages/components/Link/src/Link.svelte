@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 
 	// import {getLinkPreview} from 'link-preview-js'
-	import { Icon, ExternalIcon } from '@nova/icon';
+	import { Icon, ExternalIcon } from '@nv-org/icon';
 	import type { LinkType } from './LinkUtils.js';
 	export let type: LinkType = 'simple';
 	export let href: string;

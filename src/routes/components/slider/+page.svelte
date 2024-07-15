@@ -1,6 +1,6 @@
 <script>
-	import { Slider } from '@nova/slider';
-	import { Title } from '@nova/title';
+	import { Slider } from '@nv-org/slider';
+	import { Title } from '@nv-org/title';
 	let value = 0;
 	let value2 = 500;
 	let valueSteps = 0;

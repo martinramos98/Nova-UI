@@ -2,7 +2,7 @@ import {
 	ElementAnimation,
 	type BasicAnimation,
 	type ElementAnimationParams
-} from '@nova/element-animation-js';
+} from '@nv-org/element-animation-js';
 
 export function animateRender(renderParams: {
 	open: boolean;

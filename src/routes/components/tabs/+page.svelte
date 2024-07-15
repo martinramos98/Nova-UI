@@ -1,6 +1,6 @@
 <script>
-	import { Title } from '@nova/title';
-	import { Tab, TabButton, Tabs } from '@nova/tabs';
+	import { Title } from '@nv-org/title';
+	import { Tab, TabButton, Tabs } from '@nv-org/tabs';
 </script>
 
 <div class="page-content">

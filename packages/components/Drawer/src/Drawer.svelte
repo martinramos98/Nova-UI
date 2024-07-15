@@ -1,7 +1,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { SequencedAnimation, type ElementAnimationParams } from '@nova/element-animation-js';
+	import { SequencedAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
 	import type { Snippet } from 'svelte';
 	interface DrawerProps {
 		open?: boolean;

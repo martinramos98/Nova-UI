@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Icon } from '@nova/icon';
+	import { Icon } from '@nv-org/icon';
 	import { spring } from 'svelte/motion';
 	export let variant = 'solid';
 	export let colors = 'info';

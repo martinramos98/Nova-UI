@@ -4,7 +4,7 @@
 	import { getContext, type Snippet } from 'svelte';
 	import type { ContextMenuContext } from './ContextMenu.js';
 	import { setPositionContextMenu } from '$lib/utils/utils.js';
-	import type { ElementAnimation } from '@nova/element-animation-js';
+	import type { ElementAnimation } from '@nv-org/element-animation-js';
 	import { fadeAnimation } from '$lib/DefinedAnimations/Animations.js';
 	let {
 		children,

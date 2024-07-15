@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { tweened } from 'svelte/motion';
-	import { Icon } from '@nova/icon';
+	import { Icon } from '@nv-org/icon';
 	import { quadInOut } from 'svelte/easing';
 	export let className = '';
 	export let colors = '';

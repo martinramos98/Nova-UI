@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Title } from '@nova/title';
-	import { Accordion, AccordionSection } from '@nova/accordion';
+	import { Title } from '@nv-org/title';
+	import { Accordion, AccordionSection } from '@nv-org/accordion';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
 	function codeStringWith(propsStrig: string) {

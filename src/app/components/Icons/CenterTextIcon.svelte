@@ -1,5 +1,5 @@
 <script>
-	import { Icon } from '@nova/icon';
+	import { Icon } from '@nv-org/icon';
 </script>
 
 <Icon props={{ viewBox: '0 0 16 12', width: 16, height: 12, fill: 'none' }}>

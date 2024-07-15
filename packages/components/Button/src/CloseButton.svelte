@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from './Button.svelte';
-	import { Icon, CrossIcon } from '@nova/icon';
+	import { Icon, CrossIcon } from '@nv-org/icon';
 	export let className: string = '';
 	export let variant: any = 'solid';
 	export let colors: any = 'primary';

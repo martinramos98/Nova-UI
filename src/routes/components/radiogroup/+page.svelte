@@ -1,6 +1,6 @@
 <script>
-	import { Radio, RadioGroup, RadioButton } from '@nova/radio';
-	import { Title } from '@nova/title';
+	import { Radio, RadioGroup, RadioButton } from '@nv-org/radio';
+	import { Title } from '@nv-org/title';
 </script>
 
 <div class="page-content">

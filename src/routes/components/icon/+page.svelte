@@ -1,6 +1,6 @@
 <script>
-	import { Icon, AlertIcon, InfoIcon, SuccessIcon, WarningIcon } from '@nova/icon';
-	import { Title } from '@nova/title';
+	import { Icon, AlertIcon, InfoIcon, SuccessIcon, WarningIcon } from '@nv-org/icon';
+	import { Title } from '@nv-org/title';
 </script>
 
 <div class=" page-content">

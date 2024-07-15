@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Divider } from '@nova/divider';
-	import { Dropdown, DropdownGroup, DropdownItem } from '@nova/dropdown';
-	import { Title } from '@nova/title';
+	import { Divider } from '@nv-org/divider';
+	import { Dropdown, DropdownGroup, DropdownItem } from '@nv-org/dropdown';
+	import { Title } from '@nv-org/title';
 </script>
 
 <div class="page-content">

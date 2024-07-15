@@ -1,4 +1,4 @@
-import { ElementAnimation } from '@nova/element-animation-js';
+import { ElementAnimation } from '@nv-org/element-animation-js';
 
 export function flyAnimation({
 	element,

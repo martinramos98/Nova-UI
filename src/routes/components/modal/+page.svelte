@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Title } from '@nova/title';
-	import { Divider } from '@nova/divider';
-	import { Button } from '@nova/button';
-	import { Modal } from '@nova/modal';
+	import { Title } from '@nv-org/title';
+	import { Divider } from '@nv-org/divider';
+	import { Button } from '@nv-org/button';
+	import { Modal } from '@nv-org/modal';
 	let testOpen = false;
 	let openLG = false;
 	let openMD = false;

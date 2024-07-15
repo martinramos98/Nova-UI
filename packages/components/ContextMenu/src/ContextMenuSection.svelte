@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { FloatingSubsection } from '@nova/floating-subsection';
+	import { FloatingSubsection } from '@nv-org/floating-subsection';
 
 	interface ContextMenuSubsection {
 		open?: boolean;

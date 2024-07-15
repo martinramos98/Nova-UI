@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { type Snippet } from 'svelte';
-	import { Button } from '@nova/button';
-	import { ElementAnimation, type ElementAnimationParams } from '@nova/element-animation-js';
+	import { Button } from '@nv-org/button';
+	import { ElementAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
 	import { setFloatingPosition } from '$lib/utils/utils.js';
 	export let onClickTrigger: undefined | (() => void) = undefined;
 	export let children: Snippet<[any]> | undefined = undefined;

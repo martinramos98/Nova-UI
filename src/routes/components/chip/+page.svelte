@@ -1,7 +1,7 @@
 <script>
-	import { Avatar } from '@nova/avatar';
-	import { Chip } from '@nova/chip';
-	import { Title } from '@nova/title';
+	import { Avatar } from '@nv-org/avatar';
+	import { Chip } from '@nv-org/chip';
+	import { Title } from '@nv-org/title';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 </script>
 
