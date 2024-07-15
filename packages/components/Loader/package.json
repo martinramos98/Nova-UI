@@ -4,13 +4,16 @@
   "description": "",
   "type": "module",
   "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
   "keywords": [""],
+  "repository": {
+    "directory": "packages/components/Loader",
+    "url": "git+https://github.com/martinramos98/Nova-UI.git",
+    "type": "git"
+  },
   "author": "Martin Ramos",
   "license": "MIT",
   "peerDependencies": {
