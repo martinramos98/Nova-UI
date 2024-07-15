@@ -19,5 +19,8 @@
   "peerDependencies": {
 		"svelte": "^4.2.14",
 		"ldrs": "^1.0.1"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
