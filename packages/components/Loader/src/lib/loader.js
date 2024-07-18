@@ -1,4 +1,5 @@
-export async function importLoader(icon: string) {
+/** @type {(icon:string)=> Promise<any>} */
+export async function importLoader(icon) {
 	if (icon === 'ring2') {
 		return await import('ldrs/ring2');
 	}
