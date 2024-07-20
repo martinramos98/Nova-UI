@@ -3,13 +3,13 @@
 	"version": "1.0.1",
 	"description": "",
 	"type": "module",
-	"publishConfig": {
-		"access": "public"
-	},
 	"sideEffects": false,
 	"keywords": [
 		""
 	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"repository": {
 		"directory": "packages/components/Loader",
 		"url": "git+https://github.com/martinramos98/Nova-UI.git",
@@ -19,9 +19,6 @@
 	"license": "MIT",
 	"peerDependencies": {
 		"svelte": "^4.2.14"
-	},
-	"dependencies": {
-		"ldrs": "^1.0.1"
 	},
 	"scripts": {
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

@@ -179,10 +179,22 @@ importers:
         version: 5.1.7
 
   packages/components/Accordion:
-    dependencies:
+    devDependencies:
+      '@sveltejs/package':
+        specifier: ^2.0.0
+        version: 2.3.0(svelte@5.0.0-next.183)(typescript@5.4.2)
       svelte:
-        specifier: ^4.2.14
-        version: 4.2.18
+        specifier: 5.0.0-next.183
+        version: 5.0.0-next.183
+      svelte-check:
+        specifier: ^3.6.0
+        version: 3.6.6(postcss@8.4.39)(svelte@5.0.0-next.183)
+      tslib:
+        specifier: ^2.4.1
+        version: 2.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.4.2
 
   packages/components/Alert:
     dependencies:
@@ -287,10 +299,6 @@ importers:
         version: 4.2.18
 
   packages/components/Loader:
-    dependencies:
-      ldrs:
-        specifier: ^1.0.1
-        version: 1.0.1
     devDependencies:
       '@sveltejs/package':
         specifier: ^2.0.0
@@ -309,10 +317,22 @@ importers:
         version: 5.4.2
 
   packages/components/Modal:
-    dependencies:
+    devDependencies:
+      '@sveltejs/package':
+        specifier: ^2.0.0
+        version: 2.3.0(svelte@5.0.0-next.183)(typescript@5.4.2)
       svelte:
-        specifier: ^4.2.14
-        version: 4.2.18
+        specifier: 5.0.0-next.183
+        version: 5.0.0-next.183
+      svelte-check:
+        specifier: ^3.6.0
+        version: 3.6.6(postcss@8.4.39)(svelte@5.0.0-next.183)
+      tslib:
+        specifier: ^2.4.1
+        version: 2.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.4.2
 
   packages/components/Navbar:
     dependencies:
@@ -2341,10 +2361,6 @@ packages:
     resolution: {integrity: sha512-Ne7wqW7/9Cz54PDt4I3tcV+hAyat8ypyOGzYRJQfdxnnjeWsTxt1cy8pjvvKeI5kfXuyvULyeeAvwvvtAX3ayQ==}
     dev: true
 
-  /ldrs@1.0.1:
-    resolution: {integrity: sha512-eeCP1XEG72Yz6JX50zlYWRJcEfNBrpp8QSzyjD3HHhxrnt4steLX4iDHF3Dezjbnnj5qtuJn7lr1nln+/kpUIQ==}
-    dev: false
-
   /levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -2840,7 +2856,7 @@ packages:
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.7
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       source-map-js: 1.0.2
     dev: true
 
@@ -2849,7 +2865,7 @@ packages:
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.7
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       source-map-js: 1.2.0
     dev: true
 
