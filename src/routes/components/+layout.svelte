@@ -1,5 +1,5 @@
 <script>
-	import { Callout } from '@nv-org/callout';
+	import { Callout } from '$lib/index';
 	import '../../app/styles/page.css';
 	import 'svelte-highlight/styles/darktooth.css';
 </script>
