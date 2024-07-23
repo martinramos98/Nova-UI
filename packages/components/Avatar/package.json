@@ -6,6 +6,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"main": "./src/lib/index.ts",
 	"repository": {
 		"directory": "packages/components/Loader",
 		"url": "git+https://github.com/martinramos98/Nova-UI.git",
