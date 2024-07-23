@@ -11,7 +11,7 @@
 		"url": "git+https://github.com/martinramos98/Nova-UI.git",
 		"type": "git"
 	},
-	"main": "./src/lib/index.ts",
+	"main": "./dist/index.js",
 	"author": "Martin Ramos",
 	"license": "MIT",
 	"peerDependencies": {
