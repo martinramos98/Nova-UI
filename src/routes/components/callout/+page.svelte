@@ -1,6 +1,6 @@
 <script>
 	import { Title } from '@nv-org/title';
-	import { Callout } from '$lib/index';
+	import { Callout } from '@nv-org/callout';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 </script>
 
@@ -9,7 +9,7 @@
 		<span class="font-semibold">On this page</span>
 		<ul>
 			<li><a href="#tabs">Callout</a></li>
-			<li><a href="#types"></a>Types</li>
+			<li><a href="#types">Types</a></li>
 			<li><a href="#variants">Variants</a></li>
 			<li><a href="#customs">Customs</a></li>
 		</ul>

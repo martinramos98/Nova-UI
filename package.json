@@ -92,7 +92,8 @@
     "@nv-org/utils": "workspace:*"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/components/*"
   ],
   "keywords": [
     "svelte",
