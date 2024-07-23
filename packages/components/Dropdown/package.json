@@ -32,5 +32,11 @@
 		"dist",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
-	]
+	],
+	"dependencies": {
+		"@nv-org/button":"workspace:*",
+		"@nv-org/utils":"workspace:*",
+		"@nv-org/floating-subsection":"workspace:*",
+		"@nv-org/element-animation-js":"workspace:*"
+	}
 }

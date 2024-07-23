@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount, type Snippet } from 'svelte';
-	import { setPosisitionPopover } from '$lib/utils/utils.js';
+	import { setPosisitionPopover } from '@nv-org/utils';
 	export let className = '';
 	export let colors = '';
 	export let variant = '';

@@ -1,9 +1,8 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { setPosisitionPopover } from '$lib/utils/utils.js';
+	import { setPosisitionPopover, animateRender } from '@nv-org/utils';
 	import { type Snippet } from 'svelte';
-	import { animateRender } from '$lib/utils/animatedRender.svelte.js';
 	interface PopoverProps {
 		offset?: number;
 		position?: string;

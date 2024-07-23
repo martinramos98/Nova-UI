@@ -3,7 +3,7 @@
 	import { type Snippet } from 'svelte';
 	import { Button } from '@nv-org/button';
 	import { ElementAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
-	import { setFloatingPosition } from '$lib/utils/utils.js';
+	import { setFloatingPosition } from '@nv-org/utils';
 	export let onClickTrigger: undefined | (() => void) = undefined;
 	export let children: Snippet<[any]> | undefined = undefined;
 	export let offset = 5;

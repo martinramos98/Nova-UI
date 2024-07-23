@@ -1,3 +1,4 @@
+import { flyAnimation,fadeAnimation } from './PresettedAnimations.js';
 import {
 	type ElementAnimationParams,
 	ElementAnimation,
@@ -31,5 +32,7 @@ export {
 	SequencedSiblingAnimation,
 	ParallelAnimation,
 	type ParallelAnimationOptions,
-	type ParallelElementParam
+	type ParallelElementParam,
+	fadeAnimation,
+	flyAnimation
 };

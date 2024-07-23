@@ -25,7 +25,6 @@ import { Avatar, AvatarGroup } from '@nv-org/avatar';
 import { toast } from '@nv-org/toast';
 import { Tooltip } from '@nv-org/tooltip';
 import { Alert } from '@nv-org/alert';
-import { animateRender } from './utils/animatedRender.svelte.js';
 import { Loader } from '@nv-org/loader';
 import { Slider } from '@nv-org/slider';
 import { Switch } from '@nv-org/switch';
@@ -82,6 +81,5 @@ export {
 	Tooltip,
 	RadioGroup,
 	toast,
-	asContextMenuContainer,
-	animateRender
+	asContextMenuContainer
 };

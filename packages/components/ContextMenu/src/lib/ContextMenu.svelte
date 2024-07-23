@@ -3,9 +3,9 @@
 <script lang="ts">
 	import { getContext, type Snippet } from 'svelte';
 	import type { ContextMenuContext } from './ContextMenu.js';
-	import { setPositionContextMenu } from '$lib/utils/utils.js';
+	import { setPositionContextMenu } from './utils';
 	import type { ElementAnimation } from '@nv-org/element-animation-js';
-	import { fadeAnimation } from '$lib/DefinedAnimations/Animations.js';
+	import { fadeAnimation } from '@nv-org/element-animation-js';
 	let {
 		children,
 		className = '',
@@ -45,18 +45,6 @@
 	}
 	function animationRender(node: HTMLElement) {
 		node.hidden = false;
-		// Play Animate, on End if open is false then on end set to false openContextMenu
-		// renderAnimation = flyAnimation({
-		// 	element: node,
-		// 	duration: 200,
-		// 	x: new CSSUnitValue(0, 'px'),
-		// 	y: new CSSUnitValue(30, 'px'),
-		// 	onEndAnimation() {
-		// 		if (!open) {
-		// 			openContextMenu = false;
-		// 		}
-		// 	}
-		// });
 		renderAnimation = fadeAnimation({
 			element: node,
 			duration: 200,

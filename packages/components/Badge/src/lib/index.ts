@@ -1,2 +1,2 @@
-import Badge from './src/Badge.svelte';
+import Badge from './Badge.svelte';
 export { Badge };

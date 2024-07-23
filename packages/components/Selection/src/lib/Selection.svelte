@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ElementAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
-	import { setFloatingPosition } from '$lib/utils/utils.js';
+	import { setFloatingPosition } from '@nv-org/utils';
 	export let multiselection = false;
 	export let type = 'default';
 	export let variant = 'default';

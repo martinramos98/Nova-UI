@@ -1,7 +1,7 @@
 {
   "tasks": {
     "package": {
-      "dependsOn": ["^packakge"] 
+      "dependsOn": ["^package"] 
     }
   }
 }

@@ -1,21 +1,19 @@
 {
-  "name": "@nv-org/icon",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
+	"name": "@nv-org/utils",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "./src/lib/index.ts",
+	"description": "",
 	"publishConfig": {
 		"access": "public"
 	},
 	"repository": {
-		"directory": "packages/components/Loader",
+		"directory": "packages/utils",
 		"url": "git+https://github.com/martinramos98/Nova-UI.git",
 		"type": "git"
 	},
 	"author": "Martin Ramos",
 	"license": "MIT",
-	"peerDependencies": {
-		"svelte": "^4.2.14"
-	},
 	"scripts": {
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"package": "svelte-kit sync && svelte-package && publint"
@@ -27,6 +25,9 @@
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
 		}
+	},
+	"dependencies": {
+    "@nv-org/element-animation-js": "workspace:*"
 	},
 	"files": [
 		"dist",

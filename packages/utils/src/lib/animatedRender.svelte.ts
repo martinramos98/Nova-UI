@@ -21,7 +21,6 @@ export function animateRender(renderParams: {
 	});
 
 	$effect(() => {
-		console.log(renderParams.element);
 		if (render) {
 			animation = new ElementAnimation(renderParams.element as HTMLElement, animationParams);
 			animation.subscribeEndCallback(() => {

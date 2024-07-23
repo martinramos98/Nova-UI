@@ -1,6 +1,6 @@
-import { ElementAnimation } from '@nv-org/element-animation-js';
+import { ElementAnimation } from './Animation.js';
 
-export function flyAnimation({
+function flyAnimation({
 	element,
 	x = new CSSUnitValue(20, 'px'),
 	y = new CSSUnitValue(0, 'px'),
@@ -46,7 +46,7 @@ export function flyAnimation({
 		onFinishedAnimation: onEndAnimation
 	});
 }
-export function fadeAnimation({
+function fadeAnimation({
 	element,
 	duration = 300,
 	easing = 'ease',
@@ -84,3 +84,4 @@ export function fadeAnimation({
 		onFinishedAnimation: onEndAnimation
 	});
 }
+export { fadeAnimation, flyAnimation };
