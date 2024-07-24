@@ -205,6 +205,15 @@ importers:
 
   packages/components/Alert:
     dependencies:
+      '@nv-org/button':
+        specifier: workspace:*
+        version: link:../Button
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
+      '@nv-org/input':
+        specifier: workspace:*
+        version: link:../Input
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
