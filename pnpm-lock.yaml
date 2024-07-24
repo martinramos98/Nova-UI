@@ -220,6 +220,12 @@ importers:
 
   packages/components/Avatar:
     dependencies:
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
+      '@nv-org/icon':
+        specifier: workspace:*
+        version: link:../Icons
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
@@ -232,12 +238,18 @@ importers:
 
   packages/components/Button:
     dependencies:
+      '@nv-org/icon':
+        specifier: workspace:*
+        version: link:../Icons
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
 
   packages/components/Callout:
     dependencies:
+      '@nv-org/icon':
+        specifier: workspace
+        version: link:../Icons
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
@@ -256,12 +268,21 @@ importers:
 
   packages/components/CollapsableBlock:
     dependencies:
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
 
   packages/components/ContextMenu:
     dependencies:
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
+      '@nv-org/floating-subsection':
+        specifier: workspace:*
+        version: link:../FloatingSubsection
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
@@ -274,6 +295,9 @@ importers:
 
   packages/components/Drawer:
     dependencies:
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
@@ -298,6 +322,9 @@ importers:
 
   packages/components/FloatingSubsection:
     dependencies:
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
@@ -322,6 +349,9 @@ importers:
 
   packages/components/Link:
     dependencies:
+      '@nv-org/icon':
+        specifier: workspace:*
+        version: link:../Icons
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
@@ -349,6 +379,10 @@ importers:
         version: 5.4.2
 
   packages/components/Modal:
+    dependencies:
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
     devDependencies:
       '@sveltejs/package':
         specifier: ^2.0.0
@@ -368,30 +402,51 @@ importers:
 
   packages/components/Navbar:
     dependencies:
+      '@nv-org/button':
+        specifier: workspace:*
+        version: link:../Button
+      '@nv-org/drawer':
+        specifier: workspace:*
+        version: link:../Drawer
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
 
   packages/components/Popover:
     dependencies:
+      '@nv-org/utils':
+        specifier: workspace:*
+        version: link:../../utils
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
 
   packages/components/Progress:
     dependencies:
+      '@nv-org/icon':
+        specifier: workspace:*
+        version: link:../Icons
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
 
   packages/components/Radio:
     dependencies:
+      '@nv-org/icon':
+        specifier: workspace:*
+        version: link:../Icons
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
 
   packages/components/Selection:
     dependencies:
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
+      '@nv-org/utils':
+        specifier: workspace:*
+        version: link:../../utils
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
@@ -416,6 +471,9 @@ importers:
 
   packages/components/Tabs:
     dependencies:
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
@@ -428,12 +486,24 @@ importers:
 
   packages/components/Toast:
     dependencies:
+      '@nv-org/button':
+        specifier: workspace:*
+        version: link:../Button
+      '@nv-org/callout':
+        specifier: workspace:*
+        version: link:../Callout
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../../element-animation-js
       svelte:
         specifier: ^4.2.14
         version: 4.2.18
 
   packages/components/Tooltip:
     dependencies:
+      '@nv-org/utils':
+        specifier: workspace:*
+        version: link:../../utils
       svelte:
         specifier: ^4.2.14
         version: 4.2.18

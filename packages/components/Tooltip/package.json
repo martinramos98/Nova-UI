@@ -33,5 +33,8 @@
 		"dist",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
-	]
+	],
+	"dependencies": {
+		"@nv-org/utils":"workspace:*"
+	}
 }

@@ -33,5 +33,10 @@
 		"dist",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
-	]
+	],
+	"dependencies": {
+		"@nv-org/element-animation-js":"workspace:*",
+		"@nv-org/button":"workspace:*",
+		"@nv-org/callout":"workspace:*"
+	}
 }

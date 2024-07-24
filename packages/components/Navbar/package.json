@@ -29,6 +29,10 @@
 			"svelte": "./dist/index.js"
 		}
 	},
+	"dependencies": {
+		"@nv-org/drawer":"workspace:*",
+		"@nv-org/button":"workspace:*"
+	},
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
