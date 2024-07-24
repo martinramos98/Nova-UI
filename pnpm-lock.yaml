@@ -182,6 +182,10 @@ importers:
         version: 5.1.7
 
   packages/components/Accordion:
+    dependencies:
+      '@nv-org/icon':
+        specifier: workspace:*
+        version: link:../Icons
     devDependencies:
       '@sveltejs/package':
         specifier: ^2.0.0
