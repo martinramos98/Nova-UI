@@ -14,15 +14,15 @@
 	} = $props();
 </script>
 
-<Tabs classNameContent="bg-transparent w-full" className="w-full">
+<Tabs classContent="bg-transparent w-full" class="w-full">
 	{#snippet TabSelection()}
 		<TabButton key="Component">Component</TabButton>
 		<TabButton key="Code">Code</TabButton>
 	{/snippet}
-	<Tab key="Component" className="w-full">
+	<Tab key="Component" class="w-full">
 		{@render component()}
 	</Tab>
-	<Tab key="Code" className="w-full">
+	<Tab key="Code" class="w-full">
 		<CodeSnippet isSvelte textCode={code}></CodeSnippet>
 	</Tab>
 </Tabs>

@@ -63,14 +63,14 @@
 			</header>
 			<section>
 				<div style="width:100%;">
-					<Tabs className="w-full" classNameContent="w-full h-[150px] bg-transparent">
+					<Tabs class="w-full" classContent="w-full h-[150px] bg-transparent">
 						{#snippet TabSelection()}
 							<TabButton key="Component">Component</TabButton>
 							<TabButton key="Code">Code</TabButton>
 						{/snippet}
 						<Tab
 							key="Component"
-							className="h-full gap-4 flex items-center justify-center bg-[var(--color-surface)] rounded-xl"
+							class="h-full gap-4 flex items-center justify-center bg-[var(--color-surface)] rounded-xl"
 						>
 							<Button variant="faded" colors="primary">Enabled</Button>
 							<Button variant="faded" colors="primary" disabled>Disabled</Button>
@@ -92,14 +92,14 @@
 			</header>
 			<section>
 				<div style="width:100%;">
-					<Tabs className="w-full" classNameContent="w-full h-[150px] bg-transparent">
+					<Tabs class="w-full" classContent="w-full h-[150px] bg-transparent">
 						{#snippet TabSelection()}
 							<TabButton key="Component">Component</TabButton>
 							<TabButton key="Code">Code</TabButton>
 						{/snippet}
 						<Tab
 							key="Component"
-							className="h-full gap-4 flex items-center justify-center bg-[var(--color-surface)] rounded-xl "
+							class="h-full gap-4 flex items-center justify-center bg-[var(--color-surface)] rounded-xl "
 						>
 							<Button variant="faded" colors="primary">With Click Effect</Button>
 							<Button variant="faded" colors="primary" withClickEffect={false}
@@ -126,10 +126,7 @@
 			</header>
 			<section>
 				<div style="width: 100%;">
-					<Tabs
-						className="w-full"
-						classNameContent="w-full flex transition-all h-[300px] bg-transparent"
-					>
+					<Tabs class="w-full" classContent="w-full flex transition-all h-[300px] bg-transparent">
 						{#snippet TabSelection()}
 							<TabButton key="Component">Component</TabButton>
 							<TabButton key="Code">Code</TabButton>
@@ -197,14 +194,14 @@ className="flex items-center justify-between gap-2"
 			</header>
 			<section>
 				<div style="width:100%;">
-					<Tabs className="w-full" classNameContent="w-full h-[200px] bg-transparent">
+					<Tabs class="w-full" classContent="w-full h-[200px] bg-transparent">
 						{#snippet TabSelection()}
 							<TabButton key="Component">Component</TabButton>
 							<TabButton key="Code">Code</TabButton>
 						{/snippet}
 						<Tab
 							key="Component"
-							className="flex gap-4 items-center justify-center h-full bg-[var(--color-surface)] rounded-xl"
+							class="flex gap-4 items-center justify-center h-full bg-[var(--color-surface)] rounded-xl"
 						>
 							<ButtonGroup>
 								<Button>Button 1</Button>

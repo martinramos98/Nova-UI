@@ -1,6 +1,7 @@
 <script>
 	import { Title } from '@nv-org/title';
-	import { Tab, TabButton, Tabs } from '@nv-org/tabs';
+	// import { Tab, TabButton, Tabs } from '@nv-org/tabs';
+	import { Tab, TabButton, Tabs } from '../../../../packages/components/Tabs/src/lib/index';
 </script>
 
 <div class="page-content">
@@ -19,13 +20,13 @@
 			</header>
 			<section>
 				<div>
-					<Tabs>
+					<Tabs class="w-full">
 						{#snippet TabSelection()}
 							<TabButton key="1">Salta</TabButton>
 							<TabButton key="2">Buenos Aires</TabButton>
 							<TabButton key="3">Tierra del Fuego</TabButton>
 						{/snippet}
-						<Tab className="p-2" key={'1'}>
+						<Tab class="p-2" key={'1'}>
 							<p>
 								<b> Salta, la tierra de contrastes y colores vivos: </b><br />
 								Sumérgete en la magia del noroeste argentino explorando la provincia de Salta. Desde
@@ -35,7 +36,7 @@
 								Salta te espera con los brazos abiertos para una experiencia inolvidable.
 							</p>
 						</Tab>
-						<Tab className="p-2" key={'2'}>
+						<Tab class="p-2" key={'2'}>
 							<p>
 								<b> Buenos Aires, la ciudad que nunca duerme: </b><br />
 								Sumérgete en el bullicio y la energía de la capital argentina, Buenos Aires. Con su arquitectura
@@ -46,7 +47,7 @@
 								visita es una aventura inolvidable.
 							</p>
 						</Tab>
-						<Tab className="p-2" key={'3'}>
+						<Tab class="p-2" key={'3'}>
 							<p>
 								<b> Tierra del Fuego, el fin del mundo te espera: </b><br />
 								Embárcate en una aventura única en la mística Tierra del Fuego, el extremo sur de Argentina.
@@ -73,74 +74,74 @@
 			</header>
 			<section>
 				<div>
-					<Tabs position="top" className="w-full " variant={'bordered'}>
+					<Tabs position="top" class="w-full " variant={'bordered'}>
 						{#snippet TabSelection()}
-							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
+							<TabButton class="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
 						{/snippet}
-						<Tab className="p-2" key={'1'}>
+						<Tab class="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
-						<Tab className="p-2" key={'2'}>
+						<Tab class="p-2" key={'2'}>
 							<h3>Hi from Tab 2</h3>
 						</Tab>
-						<Tab className="p-2" key={'3'}>
+						<Tab class="p-2" key={'3'}>
 							<h3>Hi from Tab 3</h3>
 						</Tab>
 					</Tabs>
 				</div>
 				<div>
-					<Tabs position="bottom" className="w-full " variant={'bordered'}>
+					<Tabs position="bottom" class="w-full " variant={'bordered'}>
 						{#snippet TabSelection()}
 							<TabButton key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
 						{/snippet}
-						<Tab className="p-2" key={'1'}>
+						<Tab class="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
-						<Tab className="p-2" key={'2'}>
+						<Tab class="p-2" key={'2'}>
 							<h3>Hi from Tab 2</h3>
 						</Tab>
-						<Tab className="p-2" key={'3'}>
+						<Tab class="p-2" key={'3'}>
 							<h3>Hi from Tab 3</h3>
 						</Tab>
 					</Tabs>
 				</div>
 				<div>
-					<Tabs position="left" className="w-full " variant={'bordered'}>
+					<Tabs position="left" class="w-full " variant={'bordered'}>
 						{#snippet TabSelection()}
-							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
+							<TabButton class="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
 						{/snippet}
-						<Tab className="p-2" key={'1'}>
+						<Tab class="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
-						<Tab className="p-2" key={'2'}>
+						<Tab class="p-2" key={'2'}>
 							<h3>Hi from Tab 2</h3>
 						</Tab>
-						<Tab className="p-2" key={'3'}>
+						<Tab class="p-2" key={'3'}>
 							<h3>Hi from Tab 3</h3>
 						</Tab>
 					</Tabs>
 				</div>
 
 				<div>
-					<Tabs position="right" className="w-full " variant={'bordered'}>
+					<Tabs position="right" class="w-full " variant={'bordered'}>
 						{#snippet TabSelection()}
-							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
+							<TabButton class="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
 						{/snippet}
-						<Tab className="p-2" key={'1'}>
+						<Tab class="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
-						<Tab className="p-2" key={'2'}>
+						<Tab class="p-2" key={'2'}>
 							<h3>Hi from Tab 2</h3>
 						</Tab>
-						<Tab className="p-2" key={'3'}>
+						<Tab class="p-2" key={'3'}>
 							<h3>Hi from Tab 3</h3>
 						</Tab>
 					</Tabs>
@@ -155,53 +156,53 @@
 				<div>
 					<Tabs position="top" className="w-full " variant={''}>
 						{#snippet TabSelection()}
-							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
+							<TabButton class="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
 						{/snippet}
-						<Tab className="p-2" key={'1'}>
+						<Tab class="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
-						<Tab className="p-2" key={'2'}>
+						<Tab class="p-2" key={'2'}>
 							<h3>Hi from Tab 2</h3>
 						</Tab>
-						<Tab className="p-2" key={'3'}>
+						<Tab class="p-2" key={'3'}>
 							<h3>Hi from Tab 3</h3>
 						</Tab>
 					</Tabs>
 				</div>
 				<div>
-					<Tabs position="top" className="w-full " variant={'default'}>
+					<Tabs position="top" class="w-full " variant={'default'}>
 						{#snippet TabSelection()}
-							<TabButton className="w-max" key={'1'}>Tab 1</TabButton>
+							<TabButton class="w-max" key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
 						{/snippet}
-						<Tab className="p-2" key={'1'}>
+						<Tab class="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
-						<Tab className="p-2" key={'2'}>
+						<Tab class="p-2" key={'2'}>
 							<h3>Hi from Tab 2</h3>
 						</Tab>
-						<Tab className="p-2" key={'3'}>
+						<Tab class="p-2" key={'3'}>
 							<h3>Hi from Tab 3</h3>
 						</Tab>
 					</Tabs>
 				</div>
 				<div>
-					<Tabs className="w-full" variant={'bordered'}>
+					<Tabs class="w-full" variant={'bordered'}>
 						{#snippet TabSelection()}
 							<TabButton key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
 						{/snippet}
-						<Tab className="p-2" key={'1'}>
+						<Tab class="p-2" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
-						<Tab className="p-2" key={'2'}>
+						<Tab class="p-2" key={'2'}>
 							<h3>Hi from Tab 2</h3>
 						</Tab>
-						<Tab className="p-2" key={'3'}>
+						<Tab class="p-2" key={'3'}>
 							<h3>Hi from Tab 3</h3>
 						</Tab>
 					</Tabs>
@@ -209,19 +210,19 @@
 			</section>
 			<section>
 				<div>
-					<Tabs className="w-full" variant={'underlined'}>
+					<Tabs class="w-full" variant={'underlined'}>
 						{#snippet TabSelection()}
 							<TabButton key={'1'}>Tab 1</TabButton>
 							<TabButton key="2">Tab 2</TabButton>
 							<TabButton key="3">Tab 3</TabButton>
 						{/snippet}
-						<Tab className="" key={'1'}>
+						<Tab class="" key={'1'}>
 							<h3>Hi from Tab 1</h3>
 						</Tab>
-						<Tab className="p-2" key={'2'}>
+						<Tab class="p-2" key={'2'}>
 							<h3>Hi from Tab 2</h3>
 						</Tab>
-						<Tab className="p-2" key={'3'}>
+						<Tab class="p-2" key={'3'}>
 							<h3>Hi from Tab 3</h3>
 						</Tab>
 					</Tabs>

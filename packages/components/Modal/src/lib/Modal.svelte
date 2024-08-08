@@ -1,35 +1,59 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	import type { ElementAnimationParams } from '@nv-org/element-animation-js';
-	import { ParallelAnimation } from '@nv-org/element-animation-js';
-	export let open = false;
-	export let size: any = 'md';
-	export let radius: any = 'md';
-	export let onClose: () => void;
-	export let render = false;
-	export let backdrop: {
-		className: string;
-		type: 'normal' | 'blur' | 'transparent';
-	} = {
-		className: '',
-		type: 'normal'
-	};
-	export let modalContent = {
-		className: ''
-	};
-	const animationConfig: ElementAnimationParams = {
-		animations: {
-			keyframes: [{ opacity: '0' }, { opacity: '1' }],
-			animationOptions: {
-				direction: 'normal',
-				fill: 'both',
-				duration: 300,
-				easing: 'ease-in-out',
-				iterations: 1
-			}
-		},
-		iterations: 1,
-		alternate: false
-	};
+	import type { Snippet } from 'svelte';
+	import { popOut } from '@nv-org/utils';
+
+	// import type { ElementAnimationParams } from '@nv-org/element-animation-js';
+	// import { ParallelAnimation } from '@nv-org/element-animation-js';
+	interface ModalProps {
+		open?: boolean;
+		size?: string;
+		class?: string;
+		classContent?: string;
+		radius?: string;
+		onClose?: () => void;
+		backdrop?: { type?: 'normal' | 'blur' | 'transparent'; class?: string };
+		header?: Snippet;
+		footer?: Snippet;
+		children: Snippet;
+	}
+	const {
+		open = $bindable(false),
+		size = 'md',
+		radius = 'md',
+		onClose = () => {},
+		backdrop = { type: 'normal', class: '' },
+		classContent = '',
+		header = undefined,
+		children,
+		footer = undefined
+	}: ModalProps = $props();
+	// export let render = false;
+	// export let backdrop: {
+	// 	className: string;
+	// 	type: 'normal' | 'blur' | 'transparent';
+	// } = {
+	// 	className: '',
+	// 	type: 'normal'
+	// };
+	// export let modalContent = {
+	// 	className: ''
+	// };
+	// const animationConfig: ElementAnimationParams = {
+	// 	animations: {
+	// 		keyframes: [{ opacity: '0' }, { opacity: '1' }],
+	// 		animationOptions: {
+	// 			direction: 'normal',
+	// 			fill: 'both',
+	// 			duration: 300,
+	// 			easing: 'ease-in-out',
+	// 			iterations: 1
+	// 		}
+	// 	},
+	// 	iterations: 1,
+	// 	alternate: false
+	// };
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
 		node.addEventListener('click', (ev) => {
@@ -39,12 +63,12 @@
 			}
 		});
 	}
-	let animationModal: ParallelAnimation;
-	function openEffect() {
-		if (open) {
-			render = true;
-		}
-	}
+	// let animationModal: ParallelAnimation;
+	// function openEffect() {
+	// 	if (open) {
+	// 		render = true;
+	// 	}
+	// }
 	// {
 	// 			alternate: false,
 	// 			iterations: 1,
@@ -55,63 +79,53 @@
 	// 			}
 	// 		}
 
-	function animationsOpen(node: HTMLElement) {
-		const backdropElement = node.lastElementChild as HTMLElement;
-		const contentElement = node.firstElementChild as HTMLElement;
+	// function animationsOpen(node: HTMLElement) {
+	// 	const backdropElement = node.lastElementChild as HTMLElement;
+	// 	const contentElement = node.firstElementChild as HTMLElement;
 
-		animationModal = new ParallelAnimation(
-			[
-				{ element: backdropElement, animationOptions: animationConfig },
-				{ element: contentElement, animationOptions: animationConfig }
-			],
-			{
-				onEndAnimation: () => {
-					if (!open) {
-						render = false;
-					}
-				}
-			}
-		);
-		animationModal.playForward();
-	}
-	function animationsClose(node: HTMLElement, open: boolean) {
-		return {
-			update: (open: boolean) => {
-				if (!open) {
-					animationModal.reverse();
-				}
-			}
-		};
-	}
-	$: open && openEffect();
+	// 	animationModal = new ParallelAnimation(
+	// 		[
+	// 			{ element: backdropElement, animationOptions: animationConfig },
+	// 			{ element: contentElement, animationOptions: animationConfig }
+	// 		],
+	// 		{
+	// 			onEndAnimation: () => {
+	// 				if (!open) {
+	// 					render = false;
+	// 				}
+	// 			}
+	// 		}
+	// 	);
+	// 	animationModal.playForward();
+	// }
+	// function animationsClose(node: HTMLElement, open: boolean) {
+	// 	return {
+	// 		update: (open: boolean) => {
+	// 			if (!open) {
+	// 				animationModal.reverse();
+	// 			}
+	// 		}
+	// 	};
+	// }
+	// $: open && openEffect();
 </script>
 
-{#if render}
-	<div
-		use:animationsClose={open}
-		use:animationsOpen
-		use:translateToBody
-		class="ui-modal {render ? 'show-modal' : 'hide-modal'}"
-		aria-modal="true"
-	>
-		<div class="ui-modal-content rounded-{radius} size-{size} {modalContent.className}">
-			{#if $$slots.header}
-				<div class="ui-modal-header">
-					<slot name="header" />
-				</div>
+{#if open}
+	<div use:translateToBody transition:popOut class="ui-modal" aria-modal="true">
+		<div class="ui-modal-content rounded-{radius} size-{size} {classContent}">
+			{#if header}
+				{@render header()}
 			{/if}
-			<slot />
-			{#if $$slots.footer}
-				<div class="ui-modal-footer">
-					<slot name="footer" />
-				</div>
+			{@render children()}
+			{#if footer}
+				{@render footer()}
 			{/if}
 		</div>
 		<div
 			aria-roledescription="Backdrop of modal"
 			aria-hidden="true"
 			style={backdrop.type === 'transparent' ? 'background-color:transparent;' : ''}
-			class="ui-modal-backdrop {backdrop.className}  {backdrop.type === 'blur'
+			class="ui-modal-backdrop {backdrop.class}  {backdrop.type === 'blur'
 				? 'backdrop-blur-sm'
 				: ''}"
 		></div>
@@ -120,7 +134,7 @@
 
 <style>
 	@layer nova {
-		.show-modal {
+		.ui-modal {
 			display: grid;
 			place-content: center;
 			place-items: center;
@@ -138,7 +152,6 @@
 		.ui-modal-backdrop {
 			width: inherit;
 			height: inherit;
-			opacity: 0;
 			grid-column: 1 / 1;
 			grid-row: 1 / 1;
 			background-color: rgb(0 0 0 / 0.5);
@@ -147,7 +160,6 @@
 		.ui-modal-content {
 			grid-column: 1 / 1;
 			grid-row: 1 / 1;
-			opacity: 0;
 			background-color: var(--color-surface);
 			border-radius: var(--radius-lg);
 			padding: 10px;

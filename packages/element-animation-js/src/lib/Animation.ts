@@ -60,10 +60,23 @@ export const defaultKeyframesAnimations: Record<string, Keyframe[]> = {
 	'fly-left': [{ translate: '-100% 0' }, { translate: 0 }],
 	rotate: [{ rotate: '0deg' }, { rotate: '360deg' }]
 };
-export const elementAnimationsConstructs: Record<string, ElementAnimationParams> = {
-	fade: {
+export const animationsConfigs: Record<string, ElementAnimationParams> = {
+	'fade-in': {
 		animations: {
 			keyframes: defaultKeyframesAnimations['fade-in'],
+			animationOptions: {
+				duration: 250,
+				iterations: 1,
+				fill: 'forwards',
+				easing: 'ease-in-out'
+			}
+		},
+		alternate: false,
+		iterations: 1
+	},
+	'fade-out': {
+		animations: {
+			keyframes: defaultKeyframesAnimations['fade-out'],
 			animationOptions: {
 				duration: 250,
 				iterations: 1,
@@ -269,5 +282,9 @@ export class ElementAnimation implements BasicAnimation {
 
 	subscribeEndCallback(callback: (anima: ElementAnimation) => void) {
 		this.onEndCallbacks.push(callback);
+	}
+	async thenPlay(animation: ElementAnimation) {
+		await this.finished;
+		animation.playForward();
 	}
 }

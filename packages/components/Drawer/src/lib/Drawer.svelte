@@ -1,8 +1,10 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { SequencedAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
+	// import { SequencedAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
 	import type { Snippet } from 'svelte';
+	import { directionedFly } from '@nv-org/utils';
+	import { fade } from 'svelte/transition';
 	interface DrawerProps {
 		open?: boolean;
 		onClose?: () => void;
@@ -14,6 +16,13 @@
 		header?: Snippet;
 		footer?: Snippet;
 		children?: Snippet;
+		animation?: {
+			delay?: number;
+			withFade?: boolean;
+			moveUntil?: number;
+			easing?: any;
+			duration?: number;
+		};
 	}
 	let {
 		open = $bindable(false),
@@ -25,56 +34,57 @@
 		className = '',
 		backdrop = { className: '', type: 'normal' },
 		drawerContentClassName = '',
+		animation = {},
 		header,
 		footer,
 		children
 	}: DrawerProps = $props();
-	let animationInstance: SequencedAnimation;
-	const positionTransition = {
-		top: [
-			{ translate: '0 -100%', opacity: '0' },
-			{ translate: '0 0', opacity: '1' }
-		],
-		left: [
-			{ translate: '-100% 0%', opacity: '0' },
-			{ translate: '0 0', opacity: '1' }
-		],
-		bottom: [
-			{ translate: '0 100%', opacity: '0' },
-			{ translate: '0 0', opacity: '1' }
-		],
-		right: [
-			{ translate: '100% 0%', opacity: '0' },
-			{ translate: '0 0', opacity: '1' }
-		]
-	};
-	let render = $state(false);
-	const backdropAnimationConfig: ElementAnimationParams = {
-		animations: {
-			keyframes: [{ opacity: 0 }, { opacity: backdrop.type === 'transparent' ? 0 : 1 }],
-			animationOptions: {
-				iterations: 1,
-				duration: 200,
-				easing: 'ease-in-out',
-				fill: 'both'
-			}
-		},
-		iterations: 1,
-		alternate: false
-	};
-	const contentAnimationConfig: ElementAnimationParams = {
-		animations: {
-			keyframes: positionTransition[position as keyof positionTransition] as Keyframe[],
-			animationOptions: {
-				iterations: 1,
-				duration: 300,
-				easing: 'ease-in-out',
-				fill: 'both'
-			}
-		},
-		iterations: 1,
-		alternate: false
-	};
+	// let animationInstance: SequencedAnimation;
+	// const positionTransition = {
+	// 	top: [
+	// 		{ translate: '0 -100%', opacity: '0' },
+	// 		{ translate: '0 0', opacity: '1' }
+	// 	],
+	// 	left: [
+	// 		{ translate: '-100% 0%', opacity: '0' },
+	// 		{ translate: '0 0', opacity: '1' }
+	// 	],
+	// 	bottom: [
+	// 		{ translate: '0 100%', opacity: '0' },
+	// 		{ translate: '0 0', opacity: '1' }
+	// 	],
+	// 	right: [
+	// 		{ translate: '100% 0%', opacity: '0' },
+	// 		{ translate: '0 0', opacity: '1' }
+	// 	]
+	// };
+	// let render = $state(false);
+	// const backdropAnimationConfig: ElementAnimationParams = {
+	// 	animations: {
+	// 		keyframes: [{ opacity: 0 }, { opacity: backdrop.type === 'transparent' ? 0 : 1 }],
+	// 		animationOptions: {
+	// 			iterations: 1,
+	// 			duration: 200,
+	// 			easing: 'ease-in-out',
+	// 			fill: 'both'
+	// 		}
+	// 	},
+	// 	iterations: 1,
+	// 	alternate: false
+	// };
+	// const contentAnimationConfig: ElementAnimationParams = {
+	// 	animations: {
+	// 		keyframes: positionTransition[position as keyof positionTransition] as Keyframe[],
+	// 		animationOptions: {
+	// 			iterations: 1,
+	// 			duration: 300,
+	// 			easing: 'ease-in-out',
+	// 			fill: 'both'
+	// 		}
+	// 	},
+	// 	iterations: 1,
+	// 	alternate: false
+	// };
 
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
@@ -85,46 +95,12 @@
 			}
 		});
 	}
-	function animation(drawer: HTMLElement) {
-		drawer.firstElementChild.style.translate = positionTransition[position][0].translate;
-		drawer.firstElementChild.style.opacity = positionTransition[position][0].opacity;
-
-		animationInstance = new SequencedAnimation(
-			[
-				{
-					element: drawer.lastElementChild as HTMLElement,
-					animationParams: backdropAnimationConfig
-				},
-				{
-					element: drawer.firstElementChild as HTMLElement,
-					animationParams: contentAnimationConfig
-				}
-			],
-			{
-				iterations: 1,
-				alternate: false,
-				onEndAnimation() {
-					if (!open) {
-						render = false;
-					}
-				}
-			}
-		);
-		drawer.firstElementChild.style.visibility = 'visible';
-		animationInstance.playForward();
-	}
-	$effect(() => {
-		if (open) {
-			render = true;
-		} else if (!open && render) {
-			animationInstance.reverse();
-		}
-	});
 </script>
 
-{#if render}
-	<aside use:translateToBody use:animation class="ui-drawer {className}">
+{#if open}
+	<aside use:translateToBody class="ui-drawer {className}">
 		<div
+			transition:directionedFly={{ direction: position, ...animation }}
 			class="ui-drawer-content {size
 				? 'size-' + size
 				: ''} drawer-{position} {drawerContentClassName}"
@@ -144,6 +120,7 @@
 			{/if}
 		</div>
 		<div
+			transition:fade
 			aria-roledescription="Backdrop of Drawer"
 			aria-hidden="true"
 			class="ui-drawer-backdrop {backdrop.className}  {backdrop.type === 'blur'
@@ -176,7 +153,6 @@
 		}
 		.ui-drawer-content {
 			position: absolute;
-			visibility: hidden;
 			overflow: auto;
 			background-color: var(--color-surface);
 			&.size-xs {

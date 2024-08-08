@@ -1,9 +1,9 @@
-import { flyAnimation,fadeAnimation } from './PresettedAnimations.js';
+import { flyAnimation, fadeAnimation } from './PresettedAnimations.js';
 import {
 	type ElementAnimationParams,
 	ElementAnimation,
 	type BasicAnimation,
-	elementAnimationsConstructs,
+	animationsConfigs,
 	defaultKeyframesAnimations,
 	easing
 } from './Animation.js';
@@ -27,7 +27,7 @@ export {
 	type BasicAnimation,
 	SequencedAnimation,
 	type SequencedAnimationElement,
-	elementAnimationsConstructs,
+	animationsConfigs,
 	SequencedChildrenAnimation,
 	SequencedSiblingAnimation,
 	ParallelAnimation,
