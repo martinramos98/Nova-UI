@@ -30,5 +30,8 @@
 		"dist",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
-	]
+	],
+	"devDependencies": {
+		"svelte": "5.0.0-next.260"
+	}
 }

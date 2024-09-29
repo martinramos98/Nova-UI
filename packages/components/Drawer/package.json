@@ -1,8 +1,8 @@
 {
-  "name": "@nv-org/drawer",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
+	"name": "@nv-org/drawer",
+	"version": "1.0.1",
+	"description": "",
+	"type": "module",
 	"main": "./dist/index.js",
 	"publishConfig": {
 		"access": "public"
@@ -35,19 +35,19 @@
 		"!dist/**/*.spec.*"
 	],
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-auto": "^3.1.1",
 		"@sveltejs/adapter-vercel": "^5.3.2",
-		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/kit": "^2.5.3",
 		"@sveltejs/package": "^2.3.2",
-		"@sveltejs/vite-plugin-svelte": "^3.0.0",
-		"@types/eslint": "^8.56.0",
-		"@typescript-eslint/eslint-plugin": "^7.0.0",
-		"@typescript-eslint/parser": "^7.0.0",
-		"eslint": "^8.56.0",
+		"@sveltejs/vite-plugin-svelte": "^3.0.2",
+		"@types/eslint": "^8.56.5",
+		"@typescript-eslint/eslint-plugin": "^7.1.1",
+		"@typescript-eslint/parser": "^7.1.1",
+		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.36.0-next.4",
+		"eslint-plugin-svelte": "2.36.0-next.10",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
-		"svelte": "5.0.0-next.183"
+		"svelte": "5.0.0-next.260"
 	}
 }

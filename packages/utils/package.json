@@ -27,11 +27,14 @@
 		}
 	},
 	"dependencies": {
-    "@nv-org/element-animation-js": "workspace:*"
+		"@nv-org/element-animation-js": "workspace:*"
 	},
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
-	]
+	],
+	"devDependencies": {
+		"svelte": "5.0.0-next.260"
+	}
 }
