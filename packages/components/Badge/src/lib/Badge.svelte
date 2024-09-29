@@ -1,15 +1,31 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	// import type { Colors, Radius, Size, Variants } from '$lib/app/Entities/styles.js';
 	// FIXME: fix position of badges depending badge's width and heighy
-	export let hideBadge: boolean = false;
-	export let contentBadge: string = '';
-	export let positionBadge: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' =
-		'bottom-right';
-	export let className = '';
-	export let size = 3;
-	export let radius = 'full';
-	export let variant = '';
-	export let colors = '';
+	interface BadgeProps {
+		hideBadge?: boolean;
+		contentBadge?: string | Snippet;
+		positionBadge?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+		className?: string;
+		size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+		radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+		variant?: string;
+		colors?: string;
+		children: Snippet;
+	}
+	const {
+		hideBadge = false,
+		contentBadge,
+		positionBadge = 'bottom-right',
+		className = '',
+		size = 3,
+		radius = 'full',
+		variant = '',
+		colors = ''
+	}: BadgeProps = $props();
 	let badgeEl: HTMLElement;
 	let badgeSubEl: HTMLElement;
 
@@ -30,20 +46,21 @@
 	function setBadgePosition() {
 		const node = badgeEl;
 		if (node) {
-			// if (colors === 'error') {
-			// 	debugger;
-			// }
 			const [vert, hor] = positionBadge.split('-');
 			node.style[vert as 'top' | 'bottom'] = `-${node.offsetHeight / 2}px`;
 			node.style[hor as 'left' | 'right'] = `-${node.offsetWidth / 2}px`;
 			node.style.visibility = 'visible';
 		}
 	}
-	$: contentBadge, badgeEl, setBadgePosition(), actionPaddingHandler();
+	$effect(() => {
+		setBadgePosition();
+		actionPaddingHandler();
+	});
+	// $: contentBadge, badgeEl, setBadgePosition(), actionPaddingHandler();
 </script>
 
 <div class="ui-badge-container">
-	<slot />
+	{@render children()}
 	<div style="visibility:hidden" class="rounded-{radius}" bind:this={badgeEl}>
 		<div
 			bind:this={badgeSubEl}
@@ -53,8 +70,10 @@
 		>
 			{#if !hideBadge}
 				<slot name="contentBadge" />
-				{#if !$$slots.contentBadge}
+				{#if typeof contentBadge === 'string'}
 					{contentBadge}
+				{:else if contentBadge}
+					{@render contentBadge()}
 				{/if}
 			{/if}
 		</div>

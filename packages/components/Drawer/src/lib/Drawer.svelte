@@ -1,7 +1,6 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	// import { SequencedAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
 	import type { Snippet } from 'svelte';
 	import { directionedFly } from '@nv-org/utils';
 	import { fade } from 'svelte/transition';
@@ -9,10 +8,10 @@
 		open?: boolean;
 		onClose?: () => void;
 		size?: string;
-		className?: string;
+		class?: string;
 		position?: string;
-		backdrop?: { className: string; type: string };
-		drawerContentClassName?: string;
+		backdrop?: { class: string; type: string };
+		contentClass?: string;
 		header?: Snippet;
 		footer?: Snippet;
 		children?: Snippet;
@@ -31,60 +30,14 @@
 		},
 		size,
 		position = 'right',
-		className = '',
-		backdrop = { className: '', type: 'normal' },
-		drawerContentClassName = '',
+		class: className = '',
+		backdrop = { class: '', type: 'normal' },
+		contentClass = '',
 		animation = {},
 		header,
 		footer,
 		children
 	}: DrawerProps = $props();
-	// let animationInstance: SequencedAnimation;
-	// const positionTransition = {
-	// 	top: [
-	// 		{ translate: '0 -100%', opacity: '0' },
-	// 		{ translate: '0 0', opacity: '1' }
-	// 	],
-	// 	left: [
-	// 		{ translate: '-100% 0%', opacity: '0' },
-	// 		{ translate: '0 0', opacity: '1' }
-	// 	],
-	// 	bottom: [
-	// 		{ translate: '0 100%', opacity: '0' },
-	// 		{ translate: '0 0', opacity: '1' }
-	// 	],
-	// 	right: [
-	// 		{ translate: '100% 0%', opacity: '0' },
-	// 		{ translate: '0 0', opacity: '1' }
-	// 	]
-	// };
-	// let render = $state(false);
-	// const backdropAnimationConfig: ElementAnimationParams = {
-	// 	animations: {
-	// 		keyframes: [{ opacity: 0 }, { opacity: backdrop.type === 'transparent' ? 0 : 1 }],
-	// 		animationOptions: {
-	// 			iterations: 1,
-	// 			duration: 200,
-	// 			easing: 'ease-in-out',
-	// 			fill: 'both'
-	// 		}
-	// 	},
-	// 	iterations: 1,
-	// 	alternate: false
-	// };
-	// const contentAnimationConfig: ElementAnimationParams = {
-	// 	animations: {
-	// 		keyframes: positionTransition[position as keyof positionTransition] as Keyframe[],
-	// 		animationOptions: {
-	// 			iterations: 1,
-	// 			duration: 300,
-	// 			easing: 'ease-in-out',
-	// 			fill: 'both'
-	// 		}
-	// 	},
-	// 	iterations: 1,
-	// 	alternate: false
-	// };
 
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
@@ -101,9 +54,7 @@
 	<aside use:translateToBody class="ui-drawer {className}">
 		<div
 			transition:directionedFly={{ direction: position, ...animation }}
-			class="ui-drawer-content {size
-				? 'size-' + size
-				: ''} drawer-{position} {drawerContentClassName}"
+			class="ui-drawer-content {size ? 'size-' + size : ''} drawer-{position} {contentClass}"
 		>
 			{#if header}
 				<div class="ui-drawer-header">
@@ -123,7 +74,7 @@
 			transition:fade
 			aria-roledescription="Backdrop of Drawer"
 			aria-hidden="true"
-			class="ui-drawer-backdrop {backdrop.className}  {backdrop.type === 'blur'
+			class="ui-drawer-backdrop {backdrop.class}  {backdrop.type === 'blur'
 				? 'backdrop-blur-sm'
 				: ''}"
 		></div>

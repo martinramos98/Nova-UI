@@ -1,10 +1,19 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import type { Action } from 'svelte/action';
 	import Avatar from './Avatar.svelte';
 	import { SequencedAnimation } from '@nv-org/element-animation-js';
-	export let maxAvatarsToShow = 2;
-	export let collapseOnClick = true;
-	export let collapse = false;
+	interface AvatarGroupProps {
+		maxAvatarsToShow?: number;
+		collapseOnClick?: boolean;
+		collapse?: boolean;
+	}
+	let {
+		maxAvatarsToShow = 2,
+		collapseOnClick = true,
+		collapse = $bindable(false)
+	}: AvatarGroupProps = $props();
 	let buttonHiddenControlerEl: HTMLElement;
 	let outOfRangeAvatars = 0;
 	let animation: SequencedAnimation;
@@ -34,32 +43,6 @@
 
 	function createAnimation(btn: HTMLElement) {
 		const width = hiddenGroupEl.offsetWidth;
-		// const seqAnim = SequencedChildrenAnimation(
-		// 	hiddenGroupEl,
-		// 	{
-		// 		animations: {
-		// 			keyframes: [
-		// 				{
-		// 					maxWidth: '100px'
-		// 				},
-		// 				{ maxWidth: '0px' }
-		// 			],
-		// 			animationOptions: {
-		// 				duration: 300,
-		// 				iterations: 1,
-		// 				easing: 'ease-in-out',
-		// 				fill: 'both',
-		// 				direction: 'normal'
-		// 			}
-		// 		},
-		// 		onFinishedAnimation() {
-		// 			if (collapse) {
-		// 				avatarContainerEl.style.overflowX = 'visible';
-		// 			}
-		// 		}
-		// 	},
-		// 	'last'
-		// );
 		animation = new SequencedAnimation(
 			[
 				{
@@ -85,7 +68,6 @@
 						}
 					}
 				},
-				// seqAnim,
 				{
 					element: buttonHiddenControlerEl,
 					animationParams: {
@@ -115,7 +97,6 @@
 				iterations: 1
 			}
 		);
-		// hiddenGroupEl.style.translate = `${width}px 0`;
 		hiddenGroupEl.style.maxWidth = '0';
 		hiddenGroupEl.style.visibility = 'visible';
 	}
@@ -137,8 +118,7 @@
 			disabled={!collapseOnClick}
 			on:click={clickExpand}
 		>
-			<Avatar className={'bg-[var(--color-container)]'} avatarName={`+ ${outOfRangeAvatars}`}
-			></Avatar>
+			<Avatar class={'bg-[var(--color-container)]'} avatarName={`+ ${outOfRangeAvatars}`}></Avatar>
 		</button>
 	{/if}
 </div>

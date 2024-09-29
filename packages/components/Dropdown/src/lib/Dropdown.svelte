@@ -1,52 +1,41 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { type Snippet } from 'svelte';
 	import { Button } from '@nv-org/button';
-	import { ElementAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
-	import { setFloatingPosition } from '@nv-org/utils';
-	export let onClickTrigger: undefined | (() => void) = undefined;
-	export let children: Snippet<[any]> | undefined = undefined;
-	export let offset = 5;
-	export let triggerText = '';
-	export let position = 'right-start';
-	export let Trigger: Snippet | undefined = undefined;
-	let container: HTMLElement;
-	let open = false;
-	let render = false;
-	let animationDropdown: ElementAnimation;
-	let dropdownEL: HTMLElement;
-	let toggleDropdown: () => void;
-	const animationConfig: ElementAnimationParams = {
-		animations: {
-			keyframes: [{ opacity: '0' }, { opacity: '1' }],
-			animationOptions: {
-				fill: 'both',
-				direction: 'normal',
-				iterations: 1,
-				duration: 200,
-				easing: 'ease-in-out'
-			}
-		},
-		iterations: 1,
-		alternate: false,
-		onFinishedAnimation() {
-			if (!open) {
-				render = false;
-			}
-		}
-	};
-	function animationOpen(node: HTMLElement) {
-		animationDropdown = new ElementAnimation(node, animationConfig);
-		animationDropdown.playForward();
+	// import { ElementAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
+	import { popIn, setFloatingPosition, type SvelteTransitionFn } from '@nv-org/utils';
+	interface DropdownProps {
+		onClickTrigger?: () => void;
+		children?: Snippet<[any]>;
+		offset?: number;
+		triggerText?: string;
+		position?: string;
+		triggerContent?: Snippet;
+		open?: boolean;
+		animationFunction?: SvelteTransitionFn;
+		animationParams?: any;
 	}
-	toggleDropdown = () => {
+	let {
+		children,
+		offset = 5,
+		onClickTrigger = undefined,
+		position = 'right-start',
+		triggerContent = undefined,
+		triggerText = '',
+		open = $bindable(false),
+		animationFunction = popIn,
+		animationParams = { duration: 250 }
+	}: DropdownProps = $props();
+	let container: HTMLElement;
+	let dropdownEL: HTMLElement;
+	const toggleDropdown = () => {
 		open = !open;
 		if (open === false) {
 			window.removeEventListener('click', clickOnOpenedDropdown);
-			animationDropdown.reverse();
 		} else {
 			window.addEventListener('click', clickOnOpenedDropdown);
-			render = true;
 		}
 	};
 	onMount(() => {
@@ -57,7 +46,6 @@
 		if (!dropdownEL || !dropdownEL.contains(ev.target as Element)) {
 			window.removeEventListener('click', clickOnOpenedDropdown);
 			open = false;
-			animationDropdown.reverse();
 		}
 		ev.preventDefault();
 	};
@@ -68,14 +56,14 @@
 </script>
 
 <div class="ui-dropdown" bind:this={container}>
-	{#if Trigger}
+	{#if triggerContent}
 		<button
-			on:click={() => {
+			onclick={() => {
 				toggleDropdown();
 				onClickTrigger && onClickTrigger();
 			}}
 		>
-			{@render Trigger()}
+			{@render triggerContent()}
 		</button>
 	{:else}
 		<Button
@@ -94,8 +82,12 @@
 			{triggerText.toString()}
 		</Button>
 	{/if}
-	{#if render}
-		<div use:animationOpen use:setDropdownContentPosition class="ui-dropdown-content rounded-xl">
+	{#if open}
+		<div
+			transition:animationFunction={animationParams}
+			use:setDropdownContentPosition
+			class="ui-dropdown-content rounded-xl"
+		>
 			{#if children}
 				{@render children(toggleDropdown)}
 			{/if}

@@ -38,22 +38,29 @@ export class TabsAnimator {
 				const elementToShow = this.controler.elementRefs[selectedKey] as HTMLElement;
 				const container = this.controler.elementRefs['tabContainer'] as HTMLElement;
 				const cssMap = container.computedStyleMap();
-				const heightStyle = container.style.height
+				const heightStyleContainer = container.style.height;
 				// @ts-expect-error type
 				const pt = cssMap.get('padding-top')?.value as number;
 				// @ts-expect-error type
 				const pb = cssMap.get('padding-bottom')?.value as number;
-				const wc = container.offsetWidth 
-				const initialHeight = elementToHide.offsetHeight + pb + pt;
-				elementToHide.classList.add('ui-tab-element-to-hide')
-				const containerClone = container.cloneNode(true) as HTMLElement
-				containerClone.querySelector('.ui-tab-element-to-hide')?.remove()
-				containerClone.firstElementChild?.classList.toggle('absolute')
-				containerClone.style.cssText = `position:absolute;visibility:hidden;z-index:-1;width:${wc}px`
-				containerClone.ariaHidden = 'true' 
-				document.body.append(containerClone)
-				const finalHeight = (containerClone.firstElementChild as HTMLElement).offsetHeight + pt + pb;
-				containerClone.remove()
+
+				// @ts-expect-error type
+				const bt = cssMap.get('border-top-width')?.value as number;
+				// @ts-expect-error type
+				const bb = cssMap.get('border-bottom-width')?.value as number;
+				const wc = container.offsetWidth;
+				const initialHeight = elementToHide.offsetHeight + pb + pt + bt + bb;
+				debugger;
+				elementToHide.classList.add('ui-tab-element-to-hide');
+				const containerClone = container.cloneNode(true) as HTMLElement;
+				containerClone.querySelector('.ui-tab-element-to-hide')?.remove();
+				containerClone.firstElementChild?.classList.toggle('absolute');
+				containerClone.style.cssText = `position:absolute;visibility:hidden;z-index:-1;width:${wc}px`;
+				containerClone.ariaHidden = 'true';
+				document.body.append(containerClone);
+				const finalHeight =
+					(containerClone.firstElementChild as HTMLElement).offsetHeight + pt + pb;
+				containerClone.remove();
 				const firstFadeAnimation = new ElementAnimation(
 					elementToHide,
 					animationsConfigs['fade-out']
@@ -70,7 +77,7 @@ export class TabsAnimator {
 					},
 					onFinishedAnimation() {
 						elementToShow.style.cssText = `opacity:0;visibility:visible;`;
-						elementToShow.classList.toggle('absolute')
+						elementToShow.classList.toggle('absolute');
 						elementToHide.style.cssText = `display:none;visibility:hidden;`;
 					}
 				});
@@ -79,6 +86,7 @@ export class TabsAnimator {
 					animationsConfigs['fade-in']
 				);
 				secondFadeAnimation.subscribeEndCallback(() => {
+					container.style.height = heightStyleContainer;
 					resolve(null);
 				});
 				firstFadeAnimation.play();

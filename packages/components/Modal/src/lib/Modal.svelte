@@ -2,10 +2,9 @@
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { popOut } from '@nv-org/utils';
-
-	// import type { ElementAnimationParams } from '@nv-org/element-animation-js';
-	// import { ParallelAnimation } from '@nv-org/element-animation-js';
+	import type { SvelteTransitionFn } from '@nv-org/utils';
 	interface ModalProps {
 		open?: boolean;
 		size?: string;
@@ -17,6 +16,8 @@
 		header?: Snippet;
 		footer?: Snippet;
 		children: Snippet;
+		animationParams?: any;
+		animationFunction?: SvelteTransitionFn;
 	}
 	const {
 		open = $bindable(false),
@@ -26,34 +27,11 @@
 		backdrop = { type: 'normal', class: '' },
 		classContent = '',
 		header = undefined,
+		footer = undefined,
 		children,
-		footer = undefined
+		animationFunction = popOut,
+		animationParams = {}
 	}: ModalProps = $props();
-	// export let render = false;
-	// export let backdrop: {
-	// 	className: string;
-	// 	type: 'normal' | 'blur' | 'transparent';
-	// } = {
-	// 	className: '',
-	// 	type: 'normal'
-	// };
-	// export let modalContent = {
-	// 	className: ''
-	// };
-	// const animationConfig: ElementAnimationParams = {
-	// 	animations: {
-	// 		keyframes: [{ opacity: '0' }, { opacity: '1' }],
-	// 		animationOptions: {
-	// 			direction: 'normal',
-	// 			fill: 'both',
-	// 			duration: 300,
-	// 			easing: 'ease-in-out',
-	// 			iterations: 1
-	// 		}
-	// 	},
-	// 	iterations: 1,
-	// 	alternate: false
-	// };
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
 		node.addEventListener('click', (ev) => {
@@ -63,56 +41,14 @@
 			}
 		});
 	}
-	// let animationModal: ParallelAnimation;
-	// function openEffect() {
-	// 	if (open) {
-	// 		render = true;
-	// 	}
-	// }
-	// {
-	// 			alternate: false,
-	// 			iterations: 1,
-	// 			onEndSequence() {
-	// 				if (!open) {
-	// 					render = false;
-	// 				}
-	// 			}
-	// 		}
-
-	// function animationsOpen(node: HTMLElement) {
-	// 	const backdropElement = node.lastElementChild as HTMLElement;
-	// 	const contentElement = node.firstElementChild as HTMLElement;
-
-	// 	animationModal = new ParallelAnimation(
-	// 		[
-	// 			{ element: backdropElement, animationOptions: animationConfig },
-	// 			{ element: contentElement, animationOptions: animationConfig }
-	// 		],
-	// 		{
-	// 			onEndAnimation: () => {
-	// 				if (!open) {
-	// 					render = false;
-	// 				}
-	// 			}
-	// 		}
-	// 	);
-	// 	animationModal.playForward();
-	// }
-	// function animationsClose(node: HTMLElement, open: boolean) {
-	// 	return {
-	// 		update: (open: boolean) => {
-	// 			if (!open) {
-	// 				animationModal.reverse();
-	// 			}
-	// 		}
-	// 	};
-	// }
-	// $: open && openEffect();
 </script>
 
 {#if open}
-	<div use:translateToBody transition:popOut class="ui-modal" aria-modal="true">
-		<div class="ui-modal-content rounded-{radius} size-{size} {classContent}">
+	<div use:translateToBody class="ui-modal" aria-modal="true">
+		<div
+			transition:animationFunction={animationParams}
+			class="ui-modal-content rounded-{radius} size-{size} {classContent}"
+		>
 			{#if header}
 				{@render header()}
 			{/if}
@@ -122,6 +58,7 @@
 			{/if}
 		</div>
 		<div
+			transition:fade
 			aria-roledescription="Backdrop of modal"
 			aria-hidden="true"
 			style={backdrop.type === 'transparent' ? 'background-color:transparent;' : ''}
@@ -146,9 +83,6 @@
 			z-index: 99;
 		}
 
-		.hide-modal {
-			display: none !important;
-		}
 		.ui-modal-backdrop {
 			width: inherit;
 			height: inherit;
@@ -165,9 +99,6 @@
 			padding: 10px;
 			display: flex;
 			flex-direction: column;
-			.ui-modal-footer {
-				margin-top: auto;
-			}
 		}
 		.size-full {
 			border-radius: 0 !important;

@@ -2,28 +2,18 @@
 
 <script lang="ts">
 	import { Button } from '@nv-org/button';
-	import { ElementAnimation } from '@nv-org/element-animation-js';
+	import { fade } from 'svelte/transition';
 	import type { Snippet } from 'svelte';
 	import { Input } from '@nv-org/input';
-	let {
-		open = $bindable(false),
-		size = 'md',
-		radius = 'md',
-		className = '',
-		text,
-		type = 'default',
-		children,
-		onClose,
-		footer,
-		promptProps = { inputProps: {} },
-		backdrop = { className: '', type: 'normal' }
-	}: {
+	import { popOut, type SvelteTransitionFn } from '@nv-org/utils';
+
+	interface AlertProps {
 		open?: boolean;
-		size?: any;
-		radius?: any;
+		size?: string;
+		radius?: string;
 		footer?: Snippet<[any, any]>;
 		children?: Snippet;
-		className?: string;
+		class?: string;
 		text?: string;
 		type?: 'default' | 'prompt' | 'confirm';
 		onClose: (value: string | undefined | boolean) => void;
@@ -32,82 +22,45 @@
 			className?: string;
 			type: 'normal' | 'blur' | 'transparent';
 		};
-	} = $props();
-	let render = $state(false);
+		animationFunction?: SvelteTransitionFn;
+		animationParams?: any;
+	}
+	let {
+		open = $bindable(false),
+		size = 'md',
+		radius = 'md',
+		class: className = '',
+		text,
+		type = 'default',
+		children,
+		onClose,
+		footer,
+		promptProps = { inputProps: {} },
+		backdrop = { className: '', type: 'normal' },
+		animationFunction = popOut,
+		animationParams = { duration: 300 }
+	}: AlertProps = $props();
+	// let render = $state(false);
 	let value = $state('');
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
 	}
-	function openEffect() {
-		render = true;
-	}
-	let animationBackdrop: ElementAnimation, animationContent: ElementAnimation;
-	const backdropAnimationConfig = {
-		animations: {
-			keyframes: [{ opacity: 0 }, { opacity: 1 }],
-			animationOptions: {
-				iterations: 1,
-				duration: 300,
-				easing: 'ease-in-out',
-				fill: 'both'
-			}
-		},
-		iterations: 1,
-		alternate: false,
-		onFinishedAnimation() {
-			if (!open) {
-				render = false;
-			}
-		}
-	};
-	const contentAnimationConfig = {
-		animations: {
-			keyframes: [
-				{ scale: '1.05', opacity: '0' },
-				{ scale: '1', opacity: '1' }
-			],
-			animationOptions: {
-				iterations: 1,
-				duration: 300,
-				easing: 'ease-in-out',
-				fill: 'both'
-			}
-		},
-		iterations: 1,
-		alternate: false
-	};
-	$effect(() => {
-		if (open) {
-			value = '';
-			openEffect();
-		}
-	});
-
-	function openAnimation(node: HTMLElement) {
-		const backdropElement = node.lastElementChild as HTMLElement;
-		const contentElement = node.firstElementChild as HTMLElement;
-		animationBackdrop = new ElementAnimation(backdropElement, backdropAnimationConfig);
-		animationContent = new ElementAnimation(contentElement, contentAnimationConfig);
-		animationBackdrop.playForward();
-		animationContent.playForward();
-	}
 	function closeAlert() {
 		open = false;
-		animationBackdrop.reverse();
-		animationContent.reverse();
 		onClose(type === 'default' ? undefined : false);
 	}
 	function confirmAlert() {
 		open = false;
-		animationBackdrop.reverse();
-		animationContent.reverse();
 		onClose(type === 'confirm' ? true : value);
 	}
 </script>
 
-{#if render}
-	<div use:translateToBody use:openAnimation class="ui-alert" aria-modal="true">
-		<div class="ui-alert-content rounded-{radius} size-{size} {className}">
+{#if open}
+	<div use:translateToBody class="ui-alert" aria-modal="true">
+		<div
+			transition:animationFunction={animationParams}
+			class="ui-alert-content rounded-{radius} size-{size} {className}"
+		>
 			{#if children}
 				{@render children()}
 			{:else}
@@ -187,6 +140,7 @@
 			{/if}
 		</div>
 		<div
+			transition:fade
 			aria-roledescription="Backdrop of alert"
 			aria-hidden="true"
 			class="ui-alert-backdrop {backdrop.className} {backdrop.type === 'transparent'
@@ -212,12 +166,8 @@
 			z-index: 99;
 		}
 
-		.hide-alert {
-			display: none !important;
-		}
 		.ui-alert-backdrop {
 			width: inherit;
-			opacity: 0;
 			height: inherit;
 			grid-column: 1 / 1;
 			grid-row: 1 / 1;
@@ -226,7 +176,6 @@
 		}
 		.ui-alert-content {
 			height: fit-content;
-			opacity: 0;
 			grid-column: 1 / 1;
 			grid-row: 1 / 1;
 			background-color: var(--color-surface);

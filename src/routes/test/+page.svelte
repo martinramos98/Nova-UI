@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { Button } from '@nv-org/button';
+	import { fade, scale, slide } from 'svelte/transition';
 	import { Tab, TabButton, Tabs } from '../../../packages/components/Tabs/src/lib/index';
 	import { Modal } from '../../../packages/components/Modal/src/lib/index.js';
 	import { Drawer } from '../../../packages/components/Drawer/src/lib/index.js';
+	import { Popover } from '../../../packages/components/Popover/src/lib/index.js';
+	import { Tooltip } from '../../../packages/components/Tooltip/src/lib/index.js';
+	import { Alert } from '../../../packages/components/Alert/src/lib/index.js';
 	import {
 		popIn,
 		popOut,
@@ -10,8 +14,11 @@
 	} from '../../../packages/utils/src/lib/svelteTransitions.js';
 	import { Switch } from '@nv-org/switch';
 	import { Title } from '@nv-org/title';
+	import { Dropdown, DropdownItem } from '../../../packages/components/Dropdown/src/lib/index.js';
+	import { quadInOut } from 'svelte/easing';
 	let toggled = false;
 	let toggledB = false;
+	let openAlert = false;
 </script>
 
 <!-- <svelte:window on:pointermove={move} /> -->
@@ -56,7 +63,21 @@
 	</Tabs>
 	<article>
 		<div>
-			<Switch bind:toggled color={'info'}></Switch>
+			<Popover
+				animationFunction={directionedFly}
+				animationParams={{ withFade: true, moveUntil: 4, direction: 'right' }}
+			>
+				{#snippet popoverContent()}
+					<span>Modal Test</span>
+				{/snippet}
+				<Button colors="info" variant="solid">Popover Button</Button>
+			</Popover>
+			<Tooltip>
+				<Switch bind:toggled color={'info'}></Switch>
+				{#snippet tooltipContent()}
+					<span>Swith To open Modal</span>
+				{/snippet}
+			</Tooltip>
 			<Switch bind:toggled={toggledB} color={'error'}></Switch>
 		</div>
 		<!-- {#if toggled}
@@ -66,6 +87,7 @@
 		{/if} -->
 		<Drawer
 			bind:open={toggledB}
+			backdrop={{ type: 'blur', class: '' }}
 			size="md"
 			onClose={() => {
 				toggledB = false;
@@ -79,9 +101,34 @@
 			onClose={() => {
 				toggled = false;
 			}}
+			backdrop={{ class: '', type: 'blur' }}
 		>
 			<Title level={3}>This is a Test</Title>
 		</Modal>
+	</article>
+	<article>
+		<Dropdown
+			triggerText="Test Dropdown"
+			animationFunction={undefined}
+			animationParams={{ easing: quadInOut, duration: 230 }}
+		>
+			<DropdownItem>Test 1</DropdownItem>
+			<DropdownItem>Test 2</DropdownItem>
+			<DropdownItem>Test 3</DropdownItem>
+		</Dropdown>
+	</article>
+	<article class="my-2">
+		<Button
+			onClick={() => {
+				openAlert = true;
+			}}
+		>
+			Click Me To Alert
+		</Button>
+		<Alert bind:open={openAlert}>
+			<Title level={4}>Alert!</Title>
+			<p>Something Happens!</p>
+		</Alert>
 	</article>
 </main>
 

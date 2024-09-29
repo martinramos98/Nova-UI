@@ -1,16 +1,36 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import buttonAction, { type ButtonElementProps } from './ButtonAction.js';
-	export let css: string = '';
-	export let className: string = '';
-	// TODO: Definir los tipos existentes y que se haga extensible
-	export let variant: string = '';
-	export let colors: string = '';
-	export let disabled: boolean = false;
-	export let isLoading: boolean = false;
-	export let spinnerPosition: 'left' | 'right' = 'left';
-	export let withClickEffect: boolean = true;
-	export let buttonProps: ButtonElementProps | undefined = {};
-	export let onClick: ((ev: MouseEvent) => void) | undefined = undefined;
+	import type { Snippet } from 'svelte';
+	interface ButtonProps {
+		css?: string;
+		class?: string;
+		variant?: string;
+		colors?: string;
+		disabled?: boolean;
+		isLoading?: boolean;
+		spinnerPosition?: 'left' | 'right';
+		withClickEffect?: boolean;
+		buttonProps?: ButtonElementProps | undefined;
+		onClick?: ((ev: MouseEvent) => void) | undefined;
+		spinner?: Snippet;
+		children: Snippet;
+	}
+	const {
+		css = '',
+		class: className = '',
+		variant = '',
+		colors = '',
+		disabled = false,
+		isLoading = false,
+		spinnerPosition = 'left',
+		withClickEffect = true,
+		buttonProps = {},
+		onClick = undefined,
+		spinner = undefined,
+		children
+	}: ButtonProps = $props();
 </script>
 
 <button
@@ -22,11 +42,11 @@
 	{disabled}
 >
 	{#if spinnerPosition === 'left' && isLoading}
-		<slot name="spinner" />
+		{@render spinner()}
 	{/if}
-	<slot />
+	{@render children()}
 	{#if spinnerPosition === 'right' && isLoading}
-		<slot name="spinner" />
+		{@render spinner()}
 	{/if}
 </button>
 

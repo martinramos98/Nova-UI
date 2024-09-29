@@ -4,6 +4,17 @@
 	import { setContext, type Snippet } from 'svelte';
 	import { spring } from 'svelte/motion';
 	import { TabsControler } from './utils.svelte.js';
+	interface TabsProps {
+		selectedTabKey: string | undefined;
+		variant: string;
+		class: string;
+		classContent: string;
+		classSelectionContainer: string;
+		classSelector: string;
+		children: Snippet;
+		TabSelection: Snippet | undefined;
+		position: 'top' | 'left' | 'bottom' | 'right' | '';
+	}
 	const {
 		variant = 'default',
 		class: className = '',
@@ -14,17 +25,7 @@
 		position = '',
 		classSelector = '',
 		selectedTabKey = $bindable(undefined)
-	}: {
-		selectedTabKey: string | undefined;
-		variant: string;
-		class: string;
-		classContent: string;
-		classSelectionContainer: string;
-		classSelector: string;
-		children: Snippet;
-		TabSelection: Snippet | undefined;
-		position: 'top' | 'left' | 'bottom' | 'right' | '';
-	} = $props();
+	}: TabsProps = $props();
 
 	const keys = new Map<string, HTMLElement>();
 	let tabsControler: TabsControler = new TabsControler(selectedTabKey);
@@ -37,7 +38,6 @@
 
 	function subscribeTab(key: string, renderAction: () => void) {
 		tabsControler.tabRenderExecutor.set(key, renderAction);
-		console.log(tabsControler.tabRenderExecutor);
 	}
 	// TODO: Debounce de la seleccion ya que al querer cambiar sin terminar la animacion perjudica al renderizado
 	function selectTab(key: string) {
@@ -76,7 +76,7 @@
 	}
 	function setFirstKey(node: HTMLElement) {
 		const k = keys.keys();
-		selectTab(k.next().value);
+		selectTab(k.next().value as string);
 	}
 </script>
 

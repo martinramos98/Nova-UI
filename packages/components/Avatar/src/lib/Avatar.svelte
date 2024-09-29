@@ -1,17 +1,32 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { Icon, UserIcon } from '@nv-org/icon';
-	export let disabled = false;
-	export let avatarSrc: string | undefined = undefined;
-	export let defaultIcon = undefined;
-	export let avatarName = '';
-	export let size: any = 'md';
-	export let colors = '';
-	export let avatarBordered = false;
-	export let className: string = '';
-	let FirstLettersOfName = '';
-	$: avatarName, () => {};
-	avatarName.split(' ').forEach((word) => {
-		FirstLettersOfName += word.charAt(0);
+	interface AvatarProps {
+		disabled?: boolean;
+		avatarSrc?: string;
+		defaultIcon?: string;
+		avatarName?: string;
+		size?: 'sm' | 'md' | 'lg';
+		colors?: string;
+		avatarBordered?: boolean;
+		class?: string;
+	}
+	const {
+		disabled = false,
+		avatarSrc = undefined,
+		defaultIcon = undefined,
+		avatarName = '',
+		size = 'md',
+		colors = '',
+		avatarBordered = false,
+		class: className = ''
+	}: AvatarProps = $props();
+	let FirstLettersOfName = $state('');
+	$effect(() => {
+		avatarName.split(' ').forEach((word: string) => {
+			FirstLettersOfName += word.charAt(0);
+		});
 	});
 </script>
 

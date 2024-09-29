@@ -1,55 +1,42 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte';
-	import { setPosisitionPopover } from '@nv-org/utils';
-	export let className = '';
-	export let colors = '';
-	export let variant = '';
-	export let offset = 5;
-	export let position = 'top-start';
-	export let withArrow = false;
-	export let content: string | Snippet = '';
-	export let children: Snippet | undefined = undefined;
-	let open = false;
+	import { type Snippet } from 'svelte';
+	import { popIn, setPosisitionPopover, type SvelteTransitionFn } from '@nv-org/utils';
+	interface TooltipProps {
+		class?: string;
+		color?: string;
+		variant?: string;
+		offset?: number;
+		position?: string;
+		withArrow?: boolean;
+		tooltipContent: string | Snippet;
+		children: Snippet;
+		open?: boolean;
+		animationFunction?: SvelteTransitionFn;
+		animationParams?: any;
+	}
+	let {
+		class: className = '',
+		colors = '',
+		variant = '',
+		position = 'top-start',
+		offset = 5,
+		withArrow = false,
+		tooltipContent,
+		children,
+		open = $bindable(false),
+		animationFunction = popIn,
+		animationParams = {}
+	}: TooltipProps = $props();
 	let tooltip: HTMLElement;
 	let container: HTMLElement;
-	// let cssPosition = '';
-	let effect: KeyframeEffect;
-	let animation: Animation;
 	let arrowPosition = '';
-	const animationKeyframe: Keyframe[] = [
-		{ opacity: 0, scale: 0.9, offset: 0 },
-		{ opacity: 1, scale: 1, offset: 1 }
-	];
-	const animationOptions: KeyframeEffectOptions = {
-		duration: 300,
-		easing: 'ease-in-out',
-		iterations: 1,
-		fill: 'forwards'
-	};
-	onMount(() => {
-		// cssPosition = setPosition(container, { offset: withArrow ? offset + 5 : offset, position });
-
-		effect = new KeyframeEffect(tooltip, animationKeyframe, animationOptions);
-		animation = new Animation(effect, document.timeline);
-		animation.addEventListener('finish', () => {
-			if (open) {
-				// tooltip.style.visibility = 'visible';
-			} else {
-				tooltip.style.visibility = 'hidden';
-			}
-		});
-	});
 	function onMouseIn(ev: MouseEvent) {
-		tooltip.style.visibility = 'visible';
 		open = true;
-		animation.pause();
-		animation.playbackRate = 1;
-		animation.play();
 	}
 	function onMouseOut(ev: MouseEvent) {
 		open = false;
-		animation.pause();
-		animation.reverse();
 	}
 	function setArrowPosition(node: SVGElement) {
 		if (position === 'top' || position === 'top-start' || position === 'top-end') {
@@ -66,7 +53,7 @@
 		setPosisitionPopover({
 			position: position,
 			element: node,
-			offset: withArrow ? offset + 5 : offset
+			offset: withArrow ? offset + 7 : offset
 		});
 	}
 </script>
@@ -81,24 +68,27 @@
 	{#if children}
 		{@render children()}
 	{/if}
-	<div
-		use:setPosition
-		bind:this={tooltip}
-		class="ui-tooltip ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
-			? variant
-			: ''} {className}"
-	>
-		{#if withArrow}
-			<svg use:setArrowPosition class="ui-tooltip-arrow" style={arrowPosition} viewBox="0 0 5 5">
-				<path d="M2.5 0L4.66506 3.75H0.334936L2.5 0Z" />
-			</svg>
-		{/if}
-		{#if typeof content === 'string'}
-			{content}
-		{:else}
-			{@render content()}
-		{/if}
-	</div>
+	{#if open}
+		<div
+			transition:animationFunction={animationParams}
+			use:setPosition
+			bind:this={tooltip}
+			class="ui-tooltip ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
+				? variant
+				: ''} {className}"
+		>
+			{#if withArrow}
+				<svg use:setArrowPosition class="ui-tooltip-arrow" style={arrowPosition} viewBox="0 0 5 5">
+					<path d="M2.5 0L4.66506 3.75H0.334936L2.5 0Z" />
+				</svg>
+			{/if}
+			{#if typeof tooltipContent === 'string'}
+				{tooltipContent}
+			{:else if tooltipContent}
+				{@render tooltipContent()}
+			{/if}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -114,12 +104,10 @@
 			width: max-content;
 			min-width: 20px;
 			border-radius: var(--radius-xl);
-			visibility: hidden;
 			padding: 0.35rem;
 			height: auto;
 			min-height: 25px;
 			position: absolute;
-			opacity: 0;
 			z-index: 50;
 		}
 		.ui-tooltip-arrow {

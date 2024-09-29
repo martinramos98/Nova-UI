@@ -187,7 +187,7 @@
 				type="checkbox"
 				className="bg-[#2C2C2C] flex flex-row w-fit h-fit rounded-lg position-radio "
 			>
-				<Tooltip content="Italic" className="" colors="container-hight">
+				<Tooltip tooltipContent="Italic" className="" colors="container-hight">
 					<Radio
 						id="italic"
 						value="italic"
@@ -199,28 +199,28 @@
 						{/snippet}
 					</Radio>
 				</Tooltip>
-				<Tooltip content="Bold" colors="container-hight">
+				<Tooltip tooltipContent="Bold" colors="container-hight">
 					<Radio id="bold" value="bold" colors="container-hight" className="rounded-none">
 						{#snippet custom()}
 							<span><b>B</b></span>
 						{/snippet}
 					</Radio>
 				</Tooltip>
-				<Tooltip content="Left" colors="container-hight">
+				<Tooltip tooltipContent="Left" colors="container-hight">
 					<Radio id="left" value="left" colors="container-hight" className="rounded-none">
 						{#snippet custom()}
 							<LeftTextIcon />
 						{/snippet}
 					</Radio>
 				</Tooltip>
-				<Tooltip content="Center" colors="container-hight">
+				<Tooltip tooltipContent="Center" colors="container-hight">
 					<Radio id="center" value="center" colors="container-hight" className="rounded-none">
 						{#snippet custom()}
 							<CenterTextIcon />
 						{/snippet}
 					</Radio>
 				</Tooltip>
-				<Tooltip content="Right" position="top" colors="container-hight">
+				<Tooltip tooltipContent="Right" position="top" colors="container-hight">
 					<Radio
 						id="right"
 						value="right"
@@ -281,6 +281,7 @@
 	}
 	.detailed-article {
 		width: 100%;
+		box-shadow: 10px 2px 10px #000;
 		display: flex;
 		flex-direction: row;
 		padding: 20px 80px;
@@ -405,7 +406,7 @@
 			height: fit-content;
 		}
 		@media (width <= 550px) {
-			& section {
+			section {
 				grid-template-rows: 1fr 1fr 1fr 1fr;
 				justify-items: center;
 				gap: 1rem;

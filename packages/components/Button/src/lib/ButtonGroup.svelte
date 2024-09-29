@@ -1,9 +1,16 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	import { afterUpdate } from 'svelte';
-	export let classname = '';
-	export let disabled = false;
+	import type { Snippet } from 'svelte';
+
+	interface ButtonGroupProps {
+		classname?: string;
+		disabled?: boolean;
+		children: Snippet;
+	}
+	const { classname = '', disabled = false, children }: ButtonGroupProps = $props();
 	let ref: HTMLElement;
-	afterUpdate(() => {
+	$effect(() => {
 		if (disabled)
 			for (const child of ref.children) {
 				if (child.classList.contains('ui-button')) {
@@ -16,7 +23,7 @@
 </script>
 
 <div class="ui-button-group {classname}" bind:this={ref}>
-	<slot />
+	{@render children()}
 </div>
 
 <style>

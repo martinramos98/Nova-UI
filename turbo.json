@@ -1,7 +1,10 @@
 {
-  "tasks": {
-    "package": {
-      "dependsOn": ["^package"] 
-    }
-  }
+	"tasks": {
+		"package": {
+			"dependsOn": ["^package"]
+		},
+		"publish": {
+			"dependsOn": ["^package", "publish"]
+		}
+	}
 }

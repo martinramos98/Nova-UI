@@ -13,8 +13,8 @@
 			</header>
 			<section>
 				<div class="w-full">
-					<Tooltip>
-						{#snippet content()}
+					<Tooltip animationParams={{ duration: 300 }}>
+						{#snippet tooltipContent()}
 							<p>This is a Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">Hover me</Chip>
@@ -29,73 +29,73 @@
 			<section>
 				<div class="position-grid">
 					<Tooltip position="top-start">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a top-start Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">top-start</Chip>
 					</Tooltip>
 					<Tooltip position="top">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a top Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">top</Chip>
 					</Tooltip>
 					<Tooltip position="top-end">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a top-end Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">top-end</Chip>
 					</Tooltip>
 					<Tooltip position="right-start">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a right-start Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">right-start</Chip>
 					</Tooltip>
 					<Tooltip position="right">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a right Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">right</Chip>
 					</Tooltip>
 					<Tooltip position="right-end">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a right-end Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">right-end</Chip>
 					</Tooltip>
 					<Tooltip position="left-start">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a left-start Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">left-start</Chip>
 					</Tooltip>
 					<Tooltip position="left">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a left Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">left</Chip>
 					</Tooltip>
 					<Tooltip position="left-end">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a left-end Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">left-end</Chip>
 					</Tooltip>
 					<Tooltip position="bottom-start">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a bottom-start Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">bottom-start</Chip>
 					</Tooltip>
 					<Tooltip position="bottom">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a bottom Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">bottom</Chip>
 					</Tooltip>
 					<Tooltip position="bottom-end">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a bottom-end Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">bottom-end</Chip>
@@ -110,25 +110,25 @@
 			<section>
 				<div class="w-full">
 					<Tooltip position="top" withArrow>
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">Hover me</Chip>
 					</Tooltip>
 					<Tooltip position="bottom" withArrow>
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">Hover me</Chip>
 					</Tooltip>
 					<Tooltip withArrow position="left">
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">Hover me</Chip>
 					</Tooltip>
 					<Tooltip position="right" withArrow>
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">Hover me</Chip>
@@ -143,13 +143,13 @@
 			<section>
 				<div class="w-full">
 					<Tooltip offset={10}>
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">Hover me</Chip>
 					</Tooltip>
 					<Tooltip position={'bottom'} offset={-4}>
-						{#snippet content()}
+						{#snippet tooltipContent()}
 							<p>This is a Tooltip</p>
 						{/snippet}
 						<Chip colors="primary" variant="solid" className="rounded-xl">Hover me</Chip>

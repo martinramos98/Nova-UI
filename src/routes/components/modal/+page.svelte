@@ -4,6 +4,7 @@
 	import { Button } from '@nv-org/button';
 	import { Modal } from '@nv-org/modal';
 	let testOpen = false;
+	let testOpen1 = false;
 	let openLG = false;
 	let openMD = false;
 	let openModalXL = false;
@@ -33,29 +34,32 @@
 						variant="solid"
 						colors="info"
 						onClick={() => {
-							testOpen = !testOpen;
+							testOpen1 = !testOpen1;
 						}}>Open Modal</Button
 					>
 					<Modal
-						open={testOpen}
+						open={testOpen1}
 						radius={'2xl'}
 						onClose={() => {
-							testOpen = false;
+							testOpen1 = false;
 						}}
 					>
-						<svelte:fragment slot="header">
+						{#snippet header()}
 							<Title level={3} class="text-center w-full">Modal</Title>
-						</svelte:fragment>
-						<svelte:fragment slot="footer">
-							<Button variant="solid" colors="success">Accept</Button>
-							<Button
-								variant="flat"
-								colors="error"
-								onClick={() => {
-									testOpen = !testOpen;
-								}}>Cancel</Button
-							>
-						</svelte:fragment>
+						{/snippet}
+						<p>Modal Body</p>
+						{#snippet footer()}
+							<div class="modal-footer">
+								<Button variant="solid" colors="success">Accept</Button>
+								<Button
+									variant="flat"
+									colors="error"
+									onClick={() => {
+										testOpen1 = !testOpen1;
+									}}>Cancel</Button
+								>
+							</div>
+						{/snippet}
 					</Modal>
 				</div>
 			</section>
@@ -293,3 +297,12 @@
 		</article>
 	</main>
 </div>
+
+<style>
+	.modal-footer {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+</style>

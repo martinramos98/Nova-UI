@@ -1,7 +1,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { setPosisitionPopover, animateRender } from '@nv-org/utils';
+	import { setPosisitionPopover, type SvelteTransitionFn, popIn } from '@nv-org/utils';
 	import { type Snippet } from 'svelte';
 	interface PopoverProps {
 		offset?: number;
@@ -12,6 +12,8 @@
 		popoverContent: Snippet;
 		className?: string;
 		color?: string;
+		animationFunction?: SvelteTransitionFn;
+		animationParams?: any;
 	}
 	let {
 		popoverContent,
@@ -21,36 +23,38 @@
 		color = '',
 		variant = '',
 		open = $bindable(false),
+		animationParams = {},
+		animationFunction = popIn,
 		children
 	}: PopoverProps = $props();
 	let popover: HTMLElement | undefined = $state();
 	let popoverContainer: HTMLElement;
-	const animationKeyframe: Keyframe[] = [
-		{ opacity: 0, scale: 0.9 },
-		{ opacity: 1, scale: 1 }
-	];
-	const animationOptions: KeyframeEffectOptions = {
-		duration: 300,
-		easing: 'ease-in-out',
-		iterations: 1,
-		direction: 'normal',
-		fill: 'both'
-	};
-	const animationRender = animateRender({
-		get open() {
-			return open;
-		},
-		get element() {
-			return popover;
-		},
-		animationParams: {
-			animations: {
-				keyframes: animationKeyframe,
-				animationOptions
-			},
-			iterations: 1
-		}
-	});
+	// const animationKeyframe: Keyframe[] = [
+	// 	{ opacity: 0, scale: 0.9 },
+	// 	{ opacity: 1, scale: 1 }
+	// ];
+	// const animationOptions: KeyframeEffectOptions = {
+	// 	duration: 300,
+	// 	easing: 'ease-in-out',
+	// 	iterations: 1,
+	// 	direction: 'normal',
+	// 	fill: 'both'
+	// };
+	// const animationRender = animateRender({
+	// 	get open() {
+	// 		return open;
+	// 	},
+	// 	get element() {
+	// 		return popover;
+	// 	},
+	// 	animationParams: {
+	// 		animations: {
+	// 			keyframes: animationKeyframe,
+	// 			animationOptions
+	// 		},
+	// 		iterations: 1
+	// 	}
+	// });
 	$effect(() => {
 		if (!open) {
 			window.removeEventListener('pointerdown', handleTogglePopover);
@@ -69,31 +73,13 @@
 		if (open) {
 			if (!popover.contains(ev.target)) {
 				open = false;
-				// animation.reverse();
 			}
 		} else {
 			open = true;
-			// render = true;
 		}
 	}
 	function setPopover(node: HTMLElement) {
 		setPosisitionPopover({ offset, position, element: node });
-
-		// animation = new ElementAnimation(popover, {
-		// 	animations: {
-		// 		keyframes: animationKeyframe,
-		// 		animationOptions: animationOptions
-		// 	},
-		// 	iterations: 1,
-		// 	alternate: false,
-		// 	onFinishedAnimation() {
-		// 		if (!open) {
-		// 			render = false;
-		// 		}
-		// 	}
-		// });
-		node.style.visibility = 'visible';
-		// animation.playForward();
 		window.addEventListener('pointerdown', handleTogglePopover);
 	}
 </script>
@@ -106,10 +92,11 @@
 	class="ui-popover-container"
 >
 	{@render children()}
-	{#if animationRender.render}
+	{#if open}
 		<div
 			use:setPopover
 			bind:this={popover}
+			transition:animationFunction={animationParams}
 			class="ui-popover ui-color-{color !== '' ? color : ''} ui-variant-{variant !== ''
 				? variant
 				: ''}  {className}"
@@ -126,22 +113,14 @@
 			display: inline-block;
 			width: max-content;
 		}
-		/* .ui-tooltip-container:hover {
-			& > .ui-tooltip {
-				opacity: 1;
-				visibility: visible;
-			}
-		} */
 		.ui-popover {
 			background-color: var(--color-container);
 			color: var(--color-text);
 			width: max-content;
 			border-radius: var(--radius-xl);
-			visibility: hidden;
 			padding: 0.35rem;
 			height: auto;
 			position: absolute;
-			opacity: 0;
 			z-index: 10;
 		}
 	}
