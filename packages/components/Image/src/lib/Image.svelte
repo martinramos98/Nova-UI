@@ -18,7 +18,6 @@
 		customLoader?: Snippet;
 		customError?: Snippet;
 		captionContent?: Snippet;
-		// children?: Snippet;
 	}
 	const {
 		aspect = 'auto',

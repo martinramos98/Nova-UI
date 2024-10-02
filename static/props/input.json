@@ -1,0 +1,122 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for drawer.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "type?:string",
+		"description": "Type of the input field.",
+		"required": false,
+		"default": "'text'"
+	},
+	{
+		"name": "value?:any",
+		"description": "Value of the input field.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "onChange?:((ev: Event) => void)",
+		"description": "Change event handler.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "labelText?:string",
+		"description": "Text for the label.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classLabel?:string",
+		"description": "CSS class for the label.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classInput?:string",
+		"description": "CSS class for the input.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classError?:string",
+		"description": "CSS class for the error message.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classContainer?:string",
+		"description": "CSS class for the container.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "name:string",
+		"description": "Name attribute for the input.",
+		"required": true,
+		"default": "''"
+	},
+	{
+		"name": "colors?:string",
+		"description": "Color scheme for the container.",
+		"required": false,
+		"default": "'container'"
+	},
+	{
+		"name": "placeholder?:string",
+		"description": "Placeholder text for the input.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "labelProps:{dynamic:boolean;className:string,position:'inside | outside | 'leftside''}",
+		"description": "Properties for the label.",
+		"required": false,
+		"default": "{position: 'inside', dynamic: true, className: ''}"
+	},
+	{
+		"name": "variant?:string",
+		"description": "Variant of the input field.",
+		"required": true,
+		"default": "'default'"
+	},
+	{
+		"name": "id",
+		"description": "ID attribute for the input.",
+		"required": true,
+		"default": "null"
+	},
+	{
+		"name": "error?:boolean",
+		"description": "Error state or validation function.",
+		"required": false,
+		"default": "false"
+	},
+	{
+		"name": "textError:?string",
+		"description": "Error message text.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "errorContent?:Snippet",
+		"description": "Content for the error message.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "labelContent?:Snippet",
+		"description": "Content for the label.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "inputAttributes:HTMLInputAttributes",
+		"description": "Additional HTML attributes for the input.",
+		"required": false,
+		"default": "undefined"
+	}
+]

@@ -4,28 +4,28 @@
 	import type { Snippet } from 'svelte';
 	import { type HTMLInputAttributes } from 'svelte/elements';
 	interface InputProps {
-		type: 'text' | 'password' | 'number' | 'email';
-		value: string | undefined;
-		onChange: undefined | ((ev: Event) => void);
-		labelText: string;
-		classLabel: string;
-		classInput: string;
-		classError: string;
-		classContainer: string;
+		type?: 'text' | 'password' | 'number' | 'email';
+		value?: string | undefined;
+		onChange?: undefined | ((ev: Event) => void);
+		labelText?: string;
+		classLabel?: string;
+		classInput?: string;
+		classError?: string;
+		classContainer?: string;
 		name: string;
-		colors: 'container';
-		placeholder: string;
-		labelProps: {
+		colors?: 'container' | string;
+		placeholder?: string;
+		labelProps?: {
 			position: 'inside' | 'outside' | 'leftside';
 			dynamic: boolean;
 			className: string;
 		};
-		variant: 'default' | 'blurred' | 'faded' | 'bordered' | 'flat' | 'underlined' | string;
+		variant?: 'default' | 'blurred' | 'faded' | 'bordered' | 'flat' | 'underlined' | string;
 		id: string | null;
-		error: boolean | ((value: any) => boolean);
-		textError: string;
-		errorContent: Snippet | undefined;
-		labelContent: Snippet | undefined;
+		error?: boolean | ((value: any) => boolean);
+		textError?: string;
+		errorContent?: Snippet | undefined;
+		labelContent?: Snippet | undefined;
 		inputAttributes?: HTMLInputAttributes;
 	}
 	let {
