@@ -1,0 +1,80 @@
+[
+	{
+		"name": "open?:boolean",
+		"description": "Open state of the modal.",
+		"required": false,
+		"bindable": true,
+		"default": "false"
+	},
+	{
+		"name": "size?:string",
+		"description": "Size of the modal.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "class?:string",
+		"description": "CSS class for the modal.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classContent?:string",
+		"description": "CSS class for the modal content.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "radius?:string",
+		"description": "Border radius of the modal.",
+		"required": false,
+		"default": ""
+	},
+	{
+		"name": "onClose?:() => void",
+		"description": "Callback function when the modal is closed.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "backdropType?:'normal' | 'transparent' | 'blur'",
+		"description": "Type of the backdrop.",
+		"required": false,
+		"default": "'normal'"
+	},
+	{
+		"name": "backdropClass?:string",
+		"description": "CSS class for the backdrop.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "header?:Snippet",
+		"description": "Header content of the modal.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "footer?:Snippet",
+		"description": "Footer content of the modal.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "children:Snippet",
+		"description": "Children content of the modal.",
+		"required": true
+	},
+	{
+		"name": "animationParams?:{duration?:number, delay?:number, easing?:EasingFunction,...any}",
+		"description": "Parameters for the animation.",
+		"required": false,
+		"default": "{}"
+	},
+	{
+		"name": "animationFunction?:SvelteTransitionFn",
+		"description": "Function for the animation.",
+		"required": false,
+		"default": "popOut"
+	}
+]
