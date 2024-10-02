@@ -1,0 +1,63 @@
+[
+	{
+		"name": "open?:boolean",
+		"description": "Open state of the popover.",
+		"bindable": true,
+		"required": false,
+		"default": "false"
+	},
+	{
+		"name": "offset?:number",
+		"description": "Offset of the popover.",
+		"required": false,
+		"default": 5
+	},
+	{
+		"name": "position?:string",
+		"description": "Position of the popover.",
+		"required": false,
+		"default": "'top-start'"
+	},
+	{
+		"name": "variant?:string",
+		"description": "Variant of the popover.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "children:Snippet",
+		"description": "Children elements of the popover.",
+		"required": true,
+		"default": "undefined"
+	},
+	{
+		"name": "popoverContent:Snippet",
+		"description": "Content of the popover.",
+		"required": true,
+		"default": "undefined"
+	},
+	{
+		"name": "className?:string",
+		"description": "CSS class name for the popover.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "color?:string",
+		"description": "Color of the popover.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "animationFunction?:SvelteTransitionFn",
+		"description": "Animation function for the popover.",
+		"required": false,
+		"default": "PopIn"
+	},
+	{
+		"name": "animationParams?:{duration?:number, delay?:number, easing?:EasingFunction,...any}",
+		"description": "Parameters for the animation function.",
+		"required": false,
+		"default": "{}"
+	}
+]
