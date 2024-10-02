@@ -1,0 +1,22 @@
+[
+	{
+		"name": "color",
+		"description": "Color of the divider line",
+		"required": false,
+		"default": "Default border color"
+	},
+
+	{
+		"name": "size",
+		"description": "Size of the line",
+		"required": false,
+		"default": 2
+	},
+
+	{
+		"name": "className",
+		"description": "HTML class of the divider",
+		"required": false,
+		"default": "''"
+	}
+]
