@@ -1,0 +1,63 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for drawer.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "onClickTrigger?: () => void",
+		"description": "Function to handle click events on the trigger.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "children?: Snippet<[any]>",
+		"description": "Children elements of the dropdown.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "offset?: number",
+		"description": "Offset value for the dropdown position.",
+		"required": false,
+		"default": 5
+	},
+	{
+		"name": "triggerText?: string",
+		"description": "Text for the dropdown trigger.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "position?: string",
+		"description": "Position of the dropdown.",
+		"required": false,
+		"default": "'right-start'"
+	},
+	{
+		"name": "triggerContent?: Snippet",
+		"description": "Content for the dropdown trigger.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "open?: boolean",
+		"description": "Boolean to control if the dropdown is open.",
+		"required": false,
+		"bindable": true,
+		"default": "false"
+	},
+	{
+		"name": "animationFunction?: SvelteTransitionFn",
+		"description": "Function for the dropdown animation.",
+		"required": false,
+		"default": "PopIn"
+	},
+	{
+		"name": "animationParams?: {delay: number; duration: number; easing: EasingFunction,...any}",
+		"description": "Parameters for the dropdown animation.",
+		"required": false,
+		"default": "{duration:250}"
+	}
+]
