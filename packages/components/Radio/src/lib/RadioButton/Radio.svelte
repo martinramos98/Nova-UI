@@ -1,20 +1,37 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { getContext, type Snippet } from 'svelte';
 	import type { Readable, Writable } from 'svelte/store';
 	import RadioButton from './RadioButton.svelte';
-	export let labelText = '';
-	export let size = 'size-6';
-	export let className = '';
-	export let value: any;
-	export let colors = 'info';
-	export let variant = 'solid';
-	export let id: string;
-	export let lineThroughtOnCheck = false;
-	export let disabled = false;
-	export let checked = false;
-	export let custom: Snippet | undefined = undefined;
-	export let children: Snippet | undefined = undefined;
-	let name = '';
+	interface RadioProps {
+		labelText?: string;
+		size?: string;
+		class?: string;
+		value?: any;
+		colors?: string;
+		variant?: string;
+		id: string;
+		lineThroughtOnCheck?: boolean;
+		disabled?: boolean;
+		checked?: boolean;
+		custom?: Snippet | undefined;
+		children?: Snippet | undefined;
+	}
+	let {
+		labelText = '',
+		size = 'size-6',
+		class: className = '',
+		value,
+		colors = 'info',
+		variant = 'solid',
+		id,
+		lineThroughtOnCheck = false,
+		disabled = false,
+		checked = $bindable(false),
+		custom = undefined,
+		children = undefined
+	}: RadioProps = $props();
 	const radioContext = getContext<{
 		type: Readable<'checkbox' | 'radio'>;
 		checked: Writable<Set<string>>;
@@ -64,7 +81,9 @@
 	function handleChange() {
 		checked = !checked;
 	}
-	$: checked, onChange();
+	$effect(() => {
+		onChange();
+	});
 </script>
 
 {#if custom}
@@ -73,7 +92,7 @@
 		aria-checked={checked}
 		data-custom={!!custom}
 		{disabled}
-		on:click={handleChange}
+		onclick={handleChange}
 	>
 		{@render custom()}
 	</button>
