@@ -1,0 +1,192 @@
+{
+	"radio": [
+		{
+			"name": "class?:string",
+			"description": "HTML Class for the Radio component.",
+			"default": "''",
+			"required": false
+		},
+		{
+			"name": "labelText?:string",
+			"description": "Label text for the Radio component.",
+			"default": "''",
+			"required": false
+		},
+		{
+			"name": "size?:string",
+			"description": "Size of the Radio component.",
+			"default": "''",
+			"required": false
+		},
+		{
+			"name": "value?:any",
+			"description": "Value of the Radio component.",
+			"default": "null",
+			"required": false
+		},
+		{
+			"name": "colors?:string",
+			"description": "Colors for the Radio component.",
+			"default": "''",
+			"required": false
+		},
+		{
+			"name": "variant?:string",
+			"description": "Variant style of the Radio component.",
+			"default": "''",
+			"required": false
+		},
+		{
+			"name": "id:string",
+			"description": "ID of the Radio component.",
+			"required": true
+		},
+		{
+			"name": "lineThroughtOnCheck?:boolean",
+			"description": "content line through on check.",
+			"default": "false",
+			"required": false
+		},
+		{
+			"name": "disabled?:boolean",
+			"description": "Whether the Radio component is disabled.",
+			"default": "false",
+			"required": false
+		},
+		{
+			"name": "checked?:boolean",
+			"description": "Whether the Radio component is checked.",
+			"default": "false",
+			"bindable": true,
+			"required": false
+		},
+		{
+			"name": "custom?:Snippet|undefined",
+			"description": "Custom snippet for the Radio component.",
+			"default": "undefined",
+			"required": false
+		},
+		{
+			"name": "children?:Snippet|undefined",
+			"description": "Children snippet for the Radio component.",
+			"default": "undefined",
+			"required": false
+		}
+	],
+	"radioGroup": [
+		{
+			"name": "type?:'checkbox'|'radio'",
+			"description": "Type of the RadioGroup component.",
+			"default": "radio",
+			"required": false
+		},
+		{
+			"name": "errorMessage?:string",
+			"description": "Error message for the RadioGroup component.",
+			"default": "''",
+			"required": false
+		},
+		{
+			"name": "className?:string",
+			"description": "HTML Class for the RadioGroup component.",
+			"default": "''",
+			"required": false
+		},
+		{
+			"name": "error?:boolean",
+			"description": "Whether there is an error in the RadioGroup component.",
+			"default": "false",
+			"required": false
+		},
+		{
+			"name": "colors?:string",
+			"description": "Colors for the RadioGroup component.",
+			"default": "''",
+			"required": false
+		},
+		{
+			"name": "withControl?:boolean",
+			"description": "Whether the RadioGroup component includes control.",
+			"default": "false",
+			"required": false
+		},
+		{
+			"name": "checkedValues?:Set<string>",
+			"description": "Checked values for the RadioGroup component.",
+			"default": "Set<any>",
+			"required": false
+		},
+		{
+			"name": "name:string",
+			"description": "Name of the RadioGroup component.",
+			"required": true
+		},
+		{
+			"name": "onChange?:(checked:Set<string>)=>void",
+			"description": "Change handler for the RadioGroup component.",
+			"default": "undefined",
+			"required": false
+		},
+		{
+			"name": "control?:object",
+			"description": "Control properties for the RadioGroup component.",
+			"default": "{}",
+			"required": false,
+			"properties": [
+				{
+					"name": "labelText?:string",
+					"description": "Label text for the control.",
+					"default": "''",
+					"required": false
+				},
+				{
+					"name": "className?:string",
+					"description": "HTML Class for the control.",
+					"default": "''",
+					"required": false
+				},
+				{
+					"name": "colors?:string",
+					"description": "Colors for the control.",
+					"default": "''",
+					"required": false
+				},
+				{
+					"name": "variant?:'solid'|'outline'",
+					"description": "Variant style of the control.",
+					"default": "undefined",
+					"required": false
+				},
+				{
+					"name": "lineThroughtOnCheck?:boolean",
+					"description": "Content line through on check for the control.",
+					"default": "false",
+					"required": false
+				},
+				{
+					"name": "id?:string",
+					"description": "ID of the control.",
+					"default": "undefined",
+					"required": false
+				},
+				{
+					"name": "disabled?:boolean",
+					"description": "Whether the control is disabled.",
+					"default": "false",
+					"required": false
+				}
+			]
+		},
+		{
+			"name": "labelControl?:Snippet",
+			"description": "Label control snippet for the RadioGroup component.",
+			"default": "undefined",
+			"required": false
+		},
+		{
+			"name": "children:Snippet",
+			"description": "Children snippet for the RadioGroup component.",
+			"required": true
+		}
+	]
+}
