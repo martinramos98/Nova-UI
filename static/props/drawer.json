@@ -1,0 +1,69 @@
+[
+	{
+		"name": "open?:boolean",
+		"description": "Open state of the drawer.",
+		"required": false,
+		"bindable": true,
+		"default": "false"
+	},
+	{
+		"name": "onClose?:() => void",
+		"description": "Callback function when the drawer is closed.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "size?:string",
+		"description": "Size of the drawer.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for drawer.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "position?:string",
+		"description": "Position of the drawer.",
+		"required": false,
+		"default": "'right'"
+	},
+	{
+		"name": "backdrop?:{ class: string; type: string }",
+		"description": "Backdrop settings for the drawer.",
+		"required": false,
+		"default": "{class:'',type:'normal'}"
+	},
+	{
+		"name": "contentClass?:string",
+		"description": "Class for the drawer content.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "header?:Snippet",
+		"description": "Header content of the drawer.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "footer?:Snippet",
+		"description": "Footer content of the drawer.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "children?:Snippet",
+		"description": "Children content of the drawer.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "animation?:{ delay?: number; withFade?: boolean; moveUntil?: number; easing?: any; duration?: number }",
+		"description": "Animation settings for the drawer render.",
+		"required": false,
+		"default": "{}"
+	}
+]
