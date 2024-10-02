@@ -1,0 +1,105 @@
+[
+	{
+		"name": "multiselection?: boolean",
+		"description": "Enable or disable multiple selection.",
+		"required": false,
+		"default": "false"
+	},
+	{
+		"name": "type?: 'default' | 'outlined' | 'filled' | 'underlined' | 'blurred' | 'flat' | 'faded' | string",
+		"description": "Defines the style type of the selection.",
+		"required": false,
+		"default": "'default'"
+	},
+	{
+		"name": "variant?: 'default' | 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | string",
+		"description": "Specifies the color variant for the selection.",
+		"required": false,
+		"default": "'default'"
+	},
+	{
+		"name": "colors?: string",
+		"description": "Defines a custom color palette for the selection.",
+		"required": false,
+		"default": "'primary'"
+	},
+	{
+		"name": "selectionLabel?: string",
+		"description": "Label text displayed next to the selection.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "disabled?: boolean",
+		"description": "Disables the selection component if set to true.",
+		"required": false,
+		"default": "false"
+	},
+	{
+		"name": "isInvalid?: boolean",
+		"description": "Indicates if the selection has an invalid value.",
+		"required": false,
+		"default": "false"
+	},
+	{
+		"name": "errorMessage?: string",
+		"description": "Message to be displayed when selection is invalid.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "labelProps?: { className?: string; labelPosition?: 'inside' | 'outside'; }",
+		"description": "Defines additional properties for the label, such as position and CSS class.",
+		"required": false,
+		"default": "{ className: '', labelPosition: 'inside' }"
+	},
+	{
+		"name": "class?: string",
+		"description": "CSS class for the selection component.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classOptionsContainer?: string",
+		"description": "CSS class for the container that holds the options.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classSelected?: string",
+		"description": "CSS class for the selected option.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classInputBox?: string",
+		"description": "CSS class for the input box of the selection.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "placeholder?: string",
+		"description": "Placeholder text for the selection input.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "selectedValue?: any",
+		"description": "The value currently selected.",
+		"required": false,
+		"bindable": true,
+		"default": "Set<any>"
+	},
+	{
+		"name": "onSelect?: undefined | ((value: any) => void)",
+		"description": "Callback function triggered when an option is selected.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "children: Snippet",
+		"description": "The children elements to be rendered inside the selection.",
+		"required": true,
+		"default": "undefined"
+	}
+]
