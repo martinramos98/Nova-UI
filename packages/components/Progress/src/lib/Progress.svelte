@@ -1,17 +1,39 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { tweened } from 'svelte/motion';
 	import { Icon } from '@nv-org/icon';
 	import { quadInOut } from 'svelte/easing';
-	export let className = '';
-	export let colors = '';
-	// export let variants = '';
-	export let type: 'bar' | 'circle' = 'bar';
-	export let value = 0;
-	export let colorsTriggers: undefined | Record<number, string> = undefined;
-	export let progressWidth = 4;
-	export let barRounded = true;
-	export let indeterminate = false;
-	let forcedColor: undefined | string = undefined;
+	interface ProgressProps {
+		class?: string;
+		colors?: string;
+		type?: 'bar' | 'circle';
+		value?: number;
+		colorsTriggers?: Record<number, string>;
+		progressWidth?: number;
+		barRounded?: boolean;
+		indeterminate?: boolean;
+	}
+	const {
+		class: className = '',
+		colors = '',
+		type = 'bar',
+		value = $bindable(0),
+		colorsTriggers,
+		progressWidth = 4,
+		barRounded = true,
+		indeterminate = false
+	}: ProgressProps = $props();
+	// export let className = '';
+	// export let colors = '';
+	// // export let variants = '';
+	// export let type: 'bar' | 'circle' = 'bar';
+	// export let value = 0;
+	// export let colorsTriggers: undefined | Record<number, string> = undefined;
+	// export let progressWidth = 4;
+	// export let barRounded = true;
+	// export let indeterminate = false;
+	let forcedColor: undefined | string = $state(undefined);
 	const valueWidth = tweened(value, {
 		duration: 300,
 		easing: quadInOut
@@ -47,7 +69,10 @@
 			valueWidth.set(value);
 		}
 	}
-	$: value, calculateMappings(), validatetriggersColors();
+	$effect(() => {
+		calculateMappings();
+		validatetriggersColors();
+	});
 </script>
 
 <div class="ui-loader ui-color-{colors} {className}">
