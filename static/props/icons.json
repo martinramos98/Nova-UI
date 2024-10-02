@@ -1,0 +1,13 @@
+[
+	{
+		"name": "props?:SVGAttributes<SVGElement>",
+		"description": "Properties of svg element for icon.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "children:Snippet",
+		"description": "Children for svg components.",
+		"required": true
+	}
+]
