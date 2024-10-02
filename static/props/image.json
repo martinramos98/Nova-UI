@@ -1,0 +1,78 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for drawer.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "aspect?:'1:1' | '16:9' | '3:4' | 'auto'",
+		"description": "Aspect ratio of the image.",
+		"required": false,
+		"default": "'auto'"
+	},
+	{
+		"name": "width?:string",
+		"description": "Width of the image.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "height?:string",
+		"description": "Height of the image.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "src:string",
+		"description": "Source URL of the image.",
+		"required": true
+	},
+	{
+		"name": "alt:string",
+		"description": "Alt text for the image.",
+		"required": true
+	},
+	{
+		"name": "reloadOnMount?:boolean",
+		"description": "Whether to reload the image on mount.",
+		"required": false,
+		"default": "true"
+	},
+	{
+		"name": "captionInside?:boolean",
+		"description": "Whether the caption is inside the image.",
+		"required": false,
+		"default": "false"
+	},
+	{
+		"name": "classContainer?:string",
+		"description": "HTML Class attribute for the container.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classCaption?:string",
+		"description": "HTML Class attribute for the caption.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "customLoader?:Snippet",
+		"description": "Custom loader snippet.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "customError?:Snippet",
+		"description": "Custom error snippet.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "captionContent?:Snippet",
+		"description": "Custom caption content snippet.",
+		"required": false,
+		"default": "undefined"
+	}
+]
