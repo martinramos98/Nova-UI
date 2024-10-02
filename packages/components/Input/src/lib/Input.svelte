@@ -1,29 +1,59 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-
-	export let type: 'text' | 'password' | 'number' | 'email' = 'text';
-	export let value: string | undefined = undefined;
-	export let onChange: undefined | ((ev: Event) => void) = undefined;
-	export let labelText = '';
-	export let classNameLabel = '';
-	export let classNameInput = '';
-	export let classNameError = '';
-	export let classNameContainer = '';
-	export let name: string;
-	export let colors = 'container';
-	export let placeholder = '';
-	export let labelProps = { position: 'inside', dynamic: true, className: '' };
-	export let variant = 'default';
-	export let id: string | null = null;
-	export let error: boolean | ((value: any) => boolean) = false;
-	export let textError = '';
-	export let errorContent: Snippet | undefined = undefined;
-	export let labelContent: Snippet | undefined = undefined;
-	export let inputAttributes = {};
+	import { type HTMLInputAttributes } from 'svelte/elements';
+	interface InputProps {
+		type: 'text' | 'password' | 'number' | 'email';
+		value: string | undefined;
+		onChange: undefined | ((ev: Event) => void);
+		labelText: string;
+		classLabel: string;
+		classInput: string;
+		classError: string;
+		classContainer: string;
+		name: string;
+		colors: 'container';
+		placeholder: string;
+		labelProps: {
+			position: 'inside' | 'outside' | 'leftside';
+			dynamic: boolean;
+			className: string;
+		};
+		variant: 'default' | 'blurred' | 'faded' | 'bordered' | 'flat' | 'underlined' | string;
+		id: string | null;
+		error: boolean | ((value: any) => boolean);
+		textError: string;
+		errorContent: Snippet | undefined;
+		labelContent: Snippet | undefined;
+		inputAttributes?: HTMLInputAttributes;
+	}
+	let {
+		type = 'text',
+		value = $bindable(undefined),
+		onChange = undefined,
+		labelText = '',
+		classLabel = '',
+		classInput = '',
+		classError = '',
+		classContainer = '',
+		name,
+		colors = 'container',
+		placeholder = '',
+		labelProps = { position: 'inside', dynamic: true, className: '' },
+		variant = 'default',
+		id = null,
+		error = false,
+		textError = '',
+		errorContent = undefined,
+		labelContent = undefined,
+		inputAttributes = {}
+	}: InputProps = $props();
 
 	function translateLabelwithTransition(label: HTMLElement) {
 		const input = label.nextElementSibling as HTMLInputElement;
 		const { position, dynamic } = labelProps;
+		// @ts-expect-error
 		const initialPaddingTop = input.computedStyleMap().get('padding-top')?.value;
 		if (!dynamic) {
 			if (position === 'inside') {
@@ -107,9 +137,9 @@
 <div
 	class="ui-input-container ui-color-{colors} {labelProps.position === 'leftside'
 		? 'flex-row'
-		: 'flex-col'} ui-input-variant-{variant} {classNameContainer} "
+		: 'flex-col'} ui-input-variant-{variant} {classContainer} "
 >
-	<label use:translateLabelwithTransition for={name} class={classNameLabel}>
+	<label use:translateLabelwithTransition for={name} class={classLabel}>
 		{#if labelContent}
 			{@render labelContent()}
 		{:else}
@@ -124,15 +154,15 @@
 		{id}
 		{...inputAttributes}
 		{placeholder}
-		class="ui-input {classNameInput}"
+		class="ui-input {classInput}"
 		{type}
-		on:input={onChange}
+		oninput={onChange}
 	/>
 	{#if error === true || (typeof error === 'function' && error(value))}
 		{#if errorContent}
 			{@render errorContent()}
 		{:else}
-			<div class=" ui-color-error ui-error-message {classNameError}">
+			<div class=" ui-color-error ui-error-message {classError}">
 				{textError}
 			</div>
 		{/if}
@@ -147,6 +177,7 @@
 		}
 		input[type='number'] {
 			-moz-appearance: textfield;
+			appearance: textfield;
 		}
 		input::-webkit-outer-spin-button,
 		input::-webkit-inner-spin-button {

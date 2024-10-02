@@ -1,8 +1,16 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	export let value: any = '';
-	export let disabled = false;
-	export let className = '';
-	let selected = false;
+	import type { Snippet } from 'svelte';
+
+	interface OptionProps {
+		value?: any;
+		disabled?: boolean;
+		className?: string;
+		children?: Snippet<[any]>;
+	}
+	const { value = '', disabled = false, children, className = '' }: OptionProps = $props();
+	let selected = $state(false);
 	function setSelectHandlerToOptions(optionElement: HTMLElement) {
 		if (optionElement.parentElement?.classList.contains('ui-selection-options-container')) {
 			optionElement.addEventListener('click', () => {
@@ -21,9 +29,11 @@
 	class="ui-selection-option {className}"
 	data-selected={selected}
 >
-	<slot {selected}>
+	{#if children}
+		{@render children(selected)}
+	{:else}
 		{value}
-	</slot>
+	{/if}
 </option>
 
 <style>

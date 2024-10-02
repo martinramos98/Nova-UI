@@ -35,11 +35,6 @@
 		}
 	];
 	const colHeaders = ['nombre', 'apellido', 'direccion', 'estado'];
-	const prom = new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve(datosEjemplo);
-		}, 10000);
-	});
 </script>
 
 <div class="page-content">
@@ -51,7 +46,7 @@
 					<TableHeader>
 						{#each colHeaders as header}
 							<Cell
-								className={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
+								class={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
 								as="header"
 								scope="col">{header}</Cell
 							>
@@ -62,12 +57,12 @@
 							<TableRow>
 								<Cell as="header" scope="row">{dato.nombre}</Cell>
 								<Cell>{dato.apellido}</Cell>
-								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
-								<Cell className="p-2">
+								<Cell class="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell class="p-2">
 									<div class="flex justify-center">
 										<Chip
 											colors={dato.estado === 'Activo' ? 'success' : 'error'}
-											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											class="m-1 rounded-lg w-fit h-6 px-6 py-2"
 											variant="neon"
 											size="xs"
 										>
@@ -91,7 +86,7 @@
 					<TableHeader>
 						{#each colHeaders as header}
 							<Cell
-								className={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
+								class={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
 								as="header"
 								scope="col">{header}</Cell
 							>
@@ -102,12 +97,12 @@
 							<TableRow>
 								<Cell as="header" scope="row">{dato.nombre}</Cell>
 								<Cell>{dato.apellido}</Cell>
-								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
-								<Cell className="p-2">
+								<Cell class="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell class="p-2">
 									<div class="flex justify-center">
 										<Chip
 											colors={dato.estado === 'Activo' ? 'success' : 'error'}
-											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											class="m-1 rounded-lg w-fit h-6 px-6 py-2"
 											variant="neon"
 											size="xs"
 										>
@@ -123,11 +118,11 @@
 			<section>
 				<Title level={3}>Bordered</Title>
 
-				<Table className="my-4 " variant="bordered">
+				<Table class="my-4 " variant="bordered">
 					<TableHeader>
 						{#each colHeaders as header}
 							<Cell
-								className={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
+								class={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
 								as="header"
 								scope="col">{header}</Cell
 							>
@@ -138,12 +133,12 @@
 							<TableRow>
 								<Cell as="header" scope="row">{dato.nombre}</Cell>
 								<Cell>{dato.apellido}</Cell>
-								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
-								<Cell className="p-2">
+								<Cell class="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell class="p-2">
 									<div class="flex justify-center">
 										<Chip
 											colors={dato.estado === 'Activo' ? 'success' : 'error'}
-											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											class="m-1 rounded-lg w-fit h-6 px-6 py-2"
 											variant="neon"
 											size="xs"
 										>
@@ -158,10 +153,10 @@
 			</section>
 			<section>
 				<Title level={3}>Bordered Row</Title>
-				<Table variant="bordered-row" className="my-4 ">
+				<Table variant="bordered-row" class="my-4 ">
 					{#each colHeaders as header}
 						<Cell
-							className={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
+							class={`capitalize ${header === 'direccion' ? 'hidden sm:table-cell' : ''}`}
 							as="header"
 							scope="col">{header}</Cell
 						>
@@ -171,11 +166,11 @@
 							<TableRow>
 								<Cell as="header" scope="row">{dato.nombre}</Cell>
 								<Cell>{dato.apellido}</Cell>
-								<Cell className="sm:hidden md:table-cell">{dato.direccion}</Cell>
-								<Cell className="p-2">
+								<Cell class="sm:hidden md:table-cell">{dato.direccion}</Cell>
+								<Cell class="p-2">
 									<Chip
 										colors={dato.estado === 'Activo' ? 'success' : 'error'}
-										className="m-1 rounded-lg"
+										class="m-1 rounded-lg"
 										variant="neon"
 										size="xs"
 									>
@@ -189,24 +184,24 @@
 			</section>
 			<section>
 				<Title level={3}>Solid Row</Title>
-				<Table variant="solid-row" color="" --color-container="#3E3E3E85" className="my-4 ">
+				<Table variant="solid-row" color="" --color-container="#3E3E3E85" class="my-4 ">
 					<TableHeader>
-						<Cell className="p-3" as="header" scope="col">Nombre</Cell>
-						<Cell className="p-3" as="header" scope="col">Apellido</Cell>
-						<Cell className="p-3 hidden sm:table-cell" as="header" scope="col">Direccion</Cell>
-						<Cell className="p-3" as="header" scope="col">Estado</Cell>
+						<Cell class="p-3" as="header" scope="col">Nombre</Cell>
+						<Cell class="p-3" as="header" scope="col">Apellido</Cell>
+						<Cell class="p-3 hidden sm:table-cell" as="header" scope="col">Direccion</Cell>
+						<Cell class="p-3" as="header" scope="col">Estado</Cell>
 					</TableHeader>
 					<TableBody>
 						{#each datosEjemplo as dato}
 							<TableRow>
 								<Cell as="header" scope="row">{dato.nombre}</Cell>
 								<Cell>{dato.apellido}</Cell>
-								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
-								<Cell className="p-2">
+								<Cell class="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell class="p-2">
 									<div class="flex justify-center">
 										<Chip
 											colors={dato.estado === 'Activo' ? 'success' : 'error'}
-											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											class="m-1 rounded-lg w-fit h-6 px-6 py-2"
 											variant="neon"
 											size="xs"
 										>
@@ -221,24 +216,24 @@
 			</section>
 			<section>
 				<Title level={3}>Stripped Row</Title>
-				<Table variant="stripped" color="" --color-container="#3E3E3E85" className="my-4 ">
+				<Table variant="stripped" color="" --color-container="#3E3E3E85" class="my-4 ">
 					<TableHeader>
-						<Cell className="p-3" as="header" scope="col">Nombre</Cell>
-						<Cell className="p-3" as="header" scope="col">Apellido</Cell>
-						<Cell className="p-3 hidden sm:table-cell" as="header" scope="col">Direccion</Cell>
-						<Cell className="p-3" as="header" scope="col">Estado</Cell>
+						<Cell class="p-3" as="header" scope="col">Nombre</Cell>
+						<Cell class="p-3" as="header" scope="col">Apellido</Cell>
+						<Cell class="p-3 hidden sm:table-cell" as="header" scope="col">Direccion</Cell>
+						<Cell class="p-3" as="header" scope="col">Estado</Cell>
 					</TableHeader>
 					<TableBody>
 						{#each datosEjemplo as dato}
 							<TableRow>
 								<Cell as="header" scope="row">{dato.nombre}</Cell>
 								<Cell>{dato.apellido}</Cell>
-								<Cell className="hidden sm:table-cell">{dato.direccion}</Cell>
-								<Cell className="p-2">
+								<Cell class="hidden sm:table-cell">{dato.direccion}</Cell>
+								<Cell class="p-2">
 									<div class="flex justify-center">
 										<Chip
 											colors={dato.estado === 'Activo' ? 'success' : 'error'}
-											className="m-1 rounded-lg w-fit h-6 px-6 py-2"
+											class="m-1 rounded-lg w-fit h-6 px-6 py-2"
 											variant="neon"
 											size="xs"
 										>

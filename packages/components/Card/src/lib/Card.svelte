@@ -39,12 +39,6 @@
 			{@render footer()}
 		</div>
 	{/if}
-
-	<!-- {#if $$slots['card-backface']}
-		<slot name="card-backface">
-			<slot />
-		</slot>
-	{/if} -->
 </div>
 
 <style>

@@ -1,0 +1,38 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for callout.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "colors?:string",
+		"description": "Color scheme for the callout.",
+		"required": false,
+		"default": "'container'"
+	},
+	{
+		"name": "variant?:string",
+		"description": "Variant style of the callout.",
+		"required": false,
+		"default": "'solid'"
+	},
+	{
+		"name": "radius?:string",
+		"description": "Border radius for the callout.",
+		"required": false,
+		"default": "'rounded-xl'"
+	},
+	{
+		"name": "type?:string",
+		"description": "Type of the callout.",
+		"required": false,
+		"default": "'default'"
+	},
+	{
+		"name": "icon?:Snippet",
+		"description": "Icon for the callout.",
+		"required": false,
+		"default": "'Defined by type of callout.'"
+	}
+]

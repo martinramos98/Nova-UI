@@ -1,9 +1,9 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { setContext } from 'svelte';
+	import { setContext, type Snippet } from 'svelte';
 	import '../styles/main.css';
-	let { theme = 'default' } = $props();
+	let { theme = 'default', children }: { theme?: string; children: Snippet } = $props();
 	setContext('nova-ui-context', {
 		theme
 	});
@@ -12,4 +12,4 @@
 	});
 </script>
 
-<slot />
+{@render children()}

@@ -1,9 +1,23 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	// TODO: Define type of variantas and colors
-	export let variant: any | '' = '';
-	export let colors: any | '' = '';
-	export let className = '';
-	export let size: 'xs' | 'sm' | 'md' | 'lg' = 'sm';
+	interface ChipProps {
+		variant?: any | '';
+		colors?: any | '';
+		class?: string;
+		size?: 'xs' | 'sm' | 'md' | 'lg';
+		children: Snippet;
+	}
+	const {
+		variant = '',
+		colors = '',
+		class: className = '',
+		size = 'md',
+		children
+	}: ChipProps = $props();
 </script>
 
 <span
@@ -11,7 +25,7 @@
 		? 'ui-variant-' + variant
 		: ''} {className}"
 >
-	<slot />
+	{@render children()}
 </span>
 
 <style>

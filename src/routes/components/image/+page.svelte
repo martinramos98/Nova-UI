@@ -125,9 +125,9 @@
 						classCaption="bg-black/70 text-white py-0.5"
 						captionInside
 					>
-						<svelte:fragment slot="caption-content"
-							>Figure 1: Montañas de Colores de Salta</svelte:fragment
-						>
+						{#snippet captionContent()}
+							Figure 1: Montañas de Colores de Salta
+						{/snippet}
 					</Image>
 					<Image
 						class="object-cover"
@@ -137,9 +137,9 @@
 						captionInside
 						src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Cataratas.jpg/1200px-Cataratas.jpg"
 					>
-						<svelte:fragment slot="caption-content"
-							>Figure 2: Cataratas del Iguazu Misiones</svelte:fragment
-						>
+						{#snippet captionContent()}
+							Figure 2: Cataratas del Iguazu Misiones
+						{/snippet}
 					</Image>
 					<Image
 						classContainer="max-w-[500px]"
@@ -147,7 +147,9 @@
 						alt="Salta"
 						src="https://a.travel-assets.com/findyours-php/viewfinder/images/res40/80000/80287-Salta.jpg"
 					>
-						<svelte:fragment slot="caption-content">Figure 3: Salinas de Salta</svelte:fragment>
+						{#snippet captionContent()}
+							Figure 3: Salinas de Salta
+						{/snippet}
 					</Image>
 					<Image
 						classContainer="max-w-[500px]"
@@ -155,9 +157,9 @@
 						alt="Ruinas de San Ignacio"
 						src="https://www.tangol.com/blog/Fotos/Notas/historia-de-las-ruinas-jesuiticas-de-san-ignacio_443_202107221201440.PNG"
 					>
-						<svelte:fragment slot="caption-content"
-							>Figure 4: Ruinas de San Ignacio, Misiones</svelte:fragment
-						>
+						{#snippet captionContent()}
+							Figure 4: Ruinas de San Ignacio, Misiones
+						{/snippet}
 					</Image>
 				</div>
 			</section>

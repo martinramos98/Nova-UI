@@ -95,14 +95,14 @@
 			<div class="hero-buttons">
 				<Link
 					variant="solid"
-					className="p-2 px-3 font-semibold rounded-full"
+					class="p-2 px-3 font-semibold rounded-full"
 					target="self"
 					colors="primary"
 					href="/components">Components</Link
 				>
 				<Link
 					--color-container={'#FDB220'}
-					className="p-2 px-3 font-semibold rounded-full"
+					class="p-2 px-3 font-semibold rounded-full"
 					target="self"
 					variant="bordered"
 					href="/components">Get Started</Link

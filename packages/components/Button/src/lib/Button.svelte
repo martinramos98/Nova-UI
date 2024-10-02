@@ -1,7 +1,8 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import buttonAction, { type ButtonElementProps } from './ButtonAction.js';
+	import buttonAction from './ButtonAction.js';
+	import { type HTMLButtonAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
 	interface ButtonProps {
 		css?: string;
@@ -12,10 +13,11 @@
 		isLoading?: boolean;
 		spinnerPosition?: 'left' | 'right';
 		withClickEffect?: boolean;
-		buttonProps?: ButtonElementProps | undefined;
+		// buttonProps?: ButtonElementProps | undefined;
 		onClick?: ((ev: MouseEvent) => void) | undefined;
 		spinner?: Snippet;
 		children: Snippet;
+		buttonAttr?: HTMLButtonAttributes;
 	}
 	const {
 		css = '',
@@ -26,7 +28,7 @@
 		isLoading = false,
 		spinnerPosition = 'left',
 		withClickEffect = true,
-		buttonProps = {},
+		buttonAttr = {},
 		onClick = undefined,
 		spinner = undefined,
 		children
@@ -34,18 +36,19 @@
 </script>
 
 <button
-	use:buttonAction={{ buttonElementProps: buttonProps, withClickEffect, onClick }}
+	use:buttonAction={{ withClickEffect, onClick }}
+	{...buttonAttr}
 	class="ui-button {colors !== '' ? 'ui-color-' + colors : ''} {variant !== ''
 		? 'ui-variant-' + variant
 		: ''} {className}"
 	style={css}
 	{disabled}
 >
-	{#if spinnerPosition === 'left' && isLoading}
+	{#if spinnerPosition === 'left' && isLoading && spinner}
 		{@render spinner()}
 	{/if}
 	{@render children()}
-	{#if spinnerPosition === 'right' && isLoading}
+	{#if spinnerPosition === 'right' && isLoading && spinner}
 		{@render spinner()}
 	{/if}
 </button>

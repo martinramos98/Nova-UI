@@ -2,6 +2,7 @@
 	import { Title } from '@nv-org/title';
 	import { Avatar, AvatarGroup } from '@nv-org/avatar';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
+	import AvatarProps from '../../../app/components/pagesSections/avatar/AvatarProps.svelte';
 	function codeString(props: string) {
 		return `<Avatar ${props}/>`;
 	}
@@ -29,7 +30,7 @@
 	<main>
 		<article id={'avatar'}>
 			<header>
-				<Title level={1} className=" text-start w-full ">Avatar</Title>
+				<Title level={1} class=" text-start w-full ">Avatar</Title>
 			</header>
 
 			<p class="py-2 px-2">
@@ -66,7 +67,7 @@
 		</article>
 		<article id={'options'}>
 			<header>
-				<Title level={2} className="w-fit p-2">Content Options</Title>
+				<Title level={2} class="w-fit p-2">Content Options</Title>
 			</header>
 			<section>
 				<div class="w-full">
@@ -76,12 +77,11 @@
 						{#snippet component()}
 							<div class="flex flex-row gap-2">
 								<Avatar
-									className="font-bold"
+									class="font-bold"
 									avatarSrc="https://play.nintendo.com/images/profile-mk-koopa.7bf2a8f2.png"
 								></Avatar>
-								<Avatar className="font-bold bg-zinc-800 text-xl" avatarName="Koopa Troopa"
-								></Avatar>
-								<Avatar className="bg-zinc-700 p-1"></Avatar>
+								<Avatar class="font-bold bg-zinc-800 text-xl" avatarName="Koopa Troopa"></Avatar>
+								<Avatar class="bg-zinc-700 p-1"></Avatar>
 							</div>
 						{/snippet}
 					</ComponentCodeTabs>
@@ -90,7 +90,7 @@
 		</article>
 		<article id={'bordered'}>
 			<header>
-				<Title level={2} className="w-fit p-2">Bordered</Title>
+				<Title level={2} class="w-fit p-2">Bordered</Title>
 			</header>
 			<section>
 				<div class="w-full">
@@ -183,6 +183,14 @@
 						{/snippet}
 					</ComponentCodeTabs>
 				</div>
+			</section>
+		</article>
+		<article>
+			<header>
+				<Title level={2}>Properties</Title>
+			</header>
+			<section>
+				<AvatarProps />
 			</section>
 		</article>
 	</main>

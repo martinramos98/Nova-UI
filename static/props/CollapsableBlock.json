@@ -1,0 +1,32 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for badge.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "variant?:string",
+		"description": "Variant style of the component.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "colors?:string",
+		"description": "Colors for the component.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "size?:'xs'|'sm'|'md'|'lg'",
+		"description": "Size of the component.",
+		"required": false,
+		"default": "'md'"
+	},
+
+	{
+		"name": "children:Snippet",
+		"description": "Snippet children of the component.",
+		"required": true
+	}
+]

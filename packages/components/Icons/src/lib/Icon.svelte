@@ -1,9 +1,11 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	const { props } = $props();
+	import type { Snippet } from 'svelte';
+
+	const { props, children }: { props: any; children: Snippet } = $props();
 </script>
 
 <svg {...props}>
-	<slot />
+	{@render children()}
 </svg>

@@ -1,0 +1,74 @@
+[
+	{
+		"name": "open?:boolean",
+		"description": "open state that triggers alert.",
+		"required": false,
+		"default": false,
+		"bindable": true
+	},
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for accordion.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "radius?:string",
+		"description": "border radius of alert container.",
+		"required": false,
+		"default": "'md'"
+	},
+	{
+		"name": "size?:string",
+		"description": "size of alert container content.",
+		"required": false,
+		"default": "'md'"
+	},
+	{
+		"name": "footer?:Snippet<[any,any]>",
+		"description": "Snippet for create a custom footer for alert.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "text?:string",
+		"description": "Text content of the alert",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "type?:'default' | 'prompt' | 'confirm'",
+		"description": "type of component alert.",
+		"required": false,
+		"default": "'default'"
+	},
+	{
+		"name": "onClose?:(value: string | undefined | boolean) => void;",
+		"description": "close function that triggers when alert is closed.",
+		"required": true
+	},
+	{
+		"name": "promptProps?:InputProps",
+		"description": "Properties for input component on prompt alert type.",
+		"required": false,
+		"default": "'default'"
+	},
+	{
+		"name": "backdrop?:{class?:string,type: 'normal' | 'blur' | 'transparent'}",
+		"description": "backdrop props for styling.",
+		"required": false,
+		"default": "'default'"
+	},
+	{
+		"name": "animationFunction?:SvelteTransitionFn",
+		"description": "Function for svelte transition animtation on render component.",
+		"required": false,
+		"default": "PopOut"
+	},
+	{
+		"name": "animationParams?:{delay?:number,duration?:number,easing:EaseFn,...any}",
+		"description": "Parameters for the animation function. Controls duration of the animation, delay, easing, etc. Easing function must be a svelte easing function a like.",
+		"required": false,
+		"default": "'{duration: 300, easing: cubicOut}'"
+	}
+]

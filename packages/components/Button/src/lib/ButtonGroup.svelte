@@ -4,11 +4,11 @@
 	import type { Snippet } from 'svelte';
 
 	interface ButtonGroupProps {
-		classname?: string;
+		class?: string;
 		disabled?: boolean;
 		children: Snippet;
 	}
-	const { classname = '', disabled = false, children }: ButtonGroupProps = $props();
+	const { class: classname = '', disabled = false, children }: ButtonGroupProps = $props();
 	let ref: HTMLElement;
 	$effect(() => {
 		if (disabled)

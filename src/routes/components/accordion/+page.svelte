@@ -3,6 +3,9 @@
 	import { Accordion, AccordionSection } from '@nv-org/accordion';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
+	import AccordionVariantCases from '../../../app/components/pagesSections/accordion/AccordionVariantCases/AccordionVariantCases.svelte';
+	import AccordionMultiselectionCase from '../../../app/components/pagesSections/accordion/MultiselectionCase/AccordionMultiselectionCase.svelte';
+	import AccordionProps from '../../../app/components/pagesSections/accordion/AccordionProps/AccordionProps.svelte';
 	function codeStringWith(propsStrig: string) {
 		return `<Accordion className="m-2" ${propsStrig}>
 	<AccordionSection>
@@ -110,91 +113,15 @@
 			<header>
 				<Title level={2}>Multiopen</Title>
 			</header>
-			<section>
-				<div>
-					<ComponentCodeTabs code={codeStringWith('multiopen={true}')}>
-						{#snippet component()}
-							<Accordion multiopen={true} className="m-2">
-								{@render accordionDefaultContent()}
-							</Accordion>
-						{/snippet}
-					</ComponentCodeTabs>
-				</div>
-			</section>
+			<AccordionMultiselectionCase />
 		</article>
 		<article>
-			<header><Title>Variants</Title></header>
-			<section>
-				<Title level={3}>None</Title>
-				<div>
-					<ComponentCodeTabs code={codeStringWith('variant="" multiopen={false}')}>
-						{#snippet component()}
-							<Accordion variant="" multiopen={false} className="m-2">
-								{@render accordionDefaultContent()}
-							</Accordion>
-						{/snippet}
-					</ComponentCodeTabs>
-				</div>
-				<section>
-					<Title level={3}>Default</Title>
-					<div>
-						<ComponentCodeTabs code={codeStringWith('multiopen={false}')}>
-							{#snippet component()}
-								<Accordion multiopen={false} className="m-2">
-									{@render accordionDefaultContent()}
-								</Accordion>
-							{/snippet}
-						</ComponentCodeTabs>
-					</div>
-				</section>
-				<div>
-					<section>
-						<Title level={3}>Splitted Content</Title>
-						<ComponentCodeTabs
-							code={codeStringWith(
-								'variant="splitted-content" colors="container" multiopen={false}'
-							)}
-						>
-							{#snippet component()}
-								<Accordion
-									variant="splitted-content"
-									colors="container"
-									multiopen={false}
-									className="m-2"
-								>
-									{@render accordionDefaultContent()}
-								</Accordion>
-							{/snippet}
-						</ComponentCodeTabs>
-					</section>
-				</div>
-				<div>
-					<section>
-						<Title level={3}>Splitted</Title>
-						<ComponentCodeTabs
-							code={codeStringWith('variant="splitted" colors="container" multiopen={false}')}
-						>
-							{#snippet component()}
-								<Accordion variant="splitted" colors="container" multiopen={false} className="m-2">
-									{@render accordionDefaultContent()}
-								</Accordion>
-							{/snippet}
-						</ComponentCodeTabs>
-					</section>
-				</div>
-				<div>
-					<section>
-						<Title level={3}>Bordered Items</Title>
-						<ComponentCodeTabs code={codeStringWith('variant="bordered-items" multiopen={false}')}>
-							{#snippet component()}
-								<Accordion variant="bordered-items" multiopen={false} className="m-2">
-									{@render accordionDefaultContent()}
-								</Accordion>
-							{/snippet}
-						</ComponentCodeTabs>
-					</section>
-				</div>
-			</section>
+			<header><Title level={2}>Variants</Title></header>
+			<AccordionVariantCases />
+		</article>
+		<article>
+			<header><Title level={2}>Properties</Title></header>
+			<AccordionProps />
 		</article>
 	</main>
 </div>

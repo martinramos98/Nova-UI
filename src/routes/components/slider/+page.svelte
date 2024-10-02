@@ -13,7 +13,7 @@
 				<Title>Slider</Title>
 			</header>
 			<section>
-				<Slider className={'mx-4'} format="thin" maxValue={1000}></Slider>
+				<Slider class={'mx-4'} format="thin" maxValue={1000}></Slider>
 			</section>
 		</article>
 		<article>
@@ -21,9 +21,9 @@
 				<Title level={2}>Formats</Title>
 			</header>
 			<section>
-				<Slider className={'mx-4'} format="thin" maxValue={1000}></Slider>
-				<Slider className={'mx-4'} minValue={1000} maxValue={2000}></Slider>
-				<Slider className={'mx-4'} format="thick" maxValue={1000}></Slider>
+				<Slider class={'mx-4'} format="thin" maxValue={1000}></Slider>
+				<Slider class={'mx-4'} minValue={1000} maxValue={2000}></Slider>
+				<Slider class={'mx-4'} format="thick" maxValue={1000}></Slider>
 			</section>
 		</article>
 		<article>
@@ -31,9 +31,9 @@
 				<Title level={2}>Steps</Title>
 			</header>
 			<section>
-				<Slider className={'mx-4'} steps={10} maxValue={1000}></Slider>
-				<Slider className={'mx-4'} steps={20} minValue={1000} maxValue={2000}></Slider>
-				<Slider className={'mx-4'} steps={5} maxValue={1000}></Slider>
+				<Slider class={'mx-4'} steps={10} maxValue={1000}></Slider>
+				<Slider class={'mx-4'} steps={20} minValue={1000} maxValue={2000}></Slider>
+				<Slider class={'mx-4'} steps={5} maxValue={1000}></Slider>
 			</section>
 		</article>
 		<article>
@@ -45,7 +45,7 @@
 						{value}
 					</span>
 				</p>
-				<Slider className={'mx-4'} colors="warning" bind:value maxValue={1000}></Slider>
+				<Slider class={'mx-4'} colors="warning" bind:value maxValue={1000}></Slider>
 			</section>
 			<section>
 				<Title level={3}>With min value</Title>
@@ -55,12 +55,7 @@
 						{value2}
 					</span>
 				</p>
-				<Slider
-					className={'mx-4'}
-					colors="warning"
-					bind:value={value2}
-					minValue={500}
-					maxValue={1000}
+				<Slider class={'mx-4'} colors="warning" bind:value={value2} minValue={500} maxValue={1000}
 				></Slider>
 			</section>
 			<section>
@@ -71,7 +66,7 @@
 						{valueSteps}
 					</span>
 				</p>
-				<Slider className={'mx-4'} steps={5} bind:value={valueSteps} maxValue={1000}></Slider>
+				<Slider class={'mx-4'} steps={5} bind:value={valueSteps} maxValue={1000}></Slider>
 			</section>
 		</article>
 		<article>
@@ -80,8 +75,8 @@
 			</header>
 			<section>
 				<Slider
-					className={'mx-4'}
-					classNameBar="bg-gradient-to-r from-red-500 to-indigo-500"
+					class={'mx-4'}
+					classBar="bg-gradient-to-r from-red-500 to-indigo-500"
 					format="thick"
 					maxValue={1000}
 				>

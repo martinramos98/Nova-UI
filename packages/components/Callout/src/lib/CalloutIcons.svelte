@@ -1,7 +1,10 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { CircleIcon, WarningIcon, AlertIcon, InfoIcon, Icon, SuccessIcon } from '@nv-org/icon';
 
-	export let type: 'default' | 'warning' | 'alert' | 'success' | 'info' = 'default';
+	type TypeIcon = 'default' | 'warning' | 'alert' | 'success' | 'info';
+	const { type }: { type: TypeIcon } = $props();
 	const icons = {
 		default: { viewBox: '0 0 24 24', icon: CircleIcon },
 		warning: { viewBox: '0 0 24 24', icon: WarningIcon },
@@ -9,6 +12,7 @@
 		success: { viewBox: '0 0 24 24', icon: SuccessIcon },
 		info: { viewBox: '0 0 24 24', icon: InfoIcon }
 	};
+	const IconType = icons[type].icon;
 </script>
 
 <Icon
@@ -20,5 +24,5 @@
 		fill: 'none'
 	}}
 >
-	<svelte:component this={icons[type].icon} />
+	<IconType />
 </Icon>

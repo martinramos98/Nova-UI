@@ -14,10 +14,10 @@
 <div class="w-full">
 	<ComponentCodeTabs
 		code={`<div class="w-full h-[300px] p-2 context-container" use:asContextMenuContainer>
-	<ContextMenu bind:open={openContext} onClose={closeContextMenu} className="p-2 rounded-lg">
+	<ContextMenu bind:open={openContext} onClose={closeContextMenu} class="p-2 rounded-lg">
 		<Button
 			variant="light"
-			className="w-full px-2 text-start"
+			class="w-full px-2 text-start"
 			onClick={() => {
 				closeContextMenu();
 			}}
@@ -26,7 +26,7 @@
 		>
 		<Button
 			variant="light"
-			className="w-full px-2 text-start"
+			class="w-full px-2 text-start"
 			onClick={() => {
 				closeContextMenu();
 			}}
@@ -35,7 +35,7 @@
 		>
 		<Button
 			variant="light"
-			className="w-full px-2 text-start"
+			class="w-full px-2 text-start"
 			onClick={() => {
 				closeContextMenu();
 			}}
@@ -44,7 +44,7 @@
 		>
 		<Button
 			variant="light"
-			className="w-full px-2 text-start"
+			class="w-full px-2 text-start"
 			onClick={() => {
 				closeContextMenu();
 			}}
@@ -57,10 +57,10 @@
 	>
 		{#snippet component()}
 			<div class="w-full h-[300px] p-2 context-container" use:asContextMenuContainer>
-				<ContextMenu bind:open={openContext} onClose={closeContextMenu} className="p-2 rounded-lg">
+				<ContextMenu bind:open={openContext} onClose={closeContextMenu} class="p-2 rounded-lg">
 					<Button
 						variant="light"
-						className="w-full px-2 text-start"
+						class="w-full px-2 text-start"
 						onClick={() => {
 							closeContextMenu();
 						}}
@@ -69,7 +69,7 @@
 					>
 					<Button
 						variant="light"
-						className="w-full px-2 text-start"
+						class="w-full px-2 text-start"
 						onClick={() => {
 							closeContextMenu();
 						}}
@@ -78,7 +78,7 @@
 					>
 					<Button
 						variant="light"
-						className="w-full px-2 text-start"
+						class="w-full px-2 text-start"
 						onClick={() => {
 							closeContextMenu();
 						}}
@@ -87,7 +87,7 @@
 					>
 					<Button
 						variant="light"
-						className="w-full px-2 text-start"
+						class="w-full px-2 text-start"
 						onClick={() => {
 							closeContextMenu();
 						}}

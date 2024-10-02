@@ -1,18 +1,56 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	import { setContext } from 'svelte';
+	import { setContext, type Snippet } from 'svelte';
 	import { readonly, writable } from 'svelte/store';
 	import RadioButton from './RadioButton/RadioButton.svelte';
-	export let type: 'checkbox' | 'radio' = 'radio';
-	export let errorMessage = '';
-	export let className = '';
-	export let iconChecked = 'default';
-	export let error = false;
-	export let colors = 'info';
-	export let withControl = false;
-	export let checkedValues = new Set<string>();
-	export let name: string;
-	export let onChange: ((checked: Set<string>) => void) | undefined = undefined;
-	export let control: any = {};
+	interface RadioGroupProps {
+		type?: 'checkbox' | 'radio';
+		errorMessage?: string;
+		className?: string;
+		error?: boolean;
+		colors?: string;
+		withControl?: boolean;
+		checkedValues?: Set<string>;
+		name: string;
+		onChange?: (checked: Set<string>) => void;
+		control?: {
+			labelText?: string;
+			className?: string;
+			colors?: string;
+			variant?: 'solid' | 'outline';
+			lineThroughtOnCheck?: boolean;
+			id?: string;
+			disabled?: boolean;
+		};
+		labelControl?: Snippet;
+		children: Snippet;
+	}
+	let {
+		type = 'radio',
+		errorMessage = '',
+		className = '',
+		error = false,
+		colors = 'info',
+		withControl = false,
+		checkedValues = new Set<string>(),
+		name,
+		onChange = undefined,
+		children,
+		labelControl,
+		control = {}
+	}: RadioGroupProps = $props();
+	// export let type: 'checkbox' | 'radio' = 'radio';
+	// export let errorMessage = '';
+	// export let className = '';
+	// export let iconChecked = 'default';
+	// export let error = false;
+	// export let colors = 'info';
+	// export let withControl = false;
+	// export let checkedValues = new Set<string>();
+	// export let name: string;
+	// export let onChange: ((checked: Set<string>) => void) | undefined = undefined;
+	// export let control: any = {};
 	const defaultControlOptions = {
 		labelText: '',
 		className: '',
@@ -26,8 +64,8 @@
 		...defaultControlOptions,
 		...control
 	};
-	let controlIndeterminate = false;
-	let controlCheck = false;
+	let controlIndeterminate = $state(false);
+	let controlCheck = $state(false);
 	const controlOfItems = new Array<{ check: () => void; uncheck: () => void }>();
 	const typeStore = writable(type);
 	const checkedValueStore = writable(checkedValues);
@@ -42,9 +80,6 @@
 		checked: checkedValueStore,
 		subscribeControler
 	});
-	// function stateOfItemsChecked(): 'all' | 'some' | 'none' {
-	// 	return 'all';
-	// }
 	function checkAll() {
 		controlOfItems.forEach((control) => {
 			control.check();
@@ -90,10 +125,12 @@
 				checked={controlCheck}
 				{...control}
 			/>
-			<slot name="label-control" />
+			{#if labelControl}
+				{@render labelControl()}
+			{/if}
 		</div>
 	{/if}
-	<slot />
+	{@render children()}
 	{#if error}
 		<span>
 			{errorMessage}

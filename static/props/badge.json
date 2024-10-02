@@ -1,0 +1,51 @@
+[
+	{
+		"name": "hideBadge?:boolean",
+		"description": "Hides badge.",
+		"required": false,
+		"default": false
+	},
+	{
+		"name": "contentBadge?:string | Snippet",
+		"description": "Intern content of the badge.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "positionBadge?:'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'",
+		"description": "Position of the badge.",
+		"required": false,
+		"default": false
+	},
+
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for badge.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9",
+		"description": "Size of the badge.",
+		"required": false,
+		"default": 3
+	},
+	{
+		"name": "radius?: 'none' | 'sm' | 'md' | 'lg' | 'full'",
+		"description": "Border radius of the badge.",
+		"required": false,
+		"default": "none"
+	},
+	{
+		"name": "variant?: string",
+		"description": "Variant of the badge.",
+		"required": false,
+		"default": ""
+	},
+	{
+		"name": "colors?: string",
+		"description": "Colors scheme of the badge.",
+		"required": false,
+		"default": ""
+	}
+]

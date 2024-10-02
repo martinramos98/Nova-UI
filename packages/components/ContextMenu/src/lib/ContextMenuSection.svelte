@@ -9,20 +9,20 @@
 		children: Snippet;
 		triggerContent: Snippet;
 		offset?: number;
-		classNameContainer?: string;
+		classContainer?: string;
 	}
 	const {
 		open,
 		children,
-		classNameContainer = '',
+		classContainer = '',
 		offset = 0,
 		triggerContent
 	}: ContextMenuSubsection = $props();
 </script>
 
-<FloatingSubsection {offset} {classNameContainer}>
+<FloatingSubsection {open} {offset} {classContainer}>
 	{@render children()}
-	<svelte:fragment slot="trigger">
+	{#snippet trigger()}
 		{@render triggerContent()}
-	</svelte:fragment>
+	{/snippet}
 </FloatingSubsection>

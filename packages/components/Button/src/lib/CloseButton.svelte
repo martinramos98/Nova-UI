@@ -5,7 +5,7 @@
 	import Button from './Button.svelte';
 	import { Icon, CrossIcon } from '@nv-org/icon';
 	interface CloseButtonProps {
-		className?: string;
+		class?: string;
 		variant?: any;
 		colors?: any;
 		onClose: (ev: MouseEvent) => void;
@@ -13,15 +13,16 @@
 		side: 'left' | 'right';
 	}
 	const {
-		className = '',
+		class: className = '',
 		variant = 'solid',
 		colors = 'primary',
 		onClose,
-		side = 'left'
+		side = 'left',
+		children
 	}: CloseButtonProps = $props();
 </script>
 
-<Button {variant} {colors} {className} onClick={onClose} withClickEffect={false}>
+<Button {variant} {colors} class={className} onClick={onClose} withClickEffect={false}>
 	{#if children && side === 'left'}
 		{@render children()}
 	{/if}

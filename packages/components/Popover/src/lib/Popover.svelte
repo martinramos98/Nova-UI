@@ -29,32 +29,6 @@
 	}: PopoverProps = $props();
 	let popover: HTMLElement | undefined = $state();
 	let popoverContainer: HTMLElement;
-	// const animationKeyframe: Keyframe[] = [
-	// 	{ opacity: 0, scale: 0.9 },
-	// 	{ opacity: 1, scale: 1 }
-	// ];
-	// const animationOptions: KeyframeEffectOptions = {
-	// 	duration: 300,
-	// 	easing: 'ease-in-out',
-	// 	iterations: 1,
-	// 	direction: 'normal',
-	// 	fill: 'both'
-	// };
-	// const animationRender = animateRender({
-	// 	get open() {
-	// 		return open;
-	// 	},
-	// 	get element() {
-	// 		return popover;
-	// 	},
-	// 	animationParams: {
-	// 		animations: {
-	// 			keyframes: animationKeyframe,
-	// 			animationOptions
-	// 		},
-	// 		iterations: 1
-	// 	}
-	// });
 	$effect(() => {
 		if (!open) {
 			window.removeEventListener('pointerdown', handleTogglePopover);
@@ -85,8 +59,7 @@
 </script>
 
 <div
-	on:pointerdown|capture={onClickPopover}
-	on:keydown={() => {}}
+	onpointerdowncapture={onClickPopover}
 	role="tooltip"
 	bind:this={popoverContainer}
 	class="ui-popover-container"

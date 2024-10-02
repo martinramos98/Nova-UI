@@ -1,6 +1,10 @@
+<svelte:options runes={true} />
+
 <script>
 	import { Option, Selection } from '@nv-org/selection';
 	import { Title } from '@nv-org/title';
+
+	let selVal = $state(new Set());
 </script>
 
 <div class="page-content">
@@ -15,7 +19,7 @@
 						selectionLabel={'Test Selection'}
 						colors="container"
 						variant={'default'}
-						classNameSelected="rounded-sm"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -31,7 +35,12 @@
 			</header>
 			<section>
 				<div class="w-full">
-					<Selection colors="container" multiselection selectionLabel={'Multiselection Selection'}>
+					<Selection
+						bind:selectedValue={selVal}
+						colors="container"
+						multiselection
+						selectionLabel={'Multiselection Selection'}
+					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
 						<Option value={3}>3</Option>
@@ -51,7 +60,7 @@
 						colors="container"
 						variant={'default'}
 						placeholder="Placeholder"
-						classNameSelected="rounded-sm"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -62,7 +71,7 @@
 						colors="container"
 						variant={'default'}
 						placeholder="Placeholder"
-						classNameSelected="rounded-sm"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -82,7 +91,7 @@
 						selectionLabel={'Default Selection'}
 						colors="container-hight"
 						variant={'default'}
-						classNameSelected="rounded-sm"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -91,9 +100,9 @@
 					</Selection>
 					<Selection
 						selectionLabel={'Blurred Selection'}
-						classNameInputBox="min-w-[200px]"
+						classInputBox="min-w-[200px]"
 						variant={'blurred'}
-						classNameSelected="rounded-sm"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -104,7 +113,7 @@
 						multiselection
 						variant={'faded'}
 						colors="primary"
-						classNameInputBox="min-w-[200px]"
+						classInputBox="min-w-[200px]"
 						selectionLabel={'Faded Selection'}
 					>
 						<Option value={1}>1</Option>
@@ -115,8 +124,8 @@
 					<Selection
 						selectionLabel={'Underlined Selection'}
 						variant={'underlined'}
-						classNameInputBox="min-w-[200px]"
-						classNameSelected="rounded-sm"
+						classInputBox="min-w-[200px]"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -127,7 +136,7 @@
 						multiselection
 						variant={'bordered'}
 						colors={'primary'}
-						classNameInputBox="min-w-[200px]"
+						classInputBox="min-w-[200px]"
 						selectionLabel={'Bordered'}
 					>
 						<Option value={1}>1</Option>
@@ -148,8 +157,8 @@
 						selectionLabel={'Selection Success'}
 						variant={'underlined'}
 						colors="success"
-						classNameInputBox="min-w-[200px]"
-						classNameSelected="rounded-sm"
+						classInputBox="min-w-[200px]"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -160,8 +169,8 @@
 						selectionLabel={'Selection Error'}
 						variant={'underlined'}
 						colors="error"
-						classNameInputBox="min-w-[200px]"
-						classNameSelected="rounded-sm"
+						classInputBox="min-w-[200px]"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -172,8 +181,8 @@
 						selectionLabel={'Selection Warning'}
 						variant={'underlined'}
 						colors="warning"
-						classNameInputBox="min-w-[200px]"
-						classNameSelected="rounded-sm"
+						classInputBox="min-w-[200px]"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -184,8 +193,8 @@
 						selectionLabel={'Selection Primary'}
 						variant={'underlined'}
 						colors="primary"
-						classNameInputBox="min-w-[200px]"
-						classNameSelected="rounded-sm"
+						classInputBox="min-w-[200px]"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>
@@ -196,8 +205,8 @@
 						selectionLabel={'Selection Info'}
 						variant={'underlined'}
 						colors="info"
-						classNameInputBox="min-w-[200px]"
-						classNameSelected="rounded-sm"
+						classInputBox="min-w-[200px]"
+						classSelected="rounded-sm"
 					>
 						<Option value={1}>1</Option>
 						<Option value={2}>2</Option>

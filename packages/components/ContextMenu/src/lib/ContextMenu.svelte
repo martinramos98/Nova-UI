@@ -8,7 +8,7 @@
 	import { fadeAnimation } from '@nv-org/element-animation-js';
 	let {
 		children,
-		className = '',
+		class: className = '',
 		open = $bindable(false),
 		offset = 0,
 		position = 'bottom',
@@ -17,7 +17,7 @@
 		}
 	}: {
 		children?: Snippet;
-		className?: string;
+		class?: string;
 		onClose?: () => void;
 		open?: boolean;
 		offset?: number;

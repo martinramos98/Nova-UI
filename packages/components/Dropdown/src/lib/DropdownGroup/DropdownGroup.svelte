@@ -23,9 +23,9 @@
 
 <FloatingSubsection openOnHover={true} {offset} {classNameContainer} {open} {position}>
 	{@render children()}
-	<svelte:fragment slot="trigger">
+	{#snippet trigger()}
 		<DropDownItem>
 			{@render triggerContent()}
 		</DropDownItem>
-	</svelte:fragment>
+	{/snippet}
 </FloatingSubsection>

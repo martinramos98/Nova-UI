@@ -1,43 +1,78 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { ElementAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
 	import { setFloatingPosition } from '@nv-org/utils';
-	export let multiselection = false;
-	export let type = 'default';
-	export let variant = 'default';
-	export let colors = 'primary';
-	export let selectionLabel = '';
-	export let disabled = false;
-	export let isInvalid = false;
-	export let errorMessage: string | undefined = undefined;
-	export let labelProps = {
-		className: '',
-		labelPosition: 'inside'
-	};
-	export let className = '';
-	export let classNameOptionsContainer = '';
-	export let classNameSelected = '';
-	export let classNameInputBox = '';
-	export let placeholder = '';
-	export let value: any = undefined;
-	export let onSelect: undefined | ((value: any) => void) = undefined;
-	// const selected = writable<any[]>([]);
+	import type { Snippet } from 'svelte';
+	interface SelectionProps {
+		multiselection?: boolean;
+		type?: 'default' | 'outlined' | 'filled' | 'underlined' | 'blurred' | 'flat' | 'faded' | string;
+		variant?:
+			| 'default'
+			| 'primary'
+			| 'secondary'
+			| 'tertiary'
+			| 'success'
+			| 'warning'
+			| 'danger'
+			| string;
+		colors?: string;
+		selectionLabel?: string;
+		disabled?: boolean;
+		isInvalid?: boolean;
+		errorMessage?: string;
+		labelProps?: {
+			className?: string;
+			labelPosition?: 'inside' | 'outside';
+		};
+		class?: string;
+		classOptionsContainer?: string;
+		classSelected?: string;
+		classInputBox?: string;
+		placeholder?: string;
+		selectedValue?: any;
+		onSelect?: undefined | ((value: any) => void);
+		children: Snippet;
+	}
+	let {
+		multiselection = false,
+		type = 'default',
+		variant = 'default',
+		colors = 'primary',
+		selectionLabel = '',
+		disabled = false,
+		isInvalid = false,
+		errorMessage = undefined,
+		labelProps = { className: '', labelPosition: 'inside' },
+		class: className = '',
+		classOptionsContainer = '',
+		classSelected = '',
+		classInputBox = '',
+		placeholder = '',
+		selectedValue = $bindable(new Set()),
+		onSelect = undefined,
+		children
+	}: SelectionProps = $props();
 
-	let selected: Set<any> = new Set(value ? [value] : []);
-	let openSelection = false;
-	let render = false;
+	let openSelection = $state(false);
+	let render = $state(false);
 	let animationSelection: ElementAnimation;
 	let selectionEL: HTMLElement;
+	function setNewSelection(sel: Set<any>) {
+		selectedValue = sel;
+	}
 	function onselecthandler(value: any) {
 		onSelect && onSelect(value);
 		let isSelected = false;
 		if (multiselection) {
-			let sel = selected;
+			let sel = new Set(selectedValue);
+
 			isSelected = sel.has(value);
 			isSelected ? sel.delete(value) : sel.add(value);
-			selected = sel;
+			setNewSelection(sel);
 		} else {
-			isSelected = selected.has(value);
-			selected = isSelected ? new Set() : new Set([value]);
+			isSelected = selectedValue.has(value);
+			selectedValue = isSelected ? new Set() : new Set([value]);
 		}
 		openSelection = false;
 		animationSelection.reverse();
@@ -50,11 +85,10 @@
 		node['type'] = type;
 	}
 	function setLabelPositioning(labelElement: HTMLLabelElement, open: boolean) {
-		if (!placeholder && selected.size === 0) {
+		if (!placeholder && selectedValue.size === 0) {
 			labelElement.classList.toggle('dynamic-position', true);
 		}
 		let top = 0;
-		// debugger;
 		const spanBoundings = labelElement.previousElementSibling?.getBoundingClientRect();
 		if (labelProps.labelPosition === 'inside') {
 			top = spanBoundings?.height as number;
@@ -62,7 +96,7 @@
 			top = (spanBoundings?.height as number) + 20;
 		}
 
-		if (open || !!placeholder || selected.size !== 0) {
+		if (open || !!placeholder || selectedValue.size !== 0) {
 			labelElement.style.translate = `-10px -${top + 3}px`;
 			labelElement.style.scale = '0.8';
 			(labelElement.parentElement as HTMLElement).style.paddingTop = `${top + 5}px`;
@@ -72,7 +106,7 @@
 		}
 		return {
 			update(open: boolean) {
-				if (open || !!placeholder || selected.size !== 0) {
+				if (open || !!placeholder || selectedValue.size !== 0) {
 					labelElement.style.translate = `-10px -${top + 3}px`;
 					labelElement.style.scale = '0.8';
 					(labelElement.parentElement as HTMLElement).style.paddingTop = `${top + 5}px`;
@@ -102,7 +136,6 @@
 		ev.preventDefault();
 	}
 	function renderAnimation(node: HTMLElement, open: boolean) {
-		// Render Open Animation
 		const animationOptions: ElementAnimationParams = {
 			animations: {
 				keyframes: [{ opacity: 0 }, { opacity: 1 }],
@@ -145,13 +178,13 @@
 	aria-multiselectable={multiselection}
 	bind:this={selectionEL}
 >
-	<button {disabled} on:click={toggleSelection} class="ui-selection-input {classNameInputBox}">
+	<button {disabled} onclick={toggleSelection} class="ui-selection-input {classInputBox}">
 		<div>
-			{#if selected.size === 0}
+			{#if selectedValue.size === 0}
 				{placeholder ?? ''}
 			{:else}
-				{#each selected as selectedValue}
-					<span class={classNameSelected}>
+				{#each selectedValue as selectedValue}
+					<span class={classSelected}>
 						{selectedValue}
 					</span>
 				{/each}
@@ -176,9 +209,11 @@
 			use:setOpenHandlersToOptions
 			use:setSelectionPosition
 			use:renderAnimation={openSelection}
-			class="ui-selection-options-container {classNameOptionsContainer}"
+			class="ui-selection-options-container {classOptionsContainer}"
 		>
-			<slot />
+			{#if children}
+				{@render children()}
+			{/if}
 		</div>
 	{/if}
 </div>

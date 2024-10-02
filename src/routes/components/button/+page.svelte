@@ -7,6 +7,7 @@
 	import { Tab, Tabs, TabButton } from '@nv-org/tabs';
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
 	import ButtonComponentShowcase from '../../../app/components/ComponentShowcase/ButtonComponentShowcase/ButtonComponentShowcase.svelte';
+	import ButtonProps from '../../../app/components/pagesSections/button/ButtonProps.svelte';
 </script>
 
 <svelte:head>
@@ -235,5 +236,6 @@ className="flex items-center justify-between gap-2"
 				</div>
 			</section>
 		</article>
+		<ButtonProps />
 	</main>
 </div>

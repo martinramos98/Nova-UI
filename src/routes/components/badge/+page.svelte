@@ -5,6 +5,7 @@
 	import { Icon, AlertIcon, WarningIcon } from '@nv-org/icon';
 	import { Title } from '@nv-org/title';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
+	import BadgeProps from '../../../app/components/pagesSections/badge/BadgeProps.svelte';
 	let counter = 0;
 </script>
 
@@ -22,7 +23,7 @@
 	<main>
 		<article id={'button'}>
 			<header>
-				<Title level={1} className="text-start w-full">Badge</Title>
+				<Title level={1} class="text-start w-full">Badge</Title>
 				<p class="py-2 px-2">
 					Badge components are a small visual element used to display additional information or
 					status indicators within a user interface.
@@ -32,7 +33,7 @@
 				<div class="w-full">
 					<ComponentCodeTabs
 						code={`<Badge colors="success" variant="solid" contentBadge="New!!">
-	<Avatar className="bg-[var(--color-subcontainer)] p-1 border-2 border-black"
+	<Avatar class="bg-[var(--color-subcontainer)] p-1 border-2 border-black"
 	></Avatar>
 </Badge>
 <Badge colors="info" variant="flat" size={4} contentBadge={counter.toString()}>
@@ -50,7 +51,7 @@
 	contentBadge=""
 	colors="error"
 	variant="neon"
-	className={'size-3 text-xs'}
+	class={'size-3 text-xs'}
 >
 	<Icon
 		props={{
@@ -72,8 +73,7 @@
 						{#snippet component()}
 							<div class="w-full flex flex-row gap-4 items-center">
 								<Badge colors="success" variant="solid" contentBadge="New!!">
-									<Avatar className="bg-[var(--color-subcontainer)] p-1 border-2 border-black"
-									></Avatar>
+									<Avatar class="bg-[var(--color-subcontainer)] p-1 border-2 border-black"></Avatar>
 								</Badge>
 								<Badge colors="info" variant="flat" size={4} contentBadge={counter.toString()}>
 									<Button
@@ -90,7 +90,7 @@
 									contentBadge=""
 									colors="error"
 									variant="neon"
-									className={'size-3 text-xs'}
+									class={'size-3 text-xs'}
 								>
 									<Icon
 										props={{
@@ -119,32 +119,32 @@
 				<div class="w-full">
 					<ComponentCodeTabs
 						code={`<Badge colors="info" variant="solid" size={1} positionBadge="top-left">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="info" variant="solid" size={1} positionBadge="top-right">
-	<Avatar className="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="info" variant="solid" size={1} positionBadge="bottom-left">
-	<Avatar className="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="info" variant="solid" size={1} positionBadge="bottom-right">
-	<Avatar className="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 					`}
 					>
 						{#snippet component()}
 							<div class="w-full flex flex-row gap-4">
 								<Badge colors="info" variant="solid" size={1} positionBadge="top-left">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="info" variant="solid" size={1} positionBadge="top-right">
-									<Avatar className="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="info" variant="solid" size={1} positionBadge="bottom-left">
-									<Avatar className="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="info" variant="solid" size={1} positionBadge="bottom-right">
-									<Avatar className="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10  dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 							</div>
 						{/snippet}
@@ -158,44 +158,44 @@
 				<div class="w-full">
 					<ComponentCodeTabs
 						code={`<Badge colors="warning" variant="solid" size={1} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="flat" size={1} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="neon" size={1} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="ghost" size={1} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="faded" size={1} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="light" size={1} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 					`}
 					>
 						{#snippet component()}
 							<div class="w-full flex flex-row gap-4">
 								<Badge colors="warning" variant="solid" size={2} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="flat" size={2} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="neon" size={2} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="ghost" size={2} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="faded" size={2} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="light" size={2} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 							</div>
 						{/snippet}
@@ -209,44 +209,44 @@
 				<div class="w-full">
 					<ComponentCodeTabs
 						code={`<Badge colors="warning" variant="solid" size={1} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="flat" size={2} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="neon" size={3} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="ghost" size={4} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="faded" size={5} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 <Badge colors="warning" variant="light" size={6} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 </Badge>
 					`}
 					>
 						{#snippet component()}
 							<div class="flex flex-row gap-4">
 								<Badge colors="warning" variant="solid" size={1} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="flat" size={2} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="neon" size={3} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="ghost" size={4} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="faded" size={5} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 								<Badge colors="warning" variant="light" size={6} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 								</Badge>
 							</div>
 						{/snippet}
@@ -260,7 +260,7 @@
 				<div class="w-full">
 					<ComponentCodeTabs
 						code={`<Badge colors="warning" variant="solid" size={2} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 	<svelte:fragment slot="contentBadge">
 		<Icon
 			props={{
@@ -275,13 +275,13 @@
 </Badge>
 <Badge
 	colors="error"
-	className="animate-pulse px-1"
+	class="animate-pulse px-1"
 	radius="md"
 	variant="solid"
 	size={2}
 	positionBadge="top-right"
 >
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 	<svelte:fragment slot="contentBadge">
 		<div class="content-badge-error">
 			<Icon
@@ -297,8 +297,8 @@
 		</div>
 	</svelte:fragment>
 </Badge>
-<Badge colors="info" variant="solid" className="" size={3} positionBadge="bottom-right">
-	<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+<Badge colors="info" variant="solid" class="" size={3} positionBadge="bottom-right">
+	<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
 	<svelte:fragment slot="contentBadge">
 		<Icon
 			props={{
@@ -321,8 +321,8 @@
 						{#snippet component()}
 							<div class="w-full flex flex-row gap-8">
 								<Badge colors="warning" variant="solid" size={2} positionBadge="bottom-right">
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
-									<svelte:fragment slot="contentBadge">
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									{#snippet contentBadge()}
 										<Icon
 											props={{
 												viewBox: '0 0 24 24',
@@ -332,18 +332,18 @@
 										>
 											<WarningIcon />
 										</Icon>
-									</svelte:fragment>
+									{/snippet}
 								</Badge>
 								<Badge
 									colors="error"
-									className="animate-pulse px-1"
+									class="animate-pulse px-1"
 									radius="md"
 									variant="solid"
 									size={2}
 									positionBadge="top-right"
 								>
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
-									<svelte:fragment slot="contentBadge">
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									{#snippet contentBadge()}
 										<div class="content-badge-error">
 											<Icon
 												props={{
@@ -356,17 +356,11 @@
 											</Icon>
 											<span>Error</span>
 										</div>
-									</svelte:fragment>
+									{/snippet}
 								</Badge>
-								<Badge
-									colors="info"
-									variant="solid"
-									className=""
-									size={3}
-									positionBadge="bottom-right"
-								>
-									<Avatar className="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
-									<svelte:fragment slot="contentBadge">
+								<Badge colors="info" variant="solid" class="" size={3} positionBadge="bottom-right">
+									<Avatar class="size-10 dark:bg-slate-800 p-1 rounded-lg"></Avatar>
+									{#snippet contentBadge()}
 										<Icon
 											props={{
 												viewBox: '0 0 24 24',
@@ -381,13 +375,19 @@
 												stroke-linejoin="round"
 											/>
 										</Icon>
-									</svelte:fragment>
+									{/snippet}
 								</Badge>
 							</div>
 						{/snippet}
 					</ComponentCodeTabs>
 				</div>
 			</section>
+		</article>
+		<article>
+			<header>
+				<Title level={2}>Badge Props</Title>
+			</header>
+			<BadgeProps />
 		</article>
 	</main>
 </div>

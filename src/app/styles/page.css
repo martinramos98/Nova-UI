@@ -36,7 +36,7 @@ main > article:last-child {
 				/* background-color: var(--color-surface-low); */
 				justify-content: center;
 				gap: var(--spacing-2);
-				& > div {
+				& > div:not(.prop-container) {
 					justify-self: center;
 					align-items: center;
 					align-self: center;

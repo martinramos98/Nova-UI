@@ -2,11 +2,11 @@
 
 <script>
 	import CalloutIcons from './CalloutIcons.svelte';
-	/** @type {{colors?:string,variant?:string,className?:string,radius?:string,type?:string,icon?:import('svelte').Snippet ,children:import('svelte').Snippet}}*/
+	/** @type {{colors?:string,variant?:string,class?:string,radius?:string,type?:string,icon?:import('svelte').Snippet ,children:import('svelte').Snippet}}*/
 	const {
 		colors = 'container',
 		variant = 'solid',
-		className = '',
+		class: className = '',
 		radius = 'rounded-xl',
 		type = 'default',
 		icon,

@@ -1,8 +1,13 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import TableRow from './TableRow.svelte';
-	export let className = '';
-	export let children: Snippet;
+	interface TableHeaderProps {
+		class?: string;
+		children: Snippet;
+	}
+	const { class: className = '', children }: TableHeaderProps = $props();
 </script>
 
 <thead class="ui-table-head {className}">

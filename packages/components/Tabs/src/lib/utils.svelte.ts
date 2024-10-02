@@ -50,7 +50,6 @@ export class TabsAnimator {
 				const bb = cssMap.get('border-bottom-width')?.value as number;
 				const wc = container.offsetWidth;
 				const initialHeight = elementToHide.offsetHeight + pb + pt + bt + bb;
-				debugger;
 				elementToHide.classList.add('ui-tab-element-to-hide');
 				const containerClone = container.cloneNode(true) as HTMLElement;
 				containerClone.querySelector('.ui-tab-element-to-hide')?.remove();

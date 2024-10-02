@@ -1,9 +1,14 @@
-<script lang="ts">
-	import { getContext } from 'svelte';
+<svelte:options runes={true} />
 
-	export let disabled = false;
-	export let key: string;
-	export let className = '';
+<script lang="ts">
+	import { getContext, type Snippet } from 'svelte';
+	interface TabButtonProps {
+		disabled?: boolean;
+		key: string;
+		className?: string;
+		children: Snippet;
+	}
+	const { disabled = false, key, className = '', children }: TabButtonProps = $props();
 	const tabContext = getContext<{
 		selectTab: (key: string) => void;
 		subscribeKey: (key: string, el: HTMLElement) => void;
@@ -18,11 +23,11 @@
 	class="ui-tab-button {className}"
 	use:subscribeButton
 	{disabled}
-	on:click={(ev) => {
+	onclick={(ev) => {
 		tabContext.selectTab(key);
 	}}
 >
-	<slot />
+	{@render children()}
 </button>
 
 <style>

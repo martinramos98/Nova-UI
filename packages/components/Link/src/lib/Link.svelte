@@ -1,34 +1,49 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-
-	// import {getLinkPreview} from 'link-preview-js'
 	import { Icon, ExternalIcon } from '@nv-org/icon';
 	import type { LinkType } from './LinkUtils.js';
-	export let type: LinkType = 'simple';
-	export let href: string;
-	export let target: 'self' | 'parent' | 'blank' | 'top' = 'blank';
-	export let orientation: 'vertical' | 'horizontal' = 'horizontal';
-	export let previewSize: 'md' | 'lg' | 'sm' | 'xs' = 'md';
-	export let className = '';
-	export let colors: any | '' = '';
-	export let variant: any | '' = '';
-	export let previewData:
-		| {
-				title: string;
-				description: string;
-				image?: string;
-				favicon: string;
-		  }
-		| undefined = undefined;
-	// pass the link directly
+	import type { Snippet } from 'svelte';
+	interface LinkProps {
+		type?: LinkType;
+		href: string;
+		target?: 'self' | 'parent' | 'blank' | 'top';
+		orientation?: 'vertical' | 'horizontal';
+		previewSize?: 'md' | 'lg' | 'sm' | 'xs';
+		class?: string;
+		colors?: any | '';
+		variant?: any | '';
+		children: Snippet;
+		previewData?:
+			| {
+					title: string;
+					description: string;
+					image?: string;
+					favicon: string;
+			  }
+			| undefined;
+	}
+	const {
+		type = 'simple',
+		href,
+		target = 'blank',
+		orientation = 'horizontal',
+		previewSize = 'md',
+		class: className = '',
+		colors = '',
+		variant = '',
+		children,
+		previewData = undefined
+	}: LinkProps = $props();
 </script>
 
 <a {href} target="_{target}" class="ui-link ui-color-{colors} ui-variant-{variant} {className}">
 	{#if type === 'simple'}
-		<slot />
+		{@render children()}
 	{/if}
 	{#if type === 'external'}
-		<slot />
+		{@render children()}
 		<Icon
 			props={{
 				width: '24px',

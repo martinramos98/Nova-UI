@@ -1,6 +1,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import { fade } from 'svelte/transition';
 	type Aspect = '1:1' | '16:9' | '3:4' | 'auto';
 	interface ImageProps {
@@ -14,6 +15,10 @@
 		captionInside?: boolean;
 		classContainer?: string;
 		classCaption?: string;
+		customLoader?: Snippet;
+		customError?: Snippet;
+		captionContent?: Snippet;
+		// children?: Snippet;
 	}
 	const {
 		aspect = 'auto',
@@ -25,7 +30,11 @@
 		class: className = '',
 		captionInside = false,
 		classContainer = '',
-		classCaption = ''
+		classCaption = '',
+		customLoader,
+		customError,
+		captionContent
+		// children
 	}: ImageProps = $props();
 	let loading = $state(false);
 	let ref: HTMLImageElement;
@@ -69,39 +78,49 @@
 	class="ui-image-container relative {classContainer} "
 >
 	{#if loading}
-		<slot name="custom-loader">
+		{#if customLoader}
+			{@render customLoader()}
+		{:else}
 			<div
 				transition:fade
 				class="w-full h-full absolute flex place-content-center place-items-center info faded z-10"
 			>
 				Loading
 			</div>
-		</slot>
+			<!-- {#if children}
+				{@render children()}
+			{/if} -->
+		{/if}
 	{/if}
 	{#if errorOnLoad}
-		<slot name="custom-error">
+		{#if customError}
+			{@render customError()}
+		{:else}
 			<div
 				transition:fade
 				class="w-full h-full absolute flex place-content-center place-items-center ui-color-error ui-variant-flat z-10"
 			>
 				Error on load
 			</div>
-		</slot>
+			<!-- {#if children}
+				{@render children()}
+			{/if} -->
+		{/if}
 	{/if}
 	<img
 		bind:this={ref}
 		style="{height ? `height:${height};` : ''}{width
 			? `width:${width};`
 			: ''} aspect-ratio:{aspectRatio()};"
-		on:load={onLoad}
+		onload={onLoad}
 		class="ui-image {className}"
-		on:error={onError}
+		onerror={onError}
 		{alt}
 		{src}
 	/>
-	{#if $$slots['caption-content'] && !loading && !errorOnLoad}
+	{#if captionContent && !loading && !errorOnLoad}
 		<figcaption class:captionInside class={classCaption}>
-			<slot name="caption-content" />
+			{@render captionContent()}
 		</figcaption>
 	{/if}
 </figure>

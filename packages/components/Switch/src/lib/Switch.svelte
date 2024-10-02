@@ -1,24 +1,39 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { fade } from 'svelte/transition';
-	export let className = '';
-	export let toggled = false;
-	export let size = 'sm';
-	export let icons: 'inside' | 'outside' = 'inside';
-	export let iconOn: undefined | Snippet = undefined;
-	export let color = 'container-highest';
-	export let classNameSlider = '';
-	export let customColor: string | undefined = undefined;
-	export let iconOff: undefined | Snippet = undefined;
-	export const toggleSwitch = () => {
+	interface SwitchProps {
+		className?: string;
+		toggled?: boolean;
+		size?: 'sm' | 'md' | 'lg';
+		icons?: 'inside' | 'outside';
+		iconOn?: Snippet;
+		color?: string;
+		classNameSlider?: string;
+		customColor?: string;
+		iconOff?: Snippet;
+	}
+	let {
+		className = '',
+		toggled = $bindable(false),
+		size = 'sm',
+		icons = 'inside',
+		iconOff = undefined,
+		iconOn = undefined,
+		color = 'container-highest',
+		classNameSlider = '',
+		customColor = undefined
+	}: SwitchProps = $props();
+	let widthButton = $state(0);
+	let sliderWidth = $state(0);
+	function toggleSwitch() {
 		toggled = !toggled;
-	};
-	let widthButton = 0;
-	let sliderWidth = 0;
+	}
 </script>
 
 <button
-	on:click={toggleSwitch}
+	onclick={toggleSwitch}
 	bind:offsetWidth={widthButton}
 	role="switch"
 	aria-checked={toggled}

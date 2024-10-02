@@ -1,16 +1,10 @@
 import type { Action } from 'svelte/action';
 export interface ActionButtonArgs {
-	buttonElementProps: ButtonElementProps | undefined;
 	withClickEffect: boolean;
 	onClick: ((ev: MouseEvent) => void) | undefined;
 }
-export interface ButtonElementProps {
-	events?: Record<keyof HTMLElementEventMap, EventListenerOrEventListenerObject>;
-	attr?: Record<string, string>;
-	props?: Record<string, any>;
-}
 const buttonAction: Action<HTMLElement, ActionButtonArgs | undefined> = (node, actionArgs) => {
-	const { withClickEffect, buttonElementProps, onClick } = actionArgs as ActionButtonArgs;
+	const { withClickEffect, onClick } = actionArgs as ActionButtonArgs;
 	function clickEffect(ev: MouseEvent) {
 		const el = document.createElement('span');
 		const bounds = node.getBoundingClientRect();
@@ -36,19 +30,6 @@ const buttonAction: Action<HTMLElement, ActionButtonArgs | undefined> = (node, a
 			el.remove();
 		});
 	}
-	if (!buttonElementProps) {
-		return;
-	}
-	for (const eventName in buttonElementProps.events) {
-		node.addEventListener(eventName, buttonElementProps.events[eventName]);
-	}
-	for (const attrName in buttonElementProps.attr) {
-		node.setAttribute(attrName, buttonElementProps.attr[attrName]);
-	}
-	for (const propName in buttonElementProps.props) {
-		// @ts-expect-error This is just for test porpouses
-		node[propName] = buttonElementProps.props[propName];
-	}
 	if (withClickEffect) {
 		node.addEventListener('mouseup', clickEffect);
 	}
@@ -57,9 +38,6 @@ const buttonAction: Action<HTMLElement, ActionButtonArgs | undefined> = (node, a
 	}
 	return {
 		destroy() {
-			for (const eventName in buttonElementProps.events) {
-				node.removeEventListener(eventName, buttonElementProps.events[eventName]);
-			}
 			node.removeEventListener('mouseup', clickEffect);
 		}
 	};

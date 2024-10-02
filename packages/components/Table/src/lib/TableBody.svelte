@@ -2,7 +2,7 @@
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	const { className = '', children }: { className?: string; children?: Snippet } = $props();
+	const { class: className = '', children }: { class?: string; children?: Snippet } = $props();
 </script>
 
 <tbody class="ui-table-body {className}">

@@ -1,27 +1,62 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { Icon } from '@nv-org/icon';
+	import type { Snippet } from 'svelte';
 	import { spring } from 'svelte/motion';
-	export let variant = 'solid';
-	export let colors = 'info';
-	export let value: any;
-	export let inderminate = false;
-	export let className = '';
-	export let classNameContainer = '';
-	export let id: undefined | string = undefined;
-	export let type: 'radio' | 'checkbox' = 'radio';
-	export let disabled = false;
-	export let checked = false;
-	export let size = 'size-8';
-	export let lineThroughtOnCheck = false;
-	export let onChange: undefined | (() => void) = () => {
-		checked = !checked;
-	};
+	interface RadioButtonProps {
+		variant?: 'faded' | 'flat' | 'solid' | 'neon' | string;
+		colors?:
+			| 'info'
+			| 'success'
+			| 'warning'
+			| 'danger'
+			| 'primary'
+			| 'secondary'
+			| 'container'
+			| 'surface'
+			| string;
+		value?: any;
+		inderminate?: boolean;
+		class?: string;
+		classContainer?: string;
+		id?: string;
+		type?: 'radio' | 'checkbox';
+		disabled?: boolean;
+		checked?: boolean;
+		size?: 'size-8' | 'size-10' | 'size-12' | 'size-16' | 'size-20';
+		lineThroughtOnCheck?: boolean;
+		onChange?: () => void;
+		icon?: Snippet;
+		children?: Snippet;
+	}
+	let {
+		variant = 'solid',
+		colors = 'info',
+		value,
+		inderminate = false,
+		class: className = '',
+		classContainer = '',
+		id = undefined,
+		type = 'radio',
+		disabled = false,
+		checked = $bindable(false),
+		size = 'size-8',
+		lineThroughtOnCheck = false,
+		onChange = () => {
+			checked = !checked;
+		},
+		icon,
+		children
+	}: RadioButtonProps = $props();
 	let name = '';
 	let springRadius = spring(0, { stiffness: 0.1, damping: 0.18 });
 	function getName(node: HTMLElement) {
 		name = node.parentElement?.getAttribute('name') ?? '';
 	}
-	$: checked, radioAnim();
+	$effect(() => {
+		radioAnim();
+	});
 	function radioAnim() {
 		if (checked) {
 			springRadius.set(1);
@@ -31,10 +66,7 @@
 	}
 </script>
 
-<div
-	use:getName
-	class="ui-radio ui-color-{colors}  ui-radio-variant-{variant} {classNameContainer} "
->
+<div use:getName class="ui-radio ui-color-{colors}  ui-radio-variant-{variant} {classContainer} ">
 	<button
 		{value}
 		tabindex="0"
@@ -43,47 +75,49 @@
 		aria-checked={checked}
 		data-indeterminated={inderminate}
 		data-checked={checked}
-		on:click={onChange}
+		onclick={onChange}
 		class="ui-radio-button {size} {className}"
 	>
 		<div aria-hidden="true" style="width: 100%; height:100%;">
-			<slot name="icon">
-				{#if type === 'checkbox'}
-					<Icon props={{ viewBox: '0 0 20 20', class: 'ui-icon-indeterminate w-full h-full' }}>
-						<line
-							x1="4"
-							x2="16"
-							y1="10"
-							y2="10"
-							stroke="white"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-						></line>
-					</Icon>
+			{#if icon}
+				{@render icon()}
+			{:else if type === 'checkbox'}
+				<Icon props={{ viewBox: '0 0 20 20', class: 'ui-icon-indeterminate w-full h-full' }}>
+					<line
+						x1="4"
+						x2="16"
+						y1="10"
+						y2="10"
+						stroke="white"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+					></line>
+				</Icon>
 
-					<Icon props={{ viewBox: '0 0 17.837 17.837' }}>
-						<polyline
-							fill="none"
-							points="1 9 7 14 15 4"
-							stroke-dasharray="22"
-							stroke-dashoffset="44"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-						></polyline>
-					</Icon>
-				{:else}
-					<Icon props={{ viewBox: '0 0 5 5', style: `scale:${$springRadius}` }}>
-						<circle cx="2.5" cy="2.5" r={'1.5'} fill="#030104" />
-					</Icon>
-				{/if}
-			</slot>
+				<Icon props={{ viewBox: '0 0 17.837 17.837' }}>
+					<polyline
+						fill="none"
+						points="1 9 7 14 15 4"
+						stroke-dasharray="22"
+						stroke-dashoffset="44"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+					></polyline>
+				</Icon>
+			{:else}
+				<Icon props={{ viewBox: '0 0 5 5', style: `scale:${$springRadius}` }}>
+					<circle cx="2.5" cy="2.5" r={'1.5'} fill="#030104" />
+				</Icon>
+			{/if}
 		</div>
 	</button>
 
 	<label for={id} data-linethrought={lineThroughtOnCheck}>
-		<slot />
+		{#if children}
+			{@render children()}
+		{/if}
 	</label>
 </div>
 

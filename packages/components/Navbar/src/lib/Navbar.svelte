@@ -1,23 +1,44 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { Drawer } from '@nv-org/drawer';
 	import { MenuButton } from '@nv-org/button';
 	import type { Snippet } from 'svelte';
-	export let direction: 'vertical' | 'horizontal' = 'horizontal';
-	export let className = '';
-	export let colors = 'container';
-	export let variant: 'menu' | 'default' | 'none' = 'default';
-	export let radius = '';
-	export let useContainerQuery = true;
-	export let children: Snippet<[any]> | undefined = undefined;
-	export let startContent: Snippet;
-	export let centerContent: Snippet;
-	export let endContent: Snippet;
-	export let menuContent: Snippet<[any]> | undefined = undefined;
-	export let menuProps = {
-		drawerProps: {}
-	};
-	export let withMenu = false;
-	let openMenu = false;
+	interface NavbarProps {
+		direction?: 'vertical' | 'horizontal';
+		class?: string;
+		colors?: string;
+		variant?: 'menu' | 'default' | 'none';
+		radius?: string;
+		useContainerQuery?: boolean;
+		children: Snippet<[any]> | undefined;
+		startContent?: Snippet;
+		centerContent?: Snippet;
+		endContent?: Snippet;
+		menuContent?: Snippet<[any]> | undefined;
+		menuProps?: {
+			drawerProps: any;
+		};
+		withMenu?: boolean;
+	}
+	const {
+		direction = 'horizontal',
+		class: className = '',
+		colors = 'container',
+		variant = 'default',
+		radius = '',
+		useContainerQuery = true,
+		children = undefined,
+		startContent,
+		centerContent,
+		endContent,
+		menuContent = undefined,
+		menuProps = {
+			drawerProps: {}
+		},
+		withMenu = false
+	}: NavbarProps = $props();
+	let openMenu = $state(false);
 	function containerQuery(node: Element) {
 		if (useContainerQuery) {
 			node.parentElement?.classList.add('ui-container-navbar');
@@ -48,12 +69,18 @@
 		{/if}
 	{/if}
 	{#if variant === 'default'}
-		{@render startContent()}
-		{@render centerContent()}
+		{#if startContent}
+			{@render startContent()}
+		{/if}
+		{#if centerContent}
+			{@render centerContent()}
+		{/if}
 		{#if children}
 			{@render children(toggleMenu)}
 		{/if}
-		{@render endContent()}
+		{#if endContent}
+			{@render endContent()}
+		{/if}
 	{/if}
 	{#if variant === 'menu'}
 		<Drawer

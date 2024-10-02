@@ -4,18 +4,21 @@
 	import type { Action } from 'svelte/action';
 	import Avatar from './Avatar.svelte';
 	import { SequencedAnimation } from '@nv-org/element-animation-js';
+	import type { Snippet } from 'svelte';
 	interface AvatarGroupProps {
 		maxAvatarsToShow?: number;
 		collapseOnClick?: boolean;
 		collapse?: boolean;
+		children: Snippet;
 	}
 	let {
 		maxAvatarsToShow = 2,
 		collapseOnClick = true,
-		collapse = $bindable(false)
+		collapse = $bindable(false),
+		children
 	}: AvatarGroupProps = $props();
 	let buttonHiddenControlerEl: HTMLElement;
-	let outOfRangeAvatars = 0;
+	let outOfRangeAvatars = $state(0);
 	let animation: SequencedAnimation;
 	let hiddenGroupEl: HTMLElement;
 	let avatarContainerEl: HTMLElement;
@@ -107,7 +110,7 @@
 </script>
 
 <div bind:this={avatarContainerEl} use:action={{ maxAvatarsToShow }} class="ui-avatar-group">
-	<slot />
+	{@render children()}
 	<div bind:this={hiddenGroupEl} class="ui-avatars-hidden-container"></div>
 	{#if outOfRangeAvatars > 0}
 		<button
@@ -116,7 +119,7 @@
 			data-collapse={collapse}
 			bind:this={buttonHiddenControlerEl}
 			disabled={!collapseOnClick}
-			on:click={clickExpand}
+			onclick={clickExpand}
 		>
 			<Avatar class={'bg-[var(--color-container)]'} avatarName={`+ ${outOfRangeAvatars}`}></Avatar>
 		</button>

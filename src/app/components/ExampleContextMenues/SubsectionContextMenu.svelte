@@ -20,10 +20,10 @@
 <div class="w-full">
 	<ComponentCodeTabs
 		code={`<div class="w-full h-[300px] p-2 context-container" use:asContextMenuContainer>
-	<ContextMenu bind:open={openContext} onClose={closeContextMenu} className="p-2 rounded-lg">
+	<ContextMenu bind:open={openContext} onClose={closeContextMenu} class="p-2 rounded-lg">
 		<Button
 			variant="light"
-			className="w-full px-2 text-start"
+			class="w-full px-2 text-start"
 			onClick={() => {
 				closeContextMenu();
 			}}
@@ -32,7 +32,7 @@
 		>
 		<Button
 			variant="light"
-			className="w-full px-2 text-start"
+			class="w-full px-2 text-start"
 			onClick={() => {
 				closeContextMenu();
 			}}
@@ -41,7 +41,7 @@
 		>
 		<Button
 			variant="light"
-			className="w-full px-2 text-start"
+			class="w-full px-2 text-start"
 			onClick={() => {
 				closeContextMenu();
 			}}
@@ -50,30 +50,30 @@
 		>
 		<Button
 			variant="light"
-			className="w-full px-2 text-start"
+			class="w-full px-2 text-start"
 			onClick={() => {
 				closeContextMenu();
 			}}
 			withClickEffect={false}
 			colors="primary">Test</Button
 		>
-		<Divider size={1} className="my-2"></Divider>
-		<ContextMenuSection offset={10} classNameContainer="">
+		<Divider size={1} class="my-2"></Divider>
+		<ContextMenuSection offset={10} classContainer="">
 			<Button
 				variant="light"
-				className="w-full px-2 text-start"
+				class="w-full px-2 text-start"
 				withClickEffect={false}
 				colors="primary">Instagram</Button
 			>
 			<Button
 				variant="light"
-				className="w-full px-2 text-start"
+				class="w-full px-2 text-start"
 				withClickEffect={false}
 				colors="primary">X</Button
 			>
 			<Button
 				variant="light"
-				className="w-full px-2 text-start"
+				class="w-full px-2 text-start"
 				withClickEffect={false}
 				colors="primary">Facebook</Button
 			>
@@ -83,7 +83,7 @@
 					onClick={() => {
 						closeContextMenu();
 					}}
-					className="w-full px-2 text-start"
+					class="w-full px-2 text-start"
 					withClickEffect={false}
 					colors="primary">Share</Button
 				>
@@ -95,10 +95,10 @@
 	>
 		{#snippet component()}
 			<div class="w-full h-[300px] p-2 context-container" use:asContextMenuContainer>
-				<ContextMenu bind:open={openContext} onClose={closeContextMenu} className="p-2 rounded-lg">
+				<ContextMenu bind:open={openContext} onClose={closeContextMenu} class="p-2 rounded-lg">
 					<Button
 						variant="light"
-						className="w-full px-2 text-start"
+						class="w-full px-2 text-start"
 						onClick={() => {
 							closeContextMenu();
 						}}
@@ -107,7 +107,7 @@
 					>
 					<Button
 						variant="light"
-						className="w-full px-2 text-start"
+						class="w-full px-2 text-start"
 						onClick={() => {
 							closeContextMenu();
 						}}
@@ -116,7 +116,7 @@
 					>
 					<Button
 						variant="light"
-						className="w-full px-2 text-start"
+						class="w-full px-2 text-start"
 						onClick={() => {
 							closeContextMenu();
 						}}
@@ -125,7 +125,7 @@
 					>
 					<Button
 						variant="light"
-						className="w-full px-2 text-start"
+						class="w-full px-2 text-start"
 						onClick={() => {
 							closeContextMenu();
 						}}
@@ -133,22 +133,22 @@
 						colors="primary">Test</Button
 					>
 					<Divider size={1} className="my-2"></Divider>
-					<ContextMenuSection offset={10} classNameContainer="">
+					<ContextMenuSection offset={10}>
 						<Button
 							variant="light"
-							className="w-full px-2 text-start"
+							class="w-full px-2 text-start"
 							withClickEffect={false}
 							colors="primary">Instagram</Button
 						>
 						<Button
 							variant="light"
-							className="w-full px-2 text-start"
+							class="w-full px-2 text-start"
 							withClickEffect={false}
 							colors="primary">X</Button
 						>
 						<Button
 							variant="light"
-							className="w-full px-2 text-start"
+							class="w-full px-2 text-start"
 							withClickEffect={false}
 							colors="primary">Facebook</Button
 						>
@@ -158,7 +158,7 @@
 								onClick={() => {
 									closeContextMenu();
 								}}
-								className="w-full px-2 text-start"
+								class="w-full px-2 text-start"
 								withClickEffect={false}
 								colors="primary">Share</Button
 							>

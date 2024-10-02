@@ -4,14 +4,14 @@
 	import { onMount, setContext, type Snippet } from 'svelte';
 	import { writable } from 'svelte/store';
 	interface AccordionProps {
-		className?: string;
+		class?: string;
 		colors?: string;
 		variant?: string;
 		multiopen?: boolean;
 		children: Snippet;
 	}
 	const {
-		className = '',
+		class: className = '',
 		colors = '',
 		variant = 'default-accordion',
 		multiopen = false,

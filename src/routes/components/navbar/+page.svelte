@@ -24,7 +24,7 @@
 				<div class="container-1">
 					<Navbar
 						variant={'none'}
-						className={'flex flex-row  items-center'}
+						class={'flex flex-row  items-center'}
 						direction={'horizontal'}
 						withMenu={false}
 					>
@@ -34,7 +34,7 @@
 							<li>
 								<Button
 									withClickEffect={false}
-									className="font-semibold"
+									class="font-semibold"
 									colors={'info'}
 									variant={'light'}>Premium</Button
 								>
@@ -49,7 +49,7 @@
 						<Avatar
 							avatarBordered
 							colors={'secondary'}
-							className="size-10 bg-zinc-700 m-1 p-0.5 ml-auto shadow-xl"
+							class="size-10 bg-zinc-700 m-1 p-0.5 ml-auto shadow-xl"
 						></Avatar>
 					</Navbar>
 					<div>
@@ -66,7 +66,7 @@
 			<section>
 				<Title level={3}>Horizontal</Title>
 				<div class="container-1">
-					<Navbar className="rounded-3xl" direction={'horizontal'} withMenu={true}>
+					<Navbar class="rounded-3xl" direction={'horizontal'} withMenu={true}>
 						{#snippet startContent()}
 							<div>
 								<img class="size-8 inline-block" src="/bank.svg" alt="" />
@@ -79,7 +79,7 @@
 									<li>
 										<Button
 											withClickEffect={false}
-											className="font-semibold"
+											class="font-semibold"
 											colors={'info'}
 											variant={'light'}>Premium</Button
 										>
@@ -94,7 +94,7 @@
 								<Avatar
 									avatarBordered
 									colors={'secondary'}
-									className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
+									class="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
 								></Avatar>
 							</div>
 						{/snippet}
@@ -117,7 +117,7 @@
 			<section>
 				<Title level={3}>Vertical</Title>
 				<div class="container-2">
-					<Navbar className="rounded-3xl shrink-0 px-1" direction={'vertical'} withMenu={true}>
+					<Navbar class="rounded-3xl shrink-0 px-1" direction={'vertical'} withMenu={true}>
 						{#snippet startContent()}
 							<img class="size-8 inline-block justify-self-center" src="/bank.svg" alt="" />
 						{/snippet}
@@ -126,7 +126,7 @@
 								<li>
 									<Button
 										withClickEffect={false}
-										className="font-semibold"
+										class="font-semibold"
 										colors={'info'}
 										variant={'light'}>Premium</Button
 									>
@@ -140,7 +140,7 @@
 								<Avatar
 									avatarBordered
 									colors={'secondary'}
-									className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
+									class="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
 								></Avatar>
 							</div>
 						{/snippet}
@@ -166,7 +166,7 @@
 			</header>
 			<section>
 				<Title level={3}>Default with 3 Sections</Title>
-				<Navbar className="rounded-3xl shrink-0 px-6" direction={'horizontal'}>
+				<Navbar class="rounded-3xl shrink-0 px-6" direction={'horizontal'}>
 					{#snippet startContent()}
 						<img class="size-8 inline-block justify-self-center" src="/bank.svg" alt="" />
 					{/snippet}
@@ -175,7 +175,7 @@
 							<li>
 								<Button
 									withClickEffect={false}
-									className="font-semibold"
+									class="font-semibold"
 									colors={'info'}
 									variant={'light'}>Premium</Button
 								>
@@ -189,7 +189,7 @@
 							<Avatar
 								avatarBordered
 								colors={'secondary'}
-								className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
+								class="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
 							></Avatar>
 						</div>
 					{/snippet}
@@ -198,7 +198,7 @@
 			<section>
 				<Title level={3}>Menu</Title>
 
-				<Navbar direction={'horizontal'} className="shrink-0 rounded-xl px-2" variant={'menu'}>
+				<Navbar direction={'horizontal'} class="shrink-0 rounded-xl px-2" variant={'menu'}>
 					{#snippet children(toggleMenu)}
 						<div>
 							<MenuButton onClickMenu={toggleMenu} />
@@ -207,7 +207,7 @@
 							<Avatar
 								avatarName="Martin Ramos"
 								colors={'secondary'}
-								className="size-10 bg-zinc-800 m-1 "
+								class="size-10 bg-zinc-800 m-1 "
 							></Avatar>
 						</div>
 					{/snippet}
@@ -220,7 +220,7 @@
 				<Title level={3}>Custom Children</Title>
 				<Navbar
 					variant={'none'}
-					className={'flex flex-row  items-center'}
+					class={'flex flex-row  items-center'}
 					direction={'horizontal'}
 					withMenu={false}
 				>
@@ -236,7 +236,7 @@
 					<Avatar
 						avatarBordered
 						colors={'secondary'}
-						className="size-10 bg-zinc-700 m-1 p-0.5 ml-auto shadow-xl"
+						class="size-10 bg-zinc-700 m-1 p-0.5 ml-auto shadow-xl"
 					></Avatar>
 				</Navbar>
 			</section>
@@ -246,7 +246,7 @@
 				<Title level={2}>Container Query</Title>
 			</header>
 			<section class="responsive-nav-container">
-				<Navbar useContainerQuery={true} className="rounded-3xl shrink-0 " direction={'horizontal'}>
+				<Navbar useContainerQuery={true} class="rounded-3xl shrink-0 " direction={'horizontal'}>
 					{#snippet startContent()}
 						<img class="size-8 inline-block justify-self-center" src="/bank.svg" alt="" />
 					{/snippet}
@@ -255,7 +255,7 @@
 							<li>
 								<Button
 									withClickEffect={false}
-									className="font-semibold"
+									class="font-semibold"
 									colors={'info'}
 									variant={'light'}>Premium</Button
 								>
@@ -269,7 +269,7 @@
 							<Avatar
 								avatarBordered
 								colors={'secondary'}
-								className="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
+								class="size-10 bg-zinc-700 m-1 p-0.5 shadow-xl"
 							></Avatar>
 						</div>
 					{/snippet}

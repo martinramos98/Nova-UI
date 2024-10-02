@@ -1,0 +1,39 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for badge.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "children?:Snippet",
+		"description": "Children elements for the context menu.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "onClose?:() => void",
+		"description": "Callback function when the context menu is closed.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "open?:boolean",
+		"description": "Boolean to control the visibility of the context menu.",
+		"required": false,
+		"bindable": true,
+		"default": "false"
+	},
+	{
+		"name": "offset?:number",
+		"description": "Offset value for the context menu position.",
+		"required": false,
+		"default": "0"
+	},
+	{
+		"name": "position?:string",
+		"description": "Position of the context menu.",
+		"required": false,
+		"default": "'bottom'"
+	}
+]

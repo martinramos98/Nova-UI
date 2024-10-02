@@ -7,17 +7,17 @@
 <NovaUIProvider>
 	<Navbar
 		useContainerQuery={false}
-		className="navbar-color  flex flex-row justify-between backdrop-blur-sm fixed top-3 left-[2.5%] w-[95%] h-[40px] rounded-full z-40"
+		class="navbar-color  flex flex-row justify-between backdrop-blur-sm fixed top-3 left-[2.5%] w-[95%] h-[40px] rounded-full z-40"
 		variant="menu"
 		menuProps={{
 			drawerProps: {
-				className: 'z-50 ',
+				class: 'z-50 ',
 				size: 'sm',
 				modalContent: {
-					className: 'overflow-auto'
+					class: 'overflow-auto'
 				},
 				backdrop: {
-					className: '',
+					class: '',
 					type: 'blur'
 				}
 			}
@@ -28,7 +28,7 @@
 			<MenuButton onClickMenu={toggleMenu} />
 		{/snippet}
 		{#snippet menuContent(toggleMenu)}
-			<CloseButton className="lg:hidden absolute right-6 top-2" onClose={toggleMenu}></CloseButton>
+			<CloseButton class="lg:hidden absolute right-6 top-2" onClose={toggleMenu}></CloseButton>
 			<Accordion multiopen variant="" className={'px-4 py-8'}>
 				<AccordionSection>
 					{#snippet header()}

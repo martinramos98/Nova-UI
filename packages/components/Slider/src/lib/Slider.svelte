@@ -1,3 +1,5 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import SliderButton from './SliderButton.svelte';
 	import type { Snippet } from 'svelte';
@@ -5,24 +7,74 @@
 	// TODO: Implement steps variations for space-around and space-evenly
 	// FIXME: reduce value of bar cause when it's moving, complete bar moves a little bit forwards of slider button position.
 	// FIXME: on mouse down click event, position the slider button half of its width to the left.
-	export let variant = '';
-	export let colors = 'info';
-	export let maxValue: number;
-	export let minValue = 0;
-	export let value = minValue;
-	export let className = '';
-	export let radius = 'rounded-full';
-	export let classNameBar = '';
-	export let format: 'thick' | 'thin' | 'normal' = 'normal';
-	export let classNameStep = '';
-	export let classNameButton = '';
-	// export let withStartSlider = false;
-	// export let sliderButtonProps = {};
-	export let steps: undefined | number = undefined;
-	export let customButton: undefined | Snippet = undefined;
-	export let onChange: undefined | ((value: number) => void) = undefined;
+	interface SliderProps {
+		variant?:
+			| ''
+			| 'primary'
+			| 'secondary'
+			| 'tertiary'
+			| 'info'
+			| 'success'
+			| 'warning'
+			| 'danger'
+			| string;
+		colors?:
+			| ''
+			| 'primary'
+			| 'secondary'
+			| 'tertiary'
+			| 'info'
+			| 'success'
+			| 'warning'
+			| 'danger'
+			| string;
+		maxValue: number;
+		minValue?: number;
+		value?: number;
+		class?: string;
+		radius?:
+			| 'rounded-full'
+			| 'rounded-md'
+			| 'rounded-lg'
+			| 'rounded-xl'
+			| 'rounded-2xl'
+			| 'rounded-3xl'
+			| 'rounded-4xl'
+			| 'rounded-5xl'
+			| 'rounded-6xl'
+			| 'rounded-7xl'
+			| 'rounded-none';
+		classBar?: string;
+		format?: 'thick' | 'thin' | 'normal';
+		classStep?: string;
+		classButton?: string;
+		steps?: number;
+		presition?: number;
+		customStep?: Snippet<[any]>;
+		customButton?: Snippet;
+		onChange?: (value: number) => void;
+	}
+	let {
+		variant = '',
+		colors = 'info',
+		maxValue,
+		minValue = 0,
+		value = $bindable(minValue),
+		class: className = '',
+		radius = 'rounded-full',
+		classBar = '',
+		format = 'normal',
+		classStep = '',
+		classButton = '',
+		customStep,
+		presition = 0,
+		steps,
+		customButton,
+		onChange
+	}: SliderProps = $props();
 	let containerElement: HTMLElement;
-	let buttonPositionEnd = 0;
+	let buttonPositionEnd = $state(0);
+
 	function positionIntersectsInStep(
 		step: number,
 		distanceBetween: number,
@@ -91,7 +143,7 @@
 		}
 	}
 	function remapOfPercentToValue(position: number) {
-		position = parseInt(position.toFixed(0));
+		position = parseInt(position.toFixed(presition));
 		const distance = maxValue - minValue;
 		value = (distance * position) / 100 + minValue;
 	}
@@ -121,8 +173,8 @@
 	<div
 		role="button"
 		tabindex="0"
-		on:keydown={() => {}}
-		on:pointerdown={onClickBar}
+		onkeydown={() => {}}
+		onpointerdown={onClickBar}
 		bind:this={containerElement}
 		class="ui-slider-bar-container {radius} ui-{format}"
 	>
@@ -130,13 +182,13 @@
 			onPointerMove={onDrag}
 			bind:buttonPosition={buttonPositionEnd}
 			{value}
-			className={classNameButton}
+			className={classButton}
 			{customButton}
 			triggerOnChange={onChange}
 		></SliderButton>
 		<span class="ui-slider-total-bar {radius}"></span>
 		<span
-			class="ui-slider-bar ui-{format} {radius} {classNameBar}"
+			class="ui-slider-bar ui-{format} {radius} {classBar}"
 			style="width:calc({buttonPositionEnd.toFixed(0)}% + 17px);"
 		>
 		</span>
@@ -147,9 +199,11 @@
 		{#if steps}
 			<div hidden use:setStepPositions class="ui-slider-steps-container">
 				{#each { length: steps } as _, step}
-					<slot name="step">
-						<span class="ui-slider-step {classNameStep}"></span>
-					</slot>
+					{#if customStep}
+						{@render customStep(step)}
+					{:else}
+						<span class="ui-slider-step {classStep}"></span>
+					{/if}
 				{/each}
 			</div>
 		{/if}

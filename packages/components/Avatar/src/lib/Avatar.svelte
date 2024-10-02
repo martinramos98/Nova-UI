@@ -2,10 +2,11 @@
 
 <script lang="ts">
 	import { Icon, UserIcon } from '@nv-org/icon';
+	import type { Snippet } from 'svelte';
 	interface AvatarProps {
 		disabled?: boolean;
 		avatarSrc?: string;
-		defaultIcon?: string;
+		defaultIcon?: Snippet | string;
 		avatarName?: string;
 		size?: 'sm' | 'md' | 'lg';
 		colors?: string;
@@ -15,19 +16,30 @@
 	const {
 		disabled = false,
 		avatarSrc = undefined,
-		defaultIcon = undefined,
+		defaultIcon,
 		avatarName = '',
 		size = 'md',
 		colors = '',
 		avatarBordered = false,
 		class: className = ''
 	}: AvatarProps = $props();
-	let FirstLettersOfName = $state('');
+	let firstLettersOfName = $state('');
 	$effect(() => {
-		avatarName.split(' ').forEach((word: string) => {
-			FirstLettersOfName += word.charAt(0);
-		});
+		if (!avatarSrc) {
+			let firstLetters = '';
+			avatarName.split(' ').forEach((word: string) => {
+				firstLetters += word.charAt(0);
+			});
+			firstLettersOfName = firstLetters;
+		}
 	});
+	// function setStringName(){
+	// 	if (!avatarSrc) {
+	// 		avatarName.split(' ').forEach((word: string) => {
+	// 			FirstLettersOfName += word.charAt(0);
+	// 		});
+	// 	}
+	// }
 </script>
 
 <div
@@ -38,15 +50,21 @@
 	{#if avatarSrc && avatarSrc !== ''}
 		<img src={avatarSrc} alt={'Avatar Image ' + avatarName} />
 	{/if}
-	{#if !avatarSrc && FirstLettersOfName !== ''}
-		{FirstLettersOfName}
+	{#if !avatarSrc && firstLettersOfName !== ''}
+		{firstLettersOfName}
 	{/if}
-	{#if !avatarSrc && FirstLettersOfName === ''}
-		<Icon
-			props={{ fill: 'currentcolor', width: 'inherit', height: 'inherit', viewBox: '0 0 24 24' }}
-		>
-			<UserIcon />
-		</Icon>
+	{#if !avatarSrc && firstLettersOfName === ''}
+		{#if typeof defaultIcon === 'string'}
+			<img src={defaultIcon} alt={avatarName} />
+		{:else if defaultIcon}
+			{@render defaultIcon()}
+		{:else}
+			<Icon
+				props={{ fill: 'currentcolor', width: 'inherit', height: 'inherit', viewBox: '0 0 24 24' }}
+			>
+				<UserIcon />
+			</Icon>
+		{/if}
 	{/if}
 </div>
 

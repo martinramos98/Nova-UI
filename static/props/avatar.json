@@ -1,0 +1,67 @@
+{
+	"avatar": [
+		{
+			"name": "avatarSrc?:string",
+			"description": "Avatar link for image of avatar.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "avatarName?:string",
+			"description": "Avatar name. If there's no avatarSrc, the first letter of this name will be used as avatar.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "disabled?:boolean",
+			"description": "Disables avatar.",
+			"required": false,
+			"default": false
+		},
+		{
+			"name": "colors?:string",
+			"description": "Color scheme of the avatar.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "size?:string",
+			"description": "Size of the avatar.",
+			"required": false,
+			"default": "'md'"
+		},
+		{
+			"name": "avatarBordered?:boolean",
+			"description": "Adds a border to the avatar.",
+			"required": false,
+			"default": "false"
+		},
+		{
+			"name": "class?:string",
+			"description": "HTML Class attribute for accordion.",
+			"required": false,
+			"default": "''"
+		}
+	],
+	"avatarGroup": [
+		{
+			"name": "maxAvatarToShow?:number",
+			"description": "how many avatars will hide when is not collpased.",
+			"required": false,
+			"default": 2
+		},
+		{
+			"name": "collpase?:boolean",
+			"description": "Collapses state of avatar group.",
+			"required": false,
+			"bindable": true,
+			"default": "false"
+		},
+		{
+			"name": "collapseOnClick?:boolean",
+			"description": "Enables collapsing of hidden avatars.",
+			"required": false,
+			"default": "true"
+		}
+	]
+}

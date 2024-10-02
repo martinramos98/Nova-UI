@@ -12,7 +12,8 @@
 		classContent?: string;
 		radius?: string;
 		onClose?: () => void;
-		backdrop?: { type?: 'normal' | 'blur' | 'transparent'; class?: string };
+		backdropType?: 'normal' | 'transparent' | 'blur';
+		backdropClass?: string;
 		header?: Snippet;
 		footer?: Snippet;
 		children: Snippet;
@@ -24,7 +25,8 @@
 		size = 'md',
 		radius = 'md',
 		onClose = () => {},
-		backdrop = { type: 'normal', class: '' },
+		backdropClass = '',
+		backdropType = 'normal',
 		classContent = '',
 		header = undefined,
 		footer = undefined,
@@ -44,7 +46,7 @@
 </script>
 
 {#if open}
-	<div use:translateToBody class="ui-modal" aria-modal="true">
+	<div role="dialog" use:translateToBody class="ui-modal" aria-modal="true">
 		<div
 			transition:animationFunction={animationParams}
 			class="ui-modal-content rounded-{radius} size-{size} {classContent}"
@@ -61,10 +63,8 @@
 			transition:fade
 			aria-roledescription="Backdrop of modal"
 			aria-hidden="true"
-			style={backdrop.type === 'transparent' ? 'background-color:transparent;' : ''}
-			class="ui-modal-backdrop {backdrop.class}  {backdrop.type === 'blur'
-				? 'backdrop-blur-sm'
-				: ''}"
+			style={backdropType === 'transparent' ? 'background-color:transparent;' : ''}
+			class="ui-modal-backdrop {backdropClass}  {backdropType === 'blur' ? 'backdrop-blur-sm' : ''}"
 		></div>
 	</div>
 {/if}

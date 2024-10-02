@@ -1,12 +1,28 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { ElementAnimation } from '@nv-org/element-animation-js';
 	import { setSubsectionPosition } from './utils';
-	export let offset = 15;
-	export let classNameContainer = '';
-	export let position: string = 'right';
-	export let openOnHover = true;
-	export let open = false;
-	let render = false;
+	import type { Snippet } from 'svelte';
+	interface FloatinSubsectionProp {
+		offset?: number;
+		classContainer?: string;
+		position?: string;
+		openOnHover?: boolean;
+		open?: boolean;
+		children: Snippet;
+		trigger: Snippet;
+	}
+	let {
+		offset = 15,
+		classContainer = '',
+		position = 'right',
+		openOnHover = true,
+		open = false,
+		children,
+		trigger
+	}: FloatinSubsectionProp = $props();
+	let render = $state(false);
 
 	let elementAnimation: ElementAnimation;
 
@@ -50,12 +66,12 @@
 <div use:setHover class="ui-subsection-group">
 	{#if render}
 		<div class="ui-floating-container" use:setPosition use:setAnimation>
-			<div class="ui-subsection-group-content {classNameContainer}">
-				<slot />
+			<div class="ui-subsection-group-content {classContainer}">
+				{@render children?.()}
 			</div>
 		</div>
 	{/if}
-	<slot name="trigger" />
+	{@render trigger?.()}
 </div>
 
 <style>

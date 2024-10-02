@@ -9,7 +9,7 @@
 		hideBadge?: boolean;
 		contentBadge?: string | Snippet;
 		positionBadge?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-		className?: string;
+		class?: string;
 		size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 		radius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
 		variant?: string;
@@ -18,13 +18,14 @@
 	}
 	const {
 		hideBadge = false,
-		contentBadge,
+		contentBadge = undefined,
 		positionBadge = 'bottom-right',
-		className = '',
+		class: className = '',
 		size = 3,
 		radius = 'full',
 		variant = '',
-		colors = ''
+		colors = '',
+		children
 	}: BadgeProps = $props();
 	let badgeEl: HTMLElement;
 	let badgeSubEl: HTMLElement;
@@ -69,7 +70,6 @@
 				: ''} rounded-{radius} {className} sizes-{size}"
 		>
 			{#if !hideBadge}
-				<slot name="contentBadge" />
 				{#if typeof contentBadge === 'string'}
 					{contentBadge}
 				{:else if contentBadge}

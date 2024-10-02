@@ -1,8 +1,26 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	export let shouldCloseOnClick: boolean = true;
-	export let onClick = () => {};
-	export let className = '';
-	export let closeOnClick = true;
+	import type { Snippet } from 'svelte';
+
+	interface DropdownItemProps {
+		shouldCloseOnClick?: boolean;
+		onClick?: () => void;
+		className?: string;
+		closeOnClick?: boolean;
+		children: Snippet;
+	}
+	const {
+		shouldCloseOnClick = true,
+		onClick = () => {},
+		className = '',
+		closeOnClick = true,
+		children
+	}: DropdownItemProps = $props();
+	// export let shouldCloseOnClick: boolean = true;
+	// export let onClick = () => {};
+	// export let className = '';
+	// export let closeOnClick = true;
 
 	function closeOnClickAction(node: HTMLElement) {
 		if (closeOnClick) {
@@ -19,8 +37,8 @@
 	}
 </script>
 
-<button use:closeOnClickAction class="ui-dropdown-item {className}" on:click={handleClickEvent}>
-	<slot />
+<button use:closeOnClickAction class="ui-dropdown-item {className}" onclick={handleClickEvent}>
+	{@render children()}
 </button>
 
 <style>

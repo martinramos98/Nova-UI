@@ -1,0 +1,32 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for badge.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "variant?: any | ''",
+		"description": "Variant style of the chip.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "colors?: any | ''",
+		"description": "Colors scheme of the chip.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "size?: 'xs' | 'sm' | 'md' | 'lg'",
+		"description": "Size of the chip.",
+		"required": false,
+		"default": "'md'"
+	},
+	{
+		"name": "children: Snippet",
+		"description": "Children elements of the chip.",
+		"required": true,
+		"default": null
+	}
+]

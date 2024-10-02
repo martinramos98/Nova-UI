@@ -32,7 +32,7 @@
 		<Button
 			onClick={copyCode}
 			withClickEffect={false}
-			className="w-8 h-8 p-0 flex items-center justify-center m-2 bg-inherit hover:brightness-130 rounded-md shrink-0"
+			class="w-8 h-8 p-0 flex items-center justify-center m-2 bg-inherit hover:brightness-130 rounded-md shrink-0"
 		>
 			<Icon props={{ class: 'block', viewBox: '0 0 24 24', width: 24, height: 24, fill: 'none' }}>
 				<path

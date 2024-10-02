@@ -1,0 +1,147 @@
+{
+	"button": [
+		{
+			"name": "class?:string",
+			"description": "HTML Class attribute for accordion.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "css?:string",
+			"description": "CSS styles for the button.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "variant?:string",
+			"description": "Variant of the button.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "colors?:string",
+			"description": "Color scheme for the button.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "disabled?:boolean",
+			"description": "Disable the button.",
+			"required": false,
+			"default": "false"
+		},
+		{
+			"name": "isLoading?:boolean",
+			"description": "Shows loading spinner.",
+			"required": false,
+			"default": "false"
+		},
+		{
+			"name": "spinnerPosition?:'left' | 'right'",
+			"description": "Position of the loading spinner.",
+			"required": false,
+			"default": "'left'"
+		},
+		{
+			"name": "withClickEffect?:boolean",
+			"description": "Enable click effect.",
+			"required": false,
+			"default": "true"
+		},
+		{
+			"name": "onClick?:((ev: MouseEvent) => void) | undefined",
+			"description": "Click event handler.",
+			"required": false,
+			"default": "undefined"
+		},
+		{
+			"name": "spinner?:Snippet",
+			"description": "Spinner component.",
+			"required": false,
+			"default": "undefined"
+		},
+		{
+			"name": "children:Snippet",
+			"description": "Child Snippet.",
+			"required": true,
+			"default": "null"
+		},
+		{
+			"name": "buttonAttr?:HTMLButtonAttributes",
+			"description": "HTML button attributes.",
+			"required": false,
+			"default": "{}"
+		}
+	],
+	"buttonGroup": [
+		{
+			"name": "class?:string",
+			"description": "HTML Class attribute for accordion.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "disabled?:boolean",
+			"description": "disable all the buttons.",
+			"required": false,
+			"default": "''"
+		},
+
+		{
+			"name": "children:Snippet",
+			"description": "Children snippet components.",
+			"required": false,
+			"default": "''"
+		}
+	],
+	"closeButton": [
+		{
+			"name": "class?:string",
+			"description": "HTML Class attribute for accordion.",
+			"required": false,
+			"default": "''"
+		},
+
+		{
+			"name": "variant?:string",
+			"description": "Variant style of the close button.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "colors?:string",
+			"description": "Colors scheme of the close button.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "onClose:(ev: MouseEvent) => void",
+			"description": "Function that triggers when button is clicked.",
+			"required": true
+		},
+		{
+			"name": "side?:'left' | 'right'",
+			"description": "Side of the cross icon.",
+			"required": false,
+			"default": "'left'"
+		},
+		{
+			"name": "children?:Snippet",
+			"description": "Children Snippet component .",
+			"required": true
+		}
+	],
+	"menuButton": [
+		{
+			"name": "class?:string",
+			"description": "HTML Class attribute for accordion.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "onClickMenu?:() => void",
+			"description": "Function that triggers when menu is clicked.",
+			"required": true
+		}
+	]
+}

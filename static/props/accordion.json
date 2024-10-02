@@ -1,0 +1,26 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for accordion",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "colors?:string",
+		"description": "HTML Class attribute for accordion",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "variant?:string",
+		"description": "Accordion variant style component. Posible values:<pre><code>'default-accordion'</code></pre>,<pre><code>'splitted'</code></pre>,<pre><code>'splitted-content'</code></pre>,<pre><code>'bordered-items'</code></pre>",
+		"required": false,
+		"default": "'default-accordion'"
+	},
+	{
+		"name": "multiopen:?string",
+		"description": "Enables accordion to have multiple open sections",
+		"required": false,
+		"default": true
+	}
+]
