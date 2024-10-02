@@ -1,0 +1,61 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for Link.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "type?:'simple' | 'external' | 'preview' | 'hover-preview'",
+		"description": "Type of the link.",
+		"required": false,
+		"default": "'simple'"
+	},
+	{
+		"name": "href:string",
+		"description": "URL the link points to.",
+		"required": true
+	},
+	{
+		"name": "target?:'self' | 'parent' | 'blank' | 'top'",
+		"description": "Specifies where to open the linked document.",
+		"required": false,
+		"default": "'blank'"
+	},
+	{
+		"name": "orientation?:'vertical' | 'horizontal'",
+		"description": "Orientation of the link.",
+		"required": false,
+		"default": "'horizontal'"
+	},
+	{
+		"name": "previewSize?:'md' | 'lg' | 'sm' | 'xs'",
+		"description": "Size of the preview.",
+		"required": false,
+		"default": "'md'"
+	},
+	{
+		"name": "colors?:any | ''",
+		"description": "Colors scheme for the link.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "variant?:any | ''",
+		"description": "Variant style of the link.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "children:Snippet",
+		"description": "Child elements of the link.",
+		"required": true,
+		"default": "''"
+	},
+	{
+		"name": "previewData?:{ title: string; description: string; image?: string; favicon: string; } | undefined",
+		"description": "Data for the link preview.",
+		"required": false,
+		"default": "undefined"
+	}
+]
