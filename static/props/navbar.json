@@ -1,0 +1,80 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for Navbar.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "direction?: 'vertical' | 'horizontal'",
+		"description": "Direction of the Navbar.",
+		"required": false,
+		"default": "'horizontal'"
+	},
+	{
+		"name": "colors?: string",
+		"description": "Color scheme for the Navbar.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "variant?: 'menu' | 'default' | 'none'",
+		"description": "Variant of the Navbar.",
+		"required": false,
+		"default": "'default'"
+	},
+	{
+		"name": "radius?: string",
+		"description": "Border radius for the Navbar.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "useContainerQuery?: boolean",
+		"description": "Whether to use container query.",
+		"required": false,
+		"default": "true"
+	},
+	{
+		"name": "children: Snippet<[any]> | undefined",
+		"description": "Children elements of the Navbar.",
+		"required": true,
+		"default": "undefined"
+	},
+	{
+		"name": "startContent?: Snippet",
+		"description": "Content at the start of the Navbar.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "centerContent?: Snippet",
+		"description": "Content at the center of the Navbar.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "endContent?: Snippet",
+		"description": "Content at the end of the Navbar.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "menuContent?: Snippet<[any]> | undefined",
+		"description": "Content for the menu in the Navbar.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "menuProps?: { drawerProps: DrawerProps}",
+		"description": "Properties for the menu drawer.",
+		"required": false,
+		"default": "{}"
+	},
+	{
+		"name": "withMenu?: boolean",
+		"description": "Whether the Navbar includes a menu.",
+		"required": false,
+		"default": "false"
+	}
+]
