@@ -1,0 +1,44 @@
+[
+	{
+		"name": "icon?:string",
+		"description": "Icon to be displayed",
+		"required": false,
+		"default": "'ring-2'"
+	},
+	{
+		"name": "color?:string",
+		"description": "Color of the icon",
+		"required": false,
+		"default": "currentcolor"
+	},
+	{
+		"name": "size?:number",
+		"description": "Size of the icon",
+		"required": false,
+		"default": 40
+	},
+	{
+		"name": "speed:number",
+		"description": "Speed of the animation",
+		"required": false,
+		"default": 0.8
+	},
+	{
+		"name": "stroke?:number",
+		"description": "Stroke width of the icon",
+		"required": false,
+		"default": 5
+	},
+	{
+		"name": "strokeLength?:number",
+		"description": "Length of the stroke",
+		"required": false,
+		"default": 0.25
+	},
+	{
+		"name": "bgOpacity?:number",
+		"description": "Background opacity",
+		"required": false,
+		"default": 0.1
+	}
+]
