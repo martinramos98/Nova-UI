@@ -1,0 +1,51 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class attribute for Progress component.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "colors?:string",
+		"description": "Color scheme for the Progress component.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "type?:'bar'|'circle'",
+		"description": "Type of progress indicator.",
+		"required": false,
+		"default": "'bar'"
+	},
+	{
+		"name": "value?:number",
+		"description": "Current progress value.",
+		"required": false,
+		"bindable": true,
+		"default": 0
+	},
+	{
+		"name": "colorsTriggers?:Record<number, string>",
+		"description": "Mapping of progress values to colors.",
+		"required": false,
+		"default": "null"
+	},
+	{
+		"name": "progressWidth?:number",
+		"description": "Width of the progress bar.",
+		"required": false,
+		"default": 4
+	},
+	{
+		"name": "barRounded?:boolean",
+		"description": "Whether the progress bar has rounded edges.",
+		"required": false,
+		"default": true
+	},
+	{
+		"name": "indeterminate?:boolean",
+		"description": "Whether the progress is indeterminate.",
+		"required": false,
+		"default": false
+	}
+]
