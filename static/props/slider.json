@@ -1,0 +1,98 @@
+[
+	{
+		"name": "variant?: '' | 'primary' | 'secondary' | 'tertiary' | 'info' | 'success' | 'warning' | 'danger' | string",
+		"description": "Defines the color variant for the slider.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "colors?: '' | 'primary' | 'secondary' | 'tertiary' | 'info' | 'success' | 'warning' | 'danger' | string",
+		"description": "Defines custom colors for the slider.",
+		"required": false,
+		"default": "'info'"
+	},
+	{
+		"name": "maxValue: number",
+		"description": "Maximum value for the slider.",
+		"required": true,
+		"default": "undefined"
+	},
+	{
+		"name": "minValue?: number",
+		"description": "Minimum value for the slider.",
+		"required": false,
+		"default": "0"
+	},
+	{
+		"name": "value?: number",
+		"description": "Current value of the slider.",
+		"required": false,
+		"default": "$bindable(minValue)"
+	},
+	{
+		"name": "class?: string",
+		"description": "CSS class for the slider component.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "radius?: 'rounded-full' | 'rounded-md' | 'rounded-lg' | 'rounded-xl' | 'rounded-2xl' | 'rounded-3xl' | 'rounded-4xl' | 'rounded-5xl' | 'rounded-6xl' | 'rounded-7xl' | 'rounded-none'",
+		"description": "Specifies the border radius for the slider.",
+		"required": false,
+		"default": "'rounded-full'"
+	},
+	{
+		"name": "classBar?: string",
+		"description": "CSS class for the slider's bar.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "format?: 'thick' | 'thin' | 'normal'",
+		"description": "Defines the thickness format of the slider.",
+		"required": false,
+		"default": "'normal'"
+	},
+	{
+		"name": "classStep?: string",
+		"description": "CSS class for the slider steps.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "classButton?: string",
+		"description": "CSS class for the slider button.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "steps?: number",
+		"description": "Number of steps in the slider.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "presition?: number",
+		"description": "Precision of the slider.",
+		"required": false,
+		"default": "0"
+	},
+	{
+		"name": "customStep?: Snippet<[any]>",
+		"description": "Custom step renderer for the slider.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "customButton?: Snippet",
+		"description": "Custom button renderer for the slider.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "onChange?: (value: number) => void",
+		"description": "Callback function triggered when the slider value changes.",
+		"required": false,
+		"default": "undefined"
+	}
+]
