@@ -3,7 +3,11 @@
 <script lang="ts">
 	import TableRow from './TableRow.svelte';
 	import { type Snippet } from 'svelte';
-	const { class: className = '', children }: { class?: string; children?: Snippet } = $props();
+	interface TableFooterProps {
+		class?: string;
+		children?: Snippet;
+	}
+	const { class: className = '', children }: TableFooterProps = $props();
 </script>
 
 <tfoot class="ui-table-footer {className}">

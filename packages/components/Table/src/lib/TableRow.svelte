@@ -3,6 +3,13 @@
 <script lang="ts">
 	import { fly, fade } from 'svelte/transition';
 	import { type Snippet } from 'svelte';
+	interface TableRowProps {
+		class?: string;
+		svelteTransitionFn?: any;
+		svelteTransitionOptions?: { in: any; out: any };
+		children?: Snippet;
+	}
+
 	const {
 		class: className = '',
 		children,
@@ -11,12 +18,7 @@
 			in: { y: -20 },
 			out: { y: 20 }
 		}
-	}: {
-		class?: string;
-		children?: Snippet;
-		svelteTransitionFn?: any;
-		svelteTransitionOptions?: { in: any; out: any };
-	} = $props();
+	}: TableRowProps = $props();
 	let rowEl: HTMLTableRowElement;
 
 	// FIXME: update when it's fixed flickers using delay. Then add multiplying with row index for increasing display
