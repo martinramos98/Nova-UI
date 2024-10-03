@@ -1,0 +1,134 @@
+{
+	"Cell": [
+		{
+			"name": "class?: string",
+			"description": "CSS class for the table cell.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "children: Snippet",
+			"description": "Content inside the table cell.",
+			"required": true,
+			"default": "undefined"
+		},
+		{
+			"name": "value?: any",
+			"description": "Value displayed in the cell.",
+			"required": false,
+			"default": "undefined"
+		},
+		{
+			"name": "type?: 'string' | 'number' | 'any'",
+			"description": "Specifies the type of value in the cell.",
+			"required": false,
+			"default": "'any'"
+		},
+		{
+			"name": "as?: 'header' | 'data'",
+			"description": "Indicates whether the cell is a header or data cell.",
+			"required": false,
+			"default": "'data'"
+		},
+		{
+			"name": "scope?: 'row' | 'col' | 'rowgroup' | 'colgroup'",
+			"description": "Scope of the cell when used in a table header.",
+			"required": false,
+			"default": "'row'"
+		}
+	],
+	"Table": [
+		{
+			"name": "class?: string",
+			"description": "CSS class for the table.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "children?: Snippet",
+			"description": "Content inside the table.",
+			"required": false,
+			"default": "undefined"
+		},
+		{
+			"name": "variant?: string",
+			"description": "Variant style for the table.",
+			"required": false,
+			"default": "'default'"
+		},
+		{
+			"name": "color?: string",
+			"description": "Color scheme for the table.",
+			"required": false,
+			"default": "'container'"
+		}
+	],
+	"Table Footer": [
+		{
+			"name": "class?: string",
+			"description": "CSS class for the table footer.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "children?: Snippet",
+			"description": "Content inside the table footer.",
+			"required": false,
+			"default": "undefined"
+		}
+	],
+	"Table Header": [
+		{
+			"name": "class?: string",
+			"description": "CSS class for the table header.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "children: Snippet",
+			"description": "Content inside the table header.",
+			"required": true,
+			"default": "undefined"
+		}
+	],
+	"Table Row": [
+		{
+			"name": "class?: string",
+			"description": "CSS class for the table row.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "svelteTransitionFn?: any",
+			"description": "Transition function for animating table row.",
+			"required": false,
+			"default": "fly"
+		},
+		{
+			"name": "svelteTransitionOptions?: { in: any; out: any }",
+			"description": "Options for the transition function.",
+			"required": false,
+			"default": "{ in: { y: -20 }, out: { y: 20 } }"
+		},
+		{
+			"name": "children?: Snippet",
+			"description": "Content inside the table row.",
+			"required": false,
+			"default": "undefined"
+		}
+	],
+	"Table Body": [
+		{
+			"name": "class?: string",
+			"description": "CSS class for the table body.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "children?: Snippet",
+			"description": "Content inside the table body.",
+			"required": false,
+			"default": "undefined"
+		}
+	]
+}
