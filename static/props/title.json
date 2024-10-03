@@ -1,0 +1,21 @@
+[
+	{
+		"name": "class?:string",
+		"description": "HTML Class for the Radio component.",
+		"default": "''",
+		"required": false
+	},
+
+	{
+		"name": "level?:string",
+		"description": "HTML Class for the Radio component.",
+		"default": "1",
+		"required": false
+	},
+	{
+		"name": "children?:Snippet",
+		"description": "HTML Class for the Radio component.",
+		"default": "undefined",
+		"required": false
+	}
+]
