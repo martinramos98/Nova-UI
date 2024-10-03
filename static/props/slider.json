@@ -27,7 +27,8 @@
 		"name": "value?: number",
 		"description": "Current value of the slider.",
 		"required": false,
-		"default": "$bindable(minValue)"
+		"bindable": true,
+		"default": "minValue"
 	},
 	{
 		"name": "class?: string",
