@@ -1,17 +1,32 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { CalloutIcons } from '@nv-org/callout';
 	import { SequencedAnimation } from '@nv-org/element-animation-js';
 	import { CloseButton } from '@nv-org/button';
 	import type { Snippet } from 'svelte';
-	export let className = '';
-	export let variant = 'solid';
-	export let type = 'default';
-	export let colors: string | undefined = undefined;
-	export let content: string | Snippet<[any]>;
-	export let withIcon = true;
-	export let delay: number | undefined = undefined;
-	export let withCloseButton = false;
-	export let onClose: () => void;
+	interface ToastProps {
+		class?: string;
+		variant?: 'solid' | 'outline' | 'ghost';
+		type?: 'default' | 'alert' | 'success' | 'warning';
+		colors?: string;
+		content: string | Snippet<[any]>;
+		withIcon?: boolean;
+		delay?: number;
+		withCloseButton?: boolean;
+		onClose: () => void;
+	}
+	const {
+		class: className = '',
+		variant = 'solid',
+		type = 'default',
+		colors,
+		content,
+		withIcon = true,
+		delay,
+		withCloseButton = false,
+		onClose
+	}: ToastProps = $props();
 	let reversed = false;
 	let anim: SequencedAnimation;
 	function setToast(node: HTMLElement) {
@@ -116,7 +131,8 @@
 	{/if}
 	{#if withCloseButton}
 		<CloseButton
-			className={'p-1 rounded-full'}
+			class={'p-1 rounded-full'}
+			side="right"
 			onClose={() => {
 				reversed = true;
 				anim.reverse();
