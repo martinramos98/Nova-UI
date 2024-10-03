@@ -1,0 +1,55 @@
+[
+	{
+		"name": "class?: string",
+		"description": "CSS class for the toast notification.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "variant?: 'solid' | 'outline' | 'ghost'",
+		"description": "Variant style for the toast notification.",
+		"required": false,
+		"default": "'solid'"
+	},
+	{
+		"name": "type?: 'default' | 'alert' | 'success' | 'warning'",
+		"description": "Type of the toast notification.",
+		"required": false,
+		"default": "'default'"
+	},
+	{
+		"name": "colors?: string",
+		"description": "Color scheme for the toast notification.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "content: string | Snippet<[any]>",
+		"description": "Content displayed in the toast notification.",
+		"required": true,
+		"default": "undefined"
+	},
+	{
+		"name": "withIcon?: boolean",
+		"description": "Whether the toast notification includes an icon.",
+		"required": false,
+		"default": "true"
+	},
+	{
+		"name": "delay?: number",
+		"description": "Delay before the toast notification is dismissed.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "withCloseButton?: boolean",
+		"description": "Whether the toast includes a close button.",
+		"required": false,
+		"default": "false"
+	},
+	{
+		"name": "onClose: () => void",
+		"description": "Function triggered when the toast is closed.",
+		"required": true
+	}
+]
