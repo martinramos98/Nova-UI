@@ -1,0 +1,57 @@
+[
+	{
+		"name": "className?: string",
+		"description": "CSS class for the switch component.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "toggled?: boolean",
+		"description": "Indicates whether the switch is toggled on or off.",
+		"required": false,
+		"bindable": true,
+		"default": "false"
+	},
+	{
+		"name": "size?: 'sm' | 'md' | 'lg'",
+		"description": "Defines the size of the switch.",
+		"required": false,
+		"default": "'sm'"
+	},
+	{
+		"name": "icons?: 'inside' | 'outside'",
+		"description": "Specifies the position of the icons relative to the switch.",
+		"required": false,
+		"default": "'inside'"
+	},
+	{
+		"name": "iconOn?: Snippet",
+		"description": "Custom icon displayed when the switch is on.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "color?: string",
+		"description": "Specifies the color for the switch.",
+		"required": false,
+		"default": "'container-highest'"
+	},
+	{
+		"name": "classNameSlider?: string",
+		"description": "CSS class for the slider element inside the switch.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "customColor?: string",
+		"description": "Custom color for the switch.",
+		"required": false,
+		"default": "undefined"
+	},
+	{
+		"name": "iconOff?: Snippet",
+		"description": "Custom icon displayed when the switch is off.",
+		"required": false,
+		"default": "undefined"
+	}
+]
