@@ -1,0 +1,69 @@
+[
+	{
+		"name": "class?: string",
+		"description": "CSS class for the tooltip component.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "colors?: string",
+		"description": "Defines the color palette for the tooltip.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "variant?: string",
+		"description": "Specifies the variant style of the tooltip.",
+		"required": false,
+		"default": "''"
+	},
+	{
+		"name": "position?: string",
+		"description": "Position of the tooltip relative to the target element.",
+		"required": false,
+		"default": "'top-start'"
+	},
+	{
+		"name": "offset?: number",
+		"description": "Offset distance between the tooltip and the target element.",
+		"required": false,
+		"default": "5"
+	},
+	{
+		"name": "withArrow?: boolean",
+		"description": "Determines if the tooltip includes an arrow pointing to the target element.",
+		"required": false,
+		"default": "false"
+	},
+	{
+		"name": "tooltipContent: string | Snippet",
+		"description": "Content to be displayed inside the tooltip.",
+		"required": true,
+		"default": "undefined"
+	},
+	{
+		"name": "children: Snippet",
+		"description": "Elements that trigger or are associated with the tooltip.",
+		"required": true,
+		"default": "undefined"
+	},
+	{
+		"name": "open?: boolean",
+		"description": "Indicates whether the tooltip is open or closed.",
+		"required": false,
+		"bindable": true,
+		"default": "false"
+	},
+	{
+		"name": "animationFunction?: SvelteTransitionFn",
+		"description": "Function to handle the tooltip's opening and closing animation.",
+		"required": false,
+		"default": "popIn"
+	},
+	{
+		"name": "animationParams?: any",
+		"description": "Parameters for the tooltip's animation function.",
+		"required": false,
+		"default": "{}"
+	}
+]
