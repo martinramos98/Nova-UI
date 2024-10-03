@@ -1,0 +1,103 @@
+{
+	"Tabs": [
+		{
+			"name": "selectedTabKey?: string | undefined",
+			"description": "Key of the currently selected tab.",
+			"required": false,
+			"bindable": true,
+			"default": "undefined"
+		},
+		{
+			"name": "variant?: string",
+			"description": "Variant style for the tabs.",
+			"required": false,
+			"default": "'default'"
+		},
+		{
+			"name": "class?: string",
+			"description": "CSS class for the tabs container.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "classContent?: string",
+			"description": "CSS class for the tab content container.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "classSelectionContainer?: string",
+			"description": "CSS class for the tab selection container.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "TabSelection?: Snippet",
+			"description": "Custom snippet for rendering the tab selection.",
+			"required": false,
+			"default": "undefined"
+		},
+		{
+			"name": "children: Snippet",
+			"description": "Content inside the tabs.",
+			"required": true,
+			"default": "undefined"
+		},
+		{
+			"name": "position?: 'top' | 'left' | 'bottom' | 'right' | ''",
+			"description": "Position of the tabs relative to the content.",
+			"required": false,
+			"default": "'top'"
+		},
+		{
+			"name": "classSelector?: string",
+			"description": "CSS class for the tab selector.",
+			"required": false,
+			"default": "''"
+		}
+	],
+	"Tab Button": [
+		{
+			"name": "disabled?: boolean",
+			"description": "Disable the tab button.",
+			"required": false,
+			"default": "false"
+		},
+		{
+			"name": "key: string",
+			"description": "Key identifier for the tab button.",
+			"required": true
+		},
+		{
+			"name": "className?: string",
+			"description": "CSS class for the tab button.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "children: Snippet",
+			"description": "Content inside the tab button.",
+			"required": true,
+			"default": "undefined"
+		}
+	],
+	"Tab": [
+		{
+			"name": "key: string",
+			"description": "Key identifier for the tab component.",
+			"required": true
+		},
+		{
+			"name": "class?: string",
+			"description": "CSS class for the tab component.",
+			"required": false,
+			"default": "''"
+		},
+		{
+			"name": "children: Snippet",
+			"description": "Children content for the tab component.",
+			"required": true,
+			"default": "undefined"
+		}
+	]
+}
