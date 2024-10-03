@@ -5,7 +5,7 @@
 	import { popIn, setPosisitionPopover, type SvelteTransitionFn } from '@nv-org/utils';
 	interface TooltipProps {
 		class?: string;
-		color?: string;
+		colors?: string;
 		variant?: string;
 		offset?: number;
 		position?: string;
