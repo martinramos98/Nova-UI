@@ -3,9 +3,12 @@
 	import { Avatar, AvatarGroup } from '@nv-org/avatar';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	import AvatarProps from '../../../app/components/pagesSections/avatar/AvatarProps.svelte';
+	import PropItem from '../../../app/components/propItem/PropItem.svelte';
+	export let data;
 	function codeString(props: string) {
 		return `<Avatar ${props}/>`;
 	}
+	console.log(data);
 </script>
 
 <svelte:head>
@@ -189,8 +192,13 @@
 			<header>
 				<Title level={2}>Properties</Title>
 			</header>
+
 			<section>
-				<AvatarProps />
+				{#each data.data as componentData}
+					{#each componentData.data as propItem}
+						<PropItem data={propItem}></PropItem>
+					{/each}
+				{/each}
 			</section>
 		</article>
 	</main>

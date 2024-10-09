@@ -33,10 +33,10 @@
 	let container: HTMLElement;
 	let arrowPosition = '';
 	function onMouseIn(ev: MouseEvent) {
-		open = true;
+		if (ev.target === container) open = true;
 	}
 	function onMouseOut(ev: MouseEvent) {
-		open = false;
+		if (ev.target === container) open = false;
 	}
 	function setArrowPosition(node: SVGElement) {
 		if (position === 'top' || position === 'top-start' || position === 'top-end') {
@@ -61,8 +61,8 @@
 <div
 	bind:this={container}
 	role="tooltip"
-	on:mouseenter|self={onMouseIn}
-	on:mouseleave|self={onMouseOut}
+	onmouseenter={onMouseIn}
+	onmouseleave={onMouseOut}
 	class="ui-tooltip-container"
 >
 	{#if children}

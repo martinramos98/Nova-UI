@@ -6,7 +6,9 @@
 	import { Title } from '@nv-org/title';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	import BadgeProps from '../../../app/components/pagesSections/badge/BadgeProps.svelte';
+	import PropItem from '../../../app/components/propItem/PropItem.svelte';
 	let counter = 0;
+	export let data;
 </script>
 
 <div class="page-content">
@@ -387,7 +389,12 @@
 			<header>
 				<Title level={2}>Badge Props</Title>
 			</header>
-			<BadgeProps />
+
+			<section>
+				{#each data.data as propItem}
+					<PropItem data={propItem}></PropItem>
+				{/each}
+			</section>
 		</article>
 	</main>
 </div>

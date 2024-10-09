@@ -6,6 +6,8 @@
 	import AlertBasicCase from '../../../app/components/pagesSections/alert/AlertBasicCase/AlertBasicCase.svelte';
 	import AlertTypesCases from '../../../app/components/pagesSections/alert/AlertTypesCases/AlertTypesCases.svelte';
 	import AlertCustomCases from '../../../app/components/pagesSections/alert/AlertCustomsCases/AlertCustomCases.svelte';
+	import PropItem from '../../../app/components/propItem/PropItem.svelte';
+	const { data } = $props();
 </script>
 
 <div class="page-content">
@@ -47,7 +49,11 @@
 			<header>
 				<Title level={2}>Props</Title>
 			</header>
-			<AlertProps />
+			<section>
+				{#each data.data as propItem}
+					<PropItem data={propItem}></PropItem>
+				{/each}
+			</section>
 		</article>
 	</main>
 </div>

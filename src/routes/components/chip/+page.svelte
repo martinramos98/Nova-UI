@@ -19,7 +19,7 @@
 	<main>
 		<article id={'chip'}>
 			<header>
-				<Title level={1} className="text-start w-full">Chip</Title>
+				<Title level={1} class="text-start w-full">Chip</Title>
 				<p class="py-2 px-2">
 					Chip component are compacts visual elements commonly used to represent attributes, tags,
 					or small interactive elements within a user interface.
@@ -29,7 +29,7 @@
 				<div>
 					<Chip colors="success" variant="solid">Active</Chip>
 					<Chip colors="warning" variant="solid">Delayed</Chip>
-					<Chip className="bg-slate-800 font-bold rounded-2xl" variant="solid">Chip</Chip>
+					<Chip class="bg-slate-800 font-bold rounded-2xl" variant="solid">Chip</Chip>
 				</div>
 			</section>
 		</article>
@@ -135,9 +135,9 @@
 	<div class="description">
 		<span class="text-lg font-semibold">Bowser</span>
 		<div class="chip-list gap-2">
-			<Chip size="xs" variant="solid" className="bg-orange-700 rounded-full">Fire</Chip>
-			<Chip size="xs" variant="solid" className="bg-lime-900 rounded-full">Turtle</Chip>
-			<Chip size="xs" variant="solid" className="bg-amber-500 text-black rounded-full">King</Chip
+			<Chip size="xs" variant="solid" class="bg-orange-700 rounded-full">Fire</Chip>
+			<Chip size="xs" variant="solid" class="bg-lime-900 rounded-full">Turtle</Chip>
+			<Chip size="xs" variant="solid" class="bg-amber-500 text-black rounded-full">King</Chip
 			>
 		</div>
 	</div>
@@ -153,16 +153,10 @@
 									<div class="description">
 										<span class="text-lg font-semibold">Bowser</span>
 										<div class="chip-list gap-2">
-											<Chip size="xs" variant="solid" className="bg-orange-700 rounded-full"
-												>Fire</Chip
-											>
-											<Chip size="xs" variant="solid" className="bg-lime-900 rounded-full"
-												>Turtle</Chip
-											>
-											<Chip
-												size="xs"
-												variant="solid"
-												className="bg-amber-500 text-black rounded-full">King</Chip
+											<Chip size="xs" variant="solid" class="bg-orange-700 rounded-full">Fire</Chip>
+											<Chip size="xs" variant="solid" class="bg-lime-900 rounded-full">Turtle</Chip>
+											<Chip size="xs" variant="solid" class="bg-amber-500 text-black rounded-full"
+												>King</Chip
 											>
 										</div>
 									</div>

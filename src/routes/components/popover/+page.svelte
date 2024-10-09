@@ -26,7 +26,7 @@
 				<Title level={2}>Positions</Title>
 			</header>
 			<section>
-				<div class="position-grid">
+				<div id="position-grid">
 					<Popover variant="solid" color="container" position="top-start">
 						{#snippet popoverContent()}
 							<p>Popover Test</p>
@@ -118,15 +118,15 @@
 </div>
 
 <style>
-	.position-grid {
+	#position-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: repeat(4, 1fr);
 	}
-	:global(.position-grid .ui-popover-container > .ui-button) {
+	:global(#position-grid .ui-popover-container > .ui-button) {
 		width: 100%;
 	}
-	:global(.position-grid .ui-popover-container) {
+	:global(#position-grid .ui-popover-container) {
 		width: 100%;
 	}
 </style>

@@ -69,6 +69,6 @@
 		"name": "animationParams?:{delay?:number,duration?:number,easing:EaseFn,...any}",
 		"description": "Parameters for the animation function. Controls duration of the animation, delay, easing, etc. Easing function must be a svelte easing function a like.",
 		"required": false,
-		"default": "'{duration: 300, easing: cubicOut}'"
+		"default": "{duration: 300, easing: cubicOut}"
 	}
 ]

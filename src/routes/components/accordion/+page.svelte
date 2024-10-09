@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Title } from '@nv-org/title';
 	import { Accordion, AccordionSection } from '@nv-org/accordion';
+	import PropItem from '../../../app/components/propItem/PropItem.svelte';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
 	import AccordionVariantCases from '../../../app/components/pagesSections/accordion/AccordionVariantCases/AccordionVariantCases.svelte';
@@ -44,6 +45,7 @@
 </Accordion>
 		`;
 	}
+	export let data;
 </script>
 
 {#snippet accordionDefaultContent()}
@@ -121,7 +123,12 @@
 		</article>
 		<article>
 			<header><Title level={2}>Properties</Title></header>
-			<AccordionProps />
+			<section>
+				{#each data.data as propItem}
+					<PropItem data={propItem}></PropItem>
+				{/each}
+			</section>
+			<!-- <AccordionProps /> -->
 		</article>
 	</main>
 </div>
