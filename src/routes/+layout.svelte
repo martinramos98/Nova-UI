@@ -1,5 +1,8 @@
 <script>
-	import { Navbar, MenuButton, Accordion, AccordionSection, CloseButton } from '$lib/index';
+	// import { Navbar, MenuButton, Accordion, AccordionSection, CloseButton } from '$lib/index';
+	import { Navbar } from '@nv-org/navbar';
+	import { MenuButton, CloseButton } from '@nv-org/button';
+	import { Accordion, AccordionSection } from '@nv-org/accordion';
 	import ComponentList from '../app/components/ComponentsList/ComponentList.svelte';
 	import NovaUIProvider from '$lib/providers/NovaUIProvider.svelte';
 </script>
@@ -29,7 +32,7 @@
 		{/snippet}
 		{#snippet menuContent(toggleMenu)}
 			<CloseButton class="lg:hidden absolute right-6 top-2" onClose={toggleMenu}></CloseButton>
-			<Accordion multiopen variant="" className={'px-4 py-8'}>
+			<Accordion variant="" multiopen class={'px-4 py-8'}>
 				<AccordionSection>
 					{#snippet header()}
 						<span> <a href="/components"> Components </a></span>

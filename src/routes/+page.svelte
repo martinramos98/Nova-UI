@@ -1,19 +1,30 @@
 <script>
-	import {
-		Title,
-		Image,
-		Button,
-		Link,
-		Badge,
-		Avatar,
-		Card,
-		Selection,
-		Option,
-		Input,
-		Radio,
-		Tooltip,
-		RadioGroup
-	} from '$lib/index';
+	// import {
+	// 	Title,
+	// 	Image,
+	// 	Button,
+	// 	Link,
+	// 	Badge,
+	// 	Avatar,
+	// 	Card,
+	// 	Selection,
+	// 	Option,
+	// 	Input,
+	// 	Radio,
+	// 	Tooltip,
+	// 	RadioGroup
+	// } from '$lib/index';
+	import { Title } from '@nv-org/title';
+	import { Image } from '@nv-org/image';
+	import { Button } from '@nv-org/button';
+	import { Link } from '@nv-org/link';
+	import { Badge } from '@nv-org/badge';
+	import { Avatar } from '@nv-org/avatar';
+	import { Card } from '@nv-org/card';
+	import { Selection, Option } from '@nv-org/selection';
+	import { Input } from '@nv-org/input';
+	import { Radio, RadioGroup } from '@nv-org/radio';
+	import { Tooltip } from '@nv-org/tooltip';
 	import LeftTextIcon from '../app/components/Icons/LeftTextIcon.svelte';
 	import CenterTextIcon from '../app/components/Icons/CenterTextIcon.svelte';
 	import RightTextIcon from '../app/components/Icons/RightTextIcon.svelte';
@@ -90,7 +101,7 @@
 		<section>
 			<div class="hero-title">
 				<span>Innovate your web with</span>
-				<Title className="text-7xl">Nova UI</Title>
+				<Title class="text-7xl">Nova UI</Title>
 			</div>
 			<div class="hero-buttons">
 				<Link
@@ -114,39 +125,33 @@
 		<section class="component-pool">
 			<div class="position-avatar">
 				<Badge --color-container="#FDB220" variant="solid">
-					<Avatar className="invert p-1"></Avatar>
+					<Avatar class="invert p-1"></Avatar>
 				</Badge>
 			</div>
 			<div class="position-card">
-				<Card
-					color="container-hight"
-					className="p-4 h-fit gap-2"
-					footerClassname="flex flex-row gap-4"
-				>
+				<Card color="container-hight" class="p-4 h-fit gap-2" footerClass="flex flex-row gap-4">
 					<p class="font-semibold text-center">Nova UI</p>
 					<p class="w-[200px]">Go to the next level with Svelte</p>
 					{#snippet footer()}
-						<Button colors="primary" className="rounded-full w-full font-semibold" variant="solid"
+						<Button colors="primary" class="rounded-full w-full font-semibold" variant="solid"
 							>Go!</Button
 						>
-						<Button
-							colors="primary"
-							className="rounded-full w-full font-semibold"
-							variant="bordered">Cancel</Button
+						<Button colors="primary" class="rounded-full w-full font-semibold" variant="bordered"
+							>Cancel</Button
 						>
 					{/snippet}
 				</Card>
 			</div>
 			<div class="position-image">
 				<Image
-					classNameContainer="w-fit "
+					classContainer="w-fit "
 					alt=""
-					className="w-[300px] h-[300px] object-cover object-left-top"
+					class="w-[300px] h-[300px] object-cover object-left-top"
 					src="/pm.jpg"
 				></Image>
 			</div>
 			<div class="position-select">
-				<Selection colors="container" classNameInputBox="w-[200px]" selectionLabel="Select Option">
+				<Selection colors="container" classInputBox="w-[200px]" selectionLabel="Select Option">
 					<Option value="Svelte">Svelte</Option>
 					<Option value="Angular">Angular</Option>
 					<Option value="React">React</Option>
@@ -163,36 +168,36 @@
 						--color-container="#464646"
 						name="username"
 						type="text"
-						classNameContainer="w-full"
+						classContainer="w-full"
 						labelText="Username"
-						labelProps={{ position: 'inside', dynamic: false, className: 'text-xs' }}
+						labelProps={{ position: 'inside', dynamic: false, class: 'text-xs' }}
 					></Input>
 					<Input
 						name="password"
 						type="password"
 						colors=""
-						classNameContainer="w-full"
-						labelProps={{ position: 'inside', dynamic: false, className: 'text-xs' }}
+						classContainer="w-full"
+						labelProps={{ position: 'inside', dynamic: false, class: 'text-xs' }}
 						--color-container="#464646"
 						labelText="Password"
 					></Input>
 					<div class="mt-4">
-						<Button variant="solid" className="w-full my-2" colors="primary">Login</Button>
-						<Button variant="solid" className="w-full my-2" colors="primary">Sign Up</Button>
+						<Button variant="solid" class="w-full my-2" colors="primary">Login</Button>
+						<Button variant="solid" class="w-full my-2" colors="primary">Sign Up</Button>
 					</div>
 				</div>
 			</div>
 			<RadioGroup
 				name=""
 				type="checkbox"
-				className="bg-[#2C2C2C] flex flex-row w-fit h-fit rounded-lg position-radio "
+				class="bg-[#2C2C2C] flex flex-row w-fit h-fit rounded-lg position-radio "
 			>
-				<Tooltip tooltipContent="Italic" className="" colors="container-hight">
+				<Tooltip tooltipContent="Italic" class="" colors="container-hight">
 					<Radio
 						id="italic"
 						value="italic"
 						colors="container-hight"
-						className="rounded-none rounded-l-lg"
+						class="rounded-none rounded-l-lg"
 					>
 						{#snippet custom()}
 							<span><i>K</i></span>
@@ -200,21 +205,21 @@
 					</Radio>
 				</Tooltip>
 				<Tooltip tooltipContent="Bold" colors="container-hight">
-					<Radio id="bold" value="bold" colors="container-hight" className="rounded-none">
+					<Radio id="bold" value="bold" colors="container-hight" class="rounded-none">
 						{#snippet custom()}
 							<span><b>B</b></span>
 						{/snippet}
 					</Radio>
 				</Tooltip>
 				<Tooltip tooltipContent="Left" colors="container-hight">
-					<Radio id="left" value="left" colors="container-hight" className="rounded-none">
+					<Radio id="left" value="left" colors="container-hight" class="rounded-none">
 						{#snippet custom()}
 							<LeftTextIcon />
 						{/snippet}
 					</Radio>
 				</Tooltip>
 				<Tooltip tooltipContent="Center" colors="container-hight">
-					<Radio id="center" value="center" colors="container-hight" className="rounded-none">
+					<Radio id="center" value="center" colors="container-hight" class="rounded-none">
 						{#snippet custom()}
 							<CenterTextIcon />
 						{/snippet}
@@ -225,7 +230,7 @@
 						id="right"
 						value="right"
 						colors="container-hight"
-						className="rounded-none rounded-r-lg"
+						class="rounded-none rounded-r-lg"
 					>
 						{#snippet custom()}
 							<RightTextIcon />
@@ -248,7 +253,7 @@
 	<article class="cards">
 		<section>
 			{#each cardsData as card}
-				<Card className="p-3  gap-2 h-[180px] w-[250px]" color="container">
+				<Card class="p-3  gap-2 h-[180px] w-[250px]" color="container">
 					{#snippet header()}
 						<div>
 							<span>

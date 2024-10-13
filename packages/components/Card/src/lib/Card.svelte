@@ -1,19 +1,32 @@
 <svelte:options runes={true} />
 
-<script>
-	/** @type {{className?:string,footerClassname?:string,headerClassname?:string,bodyClassname?:string,variant?:string,color?:string,children?:import('svelte').Snippet,header?:import('svelte').Snippet, body?:import('svelte').Snippet,footer?:import('svelte').Snippet}} */
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+
+	interface CardProps {
+		footerClass?: string;
+		headerClass?: string;
+		bodyClass?: string;
+		variant?: string;
+		color?: string;
+		class?: string;
+		children?: any;
+		header?: Snippet;
+		body?: Snippet;
+		footer?: Snippet;
+	}
 	const {
-		footerClassname = '',
-		headerClassname = '',
-		bodyClassname = '',
+		footerClass = '',
+		headerClass = '',
+		bodyClass = '',
 		variant = '',
 		color = '',
-		className = '',
+		class: className = '',
 		children,
 		header,
 		body,
 		footer
-	} = $props();
+	}: CardProps = $props();
 </script>
 
 <div
@@ -22,12 +35,12 @@
 		: ''} {className}"
 >
 	{#if header}
-		<div class="ui-card-header {headerClassname}">
+		<div class="ui-card-header {headerClass}">
 			{@render header()}
 		</div>
 	{/if}
 	{#if body}
-		<div class="ui-card-body {bodyClassname}">
+		<div class="ui-card-body {bodyClass}">
 			{@render body()}
 		</div>
 	{/if}
@@ -35,7 +48,7 @@
 		{@render children()}
 	{/if}
 	{#if footer}
-		<div class="ui-card-footer {footerClassname}">
+		<div class="ui-card-footer {footerClass}">
 			{@render footer()}
 		</div>
 	{/if}

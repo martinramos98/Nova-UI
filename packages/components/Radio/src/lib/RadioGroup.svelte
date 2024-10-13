@@ -7,7 +7,7 @@
 	interface RadioGroupProps {
 		type?: 'checkbox' | 'radio';
 		errorMessage?: string;
-		className?: string;
+		class?: string;
 		error?: boolean;
 		colors?: string;
 		withControl?: boolean;
@@ -16,9 +16,9 @@
 		onChange?: (checked: Set<string>) => void;
 		control?: {
 			labelText?: string;
-			className?: string;
+			class?: string;
 			colors?: string;
-			variant?: 'solid' | 'outline';
+			variant?: string;
 			lineThroughtOnCheck?: boolean;
 			id?: string;
 			disabled?: boolean;
@@ -29,7 +29,7 @@
 	let {
 		type = 'radio',
 		errorMessage = '',
-		className = '',
+		class: className = '',
 		error = false,
 		colors = 'info',
 		withControl = false,
@@ -40,20 +40,9 @@
 		labelControl,
 		control = {}
 	}: RadioGroupProps = $props();
-	// export let type: 'checkbox' | 'radio' = 'radio';
-	// export let errorMessage = '';
-	// export let className = '';
-	// export let iconChecked = 'default';
-	// export let error = false;
-	// export let colors = 'info';
-	// export let withControl = false;
-	// export let checkedValues = new Set<string>();
-	// export let name: string;
-	// export let onChange: ((checked: Set<string>) => void) | undefined = undefined;
-	// export let control: any = {};
 	const defaultControlOptions = {
 		labelText: '',
-		className: '',
+		class: '',
 		colors: colors,
 		variant: 'solid',
 		lineThroughtOnCheck: false,

@@ -194,8 +194,9 @@
 			</header>
 
 			<section>
-				{#each data.data as componentData}
-					{#each componentData.data as propItem}
+				{#each Object.entries(data.data) as [title, componentData]}
+					<Title level={3} class="first-letter:uppercase">{title}</Title>
+					{#each componentData as propItem}
 						<PropItem data={propItem}></PropItem>
 					{/each}
 				{/each}

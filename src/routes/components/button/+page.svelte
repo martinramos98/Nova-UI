@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import { Button, ButtonGroup } from '@nv-org/button';
 	import { Loader } from '@nv-org/loader';
 	import { Title } from '@nv-org/title';
@@ -8,6 +7,8 @@
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
 	import ButtonComponentShowcase from '../../../app/components/ComponentShowcase/ButtonComponentShowcase/ButtonComponentShowcase.svelte';
 	import ButtonProps from '../../../app/components/pagesSections/button/ButtonProps.svelte';
+	import PropItem from '../../../app/components/propItem/PropItem.svelte';
+	export let data;
 </script>
 
 <svelte:head>
@@ -236,6 +237,19 @@ className="flex items-center justify-between gap-2"
 				</div>
 			</section>
 		</article>
-		<ButtonProps />
+		<article>
+			<header>
+				<Title level={2}>Properties</Title>
+			</header>
+
+			<section>
+				{#each Object.entries(data.data) as [title, componentData]}
+					<Title level={3} class="first-letter:uppercase">{title}</Title>
+					{#each componentData as propItem}
+						<PropItem data={propItem}></PropItem>
+					{/each}
+				{/each}
+			</section>
+		</article>
 	</main>
 </div>

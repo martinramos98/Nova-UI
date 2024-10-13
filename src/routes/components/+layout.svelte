@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex place-content-center my-6">
-	<Callout type="warning" colors="warning" className="w-[80%] mt-8" variant="flat"
+	<Callout type="warning" colors="warning" class="w-[80%] mt-8" variant="flat"
 		>This is a showcase. The library stills in develop.</Callout
 	>
 </div>
