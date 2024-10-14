@@ -1,6 +1,6 @@
 import { animateRender } from "./animatedRender.svelte.js";
-import { popIn,popOut,directionedFly, type SvelteTransitionFn } from "./svelteTransitions.js";
-export {animateRender,popIn,popOut,directionedFly,type SvelteTransitionFn}
+import { popIn,popOut,directionedFly, fadedSlide, type SvelteTransitionFn } from "./svelteTransitions.js";
+export {animateRender,popIn,popOut,fadedSlide, directionedFly,type SvelteTransitionFn}
 export type ClickPositionResolver = (args: {
 	element: HTMLElement;
 	offset: number;
