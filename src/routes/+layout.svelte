@@ -79,7 +79,7 @@
 
 	:root {
 		scroll-behavior: smooth;
-		background: rgb(20, 20, 20);
+		/* background: rgb(20, 20, 20); */
 	}
 
 	/* TODO: Change media color-scheme for [data-theme] when feat is ready*/

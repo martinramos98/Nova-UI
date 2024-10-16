@@ -9,6 +9,7 @@ export interface BasicAnimation {
 	subscribeEndCallback(callback: (anima: BasicAnimation) => void): void;
 	finished: Promise<boolean>;
 	state: 'paused' | 'playing' | 'finished' | 'start';
+	playRate: () => number;
 }
 
 export function instanceOfBasicAnimation(object: any): boolean {
@@ -170,7 +171,7 @@ export class ElementAnimation implements BasicAnimation {
 					if (this.currentIteration < this.iterations) {
 						this.alternate && this.currentIteration % 2 === 1 ? this.reverse() : this.playForward();
 					} else {
-						// this.finished = true;
+						this.state === 'finished';
 						this.onEndCallbacks.forEach((callback) => {
 							callback(this);
 						});
@@ -286,5 +287,8 @@ export class ElementAnimation implements BasicAnimation {
 	async thenPlay(animation: ElementAnimation) {
 		await this.finished;
 		animation.playForward();
+	}
+	playRate() {
+		return this.animations[0].playbackRate;
 	}
 }

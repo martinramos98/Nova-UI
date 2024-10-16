@@ -20,7 +20,7 @@
 			</header>
 			<section>
 				<div>
-					<Tabs class="w-full">
+					<Tabs class="w-full" animation={'slide-fade'}>
 						{#snippet TabSelection()}
 							<TabButton key="1">Salta</TabButton>
 							<TabButton key="2">Buenos Aires</TabButton>

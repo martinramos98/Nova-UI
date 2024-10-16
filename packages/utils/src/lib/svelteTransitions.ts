@@ -68,7 +68,6 @@ export const fadedSlide: SvelteTransitionFn = (
 		duration: params.duration,
 		css(t) {
 			return `
-			
 			overflow:hidden;
 			opacity:${params.withFade ? params.easing(t) : 1};
 			${params.axis === 'x' ? 'width' : 'height'}: ${params.easing(t) * (params.axis === 'x' ? node.offsetWidth : node.offsetHeight)}px;

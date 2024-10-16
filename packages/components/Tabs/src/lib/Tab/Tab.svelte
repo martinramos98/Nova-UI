@@ -2,30 +2,74 @@
 
 <script lang="ts">
 	import { getContext, type Snippet } from 'svelte';
+	import { AnimationState, type AnimationTabController } from './AnimationTabController.svelte.js';
+	import { type BasicAnimation } from '@nv-org/element-animation-js';
+	import tabAnimationMap from './tabAnimation.svelte.js';
 	const {
 		key,
 		class: className = '',
 		children
 	}: { key: string; class?: string; children: Snippet } = $props();
 	let render = $state(false);
+	// --- Tab Contenxt
 	const tabContext = getContext<{
-		selectTab: (key: string) => void;
-		subscribeTab: (key: string, fn: () => void) => void;
+		tabController: AnimationTabController;
+		animation?: string;
 	}>('tabContext');
 	if (!tabContext) throw Error('Tab is not inside of Tabs Context');
+	// ---
+	let inAnimation: BasicAnimation | undefined;
+	let outAnimation: BasicAnimation | undefined;
+	function loaded(node: HTMLElement) {
+		if (!tabContext.animation) return;
+		node.style.opacity = '0';
+		inAnimation = tabContext.animation
+			? tabAnimationMap[tabContext.animation]?.(node, 'vertical')
+			: undefined;
+		outAnimation = tabContext.animation
+			? tabAnimationMap[tabContext.animation]?.(node, 'vertical')
+			: undefined;
 
-	tabContext.subscribeTab(key, () => {
-		render = !render;
-	});
-	function loadedRefEvent(node: HTMLElement) {
-		const tabContainer = node.closest('.ui-tab-content') as HTMLElement;
-		const ev = new CustomEvent('loadedChildrenTab', { detail: { key, node } });
-		tabContainer.dispatchEvent(ev);
+		if (outAnimation) {
+			outAnimation.subscribeEndCallback(() => {
+				render = false;
+				console.log('ounmounting after animation');
+				tabContext.tabController.notifyEndAnimation();
+			});
+		}
+		tabContext.tabController.updateAnimation(
+			inAnimation as BasicAnimation,
+			key,
+			AnimationState.INTRO
+		);
+		(node.parentElement as HTMLElement).style.minHeight = `${node.clientHeight}px`;
+		inAnimation?.playForward();
 	}
+	// TODO: hacer que slideFade animation ocurra a la vez el in y out
+	const renderTabCallback = () => {
+		console.log(render);
+		if (!render) render = true;
+		else {
+			if (!tabContext.animation) {
+				render = false;
+				tabContext.tabController.notifyEndAnimation();
+				return;
+			}
+
+			tabContext.tabController.updateAnimation(
+				outAnimation as BasicAnimation,
+				key,
+				AnimationState.OUTRO
+			);
+
+			outAnimation?.reverse();
+		}
+	};
+	tabContext.tabController.subscribeTabRender(renderTabCallback, key);
 </script>
 
 {#if render}
-	<div use:loadedRefEvent class="ui-selected-tab absolute {className}">
+	<div use:loaded class="ui-selected-tab {className}">
 		{@render children()}
 	</div>
 {/if}
@@ -34,10 +78,7 @@
 	@layer nova {
 		.ui-selected-tab {
 			width: 100%;
-			visibility: hidden;
 			height: max-content;
-			top: 0;
-			left: 0;
 			transition: opacity 0.15s ease;
 		}
 	}

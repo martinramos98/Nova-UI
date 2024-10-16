@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { setContext, type Snippet } from 'svelte';
 	import { spring } from 'svelte/motion';
-	import { TabsControler } from './utils.svelte.js';
+	import { AnimationTabController } from './Tab/AnimationTabController.svelte.js';
 	interface TabsProps {
 		selectedTabKey: string | undefined;
 		variant: string;
@@ -13,9 +13,10 @@
 		classSelector: string;
 		children: Snippet;
 		TabSelection: Snippet | undefined;
+		animation?: string;
 		position: 'top' | 'left' | 'bottom' | 'right' | '';
 	}
-	const {
+	let {
 		variant = 'default',
 		class: className = '',
 		classContent = '',
@@ -24,31 +25,31 @@
 		children,
 		position = '',
 		classSelector = '',
+		animation = undefined,
 		selectedTabKey = $bindable(undefined)
 	}: TabsProps = $props();
 
 	const keys = new Map<string, HTMLElement>();
-	let tabsControler: TabsControler = new TabsControler(selectedTabKey);
-
+	const tabController: AnimationTabController = new AnimationTabController();
 	setContext('tabContext', {
 		selectTab,
 		subscribeKey,
-		subscribeTab
+		animation,
+		tabController,
+		isSelected(key: string) {
+			return selectedTabKey === key;
+		}
 	});
-
-	function subscribeTab(key: string, renderAction: () => void) {
-		tabsControler.tabRenderExecutor.set(key, renderAction);
-	}
-	// TODO: Debounce de la seleccion ya que al querer cambiar sin terminar la animacion perjudica al renderizado
 	function selectTab(key: string) {
+		if (selectedTabKey === key) return;
 		getPositionOfElement(key);
-		tabsControler.selectTab(key);
+		selectedTabKey = key;
+		tabController.selectTab(key);
 	}
 	function subscribeKey(key: string, el: HTMLElement) {
 		keys.set(key, el);
 	}
 
-	$effect(() => {});
 	const coordSelector = spring(
 		{ top: 0, left: 0 },
 		{
@@ -71,13 +72,13 @@
 		coordSelector.set({ top: el.offsetTop, left: el.offsetLeft });
 		sizeSelector.set({ width: el.offsetWidth, height: el.offsetHeight });
 	}
-	function setControler(node: HTMLElement) {
-		tabsControler.tabContainer = node;
-	}
 	function setFirstKey(node: HTMLElement) {
 		const k = keys.keys();
 		selectTab(k.next().value as string);
 	}
+	$effect(() => {
+		if (selectedTabKey) selectTab(selectedTabKey);
+	});
 </script>
 
 <div
@@ -100,7 +101,7 @@
 			aria-hidden="true"
 		></span>
 	</div>
-	<div use:setControler use:setFirstKey class="ui-tab-content {classContent}">
+	<div use:setFirstKey class="ui-tab-content {classContent}">
 		{@render children()}
 	</div>
 </div>
@@ -110,6 +111,9 @@
 		.ui-tab-content {
 			position: relative;
 			padding: var(--spacing-4);
+			transition:
+				min-height 0.15s ease,
+				min-width 0.15s ease;
 		}
 	}
 </style>
