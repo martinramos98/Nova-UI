@@ -10,7 +10,6 @@ export class AnimationTabController {
 	private currentAnimation: BasicAnimation | undefined;
 	private currentAnimationKey: string | undefined;
 	private currentAnimationState: AnimationState | undefined;
-	constructor() {}
 
 	selectTab(targetTabKey: string) {
 		console.log(this.currentAnimation?.state);
