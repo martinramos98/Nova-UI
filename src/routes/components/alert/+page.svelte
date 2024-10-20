@@ -7,22 +7,23 @@
 	import AlertTypesCases from '../../../app/components/pagesSections/alert/AlertTypesCases/AlertTypesCases.svelte';
 	import AlertCustomCases from '../../../app/components/pagesSections/alert/AlertCustomsCases/AlertCustomCases.svelte';
 	import PropItem from '../../../app/components/propItem/PropItem.svelte';
+	import AsideComponentPage from '../../../app/components/AsidePage/AsideComponentPage.svelte';
+	import { Divider } from '@nv-org/divider';
 	const { data } = $props();
 </script>
 
 <div class="page-content">
-	<aside>
-		<span class="font-semibold">On this page</span>
-		<ul>
-			<li><a href="#alert">Alert</a></li>
-			<li><a href="#contents">Contents</a></li>
-			<!-- <li><a href="#disabled">type</a></li> -->
-			<li><a href="#sizes">Sizes</a></li>
-			<li><a href="">Backdrop</a></li>
-		</ul>
-	</aside>
+	<AsideComponentPage
+		asideItems={[
+			{ ref: '#alert', text: 'Alert' },
+			{ ref: '#types', text: 'Types' },
+			{ ref: '#custom-content', text: 'Custom Content and Footer' },
+			{ ref: '#props', text: 'Props' }
+		]}
+	></AsideComponentPage>
+	<Divider orientation="vertical" size={1}></Divider>
 	<main>
-		<article>
+		<article id="alert">
 			<header>
 				<Title level={1}>Alert</Title>
 			</header>
@@ -32,22 +33,22 @@
 				</div>
 			</section>
 		</article>
-		<article>
+		<article id="types">
 			<header>
 				<Title level={2}>Types</Title>
 			</header>
 			<AlertTypesCases />
 		</article>
-		<article>
+		<article id="custom-content">
 			<header>
 				<Title level={2}>Custom Content and Footer</Title>
 			</header>
 			<AlertCustomCases />
 		</article>
 
-		<article>
+		<article id="properties">
 			<header>
-				<Title level={2}>Props</Title>
+				<Title level={2}>Properties</Title>
 			</header>
 			<section>
 				{#each data.data as propItem}

@@ -17,7 +17,7 @@
 
 <div class="prop-container">
 	<pre class="prop-code"><code>{data.name}</code></pre>
-	<Divider size={1} className="w-full" color="var(--color-on-surface)"></Divider>
+	<Divider size={1} color="var(--color-on-surface)"></Divider>
 	<ul>
 		<li>
 			<span><b>Description:</b> {@html data.description}</span>

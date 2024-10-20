@@ -44,7 +44,7 @@ function fadeSlideAnimation(
 						borderTopWidth: bt + 'px',
 						borderBottomWidth: bb + 'px',
 						opacity: 0,
-						offset: 0.8
+						offset: 0.7
 					},
 					{
 						opacity: '1',

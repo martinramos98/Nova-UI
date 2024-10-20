@@ -2,8 +2,10 @@
 	import { Title } from '@nv-org/title';
 	import { Avatar, AvatarGroup } from '@nv-org/avatar';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
-	import AvatarProps from '../../../app/components/pagesSections/avatar/AvatarProps.svelte';
+	// import AvatarProps from '../../../app/components/pagesSections/avatar/AvatarProps.svelte';
 	import PropItem from '../../../app/components/propItem/PropItem.svelte';
+	import AsideComponentPage from '../../../app/components/AsidePage/AsideComponentPage.svelte';
+	import { Divider } from '@nv-org/divider';
 	export let data;
 	function codeString(props: string) {
 		return `<Avatar ${props}/>`;
@@ -19,16 +21,16 @@
 	/>
 </svelte:head>
 <div class="page-content">
-	<aside>
-		<span class="font-semibold">On this page</span>
-		<ul>
-			<li><a href="#avatar">Avatar</a></li>
-			<li><a href="#variants">Variants</a></li>
-			<li><a href="#bordered">Bordered</a></li>
-			<li><a href="#custom">Custom Content</a></li>
-			<li><a href="#group">Avatar Group</a></li>
-		</ul>
-	</aside>
+	<AsideComponentPage
+		asideItems={[
+			{ ref: '#avatar', text: 'Avatar' },
+			{ ref: '#options', text: 'Content Options' },
+			{ ref: '#bordered', text: 'Bordered' },
+			{ ref: '#avatar-group', text: 'Avatar Group' },
+			{ ref: '#properties', text: 'Properties' }
+		]}
+	></AsideComponentPage>
+	<Divider orientation="vertical" size={1}></Divider>
 
 	<main>
 		<article id={'avatar'}>

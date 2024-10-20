@@ -25,7 +25,7 @@
 			</header>
 			<section>
 				<div>
-					<Card variant="solid" color="container" className="p-2">This is a Simple Card</Card>
+					<Card variant="solid" color="container" class="p-2">This is a Simple Card</Card>
 				</div>
 			</section>
 		</article>
@@ -41,16 +41,16 @@
 				<div class="w-full">
 					<ComponentCodeTabs
 						code={`<div class="example-card-box">
-	<Title level={3} className="text-lg">With Header, Body and Footer</Title>
+	<Title level={3} class="text-lg">With Header, Body and Footer</Title>
 	<Card
-		footerClassname="p-2 text-end"
+		footerClass="p-2 text-end"
 		variant={'solid'}
 		color="container"
-		className="p-2 rounded-xl gap-2 w-full max-w-[400px]"
-		bodyClassname="flex flex-col items-center"
+		class="p-2 rounded-xl gap-2 w-full max-w-[400px]"
+		bodyClass="flex flex-col items-center"
 	>
 		{#snippet header()}
-			<Title level={4} className="text-lg text-center px-2">Animal Crossing</Title>
+			<Title level={4} class="text-lg text-center px-2">Animal Crossing</Title>
 		{/snippet}
 		{#snippet body()}
 			<img
@@ -72,12 +72,12 @@
 	</Card>
 </div>
 <div class="example-card-box">
-	<Title level={3} className="text-lg">Header and Body</Title>
+	<Title level={3} class="text-lg">Header and Body</Title>
 	<Card
 		variant={'solid'}
 		color="container"
-		className="rounded-xl w-full max-w-[400px] h-fit "
-		bodyClassname="p-4"
+		class="rounded-xl w-full max-w-[400px] h-fit "
+		bodyClass="p-4"
 	>
 		{#snippet header()}
 			<img
@@ -98,10 +98,10 @@
 	</Card>
 </div>
 <div class="example-card-box">
-	<Title level={3} className="text-lg">Body and Footer</Title>
+	<Title level={3} class="text-lg">Body and Footer</Title>
 	<Card
-		className="w-full max-w-[400px]"
-		footerClassname="py-2 text-end bg-[var(--color-surface)] pr-4"
+		class="w-full max-w-[400px]"
+		footerClass="py-2 text-end bg-[var(--color-surface)] pr-4"
 	>
 		{#snippet body()}
 			<img
@@ -116,15 +116,15 @@
 	</Card>
 </div>
 <div class="example-card-box">
-	<Title level={3} className="text-lg">Children Content</Title>
-	<Card className="w-full max-w-[400px] relative">
+	<Title level={3} class="text-lg">Children Content</Title>
+	<Card class="w-full max-w-[400px] relative">
 		<img
 			src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/wii_24/SI_Wii_SuperMarioGalaxy2_image1600w.png"
 			alt=""
 		/>
 		<span class="absolute right-2 bottom-2">
 			<Button
-				className="backdrop-blur-sm bg-zinc-500/50 rounded-lg border-zinc-400 border-1"
+				class="backdrop-blur-sm bg-zinc-500/50 rounded-lg border-zinc-400 border-1"
 				>Let's Go!</Button
 			>
 		</span>
@@ -135,16 +135,16 @@
 						{#snippet component()}
 							<div class="place-content-center flex flex-wrap gap-4">
 								<div class="example-card-box">
-									<Title level={3} className="text-lg">With Header, Body and Footer</Title>
+									<Title level={3} class="text-lg">With Header, Body and Footer</Title>
 									<Card
-										footerClassname="p-2 text-end"
+										footerClass="p-2 text-end"
 										variant={'solid'}
 										color="container"
-										className="p-2 rounded-xl gap-2 w-full max-w-[400px]"
-										bodyClassname="flex flex-col items-center"
+										class="p-2 rounded-xl gap-2 w-full max-w-[400px]"
+										bodyClass="flex flex-col items-center"
 									>
 										{#snippet header()}
-											<Title level={4} className="text-lg text-center px-2">Animal Crossing</Title>
+											<Title level={4} class="text-lg text-center px-2">Animal Crossing</Title>
 										{/snippet}
 										{#snippet body()}
 											<img
@@ -166,12 +166,12 @@
 									</Card>
 								</div>
 								<div class="example-card-box">
-									<Title level={3} className="text-lg">Header and Body</Title>
+									<Title level={3} class="text-lg">Header and Body</Title>
 									<Card
 										variant={'solid'}
 										color="container"
-										className="rounded-xl w-full max-w-[400px] h-fit "
-										bodyClassname="p-4"
+										class="rounded-xl w-full max-w-[400px] h-fit "
+										bodyClass="p-4"
 									>
 										{#snippet header()}
 											<img
@@ -192,10 +192,10 @@
 									</Card>
 								</div>
 								<div class="example-card-box">
-									<Title level={3} className="text-lg">Body and Footer</Title>
+									<Title level={3} class="text-lg">Body and Footer</Title>
 									<Card
-										className="w-full max-w-[400px]"
-										footerClassname="py-2 text-end bg-[var(--color-surface)] pr-4"
+										class="w-full max-w-[400px]"
+										footerClass="py-2 text-end bg-[var(--color-surface)] pr-4"
 									>
 										{#snippet body()}
 											<img
@@ -210,15 +210,15 @@
 									</Card>
 								</div>
 								<div class="example-card-box">
-									<Title level={3} className="text-lg">Children Content</Title>
-									<Card className="w-full max-w-[400px] relative">
+									<Title level={3} class="text-lg">Children Content</Title>
+									<Card class="w-full max-w-[400px] relative">
 										<img
 											src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/wii_24/SI_Wii_SuperMarioGalaxy2_image1600w.png"
 											alt=""
 										/>
 										<span class="absolute right-2 bottom-2">
 											<Button
-												className="backdrop-blur-sm bg-zinc-500/50 rounded-lg border-zinc-400 border-1"
+												class="backdrop-blur-sm bg-zinc-500/50 rounded-lg border-zinc-400 border-1"
 												>Let's Go!</Button
 											>
 										</span>
@@ -238,17 +238,17 @@
 				<div class="w-full">
 					<ComponentCodeTabs
 						code={`<div class="example-card-box">
-	<Title level={3} className="text-lg">Vertical</Title>
+	<Title level={3} class="text-lg">Vertical</Title>
 	<Card
 		color="container"
 		variant="solid"
-		className="flex-col w-[300px] rounded-xl "
-		bodyClassname="p-2"
-		footerClassname="p-2 w-full flex flex-row gap-4"
+		class="flex-col w-[300px] rounded-xl "
+		bodyClass="p-2"
+		footerClass="p-2 w-full flex flex-row gap-4"
 	>
 		{#snippet header()}
 			<Image
-				className="object-cover pb-2"
+				class="object-cover pb-2"
 				src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/Nvidia-GeForce-RTX-4090-7-scaled.jpg"
 				alt="Nvidia 4090 Image"
 			/>
@@ -258,26 +258,26 @@
 			<span class="block my-2">2000 U$D</span>
 		{/snippet}
 		{#snippet footer()}
-			<Button colors="success" variant="solid" className="w-full rounded-lg">Buy</Button>
-			<Button colors="success" variant="bordered" className="w-full rounded-lg"
+			<Button colors="success" variant="solid" class="w-full rounded-lg">Buy</Button>
+			<Button colors="success" variant="bordered" class="w-full rounded-lg"
 				>Details</Button
 			>
 		{/snippet}
 	</Card>
 </div>
 <div class="example-card-box">
-	<Title level={3} className="text-lg">Horizontal</Title>
+	<Title level={3} class="text-lg">Horizontal</Title>
 	<Card
 		color="container"
 		variant="solid"
-		className="lg:flex-row md:flex-col max-w-[600px] w-full rounded-xl "
-		headerClassname="w-fit"
-		bodyClassname="p-2 w-full"
-		footerClassname="p-2  flex flex-col gap-4 justify-center"
+		class="lg:flex-row md:flex-col max-w-[600px] w-full rounded-xl "
+		headerclass="w-fit"
+		bodyClass="p-2 w-full"
+		footerClass="p-2  flex flex-col gap-4 justify-center"
 	>
 		{#snippet header()}
 			<Image
-				className="object-cover"
+				class="object-cover"
 				src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/Nvidia-GeForce-RTX-4090-7-scaled.jpg"
 				alt="Nvidia 4090 Image"
 			/>
@@ -287,24 +287,24 @@
 			<span class="block my-2">2000 U$D</span>
 		{/snippet}
 		{#snippet footer()}
-			<Button colors="success" variant="solid" className="  rounded-lg">Buy</Button>
-			<Button colors="success" variant="bordered" className=" rounded-lg">Details</Button>
+			<Button colors="success" variant="solid" class="  rounded-lg">Buy</Button>
+			<Button colors="success" variant="bordered" class=" rounded-lg">Details</Button>
 		{/snippet}
 	</Card>
 </div>
 <div class="example-card-box">
-	<Title level={3} className="text-lg">Custom Grid</Title>
+	<Title level={3} class="text-lg">Custom Grid</Title>
 	<Card
 		color="container"
 		variant="solid"
-		className="grid grid-cols-2 grid-rows-2 w-full max-w-[500px] rounded-xl gap-4"
-		headerClassname="row-start-1 row-end-3 col-start-1 col-end-2"
-		bodyClassname="row-start-1 row-end-2 col-start-2 col-end-3 pt-2 "
-		footerClassname="row-start-2 row-end-3 col-start-2 col-end-3 flex flex-col gap-2 pr-2 pb-2"
+		class="grid grid-cols-2 grid-rows-2 w-full max-w-[500px] rounded-xl gap-4"
+		headerclass="row-start-1 row-end-3 col-start-1 col-end-2"
+		bodyClass="row-start-1 row-end-2 col-start-2 col-end-3 pt-2 "
+		footerClass="row-start-2 row-end-3 col-start-2 col-end-3 flex flex-col gap-2 pr-2 pb-2"
 	>
 		{#snippet header()}
 			<Image
-				className="object-cover w-full h-full"
+				class="object-cover w-full h-full"
 				src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/Nvidia-GeForce-RTX-4090-7-scaled.jpg"
 				alt="Nvidia 4090 Image"
 			/>
@@ -314,25 +314,25 @@
 			<span class="block my-2">2000 U$D</span>
 		{/snippet}
 		{#snippet footer()}
-			<Button colors="success" variant="solid" className="w-full rounded-lg">Buy</Button>
-			<Button colors="success" variant="bordered" className="w-full rounded-lg"
+			<Button colors="success" variant="solid" class="w-full rounded-lg">Buy</Button>
+			<Button colors="success" variant="bordered" class="w-full rounded-lg"
 				>Details</Button
 			>
 		{/snippet}
 	</Card>
 </div>
 <div class="example-card-box">
-	<Title level={3} className="text-lg">Custom Grid Template Area</Ti
+	<Title level={3} class="text-lg">Custom Grid Template Area</Ti
 	<Card
 		color="container"
 		variant="solid"
-		className="card-custom-grid  w-full max-w-[500px] rounded-xl gap-4"
-		bodyClassname="pt-2 pr-2"
-		footerClassname="flex flex-col gap-2 pr-2 pb-2"
+		class="card-custom-grid  w-full max-w-[500px] rounded-xl gap-4"
+		bodyClass="pt-2 pr-2"
+		footerClass="flex flex-col gap-2 pr-2 pb-2"
 	>
 		{#snippet header()}
 			<Image
-				className="object-cover w-full h-full"
+				class="object-cover w-full h-full"
 				src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/Nvidia-GeForce-RTX-4090-7-scaled.jpg"
 				alt="Nvidia 4090 Image"
 			/>
@@ -342,8 +342,8 @@
 			<span class="block my-2">2000 U$D</span>
 		{/snippet}
 		{#snippet footer()}
-			<Button colors="success" variant="solid" className="w-full rounded-lg">Buy</Button>
-			<Button colors="success" variant="bordered" className="w-full rounded-lg"
+			<Button colors="success" variant="solid" class="w-full rounded-lg">Buy</Button>
+			<Button colors="success" variant="bordered" class="w-full rounded-lg"
 				>Details</Button
 			>
 		{/snippet}
@@ -354,17 +354,17 @@
 						{#snippet component()}
 							<div class="flex flex-row flex-wrap gap-4 place-content-center">
 								<div class="example-card-box">
-									<Title level={3} className="text-lg">Vertical</Title>
+									<Title level={3} class="text-lg">Vertical</Title>
 									<Card
 										color="container"
 										variant="solid"
-										className="flex-col w-[300px] rounded-xl "
-										bodyClassname="p-2"
-										footerClassname="p-2 w-full flex flex-row gap-4"
+										class="flex-col w-[300px] rounded-xl "
+										bodyClass="p-2"
+										footerClass="p-2 w-full flex flex-row gap-4"
 									>
 										{#snippet header()}
 											<Image
-												className="object-cover pb-2"
+												class="object-cover pb-2"
 												src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/Nvidia-GeForce-RTX-4090-7-scaled.jpg"
 												alt="Nvidia 4090 Image"
 											/>
@@ -374,28 +374,27 @@
 											<span class="block my-2">2000 U$D</span>
 										{/snippet}
 										{#snippet footer()}
-											<Button colors="success" variant="solid" className="w-full rounded-lg"
-												>Buy</Button
+											<Button colors="success" variant="solid" class="w-full rounded-lg">Buy</Button
 											>
-											<Button colors="success" variant="bordered" className="w-full rounded-lg"
+											<Button colors="success" variant="bordered" class="w-full rounded-lg"
 												>Details</Button
 											>
 										{/snippet}
 									</Card>
 								</div>
 								<div class="example-card-box">
-									<Title level={3} className="text-lg">Horizontal</Title>
+									<Title level={3} class="text-lg">Horizontal</Title>
 									<Card
 										color="container"
 										variant="solid"
-										className="lg:flex-row md:flex-col max-w-[600px] w-full rounded-xl "
-										headerClassname="w-fit"
-										bodyClassname="p-2 w-full"
-										footerClassname="p-2  flex flex-col gap-4 justify-center"
+										class="lg:flex-row md:flex-col max-w-[600px] w-full rounded-xl "
+										headerClass="w-fit"
+										bodyClass="p-2 w-full"
+										footerClass="p-2  flex flex-col gap-4 justify-center"
 									>
 										{#snippet header()}
 											<Image
-												className="object-cover"
+												class="object-cover"
 												src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/Nvidia-GeForce-RTX-4090-7-scaled.jpg"
 												alt="Nvidia 4090 Image"
 											/>
@@ -405,26 +404,26 @@
 											<span class="block my-2">2000 U$D</span>
 										{/snippet}
 										{#snippet footer()}
-											<Button colors="success" variant="solid" className="  rounded-lg">Buy</Button>
-											<Button colors="success" variant="bordered" className=" rounded-lg"
+											<Button colors="success" variant="solid" class="  rounded-lg">Buy</Button>
+											<Button colors="success" variant="bordered" class=" rounded-lg"
 												>Details</Button
 											>
 										{/snippet}
 									</Card>
 								</div>
 								<div class="example-card-box">
-									<Title level={3} className="text-lg">Custom Grid</Title>
+									<Title level={3} class="text-lg">Custom Grid</Title>
 									<Card
 										color="container"
 										variant="solid"
-										className="grid grid-cols-2 grid-rows-2 w-full max-w-[500px] rounded-xl gap-4"
-										headerClassname="row-start-1 row-end-3 col-start-1 col-end-2"
-										bodyClassname="row-start-1 row-end-2 col-start-2 col-end-3 pt-2 "
-										footerClassname="row-start-2 row-end-3 col-start-2 col-end-3 flex flex-col gap-2 pr-2 pb-2"
+										class="grid grid-cols-2 grid-rows-2 w-full max-w-[500px] rounded-xl gap-4"
+										headerClass="row-start-1 row-end-3 col-start-1 col-end-2"
+										bodyClass="row-start-1 row-end-2 col-start-2 col-end-3 pt-2 "
+										footerClass="row-start-2 row-end-3 col-start-2 col-end-3 flex flex-col gap-2 pr-2 pb-2"
 									>
 										{#snippet header()}
 											<Image
-												className="object-cover w-full h-full"
+												class="object-cover w-full h-full"
 												src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/Nvidia-GeForce-RTX-4090-7-scaled.jpg"
 												alt="Nvidia 4090 Image"
 											/>
@@ -434,28 +433,27 @@
 											<span class="block my-2">2000 U$D</span>
 										{/snippet}
 										{#snippet footer()}
-											<Button colors="success" variant="solid" className="w-full rounded-lg"
-												>Buy</Button
+											<Button colors="success" variant="solid" class="w-full rounded-lg">Buy</Button
 											>
-											<Button colors="success" variant="bordered" className="w-full rounded-lg"
+											<Button colors="success" variant="bordered" class="w-full rounded-lg"
 												>Details</Button
 											>
 										{/snippet}
 									</Card>
 								</div>
 								<div class="example-card-box">
-									<Title level={3} className="text-lg">Custom Grid Template Area</Title>
+									<Title level={3} class="text-lg">Custom Grid Template Area</Title>
 
 									<Card
 										color="container"
 										variant="solid"
-										className="card-custom-grid  w-full max-w-[500px] rounded-xl gap-4"
-										bodyClassname="pt-2 pr-2"
-										footerClassname="flex flex-col gap-2 pr-2 pb-2"
+										class="card-custom-grid  w-full max-w-[500px] rounded-xl gap-4"
+										bodyClass="pt-2 pr-2"
+										footerClass="flex flex-col gap-2 pr-2 pb-2"
 									>
 										{#snippet header()}
 											<Image
-												className="object-cover w-full h-full"
+												class="object-cover w-full h-full"
 												src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/Nvidia-GeForce-RTX-4090-7-scaled.jpg"
 												alt="Nvidia 4090 Image"
 											/>
@@ -465,10 +463,9 @@
 											<span class="block my-2">2000 U$D</span>
 										{/snippet}
 										{#snippet footer()}
-											<Button colors="success" variant="solid" className="w-full rounded-lg"
-												>Buy</Button
+											<Button colors="success" variant="solid" class="w-full rounded-lg">Buy</Button
 											>
-											<Button colors="success" variant="bordered" className="w-full rounded-lg"
+											<Button colors="success" variant="bordered" class="w-full rounded-lg"
 												>Details</Button
 											>
 										{/snippet}
@@ -489,9 +486,9 @@
 				<div class="w-full">
 					<ComponentCodeTabs
 						code={`<Card
-	className="flex-col w-full max-w-[400px] px-3 py-2"
-	headerClassname="flex flex-row items-center gap-2 text-start"
-	bodyClassname="my-2 px-2"
+	class="flex-col w-full max-w-[400px] px-3 py-2"
+	headerclass="flex flex-row items-center gap-2 text-start"
+	bodyClass="my-2 px-2"
 	variant="solid"
 	color="container"
 >
@@ -515,9 +512,9 @@
 	{/snippet}
 </Card>
 <Card
-	className="flex-col max-w-[400px] px-3 py-2"
-	headerClassname="flex flex-row items-center gap-2 text-start"
-	bodyClassname="my-2 px-2"
+	class="flex-col max-w-[400px] px-3 py-2"
+	headerclass="flex flex-row items-center gap-2 text-start"
+	bodyClass="my-2 px-2"
 	variant="bordered"
 	color="primary"
 >
@@ -543,9 +540,9 @@
 	{/snippet}
 </Card>
 <Card
-	className="flex-col w-full max-w-[400px] px-3 py-2"
-	headerClassname="flex flex-row items-center gap-2 text-start"
-	bodyClassname="my-2 px-2"
+	class="flex-col w-full max-w-[400px] px-3 py-2"
+	headerclass="flex flex-row items-center gap-2 text-start"
+	bodyClass="my-2 px-2"
 	variant="faded"
 	color="primary"
 >
@@ -572,9 +569,9 @@
 						{#snippet component()}
 							<div class="flex flex-row flex-wrap gap-4">
 								<Card
-									className="flex-col w-full max-w-[400px] px-3 py-2"
-									headerClassname="flex flex-row items-center gap-2 text-start"
-									bodyClassname="my-2 px-2"
+									class="flex-col w-full max-w-[400px] px-3 py-2"
+									headerClass="flex flex-row items-center gap-2 text-start"
+									bodyClass="my-2 px-2"
 									variant="solid"
 									color="container"
 								>
@@ -598,9 +595,9 @@
 									{/snippet}
 								</Card>
 								<Card
-									className="flex-col max-w-[400px] px-3 py-2"
-									headerClassname="flex flex-row items-center gap-2 text-start"
-									bodyClassname="my-2 px-2"
+									class="flex-col max-w-[400px] px-3 py-2"
+									headerClass="flex flex-row items-center gap-2 text-start"
+									bodyClass="my-2 px-2"
 									variant="bordered"
 									color="primary"
 								>
@@ -626,9 +623,9 @@
 									{/snippet}
 								</Card>
 								<Card
-									className="flex-col w-full max-w-[400px] px-3 py-2"
-									headerClassname="flex flex-row items-center gap-2 text-start"
-									bodyClassname="my-2 px-2"
+									class="flex-col w-full max-w-[400px] px-3 py-2"
+									headerClass="flex flex-row items-center gap-2 text-start"
+									bodyClass="my-2 px-2"
 									variant="faded"
 									color="primary"
 								>

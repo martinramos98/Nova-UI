@@ -96,15 +96,17 @@
 	ul {
 		display: flex;
 		flex-direction: column;
-		align-items: flex-end;
+		align-items: flex-start;
+		justify-content: flex-start;
 		margin-right: var(--spacing-2);
 		& li {
 			width: 100%;
 			transition: all 0.2s ease;
 			& a {
+				text-align: start;
 				width: 100%;
 				display: block;
-				padding: var(--spacing-1) var(--spacing-2);
+				padding: var(--spacing-1) var(--spacing-4);
 			}
 		}
 	}

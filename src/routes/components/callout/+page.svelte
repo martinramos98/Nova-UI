@@ -2,9 +2,10 @@
 	import { Title } from '@nv-org/title';
 	import { Callout } from '@nv-org/callout';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
+	import { Divider } from '@nv-org/divider';
 </script>
 
-<div class=" page-content">
+<div class="page-content">
 	<aside>
 		<span class="font-semibold">On this page</span>
 		<ul>
@@ -13,6 +14,7 @@
 			<li><a href="#variants">Variants</a></li>
 			<li><a href="#customs">Customs</a></li>
 		</ul>
+		<Divider />
 	</aside>
 	<main>
 		<article>
@@ -108,9 +110,7 @@
 					`}
 					>
 						{#snippet component()}
-							<Callout
-								className="bg-gradient-to-r from-pink-500 to-indigo-500 border-white border-2"
-							>
+							<Callout class="bg-gradient-to-r from-pink-500 to-indigo-500 border-white border-2">
 								{#snippet icon()}
 									<span class="bg-white/20 rounded-xl p-1">
 										<img class="h-[40px] w-[40px]" src="/candy.svg" />

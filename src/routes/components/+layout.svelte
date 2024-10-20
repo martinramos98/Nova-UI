@@ -26,7 +26,7 @@
 					list-style: disc;
 					margin-left: 20px;
 					& li pre {
-						display: inline;
+						display: inline-block;
 					}
 				}
 			}

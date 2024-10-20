@@ -6,8 +6,8 @@
 	import { getContext, type Snippet } from 'svelte';
 	interface AccordionSectionProps {
 		showSection?: boolean;
-		classNameContent?: string;
-		classNameHeader?: string;
+		classContent?: string;
+		classHeader?: string;
 		disabled?: boolean;
 		children: Snippet;
 		header?: Snippet;
@@ -15,8 +15,8 @@
 	}
 	let {
 		showSection = false,
-		classNameContent = '',
-		classNameHeader = '',
+		classContent = '',
+		classHeader = '',
 		disabled = false,
 		children,
 		trigger,
@@ -96,7 +96,7 @@
 </script>
 
 <div data-open={showSection} bind:this={accordionSectionRef} class="ui-accordion-section">
-	<button {disabled} class="ui-accordion-header {classNameHeader}" onclick={toggleSection}>
+	<button {disabled} class="ui-accordion-header {classHeader}" onclick={toggleSection}>
 		{#if header}
 			{@render header()}
 		{/if}
@@ -120,7 +120,7 @@
 		</div>
 	</button>
 	<div bind:this={accordionContent}>
-		<div class="ui-accordion-content {classNameContent}">
+		<div class="ui-accordion-content {classContent}">
 			{@render children()}
 		</div>
 	</div>

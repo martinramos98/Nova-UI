@@ -1,17 +1,13 @@
 <script>
 	// import { Navbar, MenuButton, Accordion, AccordionSection, CloseButton } from '$lib/index';
 	import { Navbar } from '@nv-org/navbar';
-	import { MenuButton, CloseButton } from '@nv-org/button';
-	import { Accordion, AccordionSection } from '@nv-org/accordion';
-	import ComponentList from '../app/components/ComponentsList/ComponentList.svelte';
 	import NovaUIProvider from '$lib/providers/NovaUIProvider.svelte';
 </script>
 
 <NovaUIProvider>
 	<Navbar
 		useContainerQuery={false}
-		class="navbar-color  flex flex-row justify-between backdrop-blur-sm fixed top-3 left-[2.5%] w-[95%] h-[40px] rounded-full z-40"
-		variant="menu"
+		class="navbar-color  flex flex-row justify-between backdrop-blur-sm sticky top-0 rounded-b-3xl left-[2.5%] w-[95%] h-[40px] z-40"
 		menuProps={{
 			drawerProps: {
 				class: 'z-50 ',
@@ -26,49 +22,8 @@
 			}
 		}}
 	>
-		{#snippet children(toggleMenu)}
-			<span class="font-bold"><a href="/">Nova UI</a></span>
-			<MenuButton onClickMenu={toggleMenu} />
-		{/snippet}
-		{#snippet menuContent(toggleMenu)}
-			<CloseButton class="lg:hidden absolute right-6 top-2" onClose={toggleMenu}></CloseButton>
-			<Accordion variant="" multiopen class={'px-4 py-8'}>
-				<AccordionSection>
-					{#snippet header()}
-						<span> <a href="/components"> Components </a></span>
-					{/snippet}
-					<div
-						role="list"
-						on:click={(ev) => {
-							if (ev.target?.tagName === 'A') {
-								toggleMenu();
-							}
-						}}
-					>
-						<ComponentList className="text-end" />
-					</div>
-				</AccordionSection>
-				<AccordionSection>
-					{#snippet header()}
-						<span>Styling</span>
-					{/snippet}
-					<ul>
-						<li class="ui-variant-light ui-color-primary">
-							<a href="/styling#design_system">Design System</a>
-						</li>
-						<li class="ui-variant-light ui-color-primary"><a href="/styling#themes">Themes</a></li>
-						<li class="ui-variant-light ui-color-primary">
-							<a href="/styling#variants">Variants</a>
-						</li>
-						<li class="ui-variant-light ui-color-primary">
-							<a href="/styling#color_scheme">Color Scheme</a>
-						</li>
-						<li class="ui-variant-light ui-color-primary">
-							<a href="/styling#customization">Customization</a>
-						</li>
-					</ul>
-				</AccordionSection>
-			</Accordion>
+		{#snippet children()}
+			<span class="font-bold ml-2"><a href="/">Nova UI</a></span>
 		{/snippet}
 	</Navbar>
 	<slot />

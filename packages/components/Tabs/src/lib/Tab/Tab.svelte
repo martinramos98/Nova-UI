@@ -43,7 +43,7 @@
 				? tabAnimationMap[tabContext.animation]?.(node, {
 						orientation: 'vertical',
 						ease: 'ease-in',
-						duration: 600,
+						duration: 300,
 						initialHeightAnimation: typeof minH === 'number' ? minH - pt - pb - bt - bb : 0
 					})
 				: undefined;
