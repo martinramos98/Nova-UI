@@ -4,24 +4,25 @@
 	import { Button } from '@nv-org/button';
 	import { Icon, AlertIcon, WarningIcon } from '@nv-org/icon';
 	import { Title } from '@nv-org/title';
+	import { Divider } from '@nv-org/divider';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
-	import BadgeProps from '../../../app/components/pagesSections/badge/BadgeProps.svelte';
 	import PropItem from '../../../app/components/propItem/PropItem.svelte';
+	import AsideComponentPage from '../../../app/components/AsidePage/AsideComponentPage.svelte';
 	let counter = 0;
 	export let data;
 </script>
 
 <div class="page-content">
-	<aside>
-		<span class="font-semibold">On this page</span>
-		<ul>
-			<li><a href="#button">Badge</a></li>
-			<li><a href="#variants">Variants</a></li>
-			<li><a href="#disabled">Positions</a></li>
-			<li><a href="#custom">Colors</a></li>
-			<li><a href="#group">Button Group</a></li>
-		</ul>
-	</aside>
+	<AsideComponentPage
+		asideItems={[
+			{ ref: '#positions', text: 'Positions' },
+			{ ref: '#variants', text: 'Variants' },
+			{ ref: '#sizes', text: 'Sizes' },
+			{ ref: '#custom', text: 'Custom' },
+			{ ref: '#properties', text: 'Properties' }
+		]}
+	></AsideComponentPage>
+	<Divider orientation="vertical" size={1}></Divider>
 	<main>
 		<article id={'button'}>
 			<header>

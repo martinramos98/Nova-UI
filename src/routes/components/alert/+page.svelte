@@ -27,11 +27,7 @@
 			<header>
 				<Title level={1}>Alert</Title>
 			</header>
-			<section>
-				<div class="w-full">
-					<AlertBasicCase />
-				</div>
-			</section>
+			<AlertBasicCase />
 		</article>
 		<article id="types">
 			<header>

@@ -14,12 +14,12 @@
 	} = $props();
 </script>
 
-<Tabs classContent="bg-transparent w-full" animation="fade-slide" class="w-full">
+<Tabs classContent="w-full " animation="fade-slide" class="w-full">
 	{#snippet TabSelection()}
 		<TabButton key="Component">Component</TabButton>
 		<TabButton key="Code">Code</TabButton>
 	{/snippet}
-	<Tab key="Component" class="w-full">
+	<Tab key="Component" class="w-full flex items-center justify-center">
 		{@render component()}
 	</Tab>
 	<Tab key="Code" class="w-full">

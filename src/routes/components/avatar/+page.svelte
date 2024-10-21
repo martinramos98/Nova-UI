@@ -6,6 +6,10 @@
 	import PropItem from '../../../app/components/propItem/PropItem.svelte';
 	import AsideComponentPage from '../../../app/components/AsidePage/AsideComponentPage.svelte';
 	import { Divider } from '@nv-org/divider';
+	import AvatarContentCases from '../../../app/components/pagesSections/avatar/ContentCases/AvatarContentCases.svelte';
+	import AvatarBasicCases from '../../../app/components/pagesSections/avatar/basicCases/AvatarBasicCases.svelte';
+	import AvatarBorderedCases from '../../../app/components/pagesSections/avatar/borderedCases/AvatarBorderedCases.svelte';
+	import AvatarGroupCase from '../../../app/components/pagesSections/avatar/AvatarGroupCase/AvatarGroupCase.svelte';
 	export let data;
 	function codeString(props: string) {
 		return `<Avatar ${props}/>`;
@@ -43,152 +47,25 @@
 				a user interface. It typically consists of an image or icon that represents a person,
 				organization, or concept.
 			</p>
-			<section>
-				<div class="w-full">
-					<ComponentCodeTabs
-						code={codeString(
-							"avatarSrc='https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'"
-						)}
-					>
-						{#snippet component()}
-							<div class="flex flex-row">
-								<Avatar
-									avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'}
-								/>
-								<Avatar
-									avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-porter.7e18061d.png'}
-								></Avatar>
-								<Avatar
-									avatarSrc={'https://play.nintendo.com/images/profile-kirby-kirby.7bf2a8f2.png'}
-								></Avatar>
-								<Avatar
-									avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
-								></Avatar>
-							</div>
-						{/snippet}
-					</ComponentCodeTabs>
-				</div>
-			</section>
+			<AvatarBasicCases />
 		</article>
 		<article id={'options'}>
 			<header>
 				<Title level={2} class="w-fit p-2">Content Options</Title>
 			</header>
-			<section>
-				<div class="w-full">
-					<ComponentCodeTabs
-						code={`${codeString("className='font-bold' avatarSrc='https://play.nintendo.com/images/profile-mk-koopa.7bf2a8f2.png'")}\n${codeString("className='font-bold bg-zinc-800 text-xl' avatarName='Koopa Troopa'")}\n${codeString("className='bg-zinc-700 p-1'")}`}
-					>
-						{#snippet component()}
-							<div class="flex flex-row gap-2">
-								<Avatar
-									class="font-bold"
-									avatarSrc="https://play.nintendo.com/images/profile-mk-koopa.7bf2a8f2.png"
-								></Avatar>
-								<Avatar class="font-bold bg-zinc-800 text-xl" avatarName="Koopa Troopa"></Avatar>
-								<Avatar class="bg-zinc-700 p-1"></Avatar>
-							</div>
-						{/snippet}
-					</ComponentCodeTabs>
-				</div>
-			</section>
+			<AvatarContentCases />
 		</article>
 		<article id={'bordered'}>
 			<header>
 				<Title level={2} class="w-fit p-2">Bordered</Title>
 			</header>
-			<section>
-				<div class="w-full">
-					<ComponentCodeTabs
-						code={codeString(
-							`colors="primary" avatarBordered avatarSrc='https://play.nintendo.com/images/profile-mk-bowser.7bf2a8f2.png'`
-						)}
-					>
-						{#snippet component()}
-							<div class="flex flex-row items-center gap-4">
-								<Avatar
-									colors="primary"
-									avatarBordered
-									avatarSrc={'https://play.nintendo.com/images/profile-mk-bowser.7bf2a8f2.png'}
-								></Avatar>
-								<Avatar
-									colors="secondary"
-									avatarBordered
-									avatarSrc={'https://play.nintendo.com/images/profile-mk-bowser.7bf2a8f2.png'}
-								></Avatar>
-								<Avatar
-									colors="tertiary"
-									avatarBordered
-									avatarSrc={'https://play.nintendo.com/images/profile-mk-bowser.7bf2a8f2.png'}
-								></Avatar>
-								<Avatar
-									colors="error"
-									avatarBordered
-									avatarSrc={'https://play.nintendo.com/images/profile-mk-bowser.7bf2a8f2.png'}
-								></Avatar>
-								<Avatar
-									colors="info"
-									avatarBordered
-									avatarSrc={'https://play.nintendo.com/images/profile-mk-bowser.7bf2a8f2.png'}
-								></Avatar>
-								<Avatar
-									colors="success"
-									avatarBordered
-									avatarSrc={'https://play.nintendo.com/images/profile-mk-bowser.7bf2a8f2.png'}
-								></Avatar>
-								<Avatar
-									colors="warning"
-									avatarBordered
-									avatarSrc={'https://play.nintendo.com/images/profile-mk-bowser.7bf2a8f2.png'}
-								></Avatar>
-							</div>
-						{/snippet}
-					</ComponentCodeTabs>
-				</div>
-			</section>
+			<AvatarBorderedCases />
 		</article>
 		<article id={'avatar_group'}>
 			<header>
 				<Title level={2}>Avatar Group</Title>
 			</header>
-			<section class="ml-6 bg-inherit">
-				<div class="bg-inherit w-full">
-					<ComponentCodeTabs
-						code={`<AvatarGroup>
-	<Avatar
-		avatarSrc='https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'
-	/>
-	<Avatar
-		avatarSrc='https://play.nintendo.com/images/profile-animalcrossing-porter.7e18061d.png'
-	/>
-	<Avatar
-		avatarSrc='https://play.nintendo.com/images/profile-kirby-kirby.7bf2a8f2.png'
-	/>
-	<Avatar
-		avatarSrc='https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'
-	/>
-</AvatarGroup>
-					`}
-					>
-						{#snippet component()}
-							<AvatarGroup>
-								<Avatar
-									avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'}
-								></Avatar>
-								<Avatar
-									avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-porter.7e18061d.png'}
-								></Avatar>
-								<Avatar
-									avatarSrc={'https://play.nintendo.com/images/profile-kirby-kirby.7bf2a8f2.png'}
-								></Avatar>
-								<Avatar
-									avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
-								></Avatar>
-							</AvatarGroup>
-						{/snippet}
-					</ComponentCodeTabs>
-				</div>
-			</section>
+			<AvatarGroupCase />
 		</article>
 		<article>
 			<header>

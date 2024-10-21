@@ -5,16 +5,16 @@
 	import { spring } from 'svelte/motion';
 	import { AnimationTabController } from './Tab/AnimationTabController.svelte.js';
 	interface TabsProps {
-		selectedTabKey: string | undefined;
-		variant: string;
-		class: string;
-		classContent: string;
-		classSelectionContainer: string;
-		classSelector: string;
+		selectedTabKey?: string | undefined;
+		variant?: string;
+		class?: string;
+		classContent?: string;
+		classSelectionContainer?: string;
+		classSelector?: string;
 		children: Snippet;
 		TabSelection: Snippet | undefined;
 		animation?: string;
-		position: 'top' | 'left' | 'bottom' | 'right' | '';
+		position?: 'top' | 'left' | 'bottom' | 'right' | '';
 	}
 	let {
 		variant = 'default',

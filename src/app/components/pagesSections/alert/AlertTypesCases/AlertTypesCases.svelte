@@ -18,39 +18,43 @@
 	}
 </script>
 
-<section class="relative">
-	<Selection
-		variant="faded"
-		selectionLabel="Alert type"
-		class="absolute top-1 right-1 w-[200px]"
-		{onSelect}
-	>
-		<Option value="default">default</Option>
-		<Option value="prompt">prompt</Option>
-		<Option value="confirm">confirm</Option>
-	</Selection>
-	<ComponentCodeTabs code={alertTypeTextCode(type)}>
-		{#snippet component()}
-			<Button
-				variant={'solid'}
-				colors="info"
-				onClick={() => {
-					openAlertType = true;
-				}}>Toggle Alert {type}</Button
-			>
-			<p class="my-2 mr-2">Result:<b>{resultAlert}</b></p>
-			<Alert onClose={onCloseAlert} bind:open={openAlertType} {type}>
-				{#if type === 'default'}
-					<Title level={4}>Alert!</Title>
-					<p>Something Happens!</p>
-				{:else if type === 'prompt'}
-					<Title level={4}>Prompt!</Title>
-					<p>Do not put your credit card!</p>
-				{:else if type === 'confirm'}
-					<Title level={4}>Alert!</Title>
-					<p>We need your approval!</p>
-				{/if}
-			</Alert>
-		{/snippet}
-	</ComponentCodeTabs>
+<section class="relative w-full">
+	<div class="w-full">
+		<Selection
+			variant="faded"
+			selectionLabel="Alert type"
+			class="absolute top-1 right-1 w-[200px]"
+			{onSelect}
+		>
+			<Option value="default">default</Option>
+			<Option value="prompt">prompt</Option>
+			<Option value="confirm">confirm</Option>
+		</Selection>
+		<ComponentCodeTabs code={alertTypeTextCode(type)}>
+			{#snippet component()}
+				<div class="flex flex-col">
+					<Button
+						variant={'solid'}
+						colors="info"
+						onClick={() => {
+							openAlertType = true;
+						}}>Toggle Alert {type}</Button
+					>
+					<p class="my-2 mr-2">Result:<b>{resultAlert}</b></p>
+				</div>
+				<Alert onClose={onCloseAlert} bind:open={openAlertType} {type}>
+					{#if type === 'default'}
+						<Title level={4}>Alert!</Title>
+						<p>Something Happens!</p>
+					{:else if type === 'prompt'}
+						<Title level={4}>Prompt!</Title>
+						<p>Do not put your credit card!</p>
+					{:else if type === 'confirm'}
+						<Title level={4}>Alert!</Title>
+						<p>We need your approval!</p>
+					{/if}
+				</Alert>
+			{/snippet}
+		</ComponentCodeTabs>
+	</div>
 </section>

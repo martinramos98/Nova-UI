@@ -1,17 +1,17 @@
 <script>
-	import { Avatar, AvatarGroup } from '@nv-org/avatar';
+	import { Avatar } from '@nv-org/avatar';
 	import ComponentCodeTabs from '../../../ComponentShowcase/ComponentCodeTabs.svelte';
-	import { avatarGroupCaseCode } from './code.js';
+	import { avatarBasicCasesCode } from './code.js';
 </script>
 
 <section>
 	<div>
-		<ComponentCodeTabs code={avatarGroupCaseCode()}>
+		<ComponentCodeTabs code={avatarBasicCasesCode()}>
 			{#snippet component()}
-				<AvatarGroup>
+				<div class="flex flex-row flex-wrap">
 					<Avatar
 						avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-isabelle.7bf2a8f2.aead314d58b63e27.png'}
-					></Avatar>
+					/>
 					<Avatar
 						avatarSrc={'https://play.nintendo.com/images/profile-animalcrossing-porter.7e18061d.png'}
 					></Avatar>
@@ -20,7 +20,7 @@
 					<Avatar
 						avatarSrc={'https://play.nintendo.com/images/profile-kirby-metaknight.7bf2a8f2.png'}
 					></Avatar>
-				</AvatarGroup>
+				</div>
 			{/snippet}
 		</ComponentCodeTabs>
 	</div>

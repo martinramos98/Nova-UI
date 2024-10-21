@@ -13,7 +13,7 @@
 </script>
 
 <section>
-	<div>
+	<div class="w-full">
 		<ComponentCodeTabs code={alertBasicCaseText()}>
 			{#snippet component()}
 				<Button variant={'solid'} colors="info" onClick={toggleAlert}>Click Me</Button>

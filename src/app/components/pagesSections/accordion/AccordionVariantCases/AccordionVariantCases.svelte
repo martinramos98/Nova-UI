@@ -10,23 +10,25 @@
 </script>
 
 <section class="relative">
-	<Selection
-		selectionLabel="Variant"
-		bind:selectedValue={variant}
-		class="absolute top-0 right-1 w-[200px]"
-		variant="faded"
-	>
-		{#each ['bordered-items', 'splitted', 'splitted-content', 'default-accordion'] as opt}
-			<Option value={opt}>{opt}</Option>
-		{/each}
-	</Selection>
-	<ComponentCodeTabs
-		code={codeTextAccordionVariants(variant.values().next().value ?? 'default-accordion')}
-	>
-		{#snippet component()}
-			<Accordion variant={variant.values().next().value} multiopen={false} className="m-2">
-				<AccordionDefaultContent />
-			</Accordion>
-		{/snippet}
-	</ComponentCodeTabs>
+	<div>
+		<Selection
+			selectionLabel="Variant"
+			bind:selectedValue={variant}
+			class="absolute top-0 right-1 w-[200px]"
+			variant="faded"
+		>
+			{#each ['bordered-items', 'splitted', 'splitted-content', 'default-accordion'] as opt}
+				<Option value={opt}>{opt}</Option>
+			{/each}
+		</Selection>
+		<ComponentCodeTabs
+			code={codeTextAccordionVariants(variant.values().next().value ?? 'default-accordion')}
+		>
+			{#snippet component()}
+				<Accordion variant={variant.values().next().value} multiopen={false} className="m-2">
+					<AccordionDefaultContent />
+				</Accordion>
+			{/snippet}
+		</ComponentCodeTabs>
+	</div>
 </section>

@@ -30,9 +30,8 @@
 	<div class="absolute right-0 top-0 w-fit flex gap-2">
 		<Selection
 			colors="container"
-			className=" w-[150px]"
+			class=" w-[150px]"
 			selectionLabel="Variant"
-			value={variant}
 			onSelect={onChangeVariant}
 		>
 			{#each variantsOptions as variantValue}
@@ -43,10 +42,9 @@
 		</Selection>
 		<Selection
 			colors="container"
-			className=" w-[150px] "
+			class=" w-[150px] "
 			selectionLabel="Color"
 			onSelect={onChangeColor}
-			value={color}
 		>
 			{#each colorOptions as colorValue}
 				<Option value={colorValue}>
