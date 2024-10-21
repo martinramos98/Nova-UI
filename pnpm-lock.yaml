@@ -88,6 +88,93 @@ importers:
         specifier: ^5.4.9
         version: 5.4.9(lightningcss@1.27.0)
 
+  packages/components:
+    dependencies:
+      '@nv-org/accordion':
+        specifier: workspace:*
+        version: link:Accordion
+      '@nv-org/alert':
+        specifier: workspace:*
+        version: link:Alert
+      '@nv-org/avatar':
+        specifier: workspace:*
+        version: link:Avatar
+      '@nv-org/badge':
+        specifier: workspace:*
+        version: link:Badge
+      '@nv-org/button':
+        specifier: workspace:*
+        version: link:Button
+      '@nv-org/card':
+        specifier: workspace:*
+        version: link:Card
+      '@nv-org/chip':
+        specifier: workspace:*
+        version: link:Chip
+      '@nv-org/collapsable-block':
+        specifier: workspace:*
+        version: link:CollapsableBlock
+      '@nv-org/context-menu':
+        specifier: workspace:*
+        version: link:ContextMenu
+      '@nv-org/divider':
+        specifier: workspace:*
+        version: link:Divider
+      '@nv-org/dropdown':
+        specifier: workspace:*
+        version: link:Dropdown
+      '@nv-org/icon':
+        specifier: workspace:*
+        version: link:Icons
+      '@nv-org/input':
+        specifier: workspace:*
+        version: link:Input
+      '@nv-org/link':
+        specifier: workspace:*
+        version: link:Link
+      '@nv-org/loader':
+        specifier: workspace:*
+        version: link:Loader
+      '@nv-org/modal':
+        specifier: workspace:*
+        version: link:Modal
+      '@nv-org/navbar':
+        specifier: workspace:*
+        version: link:Navbar
+      '@nv-org/popover':
+        specifier: workspace:*
+        version: link:Popover
+      '@nv-org/progress':
+        specifier: workspace:*
+        version: link:Progress
+      '@nv-org/radio':
+        specifier: workspace:*
+        version: link:Radio
+      '@nv-org/selection':
+        specifier: workspace:*
+        version: link:Selection
+      '@nv-org/slider':
+        specifier: workspace:*
+        version: link:Slider
+      '@nv-org/switch':
+        specifier: workspace:*
+        version: link:Switch
+      '@nv-org/table':
+        specifier: workspace:*
+        version: link:Table
+      '@nv-org/tabs':
+        specifier: workspace:*
+        version: link:Tabs
+      '@nv-org/title':
+        specifier: workspace:*
+        version: link:Title
+      '@nv-org/toast':
+        specifier: workspace:*
+        version: link:Toast
+      '@nv-org/tooltip':
+        specifier: workspace:*
+        version: link:Tooltip
+
   packages/components/Accordion:
     dependencies:
       '@nv-org/icon':
