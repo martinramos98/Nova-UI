@@ -9,6 +9,10 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
+	"workspaces": [
+		"packages/*",
+		"packages/components/*"
+	],
 	"dependencies": {
 		"@nv-org/accordion": "workspace:*",
 		"@nv-org/alert": "workspace:*",
