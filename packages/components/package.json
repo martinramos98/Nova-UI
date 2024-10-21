@@ -1,14 +1,19 @@
 {
 	"name": "@nv-org/components",
-	"version": "1.0.1",
-	"description": "",
+	"version": "1.0.2",
 	"main": "./index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+	"description": "",
+	"type": "module",
+	"publishConfig": {
+		"access": "public"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"repository": {
+		"directory": "packages/components/Loader",
+		"url": "git+https://github.com/martinramos98/Nova-UI.git",
+		"type": "git"
+	},
+	"author": "Martin Ramos",
+	"license": "MIT",
 	"workspaces": [
 		"packages/*",
 		"packages/components/*"
@@ -29,6 +34,7 @@
 		"@nv-org/divider": "workspace:*",
 		"@nv-org/dropdown": "workspace:*",
 		"@nv-org/icon": "workspace:*",
+		"@nv-org/image": "workspace:*",
 		"@nv-org/input": "workspace:*",
 		"@nv-org/link": "workspace:*",
 		"@nv-org/loader": "workspace:*",
