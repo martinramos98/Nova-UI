@@ -34,7 +34,7 @@
 		"@nv-org/popover": "workspace:*",
 		"@nv-org/progress": "workspace:*",
 		"@nv-org/radio": "workspace:*",
-		"@nv-org/select": "workspace:*",
+		"@nv-org/selection": "workspace:*",
 		"@nv-org/slider": "workspace:*",
 		"@nv-org/switch": "workspace:*",
 		"@nv-org/table": "workspace:*",
