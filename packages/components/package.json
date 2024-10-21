@@ -1,6 +1,6 @@
 {
 	"name": "@nv-org/components",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"main": "./index.js",
 	"description": "",
 	"type": "module",
@@ -11,6 +11,11 @@
 		"directory": "packages/components/Loader",
 		"url": "git+https://github.com/martinramos98/Nova-UI.git",
 		"type": "git"
+	},
+	"exports": {
+		".": {
+			"svelte": "./index.js"
+		}
 	},
 	"author": "Martin Ramos",
 	"license": "MIT",
