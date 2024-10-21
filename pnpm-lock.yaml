@@ -377,7 +377,7 @@ importers:
   packages/components/Callout:
     dependencies:
       '@nv-org/icon':
-        specifier: workspace
+        specifier: workspace:*
         version: link:../Icons
     devDependencies:
       '@sveltejs/adapter-auto':
@@ -1320,6 +1320,9 @@ importers:
       '@nv-org/element-animation-js':
         specifier: workspace:*
         version: link:../../element-animation-js
+      '@nv-org/icon':
+        specifier: workspace:*
+        version: link:../Icons
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.0.0
