@@ -1,6 +1,6 @@
 {
 	"name": "@nv-org/components",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"main": "./index.js",
 	"scripts": {
@@ -12,6 +12,9 @@
 	"workspaces": [
 		"packages/*",
 		"packages/components/*"
+	],
+	"files": [
+		"./index.js"
 	],
 	"dependencies": {
 		"@nv-org/accordion": "workspace:*",
