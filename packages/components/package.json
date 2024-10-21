@@ -1,0 +1,42 @@
+{
+	"name": "@nv-org/components",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@nv-org/accordion": "workspace:*",
+		"@nv-org/alert": "workspace:*",
+		"@nv-org/avatar": "workspace:*",
+		"@nv-org/badge": "workspace:*",
+		"@nv-org/button": "workspace:*",
+		"@nv-org/card": "workspace:*",
+		"@nv-org/chip": "workspace:*",
+		"@nv-org/collapsable-block": "workspace:*",
+		"@nv-org/context-menu": "workspace:*",
+		"@nv-org/divider": "workspace:*",
+		"@nv-org/dropdown": "workspace:*",
+		"@nv-org/icon": "workspace:*",
+		"@nv-org/input": "workspace:*",
+		"@nv-org/link": "workspace:*",
+		"@nv-org/loader": "workspace:*",
+		"@nv-org/modal": "workspace:*",
+		"@nv-org/navbar": "workspace:*",
+		"@nv-org/popover": "workspace:*",
+		"@nv-org/progress": "workspace:*",
+		"@nv-org/radio": "workspace:*",
+		"@nv-org/select": "workspace:*",
+		"@nv-org/slider": "workspace:*",
+		"@nv-org/switch": "workspace:*",
+		"@nv-org/table": "workspace:*",
+		"@nv-org/tabs": "workspace:*",
+		"@nv-org/title": "workspace:*",
+		"@nv-org/toast": "workspace:*",
+		"@nv-org/tooltip": "workspace:*"
+	}
+}
