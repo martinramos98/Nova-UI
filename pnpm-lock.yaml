@@ -126,6 +126,9 @@ importers:
       '@nv-org/icon':
         specifier: workspace:*
         version: link:Icons
+      '@nv-org/image':
+        specifier: workspace:*
+        version: link:Image
       '@nv-org/input':
         specifier: workspace:*
         version: link:Input
