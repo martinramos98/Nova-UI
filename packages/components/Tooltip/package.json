@@ -1,6 +1,6 @@
 {
 	"name": "@nv-org/tooltip",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "",
 	"type": "module",
 	"main": "./dist/index.js",
@@ -15,7 +15,7 @@
 	"author": "Martin Ramos",
 	"license": "MIT",
 	"peerDependencies": {
-		"svelte": "^4.2.14"
+		"svelte": "^5.0.5"
 	},
 	"scripts": {
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
