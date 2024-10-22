@@ -235,6 +235,9 @@ importers:
       '@nv-org/input':
         specifier: workspace:*
         version: link:../Input
+      '@nv-org/utils':
+        specifier: workspace:*
+        version: link:../../utils
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.0.0
@@ -591,6 +594,10 @@ importers:
         version: 5.0.0-next.260
 
   packages/components/Drawer:
+    dependencies:
+      '@nv-org/utils':
+        specifier: workspace:*
+        version: link:../../utils
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.1.1
@@ -899,9 +906,9 @@ importers:
 
   packages/components/Modal:
     dependencies:
-      '@nv-org/element-animation-js':
+      '@nv-org/utils':
         specifier: workspace:*
-        version: link:../../element-animation-js
+        version: link:../../utils
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.0.0
