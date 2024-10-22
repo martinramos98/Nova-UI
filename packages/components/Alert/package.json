@@ -1,6 +1,6 @@
 {
 	"name": "@nv-org/alert",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "",
 	"type": "module",
 	"publishConfig": {
@@ -37,7 +37,8 @@
 	"dependencies": {
 		"@nv-org/button": "workspace:*",
 		"@nv-org/element-animation-js": "workspace:*",
-		"@nv-org/input": "workspace:*"
+		"@nv-org/input": "workspace:*",
+		"@nv-org/utils": "workspace:*"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
