@@ -1,15 +1,36 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	export let buttonElement: HTMLElement | undefined = undefined;
-	export let onPointerMove: (ev: PointerEvent | TouchEvent) => void;
-	export let buttonPosition = 0;
-	export let triggerOnChange: undefined | ((value: number) => void) = undefined;
-	export let className = '';
-	export let variant = '';
-	export let value: number;
-	export let customButton: undefined | Snippet = undefined;
+
+	// export let buttonElement: HTMLElement | undefined = undefined;
+	// export let onPointerMove: (ev: PointerEvent | TouchEvent) => void;
+	// export let buttonPosition = 0;
+	// export let triggerOnChange: undefined | ((value: number) => void) = undefined;
+	// export let className = '';
+	// export let variant = '';
+	// export let value: number;
+	// export let customButton: undefined | Snippet = undefined;
+	interface SliderButtonProps {
+		buttonElement?: HTMLElement | undefined;
+		onPointerMove: (ev: PointerEvent | TouchEvent) => void;
+		buttonPosition?: number;
+		triggerOnChange?: undefined | ((value: number) => void);
+		className?: string;
+		value: number;
+		customButton?: undefined | Snippet;
+	}
+	let {
+		buttonElement = undefined,
+		onPointerMove,
+		buttonPosition = 0,
+		triggerOnChange = undefined,
+		className = '',
+		value,
+		customButton = undefined
+	}: SliderButtonProps = $props();
 	let containerElement: HTMLElement;
-	let width: number;
+	let width: number | undefined = $state();
 	function onMouseUp() {
 		window.removeEventListener('pointermove', onPointerMove);
 		window.removeEventListener('touchmove', onPointerMove);
@@ -33,8 +54,8 @@
 <!-- <svelte:options ></svelte:options> -->
 <button
 	use:setParentRef
-	on:pointerdown={onMouseDown}
-	on:pointerup={onMouseUp}
+	onpointerdown={onMouseDown}
+	onpointerup={onMouseUp}
 	bind:offsetWidth={width}
 	bind:this={buttonElement}
 	style="left:{buttonPosition.toFixed(2)}%"
