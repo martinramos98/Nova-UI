@@ -1,6 +1,6 @@
 {
 	"name": "@nv-org/components",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"main": "./index.js",
 	"description": "",
 	"type": "module",
@@ -25,7 +25,8 @@
 		"packages/components/*"
 	],
 	"files": [
-		"./index.js"
+		"./index.js",
+		"./index.d.ts"
 	],
 	"dependencies": {
 		"@nv-org/accordion": "workspace:*",
