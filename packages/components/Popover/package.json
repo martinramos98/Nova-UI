@@ -38,15 +38,15 @@
 		"@nv-org/utils": "workspace:*"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/kit": "^2.5.3",
-		"@sveltejs/package": "^2.3.5",
-		"@types/eslint": "^8.56.0",
-		"@typescript-eslint/eslint-plugin": "^7.0.0",
-		"@typescript-eslint/parser": "^7.0.0",
-		"eslint": "^8.56.0",
+		"@sveltejs/adapter-auto": "^3.3.1",
+		"@sveltejs/kit": "^2.8.4",
+		"@sveltejs/package": "^2.3.7",
+		"@types/eslint": "^9.6.1",
+		"@typescript-eslint/eslint-plugin": "^8.16.0",
+		"@typescript-eslint/parser": "^8.16.0",
+		"eslint": "^9.15.0",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.36.0-next.4",
-		"svelte": "5.0.0-next.260"
+		"eslint-plugin-svelte": "^2.46.0",
+		"svelte": "5.2.9"
 	}
 }

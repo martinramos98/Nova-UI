@@ -1,10 +1,15 @@
 {
 	"tasks": {
+		"update-dependencies": {
+			"dependsOn":["^install"],
+			"inputs":["./packages/components/*","./packages/*"]	
+		},
 		"package": {
 			"dependsOn": ["^package"]
 		},
 		"publish": {
 			"dependsOn": ["^package", "publish"]
 		}
+		
 	}
 }
