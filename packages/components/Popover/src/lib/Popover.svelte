@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
 	import { setPosisitionPopover, type SvelteTransitionFn, popIn } from '@nv-org/utils';
 	import { type Snippet } from 'svelte';
@@ -38,7 +36,6 @@
 		const el = ev.target as HTMLElement;
 		if (open && !popoverContainer.contains(el)) {
 			open = false;
-			// animation.reverse();
 		}
 		ev.preventDefault();
 	}
