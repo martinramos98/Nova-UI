@@ -1,19 +1,4 @@
 <script>
-	// import {
-	// 	Title,
-	// 	Image,
-	// 	Button,
-	// 	Link,
-	// 	Badge,
-	// 	Avatar,
-	// 	Card,
-	// 	Selection,
-	// 	Option,
-	// 	Input,
-	// 	Radio,
-	// 	Tooltip,
-	// 	RadioGroup
-	// } from '$lib/index';
 	import { Title } from '@nv-org/title';
 	import { Image } from '@nv-org/image';
 	import { Button } from '@nv-org/button';

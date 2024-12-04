@@ -1,21 +1,26 @@
-import { setContext } from 'svelte';
-import { calculatePosition, type FullPosition } from '@nv-org/utils';
+<script lang="ts">
+	import { setContext, type Snippet } from 'svelte';
+	import { type FullPosition, calculatePosition } from '@nv-org/utils';
+	let {
+		children,
+		open: openPopover = $bindable(false),
+		closeOnOutsideClick = true
+	}: { children: Snippet<[any, any]>; open?: boolean; closeOnOutsideClick?: boolean } = $props();
 
-export function createPopoverControls(contextKey?: string, closeOnOutsideClick = true) {
-	let openPopover = $state(false);
 	let container: HTMLElement | null = null;
 	let trigger: HTMLElement | null = null;
 	let anchor: HTMLElement | null = null;
-	function togglePopover() {
+	$inspect(openPopover);
+	export function togglePopover() {
 		openPopover = !openPopover;
 	}
-	function open() {
+	export function open() {
 		openPopover = true;
 	}
-	function close() {
+	export function close() {
 		openPopover = false;
 	}
-	function asPopoverTrigger(node: HTMLElement) {
+	export function asPopoverTrigger(node: HTMLElement) {
 		if (node === trigger) return;
 		if (trigger) {
 			trigger.removeEventListener('click', handleToggleAction);
@@ -23,7 +28,7 @@ export function createPopoverControls(contextKey?: string, closeOnOutsideClick =
 		trigger = node;
 		node.addEventListener('click', handleToggleAction);
 	}
-	function asPopoverAnchor(node: HTMLElement) {
+	export function asPopoverAnchor(node: HTMLElement) {
 		anchor = node;
 	}
 	function asPopoverContent(node: HTMLElement) {
@@ -34,7 +39,7 @@ export function createPopoverControls(contextKey?: string, closeOnOutsideClick =
 		if (!container || !anchor) return;
 		const positionResult = calculatePosition(anchor, container, position, offset);
 		console.log(positionResult);
-		container.style.translate = `${positionResult.x}px ${positionResult.y}px`;
+		container.style.translate = `${positionResult.x}px, ${positionResult.y}px`;
 	}
 
 	function handleToggleAction(ev: MouseEvent) {
@@ -58,21 +63,13 @@ export function createPopoverControls(contextKey?: string, closeOnOutsideClick =
 			closeOnOutsideClick && window.removeEventListener('click', outsideClickAction);
 		}
 	}
-	setContext(contextKey ?? 'popover', {
+	setContext('popover', {
 		updatePosition,
 		asPopoverContent,
 		get isOpen() {
 			return openPopover;
 		}
 	});
-	return {
-		open,
-		close,
-		togglePopover,
-		asPopoverTrigger,
-		asPopoverAnchor,
-		get isOpen() {
-			return openPopover;
-		}
-	};
-}
+</script>
+
+{@render children?.(asPopoverAnchor, asPopoverTrigger)}

@@ -13,11 +13,11 @@
 		isLoading?: boolean;
 		spinnerPosition?: 'left' | 'right';
 		withClickEffect?: boolean;
-		// buttonProps?: ButtonElementProps | undefined;
 		onClick?: ((ev: MouseEvent) => void) | undefined;
 		spinner?: Snippet;
 		children: Snippet;
 		buttonAttr?: HTMLButtonAttributes;
+		action?: (node: HTMLElement, params?: any) => any;
 	}
 	const {
 		css = '',
@@ -31,12 +31,14 @@
 		buttonAttr = {},
 		onClick = undefined,
 		spinner = undefined,
-		children
+		children,
+		action = () => {}
 	}: ButtonProps = $props();
 </script>
 
 <button
 	use:buttonAction={{ withClickEffect, onClick }}
+	use:action
 	{...buttonAttr}
 	class="ui-button {colors !== '' ? 'ui-color-' + colors : ''} {variant !== ''
 		? 'ui-variant-' + variant

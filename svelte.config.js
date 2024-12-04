@@ -40,13 +40,14 @@ const config = {
 			'@nv-org/collapsable-block': './packages/components/CollapsableBlock/' + path,
 			'@nv-org/divider': './packages/components/Divider/' + path,
 			'@nv-org/drawer': './packages/components/Drawer/' + path,
-			'@nv-org/icons': './packages/components/Icons/' + path,
+			'@nv-org/icon': './packages/components/Icons/' + path,
 			'@nv-org/link': './packages/components/Link/' + path,
 			'@nv-org/image': './packages/components/Image/' + path,
 			'@nv-org/popover': './packages/components/Popover/' + path,
 			'@nv-org/switch': './packages/components/Switch/' + path,
 			'@nv-org/radio': './packages/components/Radio/' + path,
-			'@nv-org/title': './packages/components/Title/' + path
+			'@nv-org/title': './packages/components/Title/' + path,
+			'@nv-org/selection': './packages/components/Selection/' + path
 		}
 	}
 };

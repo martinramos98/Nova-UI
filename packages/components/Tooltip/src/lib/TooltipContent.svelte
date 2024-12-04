@@ -14,7 +14,7 @@
 		position = 'top',
 		offset = 5,
 		isDynamicPosition = false,
-		contextKey = 'popover'
+		contextKey = 'tooltip'
 	}: {
 		// controller: typeof controls;
 		children: Snippet<[]>;
@@ -31,35 +31,35 @@
 		isDynamicPosition?: boolean;
 		contextKey?: string;
 	} = $props();
-	const popoverController = getContext<{
+	const tooltipController = getContext<{
 		isOpen: boolean;
 		updatePosition: any;
-		asPopoverContent: any;
+		asTooltipContent: any;
 	}>(contextKey);
-	if (!popoverController)
+	if (!tooltipController)
 		throw new Error(
 			'PopoverContent must be inside a PopoverRoot or set a custom contextKey correctly'
 		);
 	$effect(() => {
 		if (isDynamicPosition) {
-			popoverController.updatePosition(position as FullPosition, offset);
+			tooltipController.updatePosition(position as FullPosition, offset);
 		}
 	});
 	function setPosition(node: HTMLElement) {
-		popoverController.updatePosition(position as FullPosition, offset);
+		tooltipController.updatePosition(position as FullPosition, offset);
 	}
 </script>
 
-{#if popoverController.isOpen}
+{#if tooltipController.isOpen}
 	<svelte:element
 		this={asElement}
-		role="dialog"
-		aria-hidden={!popoverController.isOpen}
-		use:popoverController.asPopoverContent
+		role="tooltip"
+		aria-hidden={!tooltipController.isOpen}
+		use:tooltipController.asTooltipContent
 		use:setPosition
 		use:action
 		transition:animationFunction={animationParams}
-		class="ui-popover{variant ? ` ui-variant-${variant}` : ''}{colors
+		class="ui-tooltip{variant ? ` ui-variant-${variant}` : ''}{colors
 			? ` ui-colors-${colors}`
 			: ''}{className ? ' ' + className : ''}"
 		{...containerElementAttr}
@@ -70,7 +70,7 @@
 
 <style>
 	@layer nova {
-		.ui-popover {
+		.ui-tooltip {
 			position: absolute;
 			top: 0;
 			left: 0;
