@@ -91,48 +91,48 @@ function overfowsOfEdges(container: HTMLElement, anchor: HTMLElement): Overflows
 	const { top, bottom, left, right } = anchor.getBoundingClientRect();
 	const { innerHeight, innerWidth } = window;
 	const result: OverflowsOfEdgesResult = {
-		top: top - container.offsetHeight < 0,
-		bottom: bottom + container.offsetHeight > innerHeight,
-		left: left - container.offsetWidth < 0,
-		right: right + container.offsetWidth > innerWidth
+		top: top - container.clientHeight < 0,
+		bottom: bottom + container.clientHeight > innerHeight,
+		left: left - container.clientWidth < 0,
+		right: right + container.clientWidth > innerWidth
 	};
 	return result;
 }
 const calculatePositionsCallbacks = {
 	top: (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + (anchor.offsetWidth / 2 - container.offsetWidth / 2),
-			y: anchor.offsetTop - offset - container.offsetHeight
+			x: anchor.offsetLeft + (anchor.offsetWidth / 2 - container.clientWidth / 2),
+			y: anchor.offsetTop - offset - container.clientHeight
 		};
 	},
 	bottom: (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + anchor.offsetWidth / 2 - container.offsetWidth / 2,
+			x: anchor.offsetLeft + anchor.offsetWidth / 2 - container.clientWidth / 2,
 			y: anchor.offsetTop + offset + anchor.offsetHeight
 		};
 	},
 	left: (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft - container.offsetWidth - offset,
-			y: anchor.offsetTop + anchor.offsetHeight / 2 - container.offsetHeight / 2
+			x: anchor.offsetLeft - container.clientWidth - offset,
+			y: anchor.offsetTop + anchor.offsetHeight / 2 - container.clientHeight / 2
 		};
 	},
 	right: (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
 			x: anchor.offsetLeft + anchor.offsetWidth + offset,
-			y: anchor.offsetTop + anchor.offsetHeight / 2 - container.offsetHeight / 2
+			y: anchor.offsetTop + anchor.offsetHeight / 2 - container.clientHeight / 2
 		};
 	},
 	'top-left': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
 			x: anchor.offsetLeft,
-			y: anchor.offsetTop - container.offsetHeight - offset
+			y: anchor.offsetTop - container.clientHeight - offset
 		};
 	},
 	'top-right': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + anchor.offsetWidth - container.offsetWidth,
-			y: anchor.offsetTop - container.offsetHeight - offset
+			x: anchor.offsetLeft + anchor.offsetWidth - container.clientWidth,
+			y: anchor.offsetTop - container.clientHeight - offset
 		};
 	},
 	'bottom-left': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
@@ -143,20 +143,20 @@ const calculatePositionsCallbacks = {
 	},
 	'bottom-right': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + anchor.offsetWidth - container.offsetWidth,
+			x: anchor.offsetLeft + anchor.offsetWidth - container.clientWidth,
 			y: anchor.offsetTop + anchor.offsetHeight + offset
 		};
 	},
 	'left-top': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft - container.offsetWidth - offset,
+			x: anchor.offsetLeft - container.clientWidth - offset,
 			y: anchor.offsetTop
 		};
 	},
 	'left-bottom': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft - container.offsetWidth - offset,
-			y: anchor.offsetTop + anchor.offsetHeight - container.offsetHeight
+			x: anchor.offsetLeft - container.clientWidth - offset,
+			y: anchor.offsetTop + anchor.offsetHeight - container.clientHeight
 		};
 	},
 	'right-top': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
@@ -168,7 +168,7 @@ const calculatePositionsCallbacks = {
 	'right-bottom': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
 			x: anchor.offsetLeft + anchor.offsetWidth + offset,
-			y: anchor.offsetTop + anchor.offsetHeight - container.offsetHeight
+			y: anchor.offsetTop + anchor.offsetHeight - container.clientHeight
 		};
 	}
 };

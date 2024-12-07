@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getContext, type Snippet } from 'svelte';
 	import { popIn, type FullPosition, type SvelteTransitionFn } from '@nv-org/utils';
+	import ArrowSvg from '../../../FloatingWidget/ArrowSvg.svelte';
 	const {
 		children,
 		asElement = 'div',
@@ -14,7 +15,8 @@
 		position = 'top',
 		offset = 5,
 		isDynamicPosition = false,
-		contextKey = 'popover'
+		contextKey = 'popover',
+		withArrow = false,
 	}: {
 		// controller: typeof controls;
 		children: Snippet<[]>;
@@ -30,6 +32,7 @@
 		position?: string;
 		isDynamicPosition?: boolean;
 		contextKey?: string;
+		withArrow?:boolean;
 	} = $props();
 	const popoverController = getContext<{
 		isOpen: boolean;
@@ -42,11 +45,11 @@
 		);
 	$effect(() => {
 		if (isDynamicPosition) {
-			popoverController.updatePosition(position as FullPosition, offset);
+			popoverController.updatePosition(position as FullPosition, offset + (withArrow ? 10 : 0));
 		}
 	});
 	function setPosition(node: HTMLElement) {
-		popoverController.updatePosition(position as FullPosition, offset);
+		popoverController.updatePosition(position as FullPosition, offset + (withArrow ? 10 : 0));
 	}
 </script>
 
@@ -64,8 +67,12 @@
 			: ''}{className ? ' ' + className : ''}"
 		{...containerElementAttr}
 	>
+		{#if withArrow}
+			<ArrowSvg {position} />
+		{/if}
 		{@render children?.()}
 	</svelte:element>
+
 {/if}
 
 <style>
@@ -75,6 +82,12 @@
 			top: 0;
 			left: 0;
 			padding: var(--spacing-2);
+			background-color: var(--color-container);
+			--color-border-arrow:var(--color-border);
+			--color-arrow: var(--color-container);
+			--border-width: 2px;
+			--arrow-width:15px;
+			--arrow-height:15px;
 			transition:
 				all 0.25s ease,
 				translate 0s;

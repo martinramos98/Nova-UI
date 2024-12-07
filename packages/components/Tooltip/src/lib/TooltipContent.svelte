@@ -14,7 +14,8 @@
 		position = 'top',
 		offset = 5,
 		isDynamicPosition = false,
-		contextKey = 'tooltip'
+		contextKey = 'tooltip',
+		withArrow = false
 	}: {
 		// controller: typeof controls;
 		children: Snippet<[]>;
@@ -30,6 +31,7 @@
 		position?: string;
 		isDynamicPosition?: boolean;
 		contextKey?: string;
+		withArrow?: boolean;
 	} = $props();
 	const tooltipController = getContext<{
 		isOpen: boolean;
@@ -64,6 +66,9 @@
 			: ''}{className ? ' ' + className : ''}"
 		{...containerElementAttr}
 	>
+		{#if withArrow}
+			<ArrowSvg {position} />
+		{/if}
 		{@render children?.()}
 	</svelte:element>
 {/if}

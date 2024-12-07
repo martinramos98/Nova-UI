@@ -19,7 +19,7 @@
 		<h1>Popover</h1>
 	</section>
 	<Button action={asPopoverRoot} variant="solid" colors="info">Press Me</Button>
-	<Popover class="bg-cyan-950 rounded-lg font-bold p-2">
+	<Popover withArrow --color-border="transparent" class="rounded-lg font-bold p-2">
 		<p>Hola Mundo</p>
 	</Popover>
 	<Button action={asTooltipRoot} variant="solid" colors="info">Press me Tooltip</Button>
