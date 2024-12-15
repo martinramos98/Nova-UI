@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext, type Snippet } from 'svelte';
 	import { popIn, type FullPosition, type SvelteTransitionFn } from '@nv-org/utils';
-	import ArrowSvg from '../../../FloatingWidget/ArrowSvg.svelte';
+	import FloatingWidget from '../../../FloatingWidget/FloatingWidget.svelte';
 	const {
 		children,
 		asElement = 'div',
@@ -16,7 +16,7 @@
 		offset = 5,
 		isDynamicPosition = false,
 		contextKey = 'popover',
-		withArrow = false,
+		withArrow = false
 	}: {
 		// controller: typeof controls;
 		children: Snippet<[]>;
@@ -32,7 +32,7 @@
 		position?: string;
 		isDynamicPosition?: boolean;
 		contextKey?: string;
-		withArrow?:boolean;
+		withArrow?: boolean;
 	} = $props();
 	const popoverController = getContext<{
 		isOpen: boolean;
@@ -49,48 +49,50 @@
 		}
 	});
 	function setPosition(node: HTMLElement) {
+		popoverController.asPopoverContent(node);
 		popoverController.updatePosition(position as FullPosition, offset + (withArrow ? 10 : 0));
 	}
 </script>
 
 {#if popoverController.isOpen}
-	<svelte:element
-		this={asElement}
+	<FloatingWidget
+		{position}
+		{asElement}
 		role="dialog"
-		aria-hidden={!popoverController.isOpen}
-		use:popoverController.asPopoverContent
-		use:setPosition
-		use:action
-		transition:animationFunction={animationParams}
-		class="ui-popover{variant ? ` ui-variant-${variant}` : ''}{colors
-			? ` ui-colors-${colors}`
-			: ''}{className ? ' ' + className : ''}"
-		{...containerElementAttr}
+		{action}
+		{colors}
+		class={'ui-popover' + (className ? ' ' + className : '')}
+		{variant}
+		{offset}
+		{animationParams}
+		{animationFunction}
+		{containerElementAttr}
+		{withArrow}
+		{setPosition}
 	>
-		{#if withArrow}
-			<ArrowSvg {position} />
-		{/if}
 		{@render children?.()}
-	</svelte:element>
-
+	</FloatingWidget>
 {/if}
 
 <style>
 	@layer nova {
-		.ui-popover {
-			position: absolute;
-			top: 0;
-			left: 0;
-			padding: var(--spacing-2);
-			background-color: var(--color-container);
-			--color-border-arrow:var(--color-border);
-			--color-arrow: var(--color-container);
-			--border-width: 2px;
-			--arrow-width:15px;
-			--arrow-height:15px;
-			transition:
-				all 0.25s ease,
-				translate 0s;
+		:global {
+			.ui-popover {
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding: var(--spacing-2);
+				background-color: var(--color-container);
+				--color-border-arrow: var(--color-border);
+				--color-arrow: var(--color-container);
+				--border-width: 2px;
+				--arrow-width: 15px;
+				--arrow-height: 15px;
+				transition:
+					all 0.25s ease,
+					left 0s,
+					top 0s;
+			}
 		}
 	}
 </style>

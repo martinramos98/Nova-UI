@@ -1,42 +1,39 @@
 <script lang="ts">
-	import { calculatePosition, type FullPosition } from '@nv-org/utils';
-  const {position} = $props();
+	const { position } = $props();
 
-  function positionInverted(position:FullPosition){
-    switch(position){
-      case 'top':return 'bottom'
-      case 'bottom':return 'top'
-      case 'left': return 'right'
-      case 'right':return 'left'
-      case 'top-left':return 'bottom'
-      case 'top-right':return 'bottom'
-      case 'bottom-left':return 'top'
-      case 'bottom-right':return 'top'
-      case 'left-top': return 'right'
-      case 'left-bottom': return 'right'
-      case 'right-top':return 'left'
-      case 'right-bottom':return 'left'
-    }
-  }
-  function setPosition(node:SVGSVGElement){
+	function calculateArrowPosition(node: SVGSVGElement) {
+		if (position === 'top') {
+		} else if (position === 'bottom') {
+			node.style.top = '0';
+			node.style.left = `${-node.clientWidth / 2}px`;
+		} else if (position === 'left') {
+		} else if (position === 'right') {
+		} else if (position === 'top-left') {
+		} else if (position === 'top-right') {
+		} else if (position === 'bottom-left') {
+		} else if (position === 'bottom-right') {
+		} else if (position === 'left-top') {
+		} else if (position === 'left-bottom') {
+		} else if (position === 'right-top') {
+		} else if (position === 'right-bottom') {
+		}
+	}
 
-    if(position === 'bottom' || position === 'bottom-left' || position === 'bottom-right' ){
-      node.style.rotate = '180deg'
-    }
-    if(position === 'right' || position === 'right-top' || position === 'right-bottom' ){
-      node.style.rotate = '90deg'
-    }if(position === 'left' || position === 'left-top' || position === 'right-bottom' ){
-      node.style.rotate = '270deg'
-    }
-    const res = calculatePosition(node.parentElement as HTMLElement,node,positionInverted(position),0);
-    console.log(res);
-    node.style.translate = `${res.x}px ${res.y}px` 
-    node.style.visibility = 'visible'
-
-  }
+	function setPosition(node: SVGSVGElement) {
+		if (position === 'bottom' || position === 'bottom-left' || position === 'bottom-right') {
+			node.style.rotate = '180deg';
+		}
+		if (position === 'right' || position === 'right-top' || position === 'right-bottom') {
+			node.style.rotate = '90deg';
+		}
+		if (position === 'left' || position === 'left-top' || position === 'right-bottom') {
+			node.style.rotate = '270deg';
+		}
+	}
 </script>
+
 <svg
-  use:setPosition
+	use:setPosition
 	class="ui-float-arrow"
 	viewBox="0 0 17 18"
 	fill="none"
@@ -46,14 +43,14 @@
 	<path
 		d="M1 1L8.4472 16.7764"
 		stroke="var(--color-border)"
-    class="line"
+		class="line"
 		stroke-width="2"
 		stroke-linecap="round"
 	/>
 	<path
 		d="M8.54759 16.7871L16 1"
 		stroke="var(--color-border)"
-    class="line"
+		class="line"
 		stroke-width="2"
 		stroke-linecap="round"
 	/>
@@ -63,22 +60,20 @@
 	@layer nova {
 		:global {
 			.ui-popover > .ui-float-arrow {
-        position: absolute;
-        top: -2px;
-        left: 0;
-        visibility: hidden;
+				position: absolute;
+				visibility: hidden;
 			}
 		}
-    .ui-float-arrow {
-      width: var(--arrow-width);
-      height: var(--arrow-height);
-      & .line {
-        stroke: var(--color-border-arrow);
-        stroke-width: var(--border-width);
-      } 
-      & .triangle{
-        fill:var(--color-arrow);
-      }     
-    }
+		.ui-float-arrow {
+			width: var(--arrow-width);
+			height: var(--arrow-height);
+			& .line {
+				stroke: var(--color-border-arrow);
+				stroke-width: var(--border-width);
+			}
+			& .triangle {
+				fill: var(--color-arrow);
+			}
+		}
 	}
 </style>

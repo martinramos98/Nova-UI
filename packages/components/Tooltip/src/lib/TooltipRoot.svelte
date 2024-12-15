@@ -38,7 +38,9 @@
 	function updatePosition(position: FullPosition, offset: number) {
 		if (!container || !anchor) return;
 		const positionResult = calculatePosition(anchor, container, position, offset);
-		container.style.translate = `${positionResult.x}px, ${positionResult.y}px`;
+		// container.style.translate = `${positionResult.x}px, ${positionResult.y}px`;
+		container.style.top = `${positionResult.top}px`;
+		container.style.left = `${positionResult.left}px`;
 	}
 
 	setContext('popover', {

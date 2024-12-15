@@ -16,8 +16,8 @@ export type FullPosition =
 	| 'right-top'
 	| 'right-bottom';
 export interface CalculatedPosition {
-	x: number;
-	y: number;
+	top: number;
+	left: number;
 }
 
 export function calculatePosition(
@@ -101,74 +101,74 @@ function overfowsOfEdges(container: HTMLElement, anchor: HTMLElement): Overflows
 const calculatePositionsCallbacks = {
 	top: (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + (anchor.offsetWidth / 2 - container.clientWidth / 2),
-			y: anchor.offsetTop - offset - container.clientHeight
+			left: anchor.offsetLeft + (anchor.offsetWidth / 2 - container.clientWidth / 2),
+			top: anchor.offsetTop - offset - container.clientHeight
 		};
 	},
 	bottom: (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + anchor.offsetWidth / 2 - container.clientWidth / 2,
-			y: anchor.offsetTop + offset + anchor.offsetHeight
+			left: anchor.offsetLeft + anchor.offsetWidth / 2 - container.clientWidth / 2,
+			top: anchor.offsetTop + offset + anchor.offsetHeight
 		};
 	},
 	left: (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft - container.clientWidth - offset,
-			y: anchor.offsetTop + anchor.offsetHeight / 2 - container.clientHeight / 2
+			left: anchor.offsetLeft - container.clientWidth - offset,
+			top: anchor.offsetTop + anchor.offsetHeight / 2 - container.clientHeight / 2
 		};
 	},
 	right: (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + anchor.offsetWidth + offset,
-			y: anchor.offsetTop + anchor.offsetHeight / 2 - container.clientHeight / 2
+			left: anchor.offsetLeft + anchor.offsetWidth + offset,
+			top: anchor.offsetTop + anchor.offsetHeight / 2 - container.clientHeight / 2
 		};
 	},
 	'top-left': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft,
-			y: anchor.offsetTop - container.clientHeight - offset
+			left: anchor.offsetLeft,
+			top: anchor.offsetTop - container.clientHeight - offset
 		};
 	},
 	'top-right': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + anchor.offsetWidth - container.clientWidth,
-			y: anchor.offsetTop - container.clientHeight - offset
+			left: anchor.offsetLeft + anchor.offsetWidth - container.clientWidth,
+			top: anchor.offsetTop - container.clientHeight - offset
 		};
 	},
 	'bottom-left': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft,
-			y: anchor.offsetTop + anchor.offsetHeight + offset
+			left: anchor.offsetLeft,
+			top: anchor.offsetTop + anchor.offsetHeight + offset
 		};
 	},
 	'bottom-right': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + anchor.offsetWidth - container.clientWidth,
-			y: anchor.offsetTop + anchor.offsetHeight + offset
+			left: anchor.offsetLeft + anchor.offsetWidth - container.clientWidth,
+			top: anchor.offsetTop + anchor.offsetHeight + offset
 		};
 	},
 	'left-top': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft - container.clientWidth - offset,
-			y: anchor.offsetTop
+			left: anchor.offsetLeft - container.clientWidth - offset,
+			top: anchor.offsetTop
 		};
 	},
 	'left-bottom': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft - container.clientWidth - offset,
-			y: anchor.offsetTop + anchor.offsetHeight - container.clientHeight
+			left: anchor.offsetLeft - container.clientWidth - offset,
+			top: anchor.offsetTop + anchor.offsetHeight - container.clientHeight
 		};
 	},
 	'right-top': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + anchor.offsetWidth + offset,
-			y: anchor.offsetTop
+			left: anchor.offsetLeft + anchor.offsetWidth + offset,
+			top: anchor.offsetTop
 		};
 	},
 	'right-bottom': (container: HTMLElement, anchor: HTMLElement, offset: number) => {
 		return {
-			x: anchor.offsetLeft + anchor.offsetWidth + offset,
-			y: anchor.offsetTop + anchor.offsetHeight - container.clientHeight
+			left: anchor.offsetLeft + anchor.offsetWidth + offset,
+			top: anchor.offsetTop + anchor.offsetHeight - container.clientHeight
 		};
 	}
 };

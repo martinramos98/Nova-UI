@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getContext, type Snippet } from 'svelte';
 	import { popIn, type FullPosition, type SvelteTransitionFn } from '@nv-org/utils';
+	import FloatingWidget from '../../../FloatingWidget/FloatingWidget.svelte';
 	const {
 		children,
 		asElement = 'div',
@@ -48,41 +49,46 @@
 		}
 	});
 	function setPosition(node: HTMLElement) {
+		tooltipController.asTooltipContent(node);
 		tooltipController.updatePosition(position as FullPosition, offset);
 	}
 </script>
 
 {#if tooltipController.isOpen}
-	<svelte:element
-		this={asElement}
+	<FloatingWidget
+		{position}
+		{asElement}
 		role="tooltip"
-		aria-hidden={!tooltipController.isOpen}
-		use:tooltipController.asTooltipContent
-		use:setPosition
-		use:action
-		transition:animationFunction={animationParams}
-		class="ui-tooltip{variant ? ` ui-variant-${variant}` : ''}{colors
-			? ` ui-colors-${colors}`
-			: ''}{className ? ' ' + className : ''}"
-		{...containerElementAttr}
+		{action}
+		{colors}
+		class={'ui-tooltip' + (className ? ' ' + className : '')}
+		{variant}
+		{offset}
+		{animationParams}
+		{animationFunction}
+		{containerElementAttr}
+		{withArrow}
+		{setPosition}
 	>
-		{#if withArrow}
-			<ArrowSvg {position} />
-		{/if}
 		{@render children?.()}
-	</svelte:element>
+	</FloatingWidget>
 {/if}
 
 <style>
 	@layer nova {
-		.ui-tooltip {
-			position: absolute;
-			top: 0;
-			left: 0;
-			padding: var(--spacing-2);
-			transition:
-				all 0.25s ease,
-				translate 0s;
+		:global {
+			@layer nova {
+				.ui-tooltip {
+					position: absolute;
+					top: 0;
+					left: 0;
+					padding: var(--spacing-2);
+					transition:
+						all 0.25s ease,
+						left 0s,
+						top 0s;
+				}
+			}
 		}
 	}
 </style>

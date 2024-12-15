@@ -39,7 +39,9 @@
 		if (!container || !anchor) return;
 		const positionResult = calculatePosition(anchor, container, position, offset);
 		console.log(positionResult);
-		container.style.translate = `${positionResult.x}px, ${positionResult.y}px`;
+		// container.style.translate = `${positionResult.x}px, ${positionResult.y}px`;
+		container.style.top = `${positionResult.top}px`;
+		container.style.left = `${positionResult.left}px`;
 	}
 
 	function handleToggleAction(ev: MouseEvent) {
