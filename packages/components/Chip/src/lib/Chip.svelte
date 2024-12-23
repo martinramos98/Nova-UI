@@ -1,32 +1,56 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { CloseButton } from '@nv-org/button';
 
 	// TODO: Define type of variantas and colors
 	interface ChipProps {
 		variant?: any | '';
 		colors?: any | '';
 		class?: string;
+		withCloseButton?: boolean;
+		closeButton?:Snippet;
+		closeButtonPosition?: 'left' | 'right';
 		size?: 'xs' | 'sm' | 'md' | 'lg';
 		children: Snippet;
+		show?: boolean;
 	}
-	const {
+	let  {
 		variant = '',
 		colors = '',
 		class: className = '',
 		size = 'md',
-		children
+		children,
+		closeButtonPosition = 'right',
+		closeButton = undefined,
+		withCloseButton = false,
+		show = $bindable(true)
 	}: ChipProps = $props();
 </script>
 
-<span
+{#if show}
+	{#if withCloseButton && closeButtonPosition === 'left'}
+		{#if closeButton}
+			{@render closeButton()}
+		{:else}
+			<CloseButton onclose={()=>{show = false}} />
+		{/if}
+	{/if}
+	<span
 	class="ui-chip sizes-{size} {colors !== '' ? 'ui-color-' + colors : ''} {variant !== ''
 		? 'ui-variant-' + variant
 		: ''} {className}"
 >
 	{@render children()}
 </span>
+	{#if withCloseButton && closeButtonPosition === 'right'}
+		{#if closeButton}
+			{@render closeButton()}
+		{:else}
+			<CloseButton onclose={()=>{show = false}} />
+		{/if}
+	{/if}
+{/if}
+
 
 <style>
 	@layer theme, base, nova, components, utilities;
@@ -54,7 +78,7 @@
 			min-height: var(--spacing-7);
 			font-size: var(--font-size-sm);
 			height: fit-content;
-			padding: 0rem 1rem;
+			padding: 0 1rem;
 		}
 		.sizes-md {
 			/* border-radius: var(--radius-2xl); */

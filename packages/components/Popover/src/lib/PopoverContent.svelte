@@ -68,6 +68,7 @@
 		{animationFunction}
 		{containerElementAttr}
 		{withArrow}
+		{contextKey}
 		{setPosition}
 	>
 		{@render children?.()}

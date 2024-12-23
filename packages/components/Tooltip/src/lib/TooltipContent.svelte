@@ -69,13 +69,13 @@
 		{containerElementAttr}
 		{withArrow}
 		{setPosition}
+		{contextKey}
 	>
 		{@render children?.()}
 	</FloatingWidget>
 {/if}
 
 <style>
-	@layer nova {
 		:global {
 			@layer nova {
 				.ui-tooltip {
@@ -90,5 +90,4 @@
 				}
 			}
 		}
-	}
 </style>

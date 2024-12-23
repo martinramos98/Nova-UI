@@ -44,7 +44,7 @@
 		container.style.left = `${positionResult.left}px`;
 	}
 
-	function handleToggleAction(ev: MouseEvent) {
+	function handleToggleAction() {
 		if (openPopover) {
 			close();
 			closeOnOutsideClick && window.removeEventListener('click', outsideClickAction);

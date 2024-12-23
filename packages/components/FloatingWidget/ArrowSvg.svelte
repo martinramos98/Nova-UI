@@ -1,22 +1,47 @@
 <script lang="ts">
-	const { position } = $props();
+	import { getContext } from 'svelte';
 
+	const { position,contextKey } = $props();
+	const context = getContext<{trigger:HTMLElement | null}>(contextKey)
 	function calculateArrowPosition(node: SVGSVGElement) {
 		if (position === 'top') {
+			node.style.bottom = `${-(node.clientHeight - 2)}px`;
+			node.style.left = `${-(node.parentElement.clientWidth / 2 + node.clientWidth / 2) }px`;
 		} else if (position === 'bottom') {
-			node.style.top = '0';
-			node.style.left = `${-node.clientWidth / 2}px`;
+			node.style.top = `${-(node.clientHeight - 2)}px`;
+			node.style.left = `${node.parentElement.clientWidth / 2 - node.clientWidth / 2}px`;
 		} else if (position === 'left') {
+			node.style.right = `${-(node.clientWidth - 2)}px`;
+			node.style.top  = `${context.trigger.clientHeight / 2}px`;
 		} else if (position === 'right') {
+			node.style.left = `${-(node.clientWidth - 2)}px`;
+			node.style.top  = `${context.trigger.offsetHeight / 2 }px`;
 		} else if (position === 'top-left') {
+			node.style.bottom = `${-(node.clientHeight - 2)}px`;
+			node.style.left = `${context.trigger.clientWidth / 2 - node.clientWidth / 2}px`;
 		} else if (position === 'top-right') {
+			node.style.top = `${-(node.clientHeight -2)}px`;
+			node.style.right = `3px`;
 		} else if (position === 'bottom-left') {
+			node.style.bottom = `${-(node.clientHeight-2)}px`;
+			node.style.left = `3px`;
 		} else if (position === 'bottom-right') {
+			node.style.bottom = `${-(node.clientHeight-2)}px`;
+			node.style.right = `3px`;
 		} else if (position === 'left-top') {
+			node.style.left = `${-(node.clientWidth-2)}px`;
+			node.style.top = `3px`;
 		} else if (position === 'left-bottom') {
+			node.style.left = `${-(node.clientWidth-2)}px`;
+			node.style.bottom = `3px`;
 		} else if (position === 'right-top') {
+			node.style.right = `${-(node.clientWidth-2)}px`;
+			node.style.top = `3px`;
 		} else if (position === 'right-bottom') {
+			node.style.right = `${-(node.clientWidth-2)}px`;
+			node.style.bottom = `3px`;
 		}
+		node.style.visibility = 'visible';
 	}
 
 	function setPosition(node: SVGSVGElement) {
@@ -34,6 +59,7 @@
 
 <svg
 	use:setPosition
+	use:calculateArrowPosition
 	class="ui-float-arrow"
 	viewBox="0 0 17 18"
 	fill="none"

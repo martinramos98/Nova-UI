@@ -61,6 +61,9 @@ export function createPopoverControls(contextKey?: string, closeOnOutsideClick =
 	setContext(contextKey ?? 'popover', {
 		updatePosition,
 		asPopoverContent,
+		get trigger(){
+			return trigger
+		},
 		get isOpen() {
 			return openPopover;
 		}

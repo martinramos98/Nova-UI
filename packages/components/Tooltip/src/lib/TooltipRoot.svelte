@@ -46,6 +46,9 @@
 	setContext('popover', {
 		updatePosition,
 		asTooltipContent,
+		get trigger(){
+			return trigger;
+		},
 		get isOpen() {
 			return openTooltip;
 		}

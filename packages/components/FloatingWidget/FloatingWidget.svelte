@@ -17,6 +17,7 @@
 		setPosition: (node: HTMLElement) => any;
 		children: Snippet;
 		position: string;
+		contextKey:string;
 	}
 	const {
 		asElement = 'div',
@@ -31,7 +32,8 @@
 		withArrow,
 		containerElementAttr = {},
 		setPosition,
-		children
+		children,
+		contextKey
 	}: FloatingWidgetProps = $props();
 </script>
 
@@ -48,7 +50,7 @@
 	{...containerElementAttr}
 >
 	{#if withArrow}
-		<ArrowSvg {position} />
+		<ArrowSvg {position} {contextKey} />
 	{/if}
 	{@render children?.()}
 </svelte:element>

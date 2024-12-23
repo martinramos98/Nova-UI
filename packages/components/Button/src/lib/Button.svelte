@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
 	import buttonAction from './ButtonAction.js';
 	import { type HTMLButtonAttributes } from 'svelte/elements';
@@ -17,7 +15,7 @@
 		spinner?: Snippet;
 		children: Snippet;
 		buttonAttr?: HTMLButtonAttributes;
-		action?: (node: HTMLElement, params?: any) => any;
+		action?: (node: HTMLElement, params?: unknown) => unknown;
 	}
 	const {
 		css = '',
@@ -40,8 +38,8 @@
 	use:buttonAction={{ withClickEffect, onClick }}
 	use:action
 	{...buttonAttr}
-	class="ui-button {colors !== '' ? 'ui-color-' + colors : ''} {variant !== ''
-		? 'ui-variant-' + variant
+	class="ui-button{colors !== '' ? ' ui-color-' + colors : ''}{variant !== ''
+		? ' ui-variant-' + variant
 		: ''} {className}"
 	style={css}
 	{disabled}

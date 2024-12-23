@@ -54,6 +54,9 @@ export function createTooltipControls(contextKey?: string) {
 		togglePopover,
 		asTooltipTrigger,
 		asTooltipAnchor,
+		get trigger(){
+			return trigger;
+		},
 		get isOpen() {
 			return openTooltip;
 		}
