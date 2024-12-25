@@ -11,7 +11,7 @@
 	<div>
 		<ComponentCodeTabs code={codeTextMultiselection()}>
 			{#snippet component()}
-				<Accordion multiopen={true} className="m-2">
+				<Accordion multiopen={true} class="m-2">
 					<AccordionDefaultContent />
 				</Accordion>
 			{/snippet}

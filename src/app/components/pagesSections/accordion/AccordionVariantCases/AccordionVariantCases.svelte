@@ -25,7 +25,7 @@
 			code={codeTextAccordionVariants(variant.values().next().value ?? 'default-accordion')}
 		>
 			{#snippet component()}
-				<Accordion variant={variant.values().next().value} multiopen={false} className="m-2">
+				<Accordion variant={variant.values().next().value} multiopen={false} class="m-2">
 					<AccordionDefaultContent />
 				</Accordion>
 			{/snippet}

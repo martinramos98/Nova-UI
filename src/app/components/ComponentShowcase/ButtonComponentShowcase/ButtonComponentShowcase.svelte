@@ -53,21 +53,21 @@
 			{/each}
 		</Selection>
 	</div>
-	<Tabs className="w-full" classNameContent="bg-transparent h-[150px]">
+	<Tabs class="w-full" classContent="bg-transparent h-[150px]">
 		{#snippet TabSelection()}
 			<TabButton key="Component">Component</TabButton>
 			<TabButton key="Code">Code</TabButton>
 		{/snippet}
 		<Tab
 			key="Component"
-			className="h-[150px] flex items-center justify-center bg-[var(--color-surface)] rounded-xl"
+			class="h-[150px] flex items-center justify-center bg-[var(--color-surface)] rounded-xl"
 		>
 			<Button colors={color} {variant}>Press Me</Button>
 		</Tab>
-		<Tab key="Code" className="flex items-center justify-center h-[150px]">
+		<Tab key="Code" class="flex items-center justify-center h-[150px]">
 			<CodeSnippet
 				isSvelte
-				textCode={`<Button colors={${color}} variant={${variant}}>Press Me</Button>`}
+				textCode={`<Button colors={\'${color}\'} variant={\'${variant}\'}>Press Me</Button>`}
 			></CodeSnippet>
 		</Tab>
 	</Tabs>

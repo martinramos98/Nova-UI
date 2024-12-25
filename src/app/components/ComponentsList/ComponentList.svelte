@@ -1,5 +1,5 @@
 <script>
-	export let className = '';
+	const { class: className = '' } = $props();
 </script>
 
 <ul class={className}>
@@ -98,9 +98,10 @@
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: flex-start;
-		margin-right: var(--spacing-2);
 		& li {
 			width: 100%;
+			padding-left: calc(var(--spacing) * 4);
+			border-radius: 0px;
 			transition: all 0.2s ease;
 			& a {
 				text-align: start;

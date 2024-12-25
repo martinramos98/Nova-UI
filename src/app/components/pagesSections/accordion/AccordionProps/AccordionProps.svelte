@@ -5,7 +5,7 @@
 <section>
 	<div class="prop-container">
 		<pre class="prop-code"><code>class?:string</code></pre>
-		<Divider size={1} className="w-full" color="var(--color-on-surface)"></Divider>
+		<Divider size={1} class="w-full" color="var(--color-on-surface)"></Divider>
 		<ul>
 			<li>
 				<span><b>Description:</b> Defines HTML class for accordion container</span>
@@ -19,7 +19,7 @@
 		<pre class="prop-code">
       <code>variant:?string</code>
     </pre>
-		<Divider size={1} className="w-full" color="var(--color-on-surface)"></Divider>
+		<Divider size={1} class="w-full" color="var(--color-on-surface)"></Divider>
 		<ul>
 			<li>
 				<span

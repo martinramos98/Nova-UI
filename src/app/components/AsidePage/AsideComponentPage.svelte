@@ -22,7 +22,7 @@
 			{#snippet header()}
 				<span> <a href="/components"> Components </a></span>
 			{/snippet}
-			<ComponentList className="text-end" />
+			<ComponentList class="text-end" />
 		</AccordionSection>
 		<AccordionSection
 			classHeader={'ui-variant-light ui-color-primary font-semibold pl-4 gap-6 transition-all'}

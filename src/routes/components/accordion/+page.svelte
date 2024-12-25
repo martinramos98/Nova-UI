@@ -2,13 +2,10 @@
 	import { Title } from '@nv-org/title';
 	import { Accordion, AccordionSection } from '@nv-org/accordion';
 	import PropItem from '../../../app/components/propItem/PropItem.svelte';
-	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
 	import AccordionVariantCases from '../../../app/components/pagesSections/accordion/AccordionVariantCases/AccordionVariantCases.svelte';
 	import AccordionMultiselectionCase from '../../../app/components/pagesSections/accordion/MultiselectionCase/AccordionMultiselectionCase.svelte';
-	import AccordionProps from '../../../app/components/pagesSections/accordion/AccordionProps/AccordionProps.svelte';
 	import { Divider } from '@nv-org/divider';
-	import ComponentList from '../../../app/components/ComponentsList/ComponentList.svelte';
 	import AsideComponentPage from '../../../app/components/AsidePage/AsideComponentPage.svelte';
 	export let data;
 </script>
@@ -66,7 +63,7 @@
 			</header>
 			<section>
 				<div>
-					<Accordion className="m-2">
+					<Accordion class="m-2">
 						{@render accordionDefaultContent()}
 					</Accordion>
 				</div>
