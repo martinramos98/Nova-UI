@@ -18,10 +18,8 @@
 		type?: 'default' | 'prompt' | 'confirm';
 		onClose: (value: string | undefined | boolean) => void;
 		promptProps?: { inputProps?: any };
-		backdrop?: {
-			className?: string;
-			type: 'normal' | 'blur' | 'transparent';
-		};
+		backdropClass?: string;
+		backdropType?: 'normal' | 'blur' | 'transparent';
 		animationFunction?: SvelteTransitionFn;
 		animationParams?: any;
 	}
@@ -36,11 +34,11 @@
 		onClose,
 		footer,
 		promptProps = { inputProps: {} },
-		backdrop = { className: '', type: 'normal' },
+		backdropClass = '',
+		backdropType = 'normal',
 		animationFunction = popOut,
 		animationParams = { duration: 300 }
 	}: AlertProps = $props();
-	// let render = $state(false);
 	let value = $state('');
 	function translateToBody(node: HTMLElement) {
 		document.body.append(node);
@@ -143,9 +141,9 @@
 			transition:fade
 			aria-roledescription="Backdrop of alert"
 			aria-hidden="true"
-			class="ui-alert-backdrop {backdrop.className} {backdrop.type === 'transparent'
+			class="ui-alert-backdrop {backdropClass} {backdropType === 'transparent'
 				? 'opacity-0'
-				: ''} {backdrop.type === 'blur' ? 'backdrop-blur-sm' : ''}"
+				: ''} {backdropType === 'blur' ? 'backdrop-blur-sm' : ''}"
 		></div>
 	</div>
 {/if}
@@ -180,7 +178,7 @@
 			grid-row: 1 / 1;
 			background-color: var(--color-surface);
 			border-radius: var(--radius-lg);
-			padding: var(--spacing-4) var(--spacing-8);
+			padding: calc(var(--spacing) * 4) calc(var(--spacing) * 8);
 			margin-top: 20px;
 			display: flex;
 			flex-direction: column;
@@ -193,7 +191,7 @@
 			padding-top: 20px;
 			align-items: center;
 			justify-content: end;
-			gap: var(--spacing-2);
+			gap: calc(var(--spacing) * 2);
 		}
 	}
 </style>

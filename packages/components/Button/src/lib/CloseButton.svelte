@@ -10,7 +10,7 @@
 		colors?: any;
 		onClose: (ev: MouseEvent) => void;
 		children?: Snippet;
-		side: 'left' | 'right';
+		side?: 'left' | 'right';
 	}
 	const {
 		class: className = '',

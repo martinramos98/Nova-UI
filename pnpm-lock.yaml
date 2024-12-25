@@ -451,6 +451,10 @@ importers:
         version: 5.2.9
 
   packages/components/Chip:
+    dependencies:
+      '@nv-org/button':
+        specifier: workspace:*
+        version: link:../Button
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.3.1

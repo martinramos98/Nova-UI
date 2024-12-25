@@ -8,13 +8,13 @@
 		colors?: any | '';
 		class?: string;
 		withCloseButton?: boolean;
-		closeButton?:Snippet;
+		closeButton?: Snippet;
 		closeButtonPosition?: 'left' | 'right';
 		size?: 'xs' | 'sm' | 'md' | 'lg';
 		children: Snippet;
 		show?: boolean;
 	}
-	let  {
+	let {
 		variant = '',
 		colors = '',
 		class: className = '',
@@ -32,25 +32,32 @@
 		{#if closeButton}
 			{@render closeButton()}
 		{:else}
-			<CloseButton onclose={()=>{show = false}} />
+			<CloseButton
+				onClose={() => {
+					show = false;
+				}}
+			/>
 		{/if}
 	{/if}
 	<span
-	class="ui-chip sizes-{size} {colors !== '' ? 'ui-color-' + colors : ''} {variant !== ''
-		? 'ui-variant-' + variant
-		: ''} {className}"
->
-	{@render children()}
-</span>
+		class="ui-chip sizes-{size} {colors !== '' ? 'ui-color-' + colors : ''} {variant !== ''
+			? 'ui-variant-' + variant
+			: ''} {className}"
+	>
+		{@render children()}
+	</span>
 	{#if withCloseButton && closeButtonPosition === 'right'}
 		{#if closeButton}
 			{@render closeButton()}
 		{:else}
-			<CloseButton onclose={()=>{show = false}} />
+			<CloseButton
+				onClose={() => {
+					show = false;
+				}}
+			/>
 		{/if}
 	{/if}
 {/if}
-
 
 <style>
 	@layer theme, base, nova, components, utilities;

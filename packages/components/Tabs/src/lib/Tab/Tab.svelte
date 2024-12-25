@@ -38,7 +38,6 @@
 				ease: 'ease-in'
 			});
 		} else {
-			console.log('animation is fade-slide');
 			inAnimation = tabContext.animation
 				? tabAnimationMap[tabContext.animation]?.(node, {
 						orientation: 'vertical',

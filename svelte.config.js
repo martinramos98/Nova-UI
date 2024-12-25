@@ -47,7 +47,9 @@ const config = {
 			'@nv-org/switch': './packages/components/Switch/' + path,
 			'@nv-org/radio': './packages/components/Radio/' + path,
 			'@nv-org/title': './packages/components/Title/' + path,
-			'@nv-org/selection': './packages/components/Selection/' + path
+			'@nv-org/selection': './packages/components/Selection/' + path,
+			'@nv-org/loader': './packages/components/Loader/' + path,
+			'@nv-org/callout': './packages/components/Callout/' + path
 		}
 	}
 };

@@ -110,7 +110,7 @@
 	@layer nova {
 		.ui-tab-content {
 			position: relative;
-			padding: var(--spacing-4);
+			padding: calc(var(--spacing) * 4);
 			/* transition:
 				min-height 0.8s ease-in-out,
 				min-width 0.8s ease-in-out; */

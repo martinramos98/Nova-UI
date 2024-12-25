@@ -15,7 +15,7 @@
 		spinner?: Snippet;
 		children: Snippet;
 		buttonAttr?: HTMLButtonAttributes;
-		action?: (node: HTMLElement, params?: unknown) => unknown;
+		action?: (node: HTMLElement, params?: unknown) => any;
 	}
 	const {
 		css = '',
