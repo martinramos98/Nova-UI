@@ -58,11 +58,9 @@
 						<div class="w-full flex gap-2 mt-2 mr-2 justify-end">
 							<Button onClick={confirmAlert} colors="info" variant="solid" class="p-1 rounded-full">
 								<Icon
-									props={{
-										viewBox: '0 0 24 24',
-										fill: 'none',
-										class: 'stroke-[var(--color-text)] w-[15px] h-[15px]'
-									}}
+									viewBox="0 0 24 24"
+									fill="none"
+									class="stroke-[var(--color-text)] w-[15px] h-[15px]"
 								>
 									<SuccessIcon />
 								</Icon>

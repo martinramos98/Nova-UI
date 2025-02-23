@@ -26,7 +26,7 @@
 	{#if children && side === 'left'}
 		{@render children()}
 	{/if}
-	<Icon props={{ fill: 'currentcolor', viewBox: '0 0 24 24', class: 'size-4' }}>
+	<Icon fill="currentcolor" viewBox="0 0 24 24" class="size-4">
 		<CrossIcon />
 	</Icon>
 	{#if children && side === 'right'}

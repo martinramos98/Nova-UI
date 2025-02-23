@@ -10,7 +10,6 @@
 	let container: HTMLElement | null = null;
 	let trigger: HTMLElement | null = null;
 	let anchor: HTMLElement | null = null;
-	$inspect(openPopover);
 	export function togglePopover() {
 		openPopover = !openPopover;
 	}

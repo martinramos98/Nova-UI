@@ -13,7 +13,7 @@
 </script>
 
 <Button class="ui-menu-button {className}" withClickEffect={false} onClick={onClickMenu}>
-	<Icon props={{ viewBox: '0 0 24 24', width: '24px', height: '24px', stroke: 'currentcolor' }}>
+	<Icon viewBox="0 0 24 24" width="24px" height="24px" stroke="currentcolor">
 		<MenuIcon />
 	</Icon>
 </Button>

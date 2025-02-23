@@ -7,6 +7,10 @@
 	import AsideComponentPage from '../../../app/components/AsidePage/AsideComponentPage.svelte';
 	import { Divider } from '@nv-org/divider';
 	import CodeSnippet from '../../../app/components/CodeSnippet/CodeSnippet.svelte';
+	import DisableCase from '../../../app/components/pagesSections/button/DisabbledCase/DisableCase.svelte';
+	import CustomContentCase from '../../../app/components/pagesSections/button/CustomContentCase/CustomContentCase.svelte';
+	import ClickEffectCase from '../../../app/components/pagesSections/button/ClickEffectCase/ClickEffectCase.svelte';
+	import ButtonGroupCase from '../../../app/components/pagesSections/button/ButtonGroupCase/ButtonGroupCase.svelte';
 	export let data;
 </script>
 
@@ -40,12 +44,12 @@
 				touchs.
 			</p>
 			<section>
-				<div>
+				<div class="flex justify-center items-center my-4">
 					<Button colors="primary" variant="solid">Press me</Button>
 				</div>
 			</section>
 			<section>
-				<Title level={2} class={'text-2xl'}>Imports</Title>
+				<Title level={2} class={'text-2xl my-2 ml-1'}>Imports</Title>
 				<div>
 					<CodeSnippet textCode={'import { Button } from "@nv-org/components"'}></CodeSnippet>
 				</div>
@@ -66,7 +70,9 @@
 				<Title level={3}>Disabled</Title>
 			</header>
 			<section>
-				<div style="width:100%;"></div>
+				<div style="width:100%;">
+					<DisableCase />
+				</div>
 			</section>
 		</article>
 		<article id={'effect'}>
@@ -74,8 +80,9 @@
 				<Title level={3}>Click Effect</Title>
 			</header>
 			<section>
-				<div style="width:100%;"></div>
-				<div></div>
+				<div style="width:100%;">
+					<ClickEffectCase />
+				</div>
 			</section>
 		</article>
 		<article id={'custom'}>
@@ -83,16 +90,19 @@
 				<Title level={3}>Custom Content</Title>
 			</header>
 			<section>
-				<div style="width: 100%;"></div>
+				<div style="width: 100%;">
+					<CustomContentCase />
+				</div>
 			</section>
 		</article>
-		<!-- <Divider size={1} className="my-8" color={'var(--color-container)'} /> -->
 		<article id={'group'}>
 			<header>
-				<Title level={2}>Button Groups</Title>
+				<Title level={3}>Button Groups</Title>
 			</header>
 			<section>
-				<div style="width:100%;"></div>
+				<div style="width:100%;">
+					<ButtonGroupCase />
+				</div>
 			</section>
 		</article>
 		<article>

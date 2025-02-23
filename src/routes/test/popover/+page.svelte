@@ -2,6 +2,7 @@
 	import { Popover, createPopoverControls } from '@nv-org/popover';
 	import { Tooltip, createTooltipControls } from '@nv-org/tooltip';
 	import { Button } from '@nv-org/button';
+	import PopoverRoot from '../../../../packages/components/Popover/src/lib/PopoverRoot.svelte';
 	const { asPopoverAnchor: asPopoverAnchorTop, asPopoverTrigger: asPopoverTriggerTop } =
 		createPopoverControls();
 	const { asPopoverAnchor: asPopoverAnchorBottom, asPopoverTrigger: asPopoverTriggerBottom } =

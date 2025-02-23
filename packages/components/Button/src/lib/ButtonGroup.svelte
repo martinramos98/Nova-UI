@@ -22,7 +22,7 @@
 	});
 </script>
 
-<div class="ui-button-group {classname}" bind:this={ref}>
+<div class={['ui-button-group', classname]} bind:this={ref}>
 	{@render children()}
 </div>
 

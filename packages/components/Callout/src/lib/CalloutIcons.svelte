@@ -15,14 +15,6 @@
 	const IconType = icons[type].icon;
 </script>
 
-<Icon
-	props={{
-		viewBox: icons[type].viewBox,
-		stroke: 'currentColor',
-		width: '24px',
-		height: '24px',
-		fill: 'none'
-	}}
->
+<Icon stroke="currentColor" width="24px" height="24px" fill="none">
 	<IconType />
 </Icon>

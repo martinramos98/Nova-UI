@@ -16,12 +16,13 @@
 		children: Snippet;
 		buttonAttr?: HTMLButtonAttributes;
 		action?: (node: HTMLElement, params?: unknown) => any;
+		ref?: HTMLElement;
 	}
-	const {
-		css = '',
-		class: className = '',
-		variant = '',
-		colors = '',
+	let {
+		css,
+		class: className,
+		variant,
+		colors,
 		disabled = false,
 		isLoading = false,
 		spinnerPosition = 'left',
@@ -30,17 +31,22 @@
 		onClick = undefined,
 		spinner = undefined,
 		children,
-		action = () => {}
+		action = () => {},
+		ref = $bindable(undefined)
 	}: ButtonProps = $props();
 </script>
 
 <button
+	bind:this={ref}
 	use:buttonAction={{ withClickEffect, onClick }}
 	use:action
 	{...buttonAttr}
-	class="ui-button{colors !== '' ? ' ui-color-' + colors : ''}{variant !== ''
-		? ' ui-variant-' + variant
-		: ''} {className}"
+	class={[
+		'ui-button',
+		variant && `ui-variant-${variant}`,
+		colors && `ui-color-${colors}`,
+		className
+	]}
 	style={css}
 	{disabled}
 >
@@ -54,51 +60,61 @@
 </button>
 
 <style>
-	@layer theme, base, nova, components, utilities;
+	@media (prefers-color-scheme: dark) {
+		@layer nova {
+			.ui-button {
+				&:hover {
+					filter: brightness(0.85);
+				}
+			}
+		}
+	}
+	@media (prefers-color-scheme: light) {
+		@layer nova {
+			.ui-button {
+				&:hover {
+					filter: brightness(1.1);
+				}
+			}
+		}
+	}
 	@layer nova {
 		.ui-button {
 			appearance: none;
 			border: none;
-			transition: all 0.25s ease;
+			user-select: none;
+			transition:
+				all 0.25s ease,
+				filter 0.3s ease-in-out;
 			overflow: hidden;
 			padding: 0.25rem 1.25rem;
 			position: relative;
 			cursor: pointer;
+			&:active {
+				scale: 97%;
+			}
+
+			&:disabled {
+				filter: opacity(0.7);
+				cursor: not-allowed;
+				&:active {
+					scale: 1;
+				}
+			}
+		}
+	}
+	@layer components {
+		.ui-button {
 			&.ui-variant-faded {
 				padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
 			}
 			&.ui-variant-ghost {
 				padding: calc(0.25rem - 2px) calc(1.25rem - 2px);
 			}
-			&:active {
-				scale: 98%;
-			}
-			&:disabled {
-				filter: opacity(0.7);
-				cursor: not-allowed;
-				&:hover {
-					filter: opacity(0.7);
-				}
-				&:active {
-					scale: 1;
-				}
-			}
-			& > .click-effect-element {
-				position: absolute;
-				border-radius: 100%;
-				background: radial-gradient(
-					ellipse at center,
-					transparent 0%,
-					color-mix(in srgb, var(--color-text) 10%, var(--color-white)) 40%
-				);
-			}
-			&.solid {
-				&:hover {
-					filter: brightness(0.95);
-				}
-			}
 		}
-		:global(.ui-button > .click-effect-element) {
+	}
+	:global {
+		.ui-button > .click-effect-element {
 			position: absolute;
 			border-radius: 100%;
 			background: radial-gradient(

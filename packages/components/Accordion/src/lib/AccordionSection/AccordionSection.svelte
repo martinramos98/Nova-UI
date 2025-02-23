@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
 	import { Icon, ChevronIcon } from '@nv-org/icon';
 	import type { Writable } from 'svelte/store';
@@ -105,14 +103,7 @@
 				{@render trigger()}
 			{:else}
 				<span class="default-icon">
-					<Icon
-						props={{
-							width: '24px',
-							height: '24px',
-							stroke: 'currentcolor',
-							fill: 'none'
-						}}
-					>
+					<Icon width="24px" height="24px" stroke="currentcolor" fill="none">
 						<ChevronIcon />
 					</Icon>
 				</span>

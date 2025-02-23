@@ -12,7 +12,7 @@
 	}
 	const {
 		class: className = '',
-		colors = '',
+		colors,
 		variant = 'default-accordion',
 		multiopen = false,
 		children
@@ -54,12 +54,18 @@
 		}
 		sections.set(sectionsMounted);
 	});
+	// class="ui-accordion {colors !== '' ? 'ui-color-' + colors : ''} ui-variant-{variant} {className}"
 </script>
 
 <div
 	bind:this={accordion}
 	data-multiopen={multiopen}
-	class="ui-accordion {colors !== '' ? 'ui-color-' + colors : ''} ui-variant-{variant} {className}"
+	class={[
+		'ui-accordion',
+		colors && 'ui-color-' + colors,
+		variant && 'ui-variant-' + variant,
+		className
+	]}
 >
 	{@render children()}
 </div>

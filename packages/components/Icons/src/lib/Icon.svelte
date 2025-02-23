@@ -4,9 +4,13 @@
 	import { type SVGAttributes } from 'svelte/elements';
 	import type { Snippet } from 'svelte';
 
-	const { props, children }: { props: SVGAttributes<SVGElement>; children: Snippet } = $props();
+	let {
+		children,
+		ref = $bindable(),
+		...props
+	}: SVGAttributes<SVGElement> & { children: Snippet; ref?: SVGElement } = $props();
 </script>
 
-<svg {...props}>
+<svg {...props} bind:this={ref}>
 	{@render children()}
 </svg>

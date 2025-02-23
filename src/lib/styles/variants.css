@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: dark) {
 	@layer components {
 		.ui-variant-faded {
-			border: solid 2px var(--color-surface-highest);
+			border-color: var(--color-surface-highest);
 			background: var(--color-surface-hight);
 		}
 	}
@@ -9,7 +9,7 @@
 @media (prefers-color-scheme: light) {
 	@layer components {
 		.ui-variant-faded {
-			border: solid 2px var(--color-surface-lowest);
+			border-color: var(--color-surface-lowest);
 			background: var(--color-surface-low);
 		}
 	}
@@ -18,16 +18,13 @@
 	.ui-variant-solid {
 		color: var(--color-text);
 		background: var(--color-container);
-		border-radius: 5px;
+		border-radius: var(--radius-xl);
 		border: none;
-		/* transition: filter 0.25s ease; */
-		/* border: 2px solid var(--color-border); */
 	}
-
 	.ui-variant-faded {
-		/* padding: calc(0.25rem - 2px) calc(1.25rem - 2px); */
 		color: var(--color-container);
-		border-radius: 8px;
+		border-radius: var(--radius-xl);
+		border: solid 2px;
 		&.ui-button {
 			& > .click-effect-element {
 				--color-text: var(--color-container);
@@ -35,7 +32,7 @@
 		}
 	}
 	.ui-variant-bordered {
-		border-radius: 5px;
+		border-radius: var(--radius-xl);
 		color: var(--color-container);
 		background: var(--color-surface);
 
@@ -54,10 +51,9 @@
 		border: 2px solid var(--color-border);
 		color: var(--color-container);
 		background: transparent;
-		/* padding: calc(0.25rem - 2px) calc(1.25rem - 2px); */
 		border-radius: 7px;
 		transition:
-			background 0.25s ease,
+			background-color 0.25s ease,
 			border-color 0.25s ease,
 			color 0.25s ease,
 			scale 0.25s ease;
@@ -223,29 +219,5 @@
 				}
 			}
 		}
-	}
-}
-
-@layer utilities {
-	.rounded-full {
-		border-radius: var(--radius-full);
-	}
-	.rounded-lg {
-		border-radius: var(--radius-lg);
-	}
-	.rounded-md {
-		border-radius: var(--radius-md);
-	}
-	.rounded-sm {
-		border-radius: var(--radius-sm);
-	}
-	.rounded-xl {
-		border-radius: var(--radius-xl);
-	}
-	.rounded-2xl {
-		border-radius: var(--radius-2xl);
-	}
-	.rounded-3xl {
-		border-radius: var(--radius-3xl);
 	}
 }

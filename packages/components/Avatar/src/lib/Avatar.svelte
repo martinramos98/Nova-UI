@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
 	import { Icon, UserIcon } from '@nv-org/icon';
 	import type { Snippet } from 'svelte';
@@ -12,16 +10,17 @@
 		colors?: string;
 		avatarBordered?: boolean;
 		class?: string;
+		ref?: HTMLElement;
 	}
-	const {
+	let {
 		disabled = false,
 		avatarSrc = undefined,
 		defaultIcon,
 		avatarName = '',
-		size = 'md',
 		colors = '',
 		avatarBordered = false,
-		class: className = ''
+		class: className = '',
+		ref = $bindable()
 	}: AvatarProps = $props();
 	let firstLettersOfName = $state('');
 	$effect(() => {
@@ -33,18 +32,12 @@
 			firstLettersOfName = firstLetters;
 		}
 	});
-	// function setStringName(){
-	// 	if (!avatarSrc) {
-	// 		avatarName.split(' ').forEach((word: string) => {
-	// 			FirstLettersOfName += word.charAt(0);
-	// 		});
-	// 	}
-	// }
 </script>
 
 <div
+	bind:this={ref}
+	class={['ui-avatar', colors && `ui-color-${colors}`, className]}
 	aria-disabled={disabled}
-	class="ui-avatar {colors !== '' ? 'ui-color-' + colors : ''} size-{size} {className}"
 	class:avatarBordered
 >
 	{#if avatarSrc && avatarSrc !== ''}
@@ -59,9 +52,7 @@
 		{:else if defaultIcon}
 			{@render defaultIcon()}
 		{:else}
-			<Icon
-				props={{ fill: 'currentcolor', width: 'inherit', height: 'inherit', viewBox: '0 0 24 24' }}
-			>
+			<Icon fill="currentcolor" width="inherit" height="inherit" viewBox="0 0 24 24">
 				<UserIcon />
 			</Icon>
 		{/if}

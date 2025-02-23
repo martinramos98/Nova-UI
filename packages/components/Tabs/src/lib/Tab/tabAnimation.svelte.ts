@@ -20,7 +20,7 @@ function fadeSlideAnimation(
 		bl = (mapStyleNode.get('border-left-width') as CSSUnitValue).value;
 	const height = element.offsetHeight;
 	element.style.overflow = 'hidden';
-	console.log(initialHeightAnimation, height, 'height gap');
+	// console.log(initialHeightAnimation, height, 'height gap');
 	const sizesAnimation = (
 		orientation === 'vertical'
 			? [

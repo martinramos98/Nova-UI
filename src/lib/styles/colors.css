@@ -9,6 +9,16 @@
 	--width-2xxs: 2rem;
 	--width-3xxs: 1rem;
 
+	--spacing-xs: calc(var(--spacing) * 0.5);
+	--spacing-sm: calc(var(--spacing) * 0.8);
+	--spacing-md: calc(var(--spacing) * 1.5);
+	--spacing-lg: calc(var(--spacing) * 2);
+	--spacing-xl: calc(var(--spacing) * 3);
+	--spacing-2xl: calc(var(--spacing) * 4);
+	--spacing-3xl: calc(var(--spacing) * 6);
+	--spacing-4xl: calc(var(--spacing) * 8);
+	--spacing-5xl: calc(var(--spacing) * 12);
+
 	--radius-full: calc(infinity * 1px);
 	--color-sepia-10: rgb(255, 224, 181);
 	--color-sepia-20: rgb(255, 228, 189);
