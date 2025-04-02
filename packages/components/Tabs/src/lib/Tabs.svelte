@@ -1,9 +1,7 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
 	import { setContext, type Snippet } from 'svelte';
-	import { spring } from 'svelte/motion';
-	import { AnimationTabController } from './Tab/AnimationTabController.svelte.js';
+	import { Spring } from 'svelte/motion';
+	import { TabsController } from './TabsController.svelte';
 	interface TabsProps {
 		selectedTabKey?: string | undefined;
 		variant?: string;
@@ -12,8 +10,8 @@
 		classSelectionContainer?: string;
 		classSelector?: string;
 		children: Snippet;
-		TabSelection: Snippet | undefined;
-		animation?: string;
+		tabSelection: Snippet | undefined;
+		animation?: 'slide' | 'fade' | 'fade-slide';
 		position?: 'top' | 'left' | 'bottom' | 'right' | '';
 	}
 	let {
@@ -21,16 +19,15 @@
 		class: className = '',
 		classContent = '',
 		classSelectionContainer = '',
-		TabSelection = undefined,
+		tabSelection = undefined,
 		children,
 		position = '',
 		classSelector = '',
 		animation = undefined,
 		selectedTabKey = $bindable(undefined)
 	}: TabsProps = $props();
-
+	const tabController = new TabsController(animation);
 	const keys = new Map<string, HTMLElement>();
-	const tabController: AnimationTabController = new AnimationTabController();
 	setContext('tabContext', {
 		selectTab,
 		subscribeKey,
@@ -50,14 +47,14 @@
 		keys.set(key, el);
 	}
 
-	const coordSelector = spring(
+	const coordSelector = new Spring(
 		{ top: 0, left: 0 },
 		{
 			stiffness: 0.1,
 			damping: 0.4
 		}
 	);
-	const sizeSelector = spring(
+	const sizeSelector = new Spring(
 		{
 			width: 0,
 			height: 0
@@ -82,22 +79,23 @@
 </script>
 
 <div
-	class="ui-tabs {position !== ''
-		? `ui-tabs-${position}`
-		: ''} ui-tabs-variant-{variant} {className}"
+	class={[
+		'ui-tabs',
+		position && `ui-tabs-${position}`,
+		variant && `ui-tabs-variant-${variant}`,
+		className
+	]}
 >
 	<div class="ui-tab-selection {classSelectionContainer}">
-		{#if TabSelection}
-			{@render TabSelection()}
+		{#if tabSelection}
+			{@render tabSelection()}
 		{/if}
 		<span
 			class={classSelector}
 			style="top:{variant === 'underlined'
-				? $sizeSelector.height
-				: $coordSelector.top}px;left:{$coordSelector.left}px;width:{$sizeSelector.width}px;height:{variant !==
-			'underlined'
-				? $sizeSelector.height
-				: 2}px;"
+				? sizeSelector.current.height
+				: coordSelector.current.top}px;left:{coordSelector.current.left}px;width:{sizeSelector
+				.current.width}px;height:{variant !== 'underlined' ? sizeSelector.current.height : 2}px;"
 			aria-hidden="true"
 		></span>
 	</div>
