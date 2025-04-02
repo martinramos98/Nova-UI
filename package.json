@@ -56,9 +56,6 @@
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"type": "module",
-	"dependencies": {
-		"@nv-org/element-animation-js": "workspace:*"
-	},
 	"workspaces": [
 		"packages/*",
 		"packages/components/*"
