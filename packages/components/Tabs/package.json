@@ -34,9 +34,7 @@
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
-	"dependencies": {
-		"@nv-org/element-animation-js": "workspace:*"
-	},
+	"dependencies": {},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^4.0.0",
 		"@sveltejs/adapter-vercel": "^5.6.2",

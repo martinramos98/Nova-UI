@@ -35,7 +35,6 @@
 		"svelte": "^4.2.14"
 	},
 	"dependencies": {
-		"@nv-org/element-animation-js": "workspace:*",
 		"@nv-org/icon": "workspace:*"
 	},
 	"devDependencies": {

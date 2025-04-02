@@ -37,7 +37,6 @@
 	"dependencies": {
 		"@nv-org/button": "workspace:*",
 		"@nv-org/callout": "workspace:*",
-		"@nv-org/element-animation-js": "workspace:*",
 		"@nv-org/icon": "workspace:*"
 	},
 	"devDependencies": {

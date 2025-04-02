@@ -35,7 +35,6 @@
 		"!dist/**/*.spec.*"
 	],
 	"dependencies": {
-		"@nv-org/element-animation-js": "workspace:*",
 		"@nv-org/floating-subsection": "workspace:*"
 	},
 	"devDependencies": {

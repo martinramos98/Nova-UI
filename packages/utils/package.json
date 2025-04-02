@@ -26,9 +26,7 @@
 			"svelte": "./dist/index.js"
 		}
 	},
-	"dependencies": {
-		"@nv-org/element-animation-js": "workspace:*"
-	},
+	"dependencies": {},
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",

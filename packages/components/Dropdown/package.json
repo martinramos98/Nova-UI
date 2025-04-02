@@ -36,7 +36,6 @@
 	],
 	"dependencies": {
 		"@nv-org/button": "workspace:*",
-		"@nv-org/element-animation-js": "workspace:*",
 		"@nv-org/floating-subsection": "workspace:*",
 		"@nv-org/utils": "workspace:*"
 	},

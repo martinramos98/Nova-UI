@@ -36,7 +36,6 @@
 	},
 	"dependencies": {
 		"@nv-org/button": "workspace:*",
-		"@nv-org/element-animation-js": "workspace:*",
 		"@nv-org/input": "workspace:*",
 		"@nv-org/utils": "workspace:*"
 	},
