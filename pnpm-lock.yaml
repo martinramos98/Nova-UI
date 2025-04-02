@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:packages/element-animation-js
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^4.0.0
@@ -226,9 +222,6 @@ importers:
       '@nv-org/button':
         specifier: workspace:*
         version: link:../Button
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../../element-animation-js
       '@nv-org/input':
         specifier: workspace:*
         version: link:../Input
@@ -269,9 +262,6 @@ importers:
 
   packages/components/Avatar:
     dependencies:
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../../element-animation-js
       '@nv-org/icon':
         specifier: workspace:*
         version: link:../Icons
@@ -485,10 +475,6 @@ importers:
         version: 5.20.2
 
   packages/components/CollapsableBlock:
-    dependencies:
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../../element-animation-js
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^4.0.0
@@ -523,9 +509,6 @@ importers:
 
   packages/components/ContextMenu:
     dependencies:
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../../element-animation-js
       '@nv-org/floating-subsection':
         specifier: workspace:*
         version: link:../FloatingSubsection
@@ -645,9 +628,6 @@ importers:
       '@nv-org/button':
         specifier: workspace:*
         version: link:../Button
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../../element-animation-js
       '@nv-org/floating-subsection':
         specifier: workspace:*
         version: link:../FloatingSubsection
@@ -687,10 +667,6 @@ importers:
         version: 5.20.2
 
   packages/components/FloatingSubsection:
-    dependencies:
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../../element-animation-js
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^4.0.0
@@ -1104,9 +1080,6 @@ importers:
 
   packages/components/Selection:
     dependencies:
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../../element-animation-js
       '@nv-org/utils':
         specifier: workspace:*
         version: link:../../utils
@@ -1242,10 +1215,6 @@ importers:
         version: 5.20.2
 
   packages/components/Tabs:
-    dependencies:
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../../element-animation-js
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^4.0.0
@@ -1328,9 +1297,6 @@ importers:
       '@nv-org/callout':
         specifier: workspace:*
         version: link:../Callout
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../../element-animation-js
       '@nv-org/icon':
         specifier: workspace:*
         version: link:../Icons
@@ -1412,17 +1378,7 @@ importers:
         specifier: ^5.7.3
         version: 5.7.3
 
-  packages/element-animation-js:
-    devDependencies:
-      svelte:
-        specifier: 5.20.2
-        version: 5.20.2
-
   packages/utils:
-    dependencies:
-      '@nv-org/element-animation-js':
-        specifier: workspace:*
-        version: link:../element-animation-js
     devDependencies:
       svelte:
         specifier: 5.20.2

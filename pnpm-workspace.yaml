@@ -1,6 +1,4 @@
 packages:
-  - 'packages/element-animation-js'
   - 'packages/components/*'
   - 'packages/components'
   - 'packages/utils'
-  - './*'
