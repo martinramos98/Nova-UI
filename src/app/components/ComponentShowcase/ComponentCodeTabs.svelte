@@ -15,7 +15,7 @@
 </script>
 
 <Tabs classContent="w-full " animation="fade-slide" class="w-full">
-	{#snippet TabSelection()}
+	{#snippet tabSelection()}
 		<TabButton key="Component">Component</TabButton>
 		<TabButton key="Code">Code</TabButton>
 	{/snippet}

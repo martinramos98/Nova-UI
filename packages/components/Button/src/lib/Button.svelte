@@ -4,7 +4,7 @@
 	import type { Snippet } from 'svelte';
 	interface ButtonProps {
 		css?: string;
-		class?: string;
+		class?: string[] | string;
 		variant?: string;
 		colors?: string;
 		disabled?: boolean;
@@ -117,11 +117,12 @@
 		.ui-button > .click-effect-element {
 			position: absolute;
 			border-radius: 100%;
-			background: radial-gradient(
+			background-color: var(--color-text);
+			/* background: radial-gradient(
 				ellipse at center,
 				transparent 0%,
 				color-mix(in srgb, var(--color-text), transparent 65%) 40%
-			);
+			); */
 		}
 	}
 </style>

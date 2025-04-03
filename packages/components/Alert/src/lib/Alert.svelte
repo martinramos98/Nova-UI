@@ -13,7 +13,7 @@
 		radius?: string;
 		footer?: Snippet<[any, any]>;
 		children?: Snippet;
-		class?: string;
+		class?: string | string[];
 		text?: string;
 		type?: 'default' | 'prompt' | 'confirm';
 		onClose: (value: string | undefined | boolean) => void;
@@ -54,11 +54,8 @@
 </script>
 
 {#if open}
-	<div use:translateToBody class="ui-alert" aria-modal="true">
-		<div
-			transition:animationFunction={animationParams}
-			class="ui-alert-content rounded-{radius} size-{size} {className}"
-		>
+	<div use:translateToBody class={['ui-alert']} aria-modal="true">
+		<div transition:animationFunction={animationParams} class={['ui-alert-content', className]}>
 			{#if children}
 				{@render children()}
 			{:else}
@@ -140,14 +137,20 @@
 		<div
 			transition:fade
 			aria-roledescription="Backdrop of alert"
+			class={[
+				'ui-alert-backdrop',
+				backdropClass,
+				backdropType === 'transparent' ? 'opacity-0' : '',
+				backdropType === 'blur' ? 'backdrop-blur-sm' : ''
+			]}
 			aria-hidden="true"
-			class="ui-alert-backdrop {backdropClass} {backdropType === 'transparent'
-				? 'opacity-0'
-				: ''} {backdropType === 'blur' ? 'backdrop-blur-sm' : ''}"
 		></div>
 	</div>
 {/if}
 
+<!-- class="ui-alert-backdrop {backdropClass} {backdropType === 'transparent'
+				? 'opacity-0'
+				: ''} {backdropType === 'blur' ? 'backdrop-blur-sm' : ''}" -->
 <style>
 	@layer nova {
 		.ui-alert {
@@ -174,6 +177,7 @@
 		}
 		.ui-alert-content {
 			height: fit-content;
+			width: fit-content;
 			grid-column: 1 / 1;
 			grid-row: 1 / 1;
 			background-color: var(--color-surface);
