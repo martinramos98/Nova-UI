@@ -2,15 +2,6 @@
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-
-	// export let buttonElement: HTMLElement | undefined = undefined;
-	// export let onPointerMove: (ev: PointerEvent | TouchEvent) => void;
-	// export let buttonPosition = 0;
-	// export let triggerOnChange: undefined | ((value: number) => void) = undefined;
-	// export let className = '';
-	// export let variant = '';
-	// export let value: number;
-	// export let customButton: undefined | Snippet = undefined;
 	interface SliderButtonProps {
 		buttonElement?: HTMLElement | undefined;
 		onPointerMove: (ev: PointerEvent | TouchEvent) => void;
@@ -23,7 +14,7 @@
 	let {
 		buttonElement = undefined,
 		onPointerMove,
-		buttonPosition = 0,
+		buttonPosition = $bindable(0),
 		triggerOnChange = undefined,
 		className = '',
 		value,

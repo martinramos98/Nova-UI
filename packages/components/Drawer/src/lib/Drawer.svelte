@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { directionedFly } from '@nv-org/utils';
@@ -7,11 +5,10 @@
 	interface DrawerProps {
 		open?: boolean;
 		onClose?: () => void;
-		size?: string;
-		class?: string;
+		class?: string | string[];
 		position?: string;
-		backdrop?: { class: string; type: string };
-		contentClass?: string;
+		backdrop?: { class?: string; type?: string };
+		contentClass?: string | string[];
 		header?: Snippet;
 		footer?: Snippet;
 		children?: Snippet;
@@ -28,7 +25,6 @@
 		onClose = () => {
 			open = false;
 		},
-		size,
 		position = 'right',
 		class: className = '',
 		backdrop = { class: '', type: 'normal' },
@@ -54,7 +50,7 @@
 	<aside use:translateToBody class="ui-drawer {className}">
 		<div
 			transition:directionedFly={{ direction: position, ...animation }}
-			class="ui-drawer-content {size ? 'size-' + size : ''} drawer-{position} {contentClass}"
+			class={['ui-drawer-content', `drawer-${position}`, contentClass]}
 		>
 			{#if header}
 				<div class="ui-drawer-header">
@@ -74,15 +70,17 @@
 			transition:fade
 			aria-roledescription="Backdrop of Drawer"
 			aria-hidden="true"
-			class="ui-drawer-backdrop {backdrop.class}  {backdrop.type === 'blur'
-				? 'backdrop-blur-sm'
-				: ''}"
+			class={[
+				'ui-drawer-backdrop',
+				backdrop.type === 'blur' && 'backdrop-blur-sm',
+				backdrop.type === 'transparent' && 'bg-transparent',
+				backdrop.class
+			]}
 		></div>
 	</aside>
 {/if}
 
 <style>
-	@layer theme, base, nova, components, utilities;
 	@layer nova {
 		.ui-drawer {
 			position: fixed;
@@ -105,34 +103,9 @@
 		.ui-drawer-content {
 			position: absolute;
 			overflow: auto;
+			width: 40%;
+			height: 40%;
 			background-color: var(--color-surface);
-			&.size-xs {
-				width: 20%;
-				height: 20%;
-			}
-			&.size-sm {
-				width: 30%;
-				height: 30%;
-			}
-			&.size-md {
-				width: 40%;
-				height: 40%;
-			}
-			&.size-lg {
-				width: 50%;
-				height: 50%;
-			}
-			&.size-xl {
-				width: 60%;
-				height: 60%;
-			}
-			&.size-full {
-				width: 100%;
-				height: 100%;
-				max-width: 100%;
-				max-height: 100%;
-				border-radius: var(--border-radius-none);
-			}
 			&.drawer-top {
 				top: 0;
 				left: 0;
@@ -154,18 +127,18 @@
 				height: 100%;
 			}
 		}
+	}
 
-		@media screen and (width <= 768px) {
-			.ui-drawer-content.drawer-left,
-			.ui-drawer-content.drawer-right {
-				width: 80%;
-			}
+	@media screen and (width <= 768px) {
+		.ui-drawer-content.drawer-left,
+		.ui-drawer-content.drawer-right {
+			width: 80%;
 		}
-		@media screen and (width <= 540px) {
-			.ui-drawer-content.drawer-left,
-			.ui-drawer-content.drawer-right {
-				width: 100%;
-			}
+	}
+	@media screen and (width <= 540px) {
+		.ui-drawer-content.drawer-left,
+		.ui-drawer-content.drawer-right {
+			width: 100%;
 		}
 	}
 </style>

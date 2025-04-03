@@ -12,13 +12,13 @@ export class AnimationTabController {
 	private currentAnimationState: AnimationState | undefined;
 
 	selectTab(targetTabKey: string) {
-		console.log(this.currentAnimation?.state);
+		// console.log(this.currentAnimation?.state);
 		if (
 			(this.currentAnimationKey && this.currentAnimationKey === targetTabKey) ||
 			(this.currentAnimation?.state === 'playing' &&
 				this.currentAnimationState === AnimationState.OUTRO)
 		) {
-			console.log('restoring tab');
+			// console.log('restoring tab');
 			this.selectedTabKey = targetTabKey;
 			this.currentAnimation?.reverse();
 			return;

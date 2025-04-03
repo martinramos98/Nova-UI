@@ -1,18 +1,24 @@
 <script>
 	import { Image } from '@nv-org/image';
 	import { Title } from '@nv-org/title';
+	import AsideComponentPage from '../../../app/components/AsidePage/AsideComponentPage.svelte';
+	import { Divider } from '@nv-org/divider';
+	import ImageAspectCases from '../../../app/components/pagesSections/images/imageAspectCases/ImageAspectCases.svelte';
+	import ImageCaptionCases from '../../../app/components/pagesSections/images/imageCaptionCases/ImageCaptionCases.svelte';
 </script>
 
 <div class=" page-content">
-	<aside>
-		<span class="font-semibold">On this page</span>
-		<ul>
-			<li><a href="#image">Image</a></li>
-			<li><a href="#disabled">Layout</a></li>
-			<li><a href="#variants">Variants</a></li>
-			<li><a href="#group">Use Case</a></li>
-		</ul>
-	</aside>
+	<AsideComponentPage
+		asideItems={[
+			{ ref: '#image', text: 'Image' },
+			{ ref: '#aspects', text: 'Aspects' },
+			{ ref: '#sizes', text: 'Sizes' },
+			{ ref: '#loader-error', text: 'Loader and Error' },
+			{ ref: '#captions', text: 'Captions' },
+			{ ref: '#properties', text: 'Properties' }
+		]}
+	></AsideComponentPage>
+	<Divider orientation="vertical"></Divider>
 	<main>
 		<article>
 			<header>
@@ -32,38 +38,7 @@
 			<header>
 				<Title level={2}>Aspects</Title>
 			</header>
-			<section>
-				<div class=" place-content-center">
-					<Image
-						alt="Buenos Aires"
-						height="fit-content"
-						classContainer={'max-w-[400px]'}
-						aspect="16:9"
-						src="https://r4.wallpaperflare.com/wallpaper/856/590/514/night-lights-road-tower-wallpaper-734fc7670e0277e4667a6a3424ed9f1a.jpg"
-					></Image>
-					<Image
-						alt="Buenos Aires"
-						height="fit-content"
-						classContainer={'max-w-[400px]'}
-						aspect="3:4"
-						src="https://r4.wallpaperflare.com/wallpaper/856/590/514/night-lights-road-tower-wallpaper-734fc7670e0277e4667a6a3424ed9f1a.jpg"
-					></Image>
-					<Image
-						alt="Buenos Aires"
-						height="fit-content"
-						classContainer={'max-w-[400px]'}
-						aspect="1:1"
-						src="https://r4.wallpaperflare.com/wallpaper/856/590/514/night-lights-road-tower-wallpaper-734fc7670e0277e4667a6a3424ed9f1a.jpg"
-					></Image>
-					<Image
-						alt="Buenos Aires"
-						classContainer={'max-w-[400px]'}
-						height="fit-content"
-						aspect="auto"
-						src="https://r4.wallpaperflare.com/wallpaper/856/590/514/night-lights-road-tower-wallpaper-734fc7670e0277e4667a6a3424ed9f1a.jpg"
-					></Image>
-				</div>
-			</section>
+			<ImageAspectCases />
 		</article>
 		<article>
 			<header>
@@ -100,14 +75,23 @@
 		<article>
 			<header>
 				<Title level={2}>Loader and Error</Title>
-				<Image
-					alt="Buenos Aires"
-					classContainer={'h-[300px] w-[70%] bg-[var(--surface-low)]'}
-					aspect="auto"
-					src="https://r4.wallpaperflare.com/wallpaper/380/816/944/architecture-landmark-argentine-.jpg"
-				></Image>
 			</header>
 			<section>
+				<header>
+					<Title level={3}>Loader</Title>
+					<Image
+						alt="Buenos Aires"
+						classContainer={'h-[300px] w-[70%] bg-[var(--surface-low)]'}
+						aspect="auto"
+						src="https://r4.wallpaperflare.com/wallpaper/380/816/944/architecture-landmark-argentine-.jpg"
+					/>
+				</header>
+				<div></div>
+			</section>
+			<section>
+				<header>
+					<Title level={3}>Error</Title>
+				</header>
 				<div></div>
 			</section>
 		</article>
@@ -115,54 +99,7 @@
 			<header>
 				<Title level={2}>Captions</Title>
 			</header>
-			<section>
-				<div>
-					<Image
-						alt="Salta"
-						class="object-cover"
-						classContainer="max-w-[500px] min-h-[300px] min-w-[250px]"
-						src="https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__1880bp/public/live_banner/Salta.jpg"
-						classCaption="bg-black/70 text-white py-0.5"
-						captionInside
-					>
-						{#snippet captionContent()}
-							Figure 1: Montañas de Colores de Salta
-						{/snippet}
-					</Image>
-					<Image
-						class="object-cover"
-						classContainer="max-w-[500px]"
-						alt="Cataratas del Iguazu, Misiones"
-						classCaption="bg-black/70 text-white py-0.5"
-						captionInside
-						src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Cataratas.jpg/1200px-Cataratas.jpg"
-					>
-						{#snippet captionContent()}
-							Figure 2: Cataratas del Iguazu Misiones
-						{/snippet}
-					</Image>
-					<Image
-						classContainer="max-w-[500px]"
-						classCaption="ui-color-primary ui-variant-solid rounded-none py-0.5 italic"
-						alt="Salta"
-						src="https://a.travel-assets.com/findyours-php/viewfinder/images/res40/80000/80287-Salta.jpg"
-					>
-						{#snippet captionContent()}
-							Figure 3: Salinas de Salta
-						{/snippet}
-					</Image>
-					<Image
-						classContainer="max-w-[500px]"
-						classCaption="ui-color-primary ui-variant-solid rounded-none py-0.5 italic"
-						alt="Ruinas de San Ignacio"
-						src="https://www.tangol.com/blog/Fotos/Notas/historia-de-las-ruinas-jesuiticas-de-san-ignacio_443_202107221201440.PNG"
-					>
-						{#snippet captionContent()}
-							Figure 4: Ruinas de San Ignacio, Misiones
-						{/snippet}
-					</Image>
-				</div>
-			</section>
+			<ImageCaptionCases />
 		</article>
 	</main>
 </div>

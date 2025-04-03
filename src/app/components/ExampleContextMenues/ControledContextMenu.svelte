@@ -9,52 +9,11 @@
 	function closeContextMenu() {
 		openContext = false;
 	}
+	import { controlledContextMenuCase } from './codeTexts.js';
 </script>
 
 <div class="w-full">
-	<ComponentCodeTabs
-		code={`<div class="w-full h-[300px] p-2 context-container" use:asContextMenuContainer>
-	<ContextMenu bind:open={openContext} onClose={closeContextMenu} class="p-2 rounded-lg">
-		<Button
-			variant="light"
-			class="w-full px-2 text-start"
-			onClick={() => {
-				closeContextMenu();
-			}}
-			withClickEffect={false}
-			colors="primary">Copy</Button
-		>
-		<Button
-			variant="light"
-			class="w-full px-2 text-start"
-			onClick={() => {
-				closeContextMenu();
-			}}
-			withClickEffect={false}
-			colors="primary">Cut</Button
-		>
-		<Button
-			variant="light"
-			class="w-full px-2 text-start"
-			onClick={() => {
-				closeContextMenu();
-			}}
-			withClickEffect={false}
-			colors="primary">Paste</Button
-		>
-		<Button
-			variant="light"
-			class="w-full px-2 text-start"
-			onClick={() => {
-				closeContextMenu();
-			}}
-			withClickEffect={false}
-			colors="primary">Test</Button
-		>
-	</ContextMenu>
-</div>
-`}
-	>
+	<ComponentCodeTabs code={controlledContextMenuCase()}>
 		{#snippet component()}
 			<div class="w-full h-[300px] p-2 context-container" use:asContextMenuContainer>
 				<ContextMenu bind:open={openContext} onClose={closeContextMenu} class="p-2 rounded-lg">

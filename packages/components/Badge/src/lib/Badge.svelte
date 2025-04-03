@@ -7,7 +7,7 @@
 		class?: string;
 		variant?: string;
 		colors?: string;
-		children: Snippet;
+		children?: Snippet;
 	}
 	const {
 		anchor,

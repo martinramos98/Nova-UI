@@ -10,18 +10,18 @@
 		offset = 10,
 		position = 'right',
 		open = false,
-		classNameContainer = ''
+		classContainer = ''
 	}: {
 		triggerContent: Snippet;
 		children: Snippet;
 		offset?: number;
-		classNameContainer?: string;
+		classContainer?: string;
 		position?: string;
 		open?: boolean;
 	} = $props();
 </script>
 
-<FloatingSubsection openOnHover={true} {offset} {classNameContainer} {open} {position}>
+<FloatingSubsection openOnHover={true} {offset} {classContainer} {open} {position}>
 	{@render children()}
 	{#snippet trigger()}
 		<DropDownItem>

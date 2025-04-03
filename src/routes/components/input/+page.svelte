@@ -1,20 +1,20 @@
 <script>
 	import { Title } from '@nv-org/title';
-	import { Input } from '@nv-org/input';
+	// import { Input } from '@nv-org/input';
+	import Input from '../../../../packages/components/Input/src/lib/Input.svelte';
+	import AsideComponentPage from '../../../app/components/AsidePage/AsideComponentPage.svelte';
+	import { Divider } from '@nv-org/divider';
 </script>
 
 <div class=" page-content">
-	<aside>
-		<span class="font-semibold">On this page</span>
-		<ul>
-			<li><a href="#input">Input</a></li>
-			<li><a href="#label">With Label</a></li>
-			<li><a href="#types">Input Types</a></li>
-			<li><a href="#variants">Variants</a></li>
-			<li><a href="#error">Error</a></li>
-			<li><a href="#attributes">Custom Input Attributes</a></li>
-		</ul>
-	</aside>
+	<AsideComponentPage
+		asideItems={[
+			{ ref: '#input', text: 'Input' },
+			{ ref: '#types', text: 'Types' }
+		]}
+	></AsideComponentPage>
+	<Divider orientation="vertical"></Divider>
+
 	<main>
 		<article>
 			<header>
@@ -22,11 +22,30 @@
 			</header>
 			<section>
 				<div class="w-full">
-					<Input name="name" type="text" />
+					<Input label={'Lastname'} id={'1'} variant="faded" name="name" type="text" />
+
+					<Input
+						label={'Name'}
+						color={'primary'}
+						id={'1'}
+						labelVariant="inside"
+						variant="solid"
+						name="name"
+						type="text"
+					/>
+					<Input
+						label={'Name'}
+						color={'primary'}
+						id={'1'}
+						labelVariant="leftside"
+						variant="solid"
+						name="name"
+						type="text"
+					/>
 				</div>
 			</section>
 		</article>
-		<article>
+		<!-- <article>
 			<header>
 				<Title level={2}>With Label</Title>
 			</header>
@@ -124,7 +143,7 @@
 					<Input type={'number'} name="" inputAttributes={{ min: 0, max: 10 }} />
 				</div>
 			</section>
-		</article>
+		</article> -->
 	</main>
 </div>
 

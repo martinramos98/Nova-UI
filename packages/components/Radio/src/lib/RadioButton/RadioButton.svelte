@@ -82,7 +82,7 @@
 			{#if icon}
 				{@render icon()}
 			{:else if type === 'checkbox'}
-				<Icon props={{ viewBox: '0 0 20 20', class: 'ui-icon-indeterminate w-full h-full' }}>
+				<Icon viewBox="0 0 20 20" class="ui-icon-indeterminate w-full h-full">
 					<line
 						x1="4"
 						x2="16"
@@ -95,7 +95,7 @@
 					></line>
 				</Icon>
 
-				<Icon props={{ viewBox: '0 0 17.837 17.837' }}>
+				<Icon viewBox="0 0 17.837 17.837">
 					<polyline
 						fill="none"
 						points="1 9 7 14 15 4"
@@ -107,7 +107,7 @@
 					></polyline>
 				</Icon>
 			{:else}
-				<Icon props={{ viewBox: '0 0 5 5', style: `scale:${$springRadius}` }}>
+				<Icon viewBox="0 0 5 5" style={`scale:${$springRadius}`}>
 					<circle cx="2.5" cy="2.5" r={'1.5'} fill="#030104" />
 				</Icon>
 			{/if}
@@ -150,11 +150,6 @@
 				svg {
 					stroke: var(--color-container);
 				}
-
-				/* &[data-checked='true'] {
-				}
-				&[data-checked='false'] {
-				} */
 			}
 			& button[role='radio'] {
 				& circle {
@@ -178,11 +173,6 @@
 				svg {
 					stroke: var(--color-container);
 				}
-				/* &[data-checked='true'] {
-					border-color: var(--color-container);
-				}
-				&[data-checked='false'] {
-				} */
 			}
 			& button[role='radio'] {
 				background-color: color-mix(in srgb, var(--color-container), transparent 70%);
@@ -261,16 +251,7 @@
 				z-index: 2;
 				position: relative;
 				left: 0px;
-				/* top: 1px; */
 			}
-
-			/* & circle { */
-			/* 	r: 0; */
-			/* 	transition: all 0.2s ease; */
-			/* } */
-			/* &[data-checked='true'] circle { */
-			/* 	r: 1.5; */
-			/* } */
 
 			&::after {
 				display: block;

@@ -7,7 +7,7 @@
 		role: string;
 		action?: (node: HTMLElement) => any;
 		colors?: string;
-		class?: string;
+		class?: string | string[];
 		variant?: string;
 		offset?: number;
 		animationParams: any;
@@ -17,7 +17,7 @@
 		setPosition: (node: HTMLElement) => any;
 		children: Snippet;
 		position: string;
-		contextKey:string;
+		contextKey: string;
 	}
 	const {
 		asElement = 'div',
