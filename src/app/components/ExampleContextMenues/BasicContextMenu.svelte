@@ -5,40 +5,11 @@
 	import { Button } from '@nv-org/button';
 	import ComponentCodeTabs from '../ComponentShowcase/ComponentCodeTabs.svelte';
 	provideContextMenu();
+	import { basicContextMenuCase } from './codeTexts.js';
 </script>
 
 <div class="w-full">
-	<ComponentCodeTabs
-		code={`<div class="w-full h-[300px] p-2 context-container" use:asContextMenuContainer>
-	<ContextMenu class="p-2 rounded-lg">
-		<Button
-			variant="light"
-			class="w-full px-2 text-start"
-			withClickEffect={false}
-			colors="primary">Copy</Button
-		>
-		<Button
-			variant="light"
-			class="w-full px-2 text-start"
-			withClickEffect={false}
-			colors="primary">Cut</Button
-		>
-		<Button
-			variant="light"
-			class="w-full px-2 text-start"
-			withClickEffect={false}
-			colors="primary">Paste</Button
-		>
-		<Button
-			variant="light"
-			class="w-full px-2 text-start"
-			withClickEffect={false}
-			colors="primary">Test</Button
-		>
-	</ContextMenu>
-</div>
-`}
-	>
+	<ComponentCodeTabs code={basicContextMenuCase()}>
 		{#snippet component()}
 			<div class="w-full p-2 h-[300px] context-container" use:asContextMenuContainer>
 				<ContextMenu class="p-2 rounded-lg">

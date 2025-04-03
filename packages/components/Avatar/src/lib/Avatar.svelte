@@ -66,8 +66,8 @@
 			display: inline-block;
 			color: var(--color-text);
 			flex-shrink: 0;
-			width: var(--width-xxs);
-			height: var(--width-xxs);
+			width: calc(var(--spacing) * 10);
+			height: calc(var(--spacing) * 10);
 			border-radius: var(--radius-full);
 			background: var(--color-surface);
 			overflow: hidden;

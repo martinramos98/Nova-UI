@@ -8,34 +8,29 @@ main > article:last-child {
 }
 .page-content {
 	display: flex;
+	min-height: 77.4dvh;
 	flex-direction: row;
 	margin: 10px 0;
 	& > main {
 		display: flex;
-
+		width: 76%;
 		flex-direction: column;
+		align-self: start;
+		margin: 0 auto;
 		align-items: center;
 
 		& > article {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
+			margin: auto;
 			width: 70%;
 			padding: var(--spacing-2) var(--spacing-6) var(--spacing-6) var(--spacing-6);
 			gap: var(--spacing-4);
 			& > section {
 				display: flex;
-				/* view-timeline: --block;
-			view-timeline-axis: inline;
-			animation-timeline: view();
-			animation-name: show;
-			animation-range: entry 80% cover 70%;
-			animation-fill-mode: both; */
-				/* align-self: center; */
-				/* width: fit-content; */
 				max-width: 100%;
 				flex-direction: column;
-				/* background-color: var(--color-surface-low); */
 				justify-content: center;
 				gap: var(--spacing-2);
 				& > div:not(.prop-container) {
@@ -45,9 +40,8 @@ main > article:last-child {
 					display: flex;
 					width: 100%;
 					flex-wrap: wrap;
-					/* width: fit-content; */
-					padding: var(--spacing-4);
-					gap: var(--spacing-8);
+					padding: var(--spacing-md) 0;
+					gap: var(--spacing-lg);
 					flex-direction: row;
 				}
 			}
@@ -66,7 +60,6 @@ main > article:last-child {
 		flex-shrink: 0;
 		padding: var(--spacing-8);
 		border-radius: var(--radius-xl);
-		/* background-color: var(--color-surface-low); */
 	}
 }
 

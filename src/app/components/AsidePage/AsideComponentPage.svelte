@@ -8,7 +8,7 @@
 </script>
 
 <aside>
-	<span class="font-semibold">On this page</span>
+	<span class="font-semibold px-[18px]">On this page</span>
 	<ul>
 		{#each asideItems as item}
 			<li class="ui-variant-light ui-color-primary"><a href={item.ref}>{item.text}</a></li>
@@ -61,6 +61,7 @@
 		& li {
 			width: 100%;
 			transition: all 0.2s ease;
+			padding: 0 18px;
 			& a {
 				text-align: start;
 				width: 100%;

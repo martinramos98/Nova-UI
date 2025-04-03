@@ -192,9 +192,6 @@
 			style="width:calc({buttonPositionEnd.toFixed(0)}% + 17px);"
 		>
 		</span>
-		<!-- {#if withStartSlider}
-			<SliderButton value={valueStart} {customButton} bind:buttonPosition={buttonPositionStart} />
-		{/if} -->
 
 		{#if steps}
 			<div hidden use:setStepPositions class="ui-slider-steps-container">
@@ -228,7 +225,6 @@
 					height: inherit;
 					display: block;
 				}
-				/* background-color: var(--color-surface-highest); */
 				& .ui-slider-bar {
 					position: absolute;
 					background: var(--color-container);

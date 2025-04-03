@@ -44,14 +44,7 @@
 	{/if}
 	{#if type === 'external'}
 		{@render children()}
-		<Icon
-			props={{
-				width: '24px',
-				height: '24px',
-				fill: 'none',
-				class: 'inline stroke-[var(--color-text)]'
-			}}
-		>
+		<Icon width="24px" height="24px" fill="none" class="inline stroke-[var(--color-text)]">
 			<ExternalIcon />
 		</Icon>
 	{/if}

@@ -23,7 +23,7 @@
 		asElement?: string;
 		action?: (node: HTMLElement) => any;
 		colors?: string;
-		class?: string;
+		class?: string | string[];
 		variant?: string;
 		offset?: number;
 		animationParams?: any;
@@ -61,7 +61,7 @@
 		role="tooltip"
 		{action}
 		{colors}
-		class={'ui-tooltip' + (className ? ' ' + className : '')}
+		class={['ui-tooltip', className]}
 		{variant}
 		{offset}
 		{animationParams}
@@ -76,18 +76,18 @@
 {/if}
 
 <style>
-		:global {
-			@layer nova {
-				.ui-tooltip {
-					position: absolute;
-					top: 0;
-					left: 0;
-					padding: var(--spacing-2);
-					transition:
-						all 0.25s ease,
-						left 0s,
-						top 0s;
-				}
+	:global {
+		@layer nova {
+			.ui-tooltip {
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding: var(--spacing-2);
+				transition:
+					all 0.25s ease,
+					left 0s,
+					top 0s;
 			}
 		}
+	}
 </style>

@@ -29,7 +29,6 @@
 		value = $bindable(),
 		variant,
 		class: className,
-		ref = $bindable(),
 		...attr
 	}: InputProps & HTMLInputAttributes = $props();
 	let input: HTMLInputElement;
@@ -108,10 +107,7 @@
 		variant && `ui-input-variant-${variant}`,
 		colors && `ui-color-${colors}`
 	]}
-	bind:this={ref}
 >
-	<!-- svelte-ignore a11y_click_events_have_key_events -->
-	<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 	<label
 		bind:this={labelEl}
 		onclick={focusInput}

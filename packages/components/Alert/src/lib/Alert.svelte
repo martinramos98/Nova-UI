@@ -9,8 +9,6 @@
 
 	interface AlertProps {
 		open?: boolean;
-		size?: string;
-		radius?: string;
 		footer?: Snippet<[any, any]>;
 		children?: Snippet;
 		class?: string | string[];
@@ -25,8 +23,6 @@
 	}
 	let {
 		open = $bindable(false),
-		size = 'md',
-		radius = 'md',
 		class: className = '',
 		text,
 		type = 'default',
@@ -54,7 +50,7 @@
 </script>
 
 {#if open}
-	<div use:translateToBody class={['ui-alert']} aria-modal="true">
+	<div use:translateToBody class="ui-alert" aria-modal="true">
 		<div transition:animationFunction={animationParams} class={['ui-alert-content', className]}>
 			{#if children}
 				{@render children()}

@@ -4,7 +4,6 @@
 	import { onMount } from 'svelte';
 	import { type Snippet } from 'svelte';
 	import { Button } from '@nv-org/button';
-	// import { ElementAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
 	import { popIn, setFloatingPosition, type SvelteTransitionFn } from '@nv-org/utils';
 	interface DropdownProps {
 		onClickTrigger?: () => void;
@@ -30,12 +29,13 @@
 	}: DropdownProps = $props();
 	let container: HTMLElement;
 	let dropdownEL: HTMLElement;
-	const toggleDropdown = () => {
+	const toggleDropdown = (ev: MouseEvent) => {
 		open = !open;
 		if (open === false) {
 			window.removeEventListener('click', clickOnOpenedDropdown);
 		} else {
 			window.addEventListener('click', clickOnOpenedDropdown);
+			ev.stopImmediatePropagation();
 		}
 	};
 	onMount(() => {
@@ -50,7 +50,7 @@
 		ev.preventDefault();
 	};
 	function setDropdownContentPosition(node: HTMLElement) {
-		dropdownEL = node.closest('.ui-dropdown') as HTMLElement;
+		dropdownEL = node.closest('.ui-dropdown-content') as HTMLElement;
 		setFloatingPosition({ element: node, position, offset });
 	}
 </script>
@@ -58,8 +58,8 @@
 <div class="ui-dropdown" bind:this={container}>
 	{#if triggerContent}
 		<button
-			onclick={() => {
-				toggleDropdown();
+			onclick={(ev) => {
+				toggleDropdown(ev);
 				onClickTrigger && onClickTrigger();
 			}}
 		>
@@ -69,14 +69,10 @@
 		<Button
 			variant="solid"
 			colors="container"
-			className="rounded-lg py-2"
-			buttonProps={{
-				events: {
-					click: () => {
-						toggleDropdown();
-						onClickTrigger && onClickTrigger();
-					}
-				}
+			class="rounded-lg py-2"
+			onClick={(ev) => {
+				toggleDropdown(ev);
+				onClickTrigger && onClickTrigger();
 			}}
 		>
 			{triggerText.toString()}

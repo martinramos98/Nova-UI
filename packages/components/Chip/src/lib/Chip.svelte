@@ -18,7 +18,7 @@
 		variant = '',
 		colors = '',
 		class: className = '',
-		size = 'md',
+		size = 'sm',
 		children,
 		closeButtonPosition = 'right',
 		closeButton = undefined,
@@ -40,9 +40,13 @@
 		{/if}
 	{/if}
 	<span
-		class="ui-chip sizes-{size} {colors !== '' ? 'ui-color-' + colors : ''} {variant !== ''
-			? 'ui-variant-' + variant
-			: ''} {className}"
+		class={[
+			'ui-chip',
+			size && `sizes-${size}`,
+			colors && `ui-color-${colors}`,
+			variant && `ui-variant-${variant}`,
+			className
+		]}
 	>
 		{@render children()}
 	</span>
@@ -69,37 +73,32 @@
 			place-content: center;
 			transition: all 0.3s ease;
 		}
-
 		.sizes-xs {
-			/* border-radius: var(--radius-2xl); */
 			min-width: var(--spacing-5);
 			min-height: var(--spacing-4);
-			font-size: var(--font-size-xs);
+			font-size: var(--text-xs);
 			height: fit-content;
 
 			padding: 0rem 0.5rem;
 		}
 		.sizes-sm {
-			/* border-radius: var(--radius-2xl); */
 			min-width: var(--spacing-6);
 			min-height: var(--spacing-7);
-			font-size: var(--font-size-sm);
+			font-size: var(--text-sm);
 			height: fit-content;
 			padding: 0 1rem;
 		}
 		.sizes-md {
-			/* border-radius: var(--radius-2xl); */
 			min-width: var(--spacing-8);
 			min-height: var(--spacing-8);
-			font-size: var(--font-size-lg);
+			font-size: var(--text-lg);
 			height: fit-content;
 			padding: 0.1rem 1.2rem;
 		}
 		.sizes-lg {
-			/* border-radius: var(--radius-3xl); */
 			min-width: var(--spacing-24);
 			min-height: var(--spacing-5);
-			font-size: var(--font-size-2xl);
+			font-size: var(--text-2xl);
 			padding: 0.1rem 1.2rem;
 		}
 	}

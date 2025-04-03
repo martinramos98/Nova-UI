@@ -46,5 +46,10 @@
 		html {
 			tab-size: 2 !important;
 		}
+		body {
+			overflow-x: hidden;
+			overflow-y: auto;
+			height: 100dvh;
+		}
 	}
 </style>

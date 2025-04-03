@@ -4,7 +4,7 @@
 	import { type Snippet } from 'svelte';
 	import { popIn, setPosisitionPopover, type SvelteTransitionFn } from '@nv-org/utils';
 	interface TooltipProps {
-		class?: string;
+		class?: string | string[];
 		colors?: string;
 		variant?: string;
 		offset?: number;
@@ -65,6 +65,9 @@
 	onmouseleave={onMouseOut}
 	class="ui-tooltip-container"
 >
+	<!-- class="ui-tooltip ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
+				? variant
+				: ''} {className}" -->
 	{#if children}
 		{@render children()}
 	{/if}
@@ -73,9 +76,12 @@
 			transition:animationFunction={animationParams}
 			use:setPosition
 			bind:this={tooltip}
-			class="ui-tooltip ui-color-{colors !== '' ? colors : ''} ui-variant-{variant !== ''
-				? variant
-				: ''} {className}"
+			class={[
+				'ui-tooltip',
+				colors && `ui-color-${colors}`,
+				variant && `ui-variant-${variant}`,
+				className
+			]}
 		>
 			{#if withArrow}
 				<svg use:setArrowPosition class="ui-tooltip-arrow" style={arrowPosition} viewBox="0 0 5 5">

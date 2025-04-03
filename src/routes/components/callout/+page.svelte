@@ -3,63 +3,34 @@
 	import { Callout } from '@nv-org/callout';
 	import ComponentCodeTabs from '../../../app/components/ComponentShowcase/ComponentCodeTabs.svelte';
 	import { Divider } from '@nv-org/divider';
+	import AsideComponentPage from '../../../app/components/AsidePage/AsideComponentPage.svelte';
+	import CalloutBasicCase from './CalloutBasicCase/CalloutBasicCase.svelte';
+	import CalloutTypeCases from './CalloutTypeCases/CalloutTypeCases.svelte';
 </script>
 
 <div class="page-content">
-	<aside>
-		<span class="font-semibold">On this page</span>
-		<ul>
-			<li><a href="#tabs">Callout</a></li>
-			<li><a href="#types">Types</a></li>
-			<li><a href="#variants">Variants</a></li>
-			<li><a href="#customs">Customs</a></li>
-		</ul>
-		<Divider />
-	</aside>
+	<AsideComponentPage
+		asideItems={[
+			{ ref: '#types', text: 'Types' },
+			{ ref: '#colors', text: 'Colors' },
+			{ ref: '#variants', text: 'Variants' },
+			{ ref: '#custom', text: 'Custom Content' },
+			{ ref: '#properties', text: 'Properties' }
+		]}
+	></AsideComponentPage>
+	<Divider orientation="vertical"></Divider>
 	<main>
 		<article>
 			<header>
 				<Title>Callout</Title>
 			</header>
-			<section class="w-full">
-				<div class="w-full">
-					<Callout>This is a Basic Callout</Callout>
-				</div>
-			</section>
+			<CalloutBasicCase />
 		</article>
 		<article>
-			<section>
-				<div class="w-full">
-					<header>
-						<Title level={2}>Types</Title>
-					</header>
-				</div>
-				<div class="w-full">
-					<ComponentCodeTabs
-						code={`<Callout variant="flat" colors="primary">This is a Default Callout</Callout>
-<Callout variant="flat" colors="warning" type="warning">This is a Warning Callout</Callout>
-<Callout variant="flat" colors="error" type="alert">This is a Error Callout</Callout>
-<Callout variant="flat" colors="info" type="info">This is a Info Callout</Callout>
-<Callout variant="flat" colors="success" type="success">This is a Success Callout</Callout>
-				`}
-					>
-						{#snippet component()}
-							<div class="flex flex-col gap-2">
-								<Callout variant="flat" colors="primary">This is a Default Callout</Callout>
-								<Callout variant="flat" colors="warning" type="warning"
-									>This is a Warning Callout</Callout
-								>
-								<Callout variant="flat" colors="error" type="alert">This is a Error Callout</Callout
-								>
-								<Callout variant="flat" colors="info" type="info">This is a Info Callout</Callout>
-								<Callout variant="flat" colors="success" type="success"
-									>This is a Success Callout</Callout
-								>
-							</div>
-						{/snippet}
-					</ComponentCodeTabs>
-				</div>
-			</section>
+			<header>
+				<Title level={2}>Types</Title>
+			</header>
+			<CalloutTypeCases />
 		</article>
 		<article>
 			<header>

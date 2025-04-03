@@ -8,7 +8,7 @@
 	import { Divider } from '@nv-org/divider';
 	import AvatarContentCases from '../../../app/components/pagesSections/avatar/ContentCases/AvatarContentCases.svelte';
 	import AvatarBasicCases from '../../../app/components/pagesSections/avatar/basicCases/AvatarBasicCases.svelte';
-	import AvatarBorderedCases from '../../../app/components/pagesSections/avatar/borderedCases/AvatarBorderedCases.svelte';
+	import AvatarBorderedCases from '../../../app/components/pagesSections/avatar/BorderedCases/AvatarBorderedCases.svelte';
 	import AvatarGroupCase from '../../../app/components/pagesSections/avatar/AvatarGroupCase/AvatarGroupCase.svelte';
 	export let data;
 	function codeString(props: string) {

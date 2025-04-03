@@ -112,7 +112,7 @@
 			? `width:${width};`
 			: ''} aspect-ratio:{aspectRatio()};"
 		onload={onLoad}
-		class="ui-image {className}"
+		class={['ui-image', className]}
 		onerror={onError}
 		{alt}
 		{src}

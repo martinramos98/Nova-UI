@@ -14,4 +14,5 @@
 body {
 	background-color: var(--color-surface-lowest);
 	color: var(--color-on-surface);
+	height: 100dvh;
 }
