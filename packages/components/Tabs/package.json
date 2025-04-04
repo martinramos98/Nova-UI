@@ -35,7 +35,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"dependencies": {
-		"@nv-org/utils": "workspaces:*"
+		"@nv-org/utils": "workspace:*"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^4.0.0",
