@@ -1,7 +1,10 @@
 <script lang="ts">
 	import '../app.css';
-	
+
 	let { children } = $props();
+	import NovaUILayout from '../../../../src/lib/providers/NovaUILayout.svelte';
 </script>
 
-{@render children()}
+<NovaUILayout>
+	{@render children()}
+</NovaUILayout>
