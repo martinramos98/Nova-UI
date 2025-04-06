@@ -1,7 +1,7 @@
 <script>
 	// import { Navbar, MenuButton, Accordion, AccordionSection, CloseButton } from '$lib/index';
 	import { Navbar } from '@nv-org/navbar';
-	import NovaUIProvider from '$lib/providers/NovaUIProvider.svelte';
+	import NovaUIProvider from '$lib/providers/NovaUILayout.svelte';
 </script>
 
 <NovaUIProvider>

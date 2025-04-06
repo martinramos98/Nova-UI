@@ -1,4 +1,4 @@
-import NovaUIProvider from './providers/NovaUIProvider.svelte';
+import NovaUILayout from './providers/NovaUILayout.svelte';
 // Reexport your entry components here
 
-export { NovaUIProvider };
+export { NovaUILayout};
