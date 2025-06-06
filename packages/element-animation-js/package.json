@@ -32,6 +32,6 @@
 		"!dist/**/*.spec.*"
 	],
 	"devDependencies": {
-		"svelte": "5.20.2"
+		"svelte": "5.33.14"
 	}
 }
