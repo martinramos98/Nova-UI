@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
 	import { ElementAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
 	import { setFloatingPosition } from '@nv-org/utils';

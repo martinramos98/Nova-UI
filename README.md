@@ -9,30 +9,30 @@ In your terminal execute the following command depending on what package manager
 #### pnpm
 
 ```bash
-pnpm install nova-js-ui
+pnpm install nova-js-ui @nv-org/components
 ```
 
 #### yarn
 
 ```bash
-yarn add nova-js-ui
+yarn add nova-js-ui @nv-org/components
 ```
 
 #### npm
 
 ```bash
-npm install nova-js-ui
+npm install nova-js-ui @nv-org/components
 ```
 
 ### Usage
 
-#### Svelte-kit
+#### Svelte 
 
-In your top +layout.svelte route
+In your top route
 
 ```svelte
 <NovaUIProvider>
-	<slot />
+  {@render children()}
 </NovaUIProvider>
 ```
 

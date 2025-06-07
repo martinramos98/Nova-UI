@@ -69,5 +69,6 @@
 		"component-library",
 		"svelte ui",
 		"nova ui"
-	]
+	],
+	"packageManager": "pnpm@9.15.4"
 }

@@ -37,7 +37,8 @@
 	"dependencies": {
 		"@nv-org/button": "workspace:*",
 		"@nv-org/callout": "workspace:*",
-		"@nv-org/icon": "workspace:*"
+		"@nv-org/icon": "workspace:*",
+		"@nv-org/element-animation-js": "workspace:*"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.0.1",
