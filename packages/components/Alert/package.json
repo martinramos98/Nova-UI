@@ -32,7 +32,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"svelte": "^4.2.14"
+		"svelte": "^5.33.14"
 	},
 	"dependencies": {
 		"@nv-org/button": "workspace:*",
