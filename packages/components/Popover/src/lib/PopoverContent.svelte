@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext, type Snippet } from 'svelte';
 	import { popIn, type FullPosition, type SvelteTransitionFn } from '@nv-org/utils';
-	import FloatingWidget from '../../../FloatingWidget/FloatingWidget.svelte';
+	import FloatingWidget from '@nv-org/floating-widget';
 	const {
 		children,
 		asElement = 'div',

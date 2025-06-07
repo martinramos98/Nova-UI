@@ -50,6 +50,7 @@
 		"!dist/**/*.spec.*"
 	],
 	"dependencies": {
-		"@nv-org/utils": "workspace:*"
+		"@nv-org/utils": "workspace:*",
+		"@nv-org/floating-widget": "workspace:*"
 	}
 }
