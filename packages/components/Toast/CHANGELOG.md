@@ -1,0 +1,15 @@
+# @nv-org/toast
+
+## 1.2.0
+
+### Minor Changes
+
+- a5c682f: Updated Peer Dependencies for components to updated svelte dependency. Created new subpackage floating widget for popover and tooltip
+
+### Patch Changes
+
+- Updated dependencies [a5c682f]
+  - @nv-org/button@1.2.0
+  - @nv-org/callout@1.2.0
+  - @nv-org/icon@1.2.0
+  - @nv-org/element-animation-js@1.2.0
