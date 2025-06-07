@@ -1,17 +1,17 @@
 {
-	"name": "@nv-org/badge",
-	"version": "1.1.0",
+	"name": "@nv-org/floating-widget",
+	"version": "1.0.0",
 	"description": "",
 	"type": "module",
+	"main": "./dist/index.js",
 	"publishConfig": {
 		"access": "public"
 	},
 	"repository": {
-		"directory": "packages/components/Loader",
+		"directory": "packages/components/FloatingWidget",
 		"url": "git+https://github.com/martinramos98/Nova-UI.git",
 		"type": "git"
 	},
-	"main": "./dist/index.js",
 	"author": "Martin Ramos",
 	"license": "MIT",
 	"peerDependencies": {

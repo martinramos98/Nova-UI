@@ -19,7 +19,7 @@
 		"package": "svelte-kit sync && svelte-package && publint"
 	},
 	"peerDependencies": {
-		"svelte": "^4.2.14"
+		"svelte": "^5.33.14"
 	},
 	"dependencies": {
 		"@nv-org/icon": "workspace:*"
