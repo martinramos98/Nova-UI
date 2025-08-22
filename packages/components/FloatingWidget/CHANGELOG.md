@@ -1,5 +1,11 @@
 # @nv-org/floating-widget
 
+## 1.1.1
+
+### Patch Changes
+
+- Selection component: updated props, label and options box changes transition animations for svelte/animation lib
+
 ## 1.1.0
 
 ### Minor Changes

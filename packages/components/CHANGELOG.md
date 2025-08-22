@@ -1,5 +1,41 @@
 # @nv-org/components
 
+## 1.2.1
+
+### Patch Changes
+
+- Selection component: updated props, label and options box changes transition animations for svelte/animation lib
+- Updated dependencies
+  - @nv-org/input@2.0.0
+  - @nv-org/selection@2.0.0
+  - @nv-org/accordion@1.2.1
+  - @nv-org/alert@1.2.1
+  - @nv-org/avatar@1.2.1
+  - @nv-org/badge@1.2.1
+  - @nv-org/button@1.2.1
+  - @nv-org/card@1.2.1
+  - @nv-org/chip@1.2.1
+  - @nv-org/collapsable-block@1.2.1
+  - @nv-org/context-menu@1.2.1
+  - @nv-org/divider@1.2.1
+  - @nv-org/dropdown@1.2.1
+  - @nv-org/icon@1.2.1
+  - @nv-org/image@1.2.1
+  - @nv-org/link@1.2.1
+  - @nv-org/loader@1.2.1
+  - @nv-org/modal@1.2.1
+  - @nv-org/navbar@1.2.1
+  - @nv-org/popover@1.2.1
+  - @nv-org/progress@1.2.1
+  - @nv-org/radio@1.2.1
+  - @nv-org/slider@1.2.1
+  - @nv-org/switch@1.2.1
+  - @nv-org/table@1.2.1
+  - @nv-org/tabs@1.2.1
+  - @nv-org/title@1.2.1
+  - @nv-org/toast@1.2.1
+  - @nv-org/tooltip@1.2.1
+
 ## 1.2.0
 
 ### Minor Changes

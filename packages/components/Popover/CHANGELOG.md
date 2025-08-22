@@ -1,5 +1,14 @@
 # @nv-org/popover
 
+## 1.2.1
+
+### Patch Changes
+
+- Selection component: updated props, label and options box changes transition animations for svelte/animation lib
+- Updated dependencies
+  - @nv-org/floating-widget@1.1.1
+  - @nv-org/utils@1.2.1
+
 ## 1.2.0
 
 ### Minor Changes
