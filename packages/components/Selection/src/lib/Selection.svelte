@@ -327,7 +327,6 @@
 			padding: 10px 10px 10px 10px;
 			min-width: 100px;
 			width: 100%;
-			/* min-height: 50px; */
 			position: relative;
 			display: grid;
 			grid-template-columns: 1fr;
@@ -348,7 +347,6 @@
 					color: color-mix(in srgb, var(--color-text) 80%, transparent 30%);
 				}
 				& span {
-					/* color: var(--color-text); */
 					padding: 2px 7px;
 					opacity: 1;
 					margin: 0 2px;

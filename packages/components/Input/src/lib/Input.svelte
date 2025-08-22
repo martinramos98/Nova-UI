@@ -2,11 +2,10 @@
 	import { onMount, type Snippet } from 'svelte';
 	import { type HTMLInputAttributes } from 'svelte/elements';
 	export interface InputProps {
-		label?: Snippet | string;
+		label: Snippet | string;
 		labelVariant?: 'inside' | 'outside' | 'leftside';
 		labelStatic?: boolean;
 		labelClass?: string;
-		labelEnsureSpacing?: boolean;
 		containerClass?: string;
 		error?: boolean | ((value: any) => boolean);
 		errorContent?: string | Snippet;
@@ -23,98 +22,41 @@
 		labelClass,
 		labelStatic = false,
 		labelVariant = 'outside',
-		labelEnsureSpacing = true,
 		name,
 		colors,
 		value = $bindable(),
 		variant,
-		class: className,
 		...attr
 	}: InputProps & HTMLInputAttributes = $props();
 	let input: HTMLInputElement;
 	let labelEl: HTMLLabelElement;
-	function focusInput() {
-		input.focus();
-	}
-	function onInputFocusIn() {
-		setLabelPositionByVariant();
+	let labelWidth: number | undefined = $state();
+
+	function onInputFocusIn(ev: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
+		attr.onfocusin?.(ev);
 	}
 	function onInputFocusOut(ev: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
-		if (!value && !labelStatic && !attr.placeholder) {
-			setLabelAsPlaceholder();
-		}
-		attr.onfocusout && attr.onfocusout(ev);
+		attr.onfocusout?.(ev);
 	}
-	function setLabelAsPlaceholder() {
-		const computedInput = input.computedStyleMap();
-		labelEl.style.left = input.offsetLeft + 'px';
-		labelEl.style.top = input.offsetTop + 'px';
-		labelEl.style.fontSize = 'var(--font-size)';
-		labelEl.style.marginTop = computedInput.get('padding-top')?.toString() ?? '0px';
-		labelEl.style.marginLeft = computedInput.get('padding-left')?.toString() ?? '0px';
+	function onClickContainer() {
+		input.focus();
 	}
-	function setLabelPositionByVariant() {
-		labelEl.style.removeProperty('font-size');
-		if (labelVariant === 'outside') {
-			labelEl.style.top = input.offsetTop - 10 - labelEl.offsetHeight + 'px';
-			labelEl.style.marginLeft = '0';
-			labelEl.style.left = input.offsetLeft + 'px';
-		}
-		if (labelVariant === 'leftside') {
-			console.log('setting leftside', labelEl.offsetWidth);
-			labelEl.style.top = input.offsetTop + 'px';
-			labelEl.style.left = input.offsetLeft - 10 - labelEl.offsetWidth + 'px';
-			labelEl.style.marginLeft = '0';
-		}
-		if (labelVariant === 'inside') {
-			labelEl.style.marginTop = '5px';
-			const computedInput = input.computedStyleMap();
-			labelEl.style.marginLeft = computedInput.get('padding-left')?.toString() ?? '0px';
-
-			labelEl.style.top = input.offsetTop + 'px';
-			labelEl.style.left = input.offsetLeft + 'px';
-		}
-	}
-	$effect(() => {
-		if (labelEnsureSpacing) {
-			const computed = input.computedStyleMap();
-			if (labelVariant === 'leftside') {
-				(input.parentElement as HTMLElement).style.marginLeft =
-					(computed.get('margin-left')?.value ?? 0) + labelEl.offsetWidth + 'px';
-			}
-			if (labelVariant === 'outside') {
-				(input.parentElement as HTMLElement).style.marginTop =
-					(computed.get('margin-top')?.value ?? 0) + labelEl.offsetHeight + 'px';
-			}
-			if (labelVariant === 'inside') {
-				input.style.paddingTop =
-					(computed.get('padding-top')?.value ?? 0) + labelEl.offsetHeight + 'px';
-			}
-		}
-	});
-	onMount(() => {
-		if (labelStatic || value || attr.placeholder) {
-			setLabelPositionByVariant();
-		} else {
-			setLabelAsPlaceholder();
-		}
-	});
 </script>
 
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	class={[
 		'ui-input-container',
 		variant && `ui-input-variant-${variant}`,
 		colors && `ui-color-${colors}`
 	]}
+	data-label-variant={labelVariant}
+	data-label-static={labelStatic}
+	style="--label-width:{labelWidth}px;"
+	onclick={onClickContainer}
 >
-	<label
-		bind:this={labelEl}
-		onclick={focusInput}
-		class={labelClass}
-		data-label-variant={variant}
-		data-label-static={labelStatic}
-		for={name}
+	<label bind:offsetWidth={labelWidth} bind:this={labelEl} class={labelClass} for={name}
 		>{#if typeof label === 'string'}
 			{label}
 		{:else}
@@ -124,10 +66,11 @@
 	<input
 		bind:this={input}
 		{...attr}
-		class={['ui-input', className]}
+		class={['ui-input', attr.class]}
 		bind:value
 		onfocusin={onInputFocusIn}
 		onfocusout={onInputFocusOut}
+		data-filled={!!value}
 	/>
 	{#if (typeof error === 'function' && error(value)) || error === true}
 		<div class={['ui-input-error', 'ui-color-error', errorClass]}>
@@ -160,7 +103,6 @@
 		}
 		input {
 			appearance: none;
-			padding: 8px;
 			border: none;
 			&:focus {
 				border: none;
@@ -171,23 +113,89 @@
 
 		.ui-input-container {
 			--font-size: var(--text-base);
-			position: relative;
-			transition: padding 0.3s ease;
+			cursor: text;
 			/* === LABEL === */
 			& > label {
+				display: block;
 				transition:
-					top 0.3s ease,
-					font-size 0.3s ease,
-					margin-top 0.3s ease,
-					margin-left 0.3s ease,
-					left 0.3s ease;
+					top 0.2s ease,
+					left 0.2s ease,
+					translate 0.2s ease,
+					opacity 0.2s ease,
+					scale 0.2s ease;
 				font-size: var(--text-sm);
-				position: absolute;
 				width: max-content;
 				height: max-content;
 			}
 			& > input {
 				width: 100%;
+			}
+			&[data-label-variant='inside'] {
+				padding: 4px 10px 10px 10px;
+				&:has(:not(input[placeholder])) > label {
+					translate: 0 70%;
+					opacity: 0.6;
+				}
+				&:has(input:focus) > label,
+				&:has(input[data-filled='true']) > label,
+				&:has(input[placeholder]) > label {
+					scale: 0.8;
+					translate: -10% 0;
+					opacity: 1;
+				}
+				&[data-label-static='true'] > label {
+					scale: 0.8 !important;
+					translate: -10% 0 !important;
+				}
+			}
+			&[data-label-variant='outside'] {
+				position: relative;
+				padding: 10px;
+				& label {
+					position: absolute;
+				}
+				&:has(:not(input[placeholder])) > label {
+					top: 25%;
+					left: 4%;
+					opacity: 0.6;
+				}
+				&:has(input:focus) > label,
+				&:has(input[data-filled='true']) > label,
+				&:has(input[placeholder]) > label {
+					scale: 0.8;
+					top: -50%;
+					left: 0px;
+					opacity: 1;
+				}
+				&[data-label-static='true'] > label {
+					scale: 0.8 !important;
+					top: -50% !important;
+					left: 0px !important;
+				}
+			}
+			&[data-label-variant='leftside'] {
+				padding: 10px;
+				position: relative;
+				& > label {
+					position: absolute;
+				}
+				&:has(:not(input[placeholder])) > label {
+					top: 25%;
+					left: 4%;
+					opacity: 0.6;
+				}
+				&:has(input:focus) > label,
+				&:has(input[data-filled='true']) > label,
+				&:has(input[placeholder]) > label {
+					top: 25%;
+					left: calc(calc((var(--label-width)) + var(--label-offset, 8px)) * -1);
+					opacity: 1;
+				}
+				&[data-label-static='true'] > label {
+					top: 25% !important;
+					left: calc(calc((var(--label-width)) + var(--label-offset, 8px)) * -1) !important;
+					opacity: 1 !important;
+				}
 			}
 		}
 	}
@@ -197,7 +205,7 @@
 		.ui-input-variant-solid {
 			background-color: var(--color-container);
 			color: var(--color-text);
-			border-radius: var(--radius-lg);
+			border-radius: var(--radius-xl);
 		}
 		.ui-input-variant-blurred {
 			backdrop-filter: blur(5px);
