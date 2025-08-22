@@ -30,14 +30,14 @@ export function createPositionResolver(
 ) {
 	return (args: { position: string; element: HTMLElement; offset: number }) => {
 		if (availablePositions[args.position] && !!availablePositions[args.position](args)) {
-			return availablePositions[args.position](args);
+			return {css: availablePositions[args.position](args), resolverPosition: args.position};
 		} else {
 			for (const availablePosition in availablePositions) {
 				if (
 					availablePositions[availablePosition] &&
 					!!availablePositions[availablePosition](args)
 				) {
-					return availablePositions[availablePosition](args);
+					return {css: availablePositions[availablePosition](args),resolverPosition: availablePosition};
 				}
 			}
 		}
@@ -226,7 +226,7 @@ export function setFloatingPosition(args: {
 }) {
 	const resolvePosition = createPositionResolver(availableFloatingDependantPositions);
 	const result = resolvePosition(args);
-	args.element.style.cssText = result as string;
+	args.element.style.cssText = result?.css as string;
 }
 
 const availablePositionsPopover: Record<string, PositionResolver> = {
@@ -258,7 +258,7 @@ export function setPosisitionPopover(args: {
 }) {
 	const resolvePosition = createPositionResolver(availablePositionsPopover);
 	const result = resolvePosition(args);
-	args.element.style.cssText = result as string;
+	args.element.style.cssText = result?.css as string;
 }
 export function isOverflowingWindow(
 	parentBounds: DOMRect,

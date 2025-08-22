@@ -4,18 +4,25 @@
 	import type { Snippet } from 'svelte';
 
 	interface OptionProps {
-		value?: any;
+		labelSelected: string | Snippet;
+		value: any;
 		disabled?: boolean;
 		className?: string;
 		children?: Snippet<[any]>;
 	}
-	const { value = '', disabled = false, children, className = '' }: OptionProps = $props();
+	const {
+		value = '',
+		disabled = false,
+		children,
+		className = '',
+		labelSelected
+	}: OptionProps = $props();
 	let selected = $state(false);
 	function setSelectHandlerToOptions(optionElement: HTMLElement) {
 		if (optionElement.parentElement?.classList.contains('ui-selection-options-container')) {
 			optionElement.addEventListener('click', () => {
 				// @ts-expect-error Custom prop of element
-				selected = optionElement.parentElement.onselecthandler(value);
+				selected = optionElement.parentElement.onselecthandler(value, labelSelected);
 			});
 		} else {
 			throw Error('Selection Option is not inside a Selection Container');

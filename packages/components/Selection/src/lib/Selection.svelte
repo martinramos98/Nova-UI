@@ -1,37 +1,9 @@
 <script lang="ts">
-	import { ElementAnimation, type ElementAnimationParams } from '@nv-org/element-animation-js';
 	import { setFloatingPosition } from '@nv-org/utils';
-	import type { Snippet } from 'svelte';
-	interface SelectionProps {
-		multiselection?: boolean;
-		type?: 'default' | 'outlined' | 'filled' | 'underlined' | 'blurred' | 'flat' | 'faded' | string;
-		variant?:
-			| 'default'
-			| 'primary'
-			| 'secondary'
-			| 'tertiary'
-			| 'success'
-			| 'warning'
-			| 'danger'
-			| string;
-		colors?: string;
-		selectionLabel?: string;
-		disabled?: boolean;
-		isInvalid?: boolean;
-		errorMessage?: string;
-		labelProps?: {
-			className?: string;
-			labelPosition?: 'inside' | 'outside';
-		};
-		class?: string;
-		classOptionsContainer?: string;
-		classSelected?: string;
-		classInputBox?: string;
-		placeholder?: string;
-		selectedValue?: any;
-		onSelect?: undefined | ((value: any) => void);
-		children: Snippet;
-	}
+	import { Icon } from '@nv-org/icon';
+	import type { ISelectionProps } from './interface.js';
+	import { fly } from 'svelte/transition';
+	import { cubicInOut } from 'svelte/easing';
 	let {
 		multiselection = false,
 		type = 'default',
@@ -41,41 +13,56 @@
 		disabled = false,
 		isInvalid = false,
 		errorMessage = undefined,
-		labelProps = { className: '', labelPosition: 'inside' },
-		class: className = '',
+		label = {
+			labelPosition: 'inside'
+		},
 		classOptionsContainer = '',
 		classSelected = '',
 		classInputBox = '',
 		placeholder = '',
 		selectedValue = $bindable(new Set()),
 		onSelect = undefined,
+		open = $bindable(false),
+		transitionSelectionBoxProps = {
+			duration: 250,
+			easing: cubicInOut
+		},
 		children
-	}: SelectionProps = $props();
+	}: ISelectionProps = $props();
 
-	let openSelection = $state(false);
-	let render = $state(false);
-	let animationSelection: ElementAnimation;
 	let selectionEL: HTMLElement;
+	let transitionProps = {
+		duration: transitionSelectionBoxProps.duration,
+		easing: transitionSelectionBoxProps.easing,
+		y: -10,
+		x: 0
+	};
+	label = {
+		labelPosition: 'inside',
+		...label
+	};
+
 	function setNewSelection(sel: Set<any>) {
 		selectedValue = sel;
 	}
-	function onselecthandler(value: any) {
+
+	function onselecthandler(value: any, label: any) {
 		onSelect && onSelect(value);
 		let isSelected = false;
 		if (multiselection) {
 			let sel = new Set(selectedValue);
 
-			isSelected = sel.has(value);
-			isSelected ? sel.delete(value) : sel.add(value);
+			isSelected = Array.from(sel).some((item) => item.value === value);
+			isSelected ? sel.delete({ value, label }) : sel.add({ value, label });
 			setNewSelection(sel);
 		} else {
-			isSelected = selectedValue.has(value);
-			selectedValue = isSelected ? new Set() : new Set([value]);
+			isSelected = Array.from(selectedValue).some((item) => item.value === value);
+			selectedValue = isSelected ? new Set() : new Set([{ value, label }]);
 		}
-		openSelection = false;
-		animationSelection.reverse();
+		open = false;
 		return isSelected;
 	}
+
 	function setOpenHandlersToOptions(node: HTMLElement) {
 		// @ts-expect-error custom prop error
 		node['onselecthandler'] = onselecthandler;
@@ -88,9 +75,9 @@
 		}
 		let top = 0;
 		const spanBoundings = labelElement.previousElementSibling?.getBoundingClientRect();
-		if (labelProps.labelPosition === 'inside') {
+		if (label.labelPosition === 'inside') {
 			top = spanBoundings?.height as number;
-		} else if (labelProps.labelPosition === 'outside') {
+		} else if (label.labelPosition === 'outside') {
 			top = (spanBoundings?.height as number) + 20;
 		}
 
@@ -117,9 +104,8 @@
 		};
 	}
 	function toggleSelection() {
-		openSelection = !openSelection;
-		if (openSelection) {
-			render = true;
+		open = !open;
+		if (open) {
 			window.addEventListener('click', onClickOutsideSelection);
 		}
 	}
@@ -128,70 +114,66 @@
 			!(ev.target as Element).closest('.ui-selection') ||
 			!selectionEL.contains(ev.target as Node)
 		) {
-			openSelection = false;
-			animationSelection.reverse();
+			open = false;
+			// animationSelection.reverse();
 		}
 		ev.preventDefault();
 	}
-	function renderAnimation(node: HTMLElement, open: boolean) {
-		const animationOptions: ElementAnimationParams = {
-			animations: {
-				keyframes: [{ opacity: 0 }, { opacity: 1 }],
-				animationOptions: {
-					fill: 'both',
-					iterations: 1,
-					duration: 200,
-					easing: 'ease-in-out'
-				}
-			},
-			alternate: false,
-			iterations: 1,
-			onFinishedAnimation() {
-				if (!openSelection) {
-					render = false;
-					window.removeEventListener('click', onClickOutsideSelection);
-				}
-			}
-		};
-		animationSelection = new ElementAnimation(node, animationOptions);
-		animationSelection.playForward();
-		return {
-			update(open: boolean) {
-				if (!open) {
-					// Redender Close Animation
-					animationSelection.reverse();
-				}
-			}
-		};
-	}
+
 	function setSelectionPosition(element: HTMLElement) {
-		setFloatingPosition({ element, position: 'bottom', offset: 4 });
+		setFloatingPosition({ element, position: 'bottom', offset: 5 });
 	}
 </script>
 
 <div
 	role="listbox"
-	class="ui-selection ui-color-{colors} ui-selection-variant-{variant} {className}"
-	data-selection-open={render}
+	class={[
+		'ui-selection',
+		colors && `ui-color-${colors}`,
+		variant && `ui-selection-variant-${variant}`
+	]}
+	data-selection-open={open}
 	aria-multiselectable={multiselection}
 	bind:this={selectionEL}
 >
-	<button {disabled} onclick={toggleSelection} class="ui-selection-input {classInputBox}">
+	<button {disabled} onclick={toggleSelection} class={['ui-selection-input', classInputBox]}>
 		<div>
 			{#if selectedValue.size === 0}
-				{placeholder ?? ''}
+				{placeholder}
 			{:else}
 				{#each selectedValue as selectedValue}
 					<span class={classSelected}>
-						{selectedValue}
+						{#if typeof selectedValue.label === 'string'}
+							{selectedValue.label}
+						{:else}
+							{@render selectedValue.label()}
+						{/if}
 					</span>
 				{/each}
 			{/if}
+			<Icon
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="color-mix(in srgb, var(--color-text) 80%, transparent 30%)"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path d="m6 9 6 6 6-6" />
+			</Icon>
 		</div>
 		{#if selectionLabel !== ''}
 			<label
-				use:setLabelPositioning={openSelection}
-				class="ui-selection-label {labelProps.labelPosition}-label {labelProps.className}"
+				{...label}
+				class={[
+					label.class,
+					'ui-selection-label',
+					label.labelPosition && `${label.labelPosition}-label`
+				]}
+				use:setLabelPositioning={open}
 			>
 				{selectionLabel}
 			</label>
@@ -202,12 +184,12 @@
 			{errorMessage}
 		</span>
 	{/if}
-	{#if render}
+	{#if open}
 		<div
-			use:setOpenHandlersToOptions
 			use:setSelectionPosition
-			use:renderAnimation={openSelection}
-			class="ui-selection-options-container {classOptionsContainer}"
+			use:setOpenHandlersToOptions
+			transition:fly={transitionProps}
+			class={['ui-selection-options-container', classOptionsContainer]}
 		>
 			{#if children}
 				{@render children()}
@@ -222,7 +204,15 @@
 			position: relative;
 			height: fit-content;
 			width: fit-content;
-			/* color: var(--color-text); */
+
+			& .ui-selection-input {
+				> div {
+					display: flex;
+					flex-wrap: wrap;
+					flex-direction: row;
+					align-items: center;
+				}
+			}
 			&.ui-selection-variant-default {
 				& .ui-selection-input {
 					border-radius: var(--radius-lg);
@@ -355,7 +345,7 @@
 				grid-column: 1 / 1;
 				grid-row: 1 / 1;
 				&:not(:has(span)) {
-					opacity: 0.4;
+					color: color-mix(in srgb, var(--color-text) 80%, transparent 30%);
 				}
 				& span {
 					/* color: var(--color-text); */
