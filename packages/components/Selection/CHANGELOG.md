@@ -1,5 +1,11 @@
 # @nv-org/selection
 
+## 2.0.2
+
+### Patch Changes
+
+- Patch: Rebuilded Packages
+
 ## 2.0.1
 
 ### Patch Changes
