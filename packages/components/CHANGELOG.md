@@ -1,5 +1,15 @@
 # @nv-org/components
 
+## 1.2.3
+
+### Patch Changes
+
+- 28ce2d1: Fixed Variants styling for selection and input components: Flat, Blurred, Faded
+- Updated dependencies [28ce2d1]
+  - @nv-org/input@2.0.2
+  - @nv-org/selection@2.0.1
+  - @nv-org/alert@1.2.3
+
 ## 1.2.2
 
 ### Patch Changes
