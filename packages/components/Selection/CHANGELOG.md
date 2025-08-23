@@ -1,5 +1,11 @@
 # @nv-org/selection
 
+## 2.0.1
+
+### Patch Changes
+
+- 28ce2d1: Fixed Variants styling for selection and input components: Flat, Blurred, Faded
+
 ## 2.0.0
 
 ### Major Changes
