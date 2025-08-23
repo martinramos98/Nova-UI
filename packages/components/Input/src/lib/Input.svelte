@@ -19,6 +19,7 @@
 		error,
 		errorContent,
 		errorClass,
+		containerClass,
 		labelClass,
 		labelStatic = false,
 		labelVariant = 'outside',
@@ -49,7 +50,8 @@
 	class={[
 		'ui-input-container',
 		variant && `ui-input-variant-${variant}`,
-		colors && `ui-color-${colors}`
+		colors && `ui-color-${colors}`,
+		containerClass
 	]}
 	data-label-variant={labelVariant}
 	data-label-static={labelStatic}

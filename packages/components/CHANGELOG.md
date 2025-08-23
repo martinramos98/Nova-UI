@@ -1,5 +1,14 @@
 # @nv-org/components
 
+## 1.2.5
+
+### Patch Changes
+
+- Patch: Input added class container
+- Updated dependencies
+  - @nv-org/input@2.0.4
+  - @nv-org/alert@1.2.3
+
 ## 1.2.4
 
 ### Patch Changes
