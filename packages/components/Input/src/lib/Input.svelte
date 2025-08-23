@@ -208,40 +208,33 @@
 			border-radius: var(--radius-xl);
 		}
 		.ui-input-variant-blurred {
+			background-color: var(--color-surface);
+			border-radius: var(--radius-lg);
 			backdrop-filter: blur(5px);
-			& input {
-				background-color: var(--color-surface);
-				border-radius: var(--radius-lg);
-			}
 		}
 		.ui-input-variant-faded {
+			background-color: var(--color-surface);
+			color: var(--color-container);
+			border-radius: var(--radius-xl);
 			& > label {
 				color: var(--color-container);
-			}
-			& input {
-				background-color: var(--color-surface);
-				color: var(--color-container);
-				border-radius: var(--radius-lg);
 			}
 		}
 		@media (prefers-color-scheme: dark) {
 			.ui-input-variant-faded {
-				& input {
-					border: 2px solid var(--color-surface-hight);
-				}
+				border: 2px solid var(--color-surface-hight);
 			}
 		}
 		@media (prefers-color-scheme: light) {
 			.ui-input-variant-faded {
-				& input {
-					border: 2px solid var(--color-surface-low);
-				}
+				border: 2px solid var(--color-surface-low);
 			}
 		}
 
 		.ui-input-variant-underlined {
 			position: relative;
-
+			border-radius: 0;
+			background-color: var(--color-surface);
 			&::after {
 				position: absolute;
 				transition: all 0.3s ease;
@@ -251,10 +244,6 @@
 				left: 0;
 				bottom: -1px;
 				background-color: var(--color-border);
-			}
-			& input {
-				border-radius: 0;
-				background-color: var(--color-surface);
 			}
 		}
 	}

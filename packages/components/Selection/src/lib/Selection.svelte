@@ -157,7 +157,7 @@
 				height="24"
 				viewBox="0 0 24 24"
 				fill="none"
-				stroke="color-mix(in srgb, var(--color-text) 80%, transparent 30%)"
+				stroke="color-mix(in srgb, var(--color-icon, currentColor) 80%, transparent 30%)"
 				stroke-width="2"
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -214,6 +214,7 @@
 				}
 			}
 			&.ui-selection-variant-default {
+				--color-icon: var(--color-text);
 				& .ui-selection-input {
 					border-radius: var(--radius-lg);
 					color: var(--color-text);
@@ -229,12 +230,19 @@
 				}
 			}
 			&.ui-selection-variant-blurred {
+				--color-icon: var(--color-container);
 				color: var(--color-container);
 				& .ui-selection-input {
 					color: var(--color-on-surface);
 					border-radius: var(--radius-lg);
 					background-color: color-mix(in srgb, var(--color-container), transparent 95%);
 					backdrop-filter: blur(5px);
+					& > div {
+						color: color-mix(in srgb, var(--color-on-surface) 80%, transparent 50%);
+					}
+					& span {
+						background-color: color-mix(in srgb, var(--color-subcontainer), transparent 90%);
+					}
 				}
 				& .ui-selection-options-container {
 					border-radius: var(--radius-lg);
@@ -244,27 +252,37 @@
 				}
 			}
 			&.ui-selection-variant-flat {
+				--color-icon: var(--color-container);
 				& .ui-selection-input {
-					border-radius: var(--radius-lg);
-					background-color: color-mix(in srgb, var(--color-container), black 70%);
+					border-radius: var(--radius-xl);
+					background-color: color-mix(
+						in srgb,
+						var(--color-container) 25%,
+						var(--color-surface) 75%
+					);
 					color: var(--color-container);
 					& span {
-						background-color: color-mix(in srgb, var(--color-subcontainer), black 70%);
+						background-color: color-mix(
+							in srgb,
+							var(--color-subcontainer),
+							var(--color-surface) 70%
+						);
+						color: var(--color-container);
+					}
+					& > div {
 						color: var(--color-container);
 					}
 				}
 				& .ui-selection-options-container {
 					border-radius: var(--radius-lg);
-					background-color: color-mix(in srgb, var(--color-container), black 70%);
+					background-color: color-mix(
+						in srgb,
+						var(--color-container) 25%,
+						var(--color-surface) 75%
+					);
 					color: var(--color-container);
 					& > .ui-selection-option {
 						background-color: transparent;
-					}
-					& option {
-						background-color: transparent;
-						&:hover {
-							background-color: color-mix(in srgb, var(--color-container), transparent 90%);
-						}
 					}
 				}
 			}
@@ -286,20 +304,20 @@
 				}
 			}
 			&.ui-selection-variant-faded {
+				--color-icon: var(--color-container);
 				& .ui-selection-input {
 					background-color: var(--color-surface);
 					color: var(--color-container);
-					border: 2px solid var(--color-surface-highest);
-					border-radius: var(--radius-lg);
+					border-radius: var(--radius-xl);
 					& span {
-						color: var(--color-container);
+						color: var(--color-subtext);
+						background-color: var(--color-subcontainer);
 					}
 				}
 				& .ui-selection-options-container {
 					background-color: var(--color-surface);
 					color: var(--color-container);
-					border-radius: var(--radius-lg);
-					border: 2px solid var(--color-surface-highest);
+					border-radius: var(--radius-xl);
 				}
 			}
 			&.ui-selection-variant-underlined {
@@ -318,6 +336,26 @@
 					color: var(--color-container);
 					border-radius: var(--radius-none);
 					border-bottom: 2px solid var(--color-border);
+				}
+			}
+		}
+		@media (prefers-color-scheme: dark) {
+			.ui-selection.ui-selection-variant-faded {
+				& .ui-selection-input {
+					border: 2px solid var(--color-surface-hight);
+				}
+				& .ui-selection-options-container {
+					border: 2px solid var(--color-surface-hight);
+				}
+			}
+		}
+		@media (prefers-color-scheme: light) {
+			.ui-selection.ui-selection-variant-faded {
+				& .ui-selection-input {
+					border: 2px solid var(--color-surface-low);
+				}
+				& .ui-selection-options-container {
+					border: 2px solid var(--color-surface-low);
 				}
 			}
 		}

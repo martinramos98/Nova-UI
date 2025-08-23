@@ -137,7 +137,7 @@
 			--color-container: var(--color-night-100);
 			--color-subcontainer: var(--color-night-300);
 			--color-text: var(--color-night-800);
-			--color-sub-text: var(--color-night-700);
+			--color-subtext: var(--color-night-700);
 			--color-border: var(--color-night-100);
 		}
 		.ui-color-secondary {
@@ -162,21 +162,21 @@
 			--color-container: var(--success-40);
 			--color-subcontainer: var(--success-20);
 			--color-text: var(--on-success-30);
-			--color-sub-text: var(--on-success-20);
+			--color-subtext: var(--on-success-20);
 			--color-border: var(--success-40);
 		}
 		.ui-color-warning {
 			--color-container: var(--warning-40);
 			--color-subcontainer: var(--warning-30);
 			--color-text: var(--on-warning-5);
-			--color-sub-text: var(--on-warning-10);
+			--color-subtext: var(--on-warning-10);
 			--color-border: var(--warning-40);
 		}
 		.ui-color-info {
 			--color-container: var(--info-40);
 			--color-subcontainer: var(--info-30);
 			--color-text: var(--on-info-20);
-			--color-sub-text: var(--on-info-10);
+			--color-subtext: var(--on-info-10);
 			--color-border: var(--info-40);
 		}
 	}
@@ -258,21 +258,21 @@
 			--color-container: var(--primary-50);
 			--color-subcontainer: var(--primary-40);
 			--color-text: var(--on-primary-20);
-			--color-sub-text-: var(--on-primary-10);
+			--color-subtext: var(--on-primary-10);
 			--color-border: var(--primary-50);
 		}
 		.ui-color-secondary {
 			--color-container: var(--secondary-50);
 			--color-subcontainer: var(--secondary-40);
 			--color-text: var(--on-secondary-20);
-			--color-sub-text-: var(--on-secondary-10);
+			--color-subtext: var(--on-secondary-10);
 			--color-border: var(--secondary-40);
 		}
 		.ui-color-tertiary {
 			--color-container: var(--tertiary-50);
 			--color-subcontainer: var(--tertiary-40);
 			--color-text: var(--on-tertiary-20);
-			--color-sub-text-: var(--on-tertiary-10);
+			--color-subtext: var(--on-tertiary-10);
 			--color-border: var(--tertiary-40);
 		}
 		.ui-color-error {
@@ -285,21 +285,21 @@
 			--color-container: var(--success-40);
 			--color-subcontainer: var(--success-20);
 			--color-text: var(--on-success-20);
-			--color-sub-text: var(--on-success-10);
+			--color-subtext: var(--on-success-10);
 			--color-border: var(--success-40);
 		}
 		.ui-color-warning {
 			--color-container: var(--warning-40);
 			--color-subcontainer: var(--warning-20);
 			--color-text: var(--on-warning-20);
-			--color-sub-text: var(--on-warning-10);
+			--color-subtext: var(--on-warning-10);
 			--color-border: var(--warning-40);
 		}
 		.ui-color-info {
 			--color-container: var(--info-40);
 			--color-subcontainer: var(--info-30);
 			--color-text: var(--on-info-20);
-			--color-sub-text: var(--on-info-10);
+			--color-subtext: var(--on-info-10);
 			--color-border: var(--info-40);
 		}
 	}
@@ -307,21 +307,21 @@
 		--color-container: var(--color-surface);
 		--color-subcontainer: var(--color-surface-hight);
 		--color-text: var(--color-on-surface);
-		--color-sub-text: var(--color-white);
+		--color-subtext: var(--color-white);
 		--color-border: var(--color-white);
 	}
 	.ui-color-container-low {
 		--color-container: var(--color-surface-low);
 		--color-subcontainer: var(--color-surface);
 		--color-text: var(--color-on-surface);
-		--color-sub-text: var(--white);
+		--color-subtext: var(--white);
 		--color-text: var(--color-on-surface);
 	}
 	.ui-color-container-hight {
 		--color-container: var(--color-surface-hight);
 		--color-subcontainer: var(--color-surface-highest);
 		--color-text: var(--color-on-surface);
-		--color-sub-text: var(--color-on-surface);
+		--color-subtext: var(--color-on-surface);
 		--color-border: var(--color-on-surface);
 	}
 }
