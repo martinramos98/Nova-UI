@@ -1,5 +1,17 @@
 # @nv-org/input
 
+## 2.0.4
+
+### Patch Changes
+
+- Patch: Input added class container
+
+## 2.0.3
+
+### Patch Changes
+
+- Patch: Rebuilded Packages
+
 ## 2.0.2
 
 ### Patch Changes
