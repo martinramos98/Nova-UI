@@ -1119,6 +1119,9 @@ importers:
       '@nv-org/element-animation-js':
         specifier: workspace:*
         version: link:../../element-animation-js
+      '@nv-org/icon':
+        specifier: workspace:*
+        version: link:../Icons
       '@nv-org/utils':
         specifier: workspace:*
         version: link:../../utils

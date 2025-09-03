@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { setFloatingPosition } from '@nv-org/utils';
+	import { setContext, type Snippet } from 'svelte';
 	import { Icon } from '@nv-org/icon';
 	import type { ISelectionProps } from './interface.js';
 	import { fly } from 'svelte/transition';
@@ -13,6 +14,8 @@
 		disabled = false,
 		isInvalid = false,
 		errorMessage = undefined,
+		id = undefined,
+		ariaDescribedBy = undefined,
 		label = {
 			labelPosition: 'inside'
 		},
@@ -31,6 +34,8 @@
 	}: ISelectionProps = $props();
 
 	let selectionEL: HTMLElement;
+	let listboxId = $derived(id ? `listbox-${id}` : undefined);
+	let selectedLabels = $state<{ value: any; label: string | Snippet<[]> }[]>([]);
 	let transitionProps = {
 		duration: transitionSelectionBoxProps.duration,
 		easing: transitionSelectionBoxProps.easing,
@@ -42,33 +47,40 @@
 		...label
 	};
 
-	function setNewSelection(sel: Set<any>) {
-		selectedValue = sel;
-	}
-
+	setContext('ui-selection', {
+		get selectedValue() {
+			return selectedValue;
+		},
+		onselecthandler,
+		type
+	});
 	function onselecthandler(value: any, label: any) {
 		onSelect && onSelect(value);
-		let isSelected = false;
+		let isSelected = selectedValue.has(value);
 		if (multiselection) {
 			let sel = new Set(selectedValue);
 
-			isSelected = Array.from(sel).some((item) => item.value === value);
-			isSelected ? sel.delete({ value, label }) : sel.add({ value, label });
-			setNewSelection(sel);
+			if (isSelected) {
+				selectedLabels = selectedLabels.filter((item) => item.value !== value);
+				sel.delete(value);
+			} else {
+				sel.add(value);
+				selectedLabels.push({ value, label });
+			}
+			selectedValue = sel;
 		} else {
-			isSelected = Array.from(selectedValue).some((item) => item.value === value);
-			selectedValue = isSelected ? new Set() : new Set([{ value, label }]);
+			if (isSelected) {
+				selectedValue = new Set();
+				selectedLabels = [];
+			} else {
+				selectedValue = new Set([value]);
+				selectedLabels = [{ value, label }];
+			}
 		}
 		open = false;
 		return isSelected;
 	}
 
-	function setOpenHandlersToOptions(node: HTMLElement) {
-		// @ts-expect-error custom prop error
-		node['onselecthandler'] = onselecthandler;
-		// @ts-expect-error custom prop error
-		node['type'] = type;
-	}
 	function setLabelPositioning(labelElement: HTMLLabelElement, open: boolean) {
 		if (!placeholder && selectedValue.size === 0) {
 			labelElement.classList.toggle('dynamic-position', true);
@@ -104,9 +116,15 @@
 		};
 	}
 	function toggleSelection() {
+		if (disabled) return;
 		open = !open;
 		if (open) {
 			window.addEventListener('click', onClickOutsideSelection);
+		}
+	}
+	function toggleEnter(ev: KeyboardEvent) {
+		if (ev.key === 'Enter') {
+			toggleSelection();
 		}
 	}
 	function onClickOutsideSelection(ev: MouseEvent) {
@@ -115,7 +133,7 @@
 			!selectionEL.contains(ev.target as Node)
 		) {
 			open = false;
-			// animationSelection.reverse();
+			window.removeEventListener('click', onClickOutsideSelection);
 		}
 		ev.preventDefault();
 	}
@@ -126,30 +144,45 @@
 </script>
 
 <div
-	role="listbox"
+	role="combobox"
 	class={[
 		'ui-selection',
 		colors && `ui-color-${colors}`,
 		variant && `ui-selection-variant-${variant}`
 	]}
+	aria-haspopup="listbox"
+	aria-controls={listboxId}
+	aria-expanded={open}
+	aria-disabled={disabled}
+	aria-describedby={ariaDescribedBy}
+	aria-invalid={!!errorMessage}
 	data-selection-open={open}
-	aria-multiselectable={multiselection}
+	tabindex={disabled ? -1 : 0}
 	bind:this={selectionEL}
 >
-	<button {disabled} onclick={toggleSelection} class={['ui-selection-input', classInputBox]}>
+	<div
+		role="button"
+		aria-disabled={disabled}
+		onclick={toggleSelection}
+		onkeydown={toggleEnter}
+		class={['ui-selection-input', classInputBox]}
+		tabindex="0"
+	>
 		<div>
 			{#if selectedValue.size === 0}
 				{placeholder}
 			{:else}
-				{#each selectedValue as selectedValue}
-					<span class={classSelected}>
-						{#if typeof selectedValue.label === 'string'}
-							{selectedValue.label}
-						{:else}
-							{@render selectedValue.label()}
-						{/if}
-					</span>
-				{/each}
+				<div>
+					{#each selectedLabels as selectedValue}
+						<span class={classSelected}>
+							{#if typeof selectedValue.label === 'string'}
+								{selectedValue.label}
+							{:else}
+								{@render selectedValue.label()}
+							{/if}
+						</span>
+					{/each}
+				</div>
 			{/if}
 			<Icon
 				xmlns="http://www.w3.org/2000/svg"
@@ -157,10 +190,12 @@
 				height="24"
 				viewBox="0 0 24 24"
 				fill="none"
+				aria-hidden="true"
 				stroke="color-mix(in srgb, var(--color-icon, currentColor) 80%, transparent 30%)"
 				stroke-width="2"
 				stroke-linecap="round"
 				stroke-linejoin="round"
+				class="self-start shrink-0 ml-auto"
 			>
 				<path d="m6 9 6 6 6-6" />
 			</Icon>
@@ -178,16 +213,17 @@
 				{selectionLabel}
 			</label>
 		{/if}
-	</button>
+	</div>
 	{#if isInvalid && errorMessage}
-		<span>
+		<span aria-live="polite">
 			{errorMessage}
 		</span>
 	{/if}
 	{#if open}
 		<div
+			role="listbox"
+			aria-multiselectable={multiselection}
 			use:setSelectionPosition
-			use:setOpenHandlersToOptions
 			transition:fly={transitionProps}
 			class={['ui-selection-options-container', classOptionsContainer]}
 		>
@@ -208,9 +244,13 @@
 			& .ui-selection-input {
 				> div {
 					display: flex;
-					flex-wrap: wrap;
 					flex-direction: row;
 					align-items: center;
+					> div {
+						display: flex;
+						flex-direction: row;
+						flex-wrap: wrap;
+					}
 				}
 			}
 			&.ui-selection-variant-default {
