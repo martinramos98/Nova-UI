@@ -10,6 +10,9 @@
 		error?: boolean | ((value: any) => boolean);
 		errorContent?: string | Snippet;
 		errorClass?: string;
+		startContentClass: string;
+		endContentClass: string;
+		containerContentClass: string;
 		variant?: string;
 		colors?: string;
 		ref?: HTMLDivElement;
@@ -29,10 +32,14 @@
 		value = $bindable(),
 		variant,
 		ref = $bindable(),
+		startContentClass,
+		endContentClass,
+		containerContentClass,
 		startContent,
 		endContent,
 		...attr
 	}: InputProps & HTMLInputAttributes = $props();
+	// svelte-ignore non_reactive_update
 	let labelRef: HTMLLabelElement | null = null;
 	let labelWidth: number | undefined = $state();
 	let labelOffsetLeft: number | undefined = $state();
@@ -74,9 +81,9 @@
 			{/if}
 		</label>
 	{/if}
-	<div class="ui-input-group">
+	<div class={['ui-input-group', containerContentClass]}>
 		{#if startContent}
-			<div class="ui-input-start-content">
+			<div class={['ui-input-start-content', startContentClass]}>
 				{@render startContent()}
 			</div>
 		{/if}
@@ -88,7 +95,7 @@
 			data-filled={!!value}
 		/>
 		{#if endContent}
-			<div class="ui-input-end-content">
+			<div class={['ui-input-end-content', endContentClass]}>
 				{@render endContent()}
 			</div>
 		{/if}
