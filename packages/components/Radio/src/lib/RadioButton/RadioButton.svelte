@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { Icon } from '@nv-org/icon';
 	import type { Snippet } from 'svelte';
-	import { spring } from 'svelte/motion';
+	import { Spring } from 'svelte/motion';
 	interface RadioButtonProps {
 		variant?: 'faded' | 'flat' | 'solid' | 'neon' | string;
 		colors?:
@@ -24,7 +24,6 @@
 		type?: 'radio' | 'checkbox';
 		disabled?: boolean;
 		checked?: boolean;
-		size?: 'size-8' | 'size-10' | 'size-12' | 'size-16' | 'size-20';
 		lineThroughtOnCheck?: boolean;
 		onChange?: () => void;
 		icon?: Snippet;
@@ -41,7 +40,6 @@
 		type = 'radio',
 		disabled = false,
 		checked = $bindable(false),
-		size = 'size-8',
 		lineThroughtOnCheck = false,
 		onChange = () => {
 			checked = !checked;
@@ -50,7 +48,7 @@
 		children
 	}: RadioButtonProps = $props();
 	let name = '';
-	let springRadius = spring(0, { stiffness: 0.1, damping: 0.18 });
+	let springRadius = new Spring(0, { stiffness: 0.1, damping: 0.18 });
 	function getName(node: HTMLElement) {
 		name = node.parentElement?.getAttribute('name') ?? '';
 	}
@@ -66,7 +64,10 @@
 	}
 </script>
 
-<div use:getName class="ui-radio ui-color-{colors}  ui-radio-variant-{variant} {classContainer} ">
+<div
+	use:getName
+	class={[`ui-radio`, `ui-color-${colors}`, `ui-radio-variant-${variant}`, classContainer]}
+>
 	<button
 		{value}
 		tabindex="0"
@@ -75,8 +76,9 @@
 		aria-checked={checked}
 		data-indeterminated={inderminate}
 		data-checked={checked}
+		type="button"
 		onclick={onChange}
-		class="ui-radio-button {size} {className}"
+		class={['ui-radio-button', className]}
 	>
 		<div aria-hidden="true" style="width: 100%; height:100%;">
 			{#if icon}
