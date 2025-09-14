@@ -10,9 +10,14 @@
 		error?: boolean | ((value: any) => boolean);
 		errorContent?: string | Snippet;
 		errorClass?: string;
+		startContentClass: string;
+		endContentClass: string;
+		containerContentClass: string;
 		variant?: string;
 		colors?: string;
 		ref?: HTMLDivElement;
+		startContent?: Snippet;
+		endContent?: Snippet;
 	}
 	let {
 		label,
@@ -23,24 +28,29 @@
 		labelClass,
 		labelStatic = false,
 		labelVariant = 'outside',
-		name,
 		colors,
 		value = $bindable(),
 		variant,
+		ref = $bindable(),
+		startContentClass,
+		endContentClass,
+		containerContentClass,
+		startContent,
+		endContent,
 		...attr
 	}: InputProps & HTMLInputAttributes = $props();
-	let input: HTMLInputElement;
-	let labelEl: HTMLLabelElement;
+	// svelte-ignore non_reactive_update
+	let labelRef: HTMLLabelElement | null = null;
 	let labelWidth: number | undefined = $state();
-
-	function onInputFocusIn(ev: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
-		attr.onfocusin?.(ev);
-	}
-	function onInputFocusOut(ev: FocusEvent & { currentTarget: EventTarget & HTMLInputElement }) {
-		attr.onfocusout?.(ev);
-	}
+	let labelOffsetLeft: number | undefined = $state();
+	onMount(() => {
+		if (ref) {
+			labelOffsetLeft = ref.offsetLeft;
+			labelRef?.classList.remove('invisible');
+		}
+	});
 	function onClickContainer() {
-		input.focus();
+		ref?.focus();
 	}
 </script>
 
@@ -55,35 +65,51 @@
 	]}
 	data-label-variant={labelVariant}
 	data-label-static={labelStatic}
-	style="--label-width:{labelWidth}px;"
+	style="--label-width:{labelWidth}px;--label-offset:{labelOffsetLeft}px"
 	onclick={onClickContainer}
 >
-	<label bind:offsetWidth={labelWidth} bind:this={labelEl} class={labelClass} for={name}
-		>{#if typeof label === 'string'}
-			{label}
-		{:else}
-			{@render label?.()}
-		{/if}
-	</label>
-	<input
-		bind:this={input}
-		{...attr}
-		class={['ui-input', attr.class]}
-		bind:value
-		onfocusin={onInputFocusIn}
-		onfocusout={onInputFocusOut}
-		data-filled={!!value}
-	/>
-	{#if (typeof error === 'function' && error(value)) || error === true}
-		<div class={['ui-input-error', 'ui-color-error', errorClass]}>
-			{#if typeof errorContent === 'string'}
-				{errorContent}
+	{#if label}
+		<label
+			bind:this={labelRef}
+			bind:offsetWidth={labelWidth}
+			class={[labelClass && labelClass, 'invisible']}
+			for={attr.name}
+			>{#if typeof label === 'string'}
+				{label}
 			{:else}
-				{@render errorContent?.()}
+				{@render label()}
 			{/if}
-		</div>
+		</label>
 	{/if}
+	<div class={['ui-input-group', containerContentClass]}>
+		{#if startContent}
+			<div class={['ui-input-start-content', startContentClass]}>
+				{@render startContent()}
+			</div>
+		{/if}
+		<input
+			bind:this={ref}
+			{...attr}
+			class={['ui-input', attr.class]}
+			bind:value
+			data-filled={!!value}
+		/>
+		{#if endContent}
+			<div class={['ui-input-end-content', endContentClass]}>
+				{@render endContent()}
+			</div>
+		{/if}
+	</div>
 </div>
+{#if (typeof error === 'function' && error(value)) || error === true}
+	<div class={['ui-input-error', 'ui-color-error', errorClass]}>
+		{#if typeof errorContent === 'string'}
+			{errorContent}
+		{:else}
+			{@render errorContent?.()}
+		{/if}
+	</div>
+{/if}
 
 <style>
 	@layer nova {
@@ -129,13 +155,23 @@
 				width: max-content;
 				height: max-content;
 			}
-			& > input {
+			& .ui-input-group {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				gap: 5px;
+			}
+			& > div > input {
 				width: 100%;
 			}
 			&[data-label-variant='inside'] {
 				padding: 4px 10px 10px 10px;
+				position: relative;
+
 				&:has(:not(input[placeholder])) > label {
-					translate: 0 70%;
+					translate: var(--label-offset) 105%;
+					/* top: 29%; */
+					/* left: var(--label-offset, 8px); */
 					opacity: 0.6;
 				}
 				&:has(input:focus) > label,
@@ -157,8 +193,9 @@
 					position: absolute;
 				}
 				&:has(:not(input[placeholder])) > label {
-					top: 25%;
-					left: 4%;
+					top: 29%;
+					left: var(--label-offset);
+					/* left: 4%; */
 					opacity: 0.6;
 				}
 				&:has(input:focus) > label,
@@ -182,20 +219,22 @@
 					position: absolute;
 				}
 				&:has(:not(input[placeholder])) > label {
-					top: 25%;
-					left: 4%;
+					top: 29%;
+					/* left: 4%; */
+					left: var(--label-offset);
 					opacity: 0.6;
 				}
 				&:has(input:focus) > label,
 				&:has(input[data-filled='true']) > label,
 				&:has(input[placeholder]) > label {
-					top: 25%;
-					left: calc(calc((var(--label-width)) + var(--label-offset, 8px)) * -1);
+					top: 29%;
+					/* left: calc(calc((calc(var(--label-width))) + var(--label-offset, 8px)) * -1); */
+					left: calc(calc(var(--label-width) * -1) - 10px);
 					opacity: 1;
 				}
 				&[data-label-static='true'] > label {
-					top: 25% !important;
-					left: calc(calc((var(--label-width)) + var(--label-offset, 8px)) * -1) !important;
+					top: 29% !important;
+					left: calc(calc(var(--label-width) * -1) - 10px) !important;
 					opacity: 1 !important;
 				}
 			}
