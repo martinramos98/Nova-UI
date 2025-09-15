@@ -1,5 +1,21 @@
 ---
 title: Accordion
+
 ---
 
 # {title}
+
+bla bla bla...
+
+## Import
+
+<ImportCode />
+
+## Basic Usage
+
+  
+
+## Multiselectable
+
+## Variants
+
