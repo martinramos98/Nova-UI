@@ -1,5 +1,14 @@
 # @nv-org/components
 
+## 1.2.6
+
+### Patch Changes
+
+- - Input: Added support for end content and start content for input component.
+- Updated dependencies
+  - @nv-org/input@2.1.0
+  - @nv-org/alert@1.2.3
+
 ## 1.2.5
 
 ### Patch Changes

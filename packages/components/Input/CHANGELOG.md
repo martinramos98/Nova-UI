@@ -1,5 +1,11 @@
 # @nv-org/input
 
+## 2.1.0
+
+### Minor Changes
+
+- - Input: Added support for end content and start content for input component.
+
 ## 2.0.4
 
 ### Patch Changes
