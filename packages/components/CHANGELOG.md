@@ -1,5 +1,14 @@
 # @nv-org/components
 
+## 1.2.7
+
+### Patch Changes
+
+- Package Build
+- Updated dependencies
+  - @nv-org/input@2.2.0
+  - @nv-org/alert@1.2.3
+
 ## 1.2.6
 
 ### Patch Changes

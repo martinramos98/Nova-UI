@@ -1,5 +1,11 @@
 # @nv-org/input
 
+## 2.2.0
+
+### Minor Changes
+
+- Package Build
+
 ## 2.1.0
 
 ### Minor Changes
