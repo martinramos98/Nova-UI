@@ -1,5 +1,9 @@
 packages:
-  - 'packages/components/*'
-  - 'packages/components'
-  - 'packages/utils'
-  - 'packages/element-animation-js'
+  - packages/components/*
+  - packages/components
+  - packages/utils
+  - packages/element-animation-js
+
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - esbuild
