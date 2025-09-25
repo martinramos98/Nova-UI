@@ -6,6 +6,8 @@ export interface ISelectionProps {
 	type?: SelectionTypes;
 	variant?: SelectionVariants;
 	colors?: string;
+	id?: string;
+	ariaDescribedBy?: string;
 	selectionLabel?: string;
 	disabled?: boolean;
 	isInvalid?: boolean;

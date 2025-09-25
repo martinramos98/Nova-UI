@@ -1,6 +1,11 @@
 <script>
+	import { Button } from '@nv-org/button';
 	import { Input } from '@nv-org/input';
-	// import { Option, Selection } from '@nv-org/selection';
+	import { Option, Selection } from '@nv-org/selection';
+	const onsubmit = (e) => {
+		e.preventDefault();
+		console.log('submit');
+	};
 </script>
 
 {#snippet startContent()}
@@ -11,11 +16,14 @@
 {/snippet}
 
 <section>
-	<!-- <Selection selectionLabel={'Opciones'} placeholder={'Selecciona una opción'}>
-		<Option value={1} labelSelected={'Test 12'}>Test 1</Option>
-		<Option value={2} labelSelected={'Test 22'}>Test 2</Option>
-		<Option value={3} labelSelected={'Test 32'}>Test 3</Option>
-	</Selection> -->
+	<form action="" {onsubmit}>
+		<Selection selectionLabel={'Opciones'} placeholder={'Selecciona una opción'}>
+			<Option value={1} labelSelected={'Test 12'}>Test 1</Option>
+			<Option value={2} labelSelected={'Test 22'}>Test 2</Option>
+			<Option value={3} labelSelected={'Test 32'}>Test 3</Option>
+		</Selection>
+		<Button>Enviar</Button>
+	</form>
 
 	<Input variant={'solid'} label={'Nombre'} labelVariant="leftside" />
 	<Input variant={'solid'} {startContent} {endContent} label={'Nombre'} labelVariant="outside" />
