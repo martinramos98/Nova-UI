@@ -77,6 +77,7 @@
 				selectedLabels = [{ value, label }];
 			}
 		}
+		window.removeEventListener('click', onClickOutsideSelection);
 		open = false;
 		return isSelected;
 	}
