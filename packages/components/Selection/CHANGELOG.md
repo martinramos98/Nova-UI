@@ -1,5 +1,11 @@
 # @nv-org/selection
 
+## 2.0.3
+
+### Patch Changes
+
+- changed miss upload of branchs
+
 ## 2.0.2
 
 ### Patch Changes

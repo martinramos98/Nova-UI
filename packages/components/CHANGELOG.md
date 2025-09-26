@@ -1,5 +1,13 @@
 # @nv-org/components
 
+## 1.2.6
+
+### Patch Changes
+
+- changed miss upload of branchs
+- Updated dependencies
+  - @nv-org/selection@2.0.3
+
 ## 1.2.5
 
 ### Patch Changes
