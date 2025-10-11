@@ -47,7 +47,7 @@
 </script>
 
 {#if open}
-	<aside use:translateToBody class="ui-drawer {className}">
+	<aside use:translateToBody class={['ui-drawer', className]}>
 		<div
 			transition:directionedFly={{ direction: position, ...animation }}
 			class={['ui-drawer-content', `drawer-${position}`, contentClass]}
@@ -72,9 +72,9 @@
 			aria-hidden="true"
 			class={[
 				'ui-drawer-backdrop',
+				backdrop.class,
 				backdrop.type === 'blur' && 'backdrop-blur-sm',
-				backdrop.type === 'transparent' && 'bg-transparent',
-				backdrop.class
+				backdrop.type === 'transparent' && 'bg-transparent'
 			]}
 		></div>
 	</aside>

@@ -1,5 +1,11 @@
 # @nv-org/button
 
+## 1.3.0
+
+### Minor Changes
+
+- Changes on Button attributes are passed directly by props. Drawer changed classes management. Input start content miss upload
+
 ## 1.2.1
 
 ### Patch Changes

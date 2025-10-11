@@ -1,5 +1,13 @@
 # @nv-org/navbar
 
+## 1.2.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @nv-org/button@1.3.0
+  - @nv-org/drawer@1.3.0
+
 ## 1.2.1
 
 ### Patch Changes

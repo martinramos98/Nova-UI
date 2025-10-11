@@ -10,9 +10,9 @@
 		error?: boolean | ((value: any) => boolean);
 		errorContent?: string | Snippet;
 		errorClass?: string;
-		startContentClass: string;
-		endContentClass: string;
-		containerContentClass: string;
+		startContentClass?: string;
+		endContentClass?: string;
+		containerContentClass?: string;
 		variant?: string;
 		colors?: string;
 		ref?: HTMLDivElement;

@@ -1,5 +1,13 @@
 # @nv-org/alert
 
+## 1.2.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @nv-org/button@1.3.0
+  - @nv-org/input@2.1.0
+
 ## 1.2.2
 
 ### Patch Changes

@@ -14,41 +14,36 @@
 		onClick?: ((ev: MouseEvent) => void) | undefined;
 		spinner?: Snippet;
 		children: Snippet;
-		buttonAttr?: HTMLButtonAttributes;
 		action?: (node: HTMLElement, params?: unknown) => any;
 		ref?: HTMLElement;
 	}
 	let {
-		css,
 		class: className,
 		variant,
 		colors,
-		disabled = false,
 		isLoading = false,
 		spinnerPosition = 'left',
 		withClickEffect = true,
-		buttonAttr = {},
 		onClick = undefined,
 		spinner = undefined,
 		children,
 		action = () => {},
-		ref = $bindable(undefined)
-	}: ButtonProps = $props();
+		ref = $bindable(undefined),
+		...props
+	}: ButtonProps & HTMLButtonAttributes = $props();
 </script>
 
 <button
 	bind:this={ref}
 	use:buttonAction={{ withClickEffect, onClick }}
 	use:action
-	{...buttonAttr}
+	{...props}
 	class={[
 		'ui-button',
 		variant && `ui-variant-${variant}`,
 		colors && `ui-color-${colors}`,
 		className
 	]}
-	style={css}
-	{disabled}
 >
 	{#if spinnerPosition === 'left' && isLoading && spinner}
 		{@render spinner()}

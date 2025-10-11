@@ -1,5 +1,22 @@
 # @nv-org/components
 
+## 1.3.0
+
+### Minor Changes
+
+- Changes on Button attributes are passed directly by props. Drawer changed classes management. Input start content miss upload
+
+### Patch Changes
+
+- Updated dependencies
+  - @nv-org/button@1.3.0
+  - @nv-org/input@2.1.0
+  - @nv-org/alert@1.2.3
+  - @nv-org/chip@1.2.2
+  - @nv-org/dropdown@1.2.2
+  - @nv-org/navbar@1.2.2
+  - @nv-org/toast@1.2.2
+
 ## 1.2.5
 
 ### Patch Changes
