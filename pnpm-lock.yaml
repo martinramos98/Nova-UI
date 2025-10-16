@@ -84,7 +84,7 @@ importers:
   apps/docs:
     dependencies:
       '@nv-org/components':
-        specifier: ^1.2.6
+        specifier: ^1.3.0
         version: 1.3.0(svelte@5.40.1)
       nova-js-ui:
         specifier: workspace:^
@@ -1513,6 +1513,10 @@ importers:
         version: 5.38.2
 
   packages/utils:
+    dependencies:
+      '@nv-org/element-animation-js':
+        specifier: workspace:*
+        version: link:../element-animation-js
     devDependencies:
       svelte:
         specifier: 5.38.2

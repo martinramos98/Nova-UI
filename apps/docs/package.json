@@ -12,10 +12,10 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"generate:docs" : "node  ./src/scripts/docs-generator.ts"
+		"generate:docs": "node  ./src/scripts/docs-generator.ts"
 	},
 	"dependencies": {
-		"@nv-org/components": "^1.2.6",
+		"@nv-org/components": "^1.3.0",
 		"nova-js-ui": "workspace:^"
 	},
 	"devDependencies": {
