@@ -9,7 +9,6 @@ bla bla bla...
 
 ## Import
 
-<ImportCode />
 
 ## Basic Usage
 

@@ -1,0 +1,2 @@
+export const componentsMap = {AccordionBasicCase:()=>import('$lib/components/componentsCases/Accordion/AccordionBasicCase.svelte'),
+AccordionCases:()=>import('$lib/components/componentsCases/Accordion/AccordionCases.svelte')}

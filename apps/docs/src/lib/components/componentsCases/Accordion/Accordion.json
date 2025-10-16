@@ -1,0 +1,4 @@
+{
+  "AccordionBasicCase": "<script>\n\timport { Accordion, AccordionSection } from '@nv-org/components';\n</script>\n\n<Accordion>\n\t<AccordionSection>\n\t\t{#snippet header()}\n\t\t\tSection 1\n\t\t{/snippet}\n\t\tContent for section 1.\n\t</AccordionSection>\n\t<AccordionSection>\n\t\t{#snippet header()}\n\t\t\tSection 2\n\t\t{/snippet}\n\t\tContent for section 2.\n\t</AccordionSection>\n</Accordion>\n",
+  "AccordionCases": "<script>\n\timport { Accordion, AccordionSection } from '@nv-org/components';\n\t// @props\n\tconst { variant, color, multiopen } = $props();\n</script>\n\n<Accordion {variant} colors={color} {multiopen}>\n\t<AccordionSection>\n\t\t{#snippet header()}\n\t\t\tSection 1\n\t\t{/snippet}\n\t\tContent for section 1.\n\t</AccordionSection>\n\t<AccordionSection>\n\t\t{#snippet header()}\n\t\t\tSection 2\n\t\t{/snippet}\n\t\tContent for section 2.\n\t</AccordionSection>\n</Accordion>\n"
+}
