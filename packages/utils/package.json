@@ -31,6 +31,9 @@
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
+	"dependencies": {
+		"@nv-org/element-animation-js":"workspace:*"
+	},
 	"devDependencies": {
 		"svelte": "5.38.2"
 	}

@@ -1,7 +1,5 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import { getContext, type Snippet } from 'svelte';
 
 	interface OptionProps {
 		labelSelected: string | Snippet;
@@ -17,12 +15,15 @@
 		className = '',
 		labelSelected
 	}: OptionProps = $props();
-	let selected = $state(false);
+
+	const selectionContext = getContext('ui-selection');
+	if (!selectionContext) {
+		throw Error('Selection Option must be inside a Selection Component');
+	}
 	function setSelectHandlerToOptions(optionElement: HTMLElement) {
 		if (optionElement.parentElement?.classList.contains('ui-selection-options-container')) {
 			optionElement.addEventListener('click', () => {
-				// @ts-expect-error Custom prop of element
-				selected = optionElement.parentElement.onselecthandler(value, labelSelected);
+				selectionContext.onselecthandler(value, labelSelected);
 			});
 		} else {
 			throw Error('Selection Option is not inside a Selection Container');
@@ -30,25 +31,27 @@
 	}
 </script>
 
-<option
-	{disabled}
+<div
+	role="option"
+	aria-disabled={disabled}
+	tabindex={-1}
 	use:setSelectHandlerToOptions
 	class="ui-selection-option {className}"
-	data-selected={selected}
+	aria-selected={selectionContext.selectedValue.has(value)}
 >
 	{#if children}
-		{@render children(selected)}
+		{@render children(selectionContext.selectedValue.has(value))}
 	{:else}
 		{value}
 	{/if}
-</option>
+</div>
 
 <style>
 	@layer nova {
-		option[disabled] {
+		div[role='option'][disabled] {
 			opacity: 0.5;
 		}
-		option {
+		div[role='option'] {
 			text-indent: 10px;
 			cursor: pointer;
 			display: block;

@@ -72,10 +72,5 @@
 		"svelte ui",
 		"nova ui"
 	],
-	"packageManager": "pnpm@9.15.4",
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild"
-		]
-	}
+	"packageManager": "pnpm@10.15.1"
 }

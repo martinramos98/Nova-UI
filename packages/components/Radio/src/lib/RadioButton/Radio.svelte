@@ -36,7 +36,7 @@
 		type: Readable<'checkbox' | 'radio'>;
 		checked: Writable<Set<string>>;
 	}>('radiogroup-context');
-	let type: 'checkbox' | 'radio' = 'checkbox';
+	let type: 'checkbox' | 'radio' = $state('checkbox');
 	if (!radioContext) {
 		throw Error('Radio Button is not inside of a Radio Group');
 	}
@@ -88,7 +88,13 @@
 
 {#if custom}
 	<button
-		class="ui-radio {className} ui-color-{colors} ui-variant-{variant}"
+		class={[
+			'ui-radio',
+			className,
+			colors && `ui-color-${colors}`,
+			variant && `ui-variant-${variant}`
+		]}
+		role={type}
 		aria-checked={checked}
 		data-custom={!!custom}
 		{disabled}
@@ -100,8 +106,7 @@
 	<RadioButton
 		onChange={handleChange}
 		{id}
-		{size}
-		{className}
+		class={className}
 		{value}
 		{variant}
 		{colors}
