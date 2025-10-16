@@ -1,5 +1,3 @@
-<svelte:options runes={true} />
-
 <script lang="ts">
 	import { onMount, setContext, type Snippet } from 'svelte';
 	import { writable } from 'svelte/store';
@@ -9,13 +7,15 @@
 		variant?: string;
 		multiopen?: boolean;
 		children: Snippet;
+		as?: string;
 	}
 	const {
 		class: className = '',
 		colors,
 		variant = 'default-accordion',
 		multiopen = false,
-		children
+		children,
+		as = 'div'
 	}: AccordionProps = $props();
 
 	let accordion: HTMLElement;
@@ -54,10 +54,10 @@
 		}
 		sections.set(sectionsMounted);
 	});
-	// class="ui-accordion {colors !== '' ? 'ui-color-' + colors : ''} ui-variant-{variant} {className}"
 </script>
 
-<div
+<svelte:element
+	this={as}
 	bind:this={accordion}
 	data-multiopen={multiopen}
 	class={[
@@ -68,4 +68,4 @@
 	]}
 >
 	{@render children()}
-</div>
+</svelte:element>
