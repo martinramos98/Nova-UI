@@ -1,20 +1,50 @@
 ---
 title: Accordion
-
 ---
+
+<script> 
+  import ImportCode from '../../ImportCode.svelte';
+  import CodeComponentTabs from '../../CodeComponentTabs/CodeComponentTabs.svelte'
+  import CodeComponentWithSelectors from '../../CodeComponentWithSelectors/CodeComponentWithSelectors.svelte'
+  const { componentsData } = $props()
+  const propsv = [{
+    name:"colors",
+    options: ["primary","secondary","tertiary","success","warning","error"]
+  },{
+    name:'variant',
+    options: ['default-accordion','splitted-content','splitted','bordered-items' ]
+  },{
+    name: 'multiopen',
+    options: [true, false]
+  }]
+  console.log(componentsData)
+</script>
 
 # {title}
 
-bla bla bla...
+An accordion component is a vertically stacked list of interactive headers that reveal or hide associated content sections when clicked. It helps organize related information into a compact, scannable format that reduces scrolling and visual clutter on the page
+
+## Install
+
+You can with all components or indivually
 
 ## Import
 
+Import inside a script tag in a svelte component
+
+<ImportCode importComponents ={["Accordion","AccordionSection" ] }/>
 
 ## Basic Usage
 
-  
+Just use Accordion component and AccordionSection Items.
+You need to set header Snippet and Trigger Snippet for each Accordion SectionItem.
 
-## Multiselectable
+<CodeComponentTabs Component={componentsData.AccordionBasicCase.component} code={componentsData.AccordionBasicCase.code} />
 
-## Variants
+## Cases
 
+Accordion support colors, variant and multiselectable props.
+
+<CodeComponentWithSelectors propsv={propsv} Component={componentsData.AccordionBasicCase.component} code={componentsData.AccordionBasicCase.code} />
+
+## Props

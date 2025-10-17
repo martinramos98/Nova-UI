@@ -2,11 +2,10 @@
 @theme static {
 }
 :root {
-	@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
-	--geist-font: 'Geist', sans-serif;
-	font-family: var(--geist-font);
-	font-optical-sizing: auto;
-	font-weight: 500;
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 	background-color: var(--background-color);
 	color: var(--text-color);
 }
@@ -27,29 +26,36 @@
 
 h1 {
 	font-size: var(--text-4xl);
+  font-family: "Geist", sans-serif;
 	font-weight: var(--font-weight-semibold);
 }
 h2 {
 	font-size: var(--text-3xl);
+  font-family: "Geist", sans-serif;
 	font-weight: var(--font-weight-semibold);
 }
 h3 {
 	font-size: var(--text-2xl);
+  font-family: "Geist", sans-serif;
 	font-weight: var(--font-weight-semibold);
 }
 h4 {
 	font-size: var(--text-xl);
+  font-family: "Geist", sans-serif;
 	font-weight: var(--font-weight-semibold);
 }
 h5 {
 	font-size: var(--text-lg);
+  font-family: "Geist", sans-serif;
 	font-weight: var(--font-weight-semibold);
 }
 h6 {
 	font-size: var(--text-base);
+  font-family: "Geist", sans-serif;
 	font-weight: var(--font-weight-semibold);
 }
 p {
 	font-size: var(--text-base);
+  font-family: "Geist", sans-serif;
 	font-weight: var(--font-weight-normal);
 }

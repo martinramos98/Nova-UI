@@ -7,11 +7,10 @@ export async function load({ params }) {
 		const componentsCode = await import(`$lib/components/componentsCases/${capitalizedComponent}/${capitalizedComponent}.json`);
 		const componentsMap = await import(`$lib/components/componentsCases/${capitalizedComponent}/${capitalizedComponent}_map.ts`)
 		const componentsData = await componentsDataBuilder(componentsCode.default, componentsMap.componentsMap);
-		console.log(componentsData);
 		return {
 			Content: post.default,
 			meta: post.metadata,
-			componentsData,
+			componentsData
 		};
 	} catch (e) {
 		console.error(e);
@@ -25,7 +24,7 @@ const componentsDataBuilder = async (componentsCode, componentsMap) => {
 		if (componentsCode[key]) {
 			componentsData[key] = {
 				code: componentsCode[key],
-				component: await value()
+				component: (await value()).default
 			};
 		}
 	}

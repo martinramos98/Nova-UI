@@ -2,4 +2,4 @@
 	const { data } = $props();
 </script>
 
-<data.Content {...data.meta}></data.Content>
+<data.Content componentsData={data.componentsData} {...data.meta}></data.Content>
